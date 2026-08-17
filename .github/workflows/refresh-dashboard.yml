@@ -1,0 +1,230 @@
+# Scheduled refresh: pull what changed on PostHog, re-run Phase 2, redeploy.
+#
+# Why this exists: the pipeline should keep the dashboard current without anyone
+# leaving a laptop open. Everything here runs on GitHub's runners.
+#
+# The expensive input is the PostHog clone (~1.4 GB). It is cached between runs
+# and *updated*, never re-cloned: `git fetch --shallow-since` pulls only commits
+# newer than the existing shallow boundary. Phase 1's request batches are
+# bucketed on PR number, so advancing the window re-fetches only the buckets
+# that actually changed — a refresh is not a re-ingest.
+#
+# Cache hygiene matters here. GitHub evicts caches unused for 7 days and caps a
+# repo at 10 GB; a 1.4 GB clone saved under a rolling key would blow that out in
+# a week. So: one rolling key, `git gc --prune` before saving, and a weekly
+# sweep of superseded caches (see `prune-caches` below).
+
+name: Refresh dashboard
+
+on:
+  schedule:
+    # 04:00 UTC every Monday. Off-peak for both GitHub's API and the runners.
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: "Analysis window in days"
+        required: false
+        default: "90"
+      full_reclone:
+        description: "Discard the cached clone and start fresh"
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  # Never let two refreshes race over artifacts/ or the gh-pages branch.
+  group: refresh-dashboard
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330          # under the 6 h hard limit, with room to spare
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      LLM_MODEL: openrouter/free
+      WINDOW_DAYS: ${{ github.event.inputs.window_days || '90' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          ./.venv/bin/pip install --quiet -r requirements.txt
+
+      - name: Free up runner disk
+        # The runner ships ~30 GB free; the clone plus artifacts plus the Next
+        # build is comfortably under that only after the preinstalled toolchains
+        # are gone. Cheap insurance against a mid-run ENOSPC.
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true
+          df -h / | tail -1
+
+      - name: Restore the PostHog clone
+        if: ${{ github.event.inputs.full_reclone != 'true' }}
+        id: clone-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/raw/git/posthog
+          # One rolling key. `restore-keys` lets a new run adopt the previous
+          # week's clone and update it rather than cloning from scratch.
+          key: posthog-clone-${{ github.run_id }}
+          restore-keys: posthog-clone-
+
+      - name: Ingest git (incremental)
+        run: |
+          set -euo pipefail
+          if [ -d data/raw/git/posthog ]; then
+            echo "::notice::cache hit — updating the existing clone"
+            SINCE=$(date -u -d "$((WINDOW_DAYS + 30)) days ago" +%Y-%m-%d)
+            git -C data/raw/git/posthog fetch --shallow-since="$SINCE" \
+                --no-tags origin master
+            git -C data/raw/git/posthog reset --hard origin/master
+          else
+            echo "::notice::cache miss — full shallow clone (~15 min)"
+          fi
+          ./.venv/bin/python -m impact ingest-git
+
+      - name: Compact the clone before caching
+        # Repeated fetches leave loose objects that make the cache grow every
+        # week. Packing keeps the saved size flat.
+        run: |
+          git -C data/raw/git/posthog gc --prune=now --quiet || true
+          du -sh data/raw/git/posthog
+
+      - name: Save the updated clone
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/raw/git/posthog
+          key: posthog-clone-${{ github.run_id }}
+
+      - name: Restore API + LLM caches
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw/github
+            data/phase2/llm_cache
+          key: posthog-api-${{ github.run_id }}
+          restore-keys: posthog-api-
+
+      - name: Phase 1 — ingest, normalize, features, validate, export
+        run: |
+          set -uo pipefail
+          ./.venv/bin/python -m impact ingest-github --workers 4
+          ./.venv/bin/python -m impact normalize
+          ./.venv/bin/python -m impact graph
+          ./.venv/bin/python -m impact features
+          # A failing gate is recorded and exported as a known gap, not a reason
+          # to abandon the refresh.
+          ./.venv/bin/python -m impact validate || \
+            echo "::warning::quality gates reported failures; they are exported"
+          ./.venv/bin/python -m impact export
+
+      - name: Phase 2 — full analysis
+        run: |
+          set -euo pipefail
+          ./.venv/bin/python -m impact2 all --verify-content-hashes
+
+      - name: Phase 2 — LLM top-up within the daily free-tier allowance
+        continue-on-error: true
+        run: |
+          # 50 requests/day on the free tier. 45 leaves headroom so the run ends
+          # on the budget rather than on a wall of 429s. Anything not reached
+          # stays queued; `llm-topup.yml` finishes it on later days.
+          ./.venv/bin/python -m impact2 llm --max-calls 45
+
+      - name: Re-export with whatever the LLM produced
+        run: ./.venv/bin/python -m impact2 export
+
+      - name: Save API + LLM caches
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: |
+            data/raw/github
+            data/phase2/llm_cache
+          key: posthog-api-${{ github.run_id }}
+
+      - name: Refuse to publish an unpublishable package
+        run: |
+          ./.venv/bin/python - <<'PY'
+          import json, sys
+          m = json.load(open("artifacts/phase3/dashboard_manifest.json"))
+          blockers = [b.get("item") for b in (m.get("publishable_blockers") or [])]
+          print(f"generated={m['generated_at']} episodes={m['counts']['episodes']} "
+                f"engineers={m['counts']['engineers']} publishable={m['publishable']}")
+          if not m.get("publishable"):
+              print(f"::error::package is not publishable; blockers={blockers}")
+              sys.exit(1)
+          PY
+
+      - name: Build and deploy the dashboard
+        run: ./scripts/deploy-dashboard.sh "Automated weekly refresh."
+
+      - name: Commit the refreshed export
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A artifacts/phase3 reports/phase2 || true
+          if git diff --cached --quiet; then
+            echo "no export change to commit"
+          else
+            git commit -m "Automated refresh: $(date -u +%Y-%m-%d)"
+            git push origin HEAD:main
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Dashboard refresh"
+            ./.venv/bin/python -c "
+          import json
+          m=json.load(open('artifacts/phase3/dashboard_manifest.json'))
+          c=m['counts']
+          print(f\"- generated: \`{m['generated_at']}\`\")
+          print(f\"- episodes: {c['episodes']:,} · engineers: {c['engineers']:,} · claims: {c['claims']:,}\")
+          print(f\"- publishable: {m['publishable']} ({m.get('approval_mode')})\")
+          " 2>/dev/null || echo "- no manifest produced"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  prune-caches:
+    # Keeps the repo under the 10 GB cache cap. Each refresh writes a new
+    # run-id-keyed cache; without this the old ones linger until GitHub's 7-day
+    # eviction, and two 1.4 GB clones plus API caches is most of the budget.
+    needs: refresh
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Delete superseded caches, keeping the newest of each prefix
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          for prefix in posthog-clone- posthog-api-; do
+            gh cache list --repo "$REPO" --key "$prefix" --limit 100 \
+              --order desc --sort created_at --json id,key,sizeInBytes \
+              | jq -r '.[1:][] | "\(.id)\t\(.key)"' \
+              | while IFS=$'\t' read -r id key; do
+                  echo "deleting superseded cache $key"
+                  gh cache delete "$id" --repo "$REPO" || true
+                done
+          done
+          echo "remaining:"
+          gh cache list --repo "$REPO" --limit 20

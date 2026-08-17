@@ -128,6 +128,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="serve every LLM task from cache; never call a provider",
     )
     parser.add_argument(
+        "--max-calls", type=int,
+        help="stop the LLM stage cleanly after N provider calls. The free tier "
+             "allows 50 requests/day, so a daily job passes --max-calls 45 and "
+             "resumes tomorrow: the cache makes already-done work free.",
+    )
+    parser.add_argument(
+        "--llm-stability", action="store_true",
+        help="run the LLM repeatability/order-reversal tests (60 calls). Off by "
+             "default because it costs more than a day of free-tier quota.",
+    )
+    parser.add_argument(
         "--skip-sensitivity", action="store_true",
         help="skip bootstrap and sensitivity analysis (much faster; the export "
              "records that stability is unmeasured)",
@@ -224,7 +235,7 @@ def _dispatch(stage: str, pipeline: Any, args: argparse.Namespace,
         return
     if stage == "llm":
         _ensure(pipeline, "dimensions")
-        state["llm"] = _run_llm(pipeline, replay=args.replay)
+        state["llm"] = _run_llm(pipeline, replay=args.replay, args=args)
         return
     if stage in {"validate", "export"}:
         _ensure(pipeline, "rank")
@@ -252,11 +263,18 @@ def _ensure(pipeline: Any, through: str) -> None:
             pipeline.stage_rank()
 
 
-def _run_llm(pipeline: Any, *, replay: bool) -> dict[str, Any]:
+def _run_llm(pipeline: Any, *, replay: bool, args: Any = None) -> dict[str, Any]:
     from .llm.provider import LLMClient
     from .llm.tasks import SemanticLayer, pending_queue
 
     client = LLMClient.build(pipeline.config, replay_only=replay or None)
+    max_calls = getattr(args, "max_calls", None)
+    if max_calls:
+        # Free tier is 50 requests/day. Stopping at the cap leaves everything
+        # else in the pending queue; tomorrow's run serves today's work from
+        # cache and continues where this one stopped.
+        client.max_calls = int(max_calls)
+        log.info("LLM call budget for this run: %d", max_calls)
     layer = SemanticLayer(client, pipeline.config)
     rubric_text = str(pipeline.config.get("rubric.dimensions"))[:6000]
 
@@ -288,6 +306,24 @@ def _run_llm(pipeline: Any, *, replay: bool) -> dict[str, Any]:
         if row.get("is_consequential")
     ]
 
+    if not getattr(args, "llm_stability", False):
+        stability = {
+            "status": "skipped",
+            "reason": (
+                "Operator elected to skip LLM repeatability testing to conserve "
+                "free-tier quota (60 of ~155 calls, more than a day of the "
+                "50/day allowance). The deterministic bands are authoritative "
+                "and unaffected; what is unmeasured is how reproducible the "
+                "LLM's own narrative output is."
+            ),
+            "required_cases": 20,
+            "cases_run": 0,
+            "enable_with": "--llm-stability",
+        }
+        write_json(pipeline.config.paths.work / "llm_stability.json", stability)
+        return _llm_finish(pipeline, client, layer, extractions, consequences,
+                           stability)
+
     stability_cases = [
         {
             "assessment": assessment,
@@ -307,6 +343,12 @@ def _run_llm(pipeline: Any, *, replay: bool) -> dict[str, Any]:
         for assessment in pipeline.dimensions[:20]
     ]
     stability = layer.stability_tests(stability_cases, rubric_text)
+    return _llm_finish(pipeline, client, layer, extractions, consequences, stability)
+
+
+def _llm_finish(pipeline: Any, client: Any, layer: Any, extractions: list,
+                consequences: list, stability: dict) -> dict[str, Any]:
+    from .llm.tasks import pending_queue
 
     write_json(
         pipeline.config.paths.work / "llm_episode_extractions.json", extractions

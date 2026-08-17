@@ -113,6 +113,10 @@ class LLMClient:
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
     _last_call: float = field(default=0.0, repr=False)
     last_routed_model: str | None = None
+    # Per-run call ceiling. The free tier allows 50 requests/day, so a daily
+    # job caps itself and leaves the rest queued rather than spending the
+    # allowance on 429 retries. None means "use the config budget only".
+    max_calls: int | None = None
 
     # -- construction ----------------------------------------------------
     @classmethod
@@ -196,6 +200,13 @@ class LLMClient:
         if cached is not None:
             self.usage.cache_hits += 1
             return cached.get("response")
+
+        # Budget check before anything is spent. Exceeding it is not an error:
+        # the task is queued and the next run resumes from the cache.
+        if self.max_calls is not None and self.usage.calls >= self.max_calls:
+            if record_pending:
+                self._queue(task, key, payload, reason="daily_call_budget_reached")
+            return None
 
         if not self.available or self.replay_only:
             if record_pending:

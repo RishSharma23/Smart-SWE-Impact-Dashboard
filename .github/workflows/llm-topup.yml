@@ -1,0 +1,173 @@
+# Daily LLM top-up, bounded by the OpenRouter free-tier allowance.
+#
+# The semantic layer needs roughly 95 calls (finalist episode extraction,
+# identity-blinded pairwise comparisons, executive summaries, review-consequence
+# classification). The free tier allows 50 requests/day, so this runs daily,
+# spends at most 45, and stops. The cache key is
+# `sha256(task|prompt_version|model|schema|payload)`, so tomorrow's run serves
+# today's work from cache for free and continues where this one stopped —
+# converging in about two days, then idling at zero cost.
+#
+# It exits early when nothing is pending, so the steady state is a ~40-second
+# no-op rather than a wasted run.
+#
+# This job never re-ingests. It reads the artifacts committed by
+# `refresh-dashboard.yml` and only adds narrative on top.
+
+name: LLM top-up
+
+on:
+  schedule:
+    # 06:00 UTC daily — after UTC midnight, when the request counter resets.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      max_calls:
+        description: "Provider calls to spend this run (free tier: 50/day)"
+        required: false
+        default: "45"
+      stability:
+        description: "Also run the 60-call repeatability tests"
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: llm-topup
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  topup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      LLM_MODEL: openrouter/free
+      MAX_CALLS: ${{ github.event.inputs.max_calls || '45' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          ./.venv/bin/pip install --quiet -r requirements.txt
+
+      - name: Check the remaining free-tier allowance
+        id: quota
+        run: |
+          ./.venv/bin/python - <<'PY' >> "$GITHUB_OUTPUT"
+          import os, json, urllib.request
+          req = urllib.request.Request(
+              "https://openrouter.ai/api/v1/key",
+              headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+          )
+          try:
+              d = json.load(urllib.request.urlopen(req, timeout=30))["data"]
+              # Never print the key or the label; only the counters.
+              print(f"free_tier={d.get('is_free_tier')}")
+              print(f"usage_daily={d.get('usage_daily')}")
+              print("reachable=true")
+          except Exception as exc:
+              print(f"reachable=false")
+              print(f"::warning::could not read key status: {type(exc).__name__}")
+          PY
+
+      - name: Restore the Phase 2 LLM cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/phase2/llm_cache
+          key: llm-cache-${{ github.run_id }}
+          restore-keys: llm-cache-
+
+      - name: Are the Phase 1 artifacts present?
+        id: inputs
+        run: |
+          if [ -f artifacts/run_manifest.json ] && \
+             [ -n "$(ls artifacts/*.parquet 2>/dev/null)" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Phase 1 artifacts are not committed to this branch, \
+            so the semantic layer has nothing to read. Run 'Refresh dashboard' \
+            first, or run this workflow on a branch that carries artifacts/."
+          fi
+
+      - name: LLM top-up
+        if: steps.inputs.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          EXTRA=""
+          if [ "${{ github.event.inputs.stability }}" = "true" ]; then
+            EXTRA="--llm-stability"
+          fi
+          ./.venv/bin/python -m impact2 llm --max-calls "$MAX_CALLS" $EXTRA
+
+      - name: Re-export with the new narrative
+        if: steps.inputs.outputs.ready == 'true'
+        run: ./.venv/bin/python -m impact2 export
+
+      - name: Save the LLM cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/phase2/llm_cache
+          key: llm-cache-${{ github.run_id }}
+
+      - name: Publish only if the package still passes its own gate
+        if: steps.inputs.outputs.ready == 'true'
+        id: gate
+        run: |
+          ./.venv/bin/python - <<'PY'
+          import json, os, sys
+          m = json.load(open("artifacts/phase3/dashboard_manifest.json"))
+          pending = json.load(open("data/phase2/LLM_PENDING.json")).get("queued", 0) \
+              if os.path.exists("data/phase2/LLM_PENDING.json") else 0
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"publishable={str(m.get('publishable')).lower()}\n")
+              fh.write(f"pending={pending}\n")
+          print(f"publishable={m.get('publishable')} pending_llm_tasks={pending}")
+          if not m.get("publishable"):
+              blockers = [b.get("item") for b in (m.get("publishable_blockers") or [])]
+              print(f"::error::not publishable; blockers={blockers}")
+              sys.exit(1)
+          PY
+
+      - name: Deploy
+        if: steps.gate.outputs.publishable == 'true'
+        run: ./scripts/deploy-dashboard.sh "Automated LLM narrative top-up."
+
+      - name: Commit the enriched export
+        if: steps.gate.outputs.publishable == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A artifacts/phase3 data/phase2/llm_report.json \
+                     data/phase2/LLM_PENDING.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "nothing changed — the queue is already drained"
+          else
+            git commit -m "LLM top-up: $(date -u +%Y-%m-%d)"
+            git push origin HEAD:main
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### LLM top-up"
+            echo "- spent up to **${MAX_CALLS}** calls (free tier: 50/day)"
+            echo "- remaining queued tasks: **${{ steps.gate.outputs.pending || 'unknown' }}**"
+            echo "- daily credit usage reported by OpenRouter: \`${{ steps.quota.outputs.usage_daily || 'n/a' }}\`"
+            echo ""
+            echo "The queue drains over consecutive days; once empty this job is a no-op."
+          } >> "$GITHUB_STEP_SUMMARY"
