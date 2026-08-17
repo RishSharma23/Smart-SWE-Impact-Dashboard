@@ -132,6 +132,18 @@ jobs:
             echo "::warning::quality gates reported failures; they are exported"
           ./.venv/bin/python -m impact export
 
+      - name: Save the Phase 1 artifacts for the daily top-up
+        # artifacts/*.parquet is git-ignored (294 MB), so it exists only on the
+        # runner that built it. Without this the daily llm-topup job checks out
+        # a tree with no Phase 1 tables and has nothing to read. Caching them
+        # here is what makes the daily job work on non-refresh days.
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            artifacts
+            data/phase2
+          key: phase1-artifacts-${{ github.run_id }}
+
       - name: Phase 2 — full analysis
         run: |
           set -euo pipefail
@@ -217,7 +229,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          for prefix in posthog-clone- posthog-api-; do
+          for prefix in posthog-clone- posthog-api- phase1-artifacts- llm-cache-; do
             gh cache list --repo "$REPO" --key "$prefix" --limit 100 \
               --order desc --sort created_at --json id,key,sizeInBytes \
               | jq -r '.[1:][] | "\(.id)\t\(.key)"' \

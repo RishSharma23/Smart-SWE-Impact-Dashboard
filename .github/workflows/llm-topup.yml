@@ -11,8 +11,10 @@
 # It exits early when nothing is pending, so the steady state is a ~40-second
 # no-op rather than a wasted run.
 #
-# This job never re-ingests. It reads the artifacts committed by
-# `refresh-dashboard.yml` and only adds narrative on top.
+# This job never re-ingests. It restores the Phase 1 artifacts and Phase 2 state
+# that `refresh-dashboard.yml` cached, and only adds narrative on top. Those
+# files are git-ignored (~294 MB), so the Actions cache — not the repo — is how
+# they travel between the weekly and daily jobs.
 
 name: LLM top-up
 
@@ -81,6 +83,19 @@ jobs:
               print(f"::warning::could not read key status: {type(exc).__name__}")
           PY
 
+      - name: Restore the Phase 1 artifacts and Phase 2 state
+        # Written by refresh-dashboard.yml, which is the only job that builds
+        # them. They are git-ignored, so the cache is the only way this job sees
+        # them. Restoring data/phase2 too means the semantic layer resumes
+        # against the same episodes the last refresh produced.
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            artifacts
+            data/phase2
+          key: phase1-artifacts-${{ github.run_id }}
+          restore-keys: phase1-artifacts-
+
       - name: Restore the Phase 2 LLM cache
         uses: actions/cache/restore@v4
         with:
@@ -96,9 +111,9 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::Phase 1 artifacts are not committed to this branch, \
-            so the semantic layer has nothing to read. Run 'Refresh dashboard' \
-            first, or run this workflow on a branch that carries artifacts/."
+            echo "::warning::No cached Phase 1 artifacts. This is expected \
+            before the first 'Refresh dashboard' run has completed; that job \
+            builds and caches them. Nothing to do today."
           fi
 
       - name: LLM top-up
