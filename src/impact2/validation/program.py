@@ -103,6 +103,10 @@ def _queue(
     ]
     write_json(path, enriched)
     recorded = sum(1 for r in enriched if r.get("human_verdict"))
+    # A reviewer may sign off in one action rather than item by item. That is a
+    # legitimate operator decision, but it is a weaker record than 30 separate
+    # judgements and the published package must not imply otherwise.
+    bulk = sum(1 for r in enriched if r.get("attestation_mode") == "bulk")
     status = (
         "fail" if len(enriched) < required
         else "pass" if recorded >= required
@@ -115,10 +119,16 @@ def _queue(
         "queued": len(enriched),
         "required": required,
         "human_verdicts_recorded": recorded,
+        "bulk_attested": bulk,
+        "attestation_mode": "bulk" if bulk and bulk == recorded else (
+            "per_item" if recorded else None
+        ),
         "queue_file": str(path.name),
         "note": (
             "The queue is generated deterministically; the verdicts are not. "
             "This item cannot pass until a human records them."
+            + (" Signed off in bulk by the operator, not item by item."
+               if bulk and bulk == recorded else "")
         ),
     }
 

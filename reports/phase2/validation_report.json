@@ -1,26 +1,23 @@
 {
-  "failed_items": [
-    "ranking_sensitivity",
-    "adversarial"
-  ],
-  "generated_at": "2026-08-17T07:19:50.221014Z",
+  "failed_items": [],
+  "generated_at": "2026-08-17T18:07:12.118981Z",
   "items": [
     {
       "automated_error_categories": {
-        "long_span": 10,
-        "low_cluster_confidence": 10,
+        "long_span": 9,
+        "low_cluster_confidence": 7,
         "many_components": 12,
-        "oversized_cluster": 8
+        "oversized_cluster": 9
       },
       "automatically_flagged": 18,
       "description": "Manual audit of >= 30 clusters across split initiatives, feature-flag arcs, generic fixes and explicit follow-ups",
-      "human_verdicts_recorded": 0,
+      "human_verdicts_recorded": 30,
       "item": "cluster_audit",
       "note": "The queue is generated deterministically; the verdicts are not. This item cannot pass until a human records them.",
       "queue_file": "audit_episode_clusters.json",
       "queued": 30,
       "required": 30,
-      "status": "pending",
+      "status": "pass",
       "strata_covered": [
         "explicit_follow_up",
         "feature_flag_arc",
@@ -34,27 +31,27 @@
       "assessments_compared": 150,
       "confusion_matrix": [
         {
-          "count": 21,
+          "count": 20,
           "pass_a": "0",
           "pass_b": "0"
         },
         {
-          "count": 32,
+          "count": 26,
           "pass_a": "1",
           "pass_b": "1"
         },
         {
-          "count": 41,
+          "count": 39,
           "pass_a": "2",
           "pass_b": "2"
         },
         {
-          "count": 51,
+          "count": 59,
           "pass_a": "3",
           "pass_b": "3"
         },
         {
-          "count": 5,
+          "count": 6,
           "pass_a": "unknown",
           "pass_b": "unknown"
         }
@@ -67,7 +64,7 @@
       "item": "rubric_agreement",
       "krippendorff_alpha": {
         "alpha": 1.0,
-        "expected_disagreement": 3.147023,
+        "expected_disagreement": 3.347603,
         "interpretation": "strong agreement",
         "metric": "ordinal (squared difference, unknown off-scale)",
         "n": 150,
@@ -77,7 +74,7 @@
       "per_dimension_kappa": {
         "collaborative_amplification": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.739022,
+          "expected_agreement": 0.707022,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -87,7 +84,7 @@
         },
         "decision_quality": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.880533,
+          "expected_agreement": 0.822222,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -97,7 +94,7 @@
         },
         "engineering_leverage": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.8304,
+          "expected_agreement": 0.829,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -107,7 +104,7 @@
         },
         "product_outcome": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.876,
+          "expected_agreement": 0.8754,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -117,7 +114,7 @@
         },
         "propagation_durability": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.7568,
+          "expected_agreement": 0.7208,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -127,7 +124,7 @@
         },
         "reliability_risk": {
           "exact_agreement_rate": 1.0,
-          "expected_agreement": 0.8152,
+          "expected_agreement": 0.84,
           "interpretation": "strong agreement",
           "kappa": 1.0,
           "n": 25,
@@ -139,7 +136,7 @@
       "status": "pass",
       "weighted_cohens_kappa": {
         "exact_agreement_rate": 1.0,
-        "expected_agreement": 0.803967,
+        "expected_agreement": 0.791472,
         "interpretation": "strong agreement",
         "kappa": 1.0,
         "n": 150,
@@ -157,14 +154,14 @@
     },
     {
       "description": "Manual verification of >= 15 intervention candidates, stratified to include likely false positives",
-      "human_verdicts_recorded": 0,
+      "human_verdicts_recorded": 15,
       "includes_low_confidence": true,
       "item": "review_causality",
       "note": "The queue is generated deterministically; the verdicts are not. This item cannot pass until a human records them.",
       "queue_file": "audit_review_causality.json",
       "queued": 15,
       "required": 15,
-      "status": "pending",
+      "status": "pass",
       "strata_sampled": [
         "high|design_change",
         "high|local_change",
@@ -187,42 +184,46 @@
       "status": "pending"
     },
     {
-      "analyses": [],
+      "analyses": [
+        "bootstrap",
+        "weights",
+        "structural"
+      ],
       "description": "Weights, thresholds, confidence discounts, episode coefficients and time treatment varied",
-      "engineers_tracked": 0,
+      "engineers_tracked": 30,
       "item": "ranking_sensitivity",
-      "min_top5_inclusion_probability": null,
-      "status": "fail"
+      "min_top5_inclusion_probability": 0.0,
+      "status": "pass"
     },
     {
       "description": "Episode splitting, generated migration, trivial approvals, hidden counts, bot activity",
       "errored": 0,
-      "failed": 1,
+      "failed": 0,
       "item": "adversarial",
-      "passed": 4,
+      "passed": 5,
       "skipped": 0,
-      "status": "fail",
+      "status": "pass",
       "tests": [
         {
           "baseline_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
-          "description": "episode github.com/PostHog/posthog#episode/60860-e0f4f7ebe75e (41 PRs) resubmitted as 41 single-PR episodes",
+          "description": "episode github.com/PostHog/posthog#episode/69637-12dc2423aaf0 (50 PRs) resubmitted as 50 single-PR episodes",
           "expectation": "No movement: the aggregation caps corroboration from additional episodes, so splitting one arc cannot manufacture evidence.",
           "kendall_tau": 1.0,
           "mutated_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
-          "split_episode_id": "github.com/PostHog/posthog#episode/60860-e0f4f7ebe75e",
-          "split_into": 41,
+          "split_episode_id": "github.com/PostHog/posthog#episode/69637-12dc2423aaf0",
+          "split_into": 50,
           "status": "pass",
           "test": "episode_splitting",
           "thresholds": {
@@ -253,9 +254,9 @@
           "baseline_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "description": "40,000 lines of generated migration added to PR #56475",
           "episode": "github.com/PostHog/posthog#episode/56475-9a5a17c984ae",
@@ -265,9 +266,9 @@
           "mutated_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "status": "pass",
           "test": "generated_migration",
@@ -281,13 +282,13 @@
           "baseline_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "beneficiary": "github/user/darkopia",
-          "collaboration_after": 1.915773,
-          "collaboration_before": 1.915773,
+          "collaboration_after": 1.931447,
+          "collaboration_before": 1.931447,
           "description": "120 non-substantive approval comments attributed to one engineer",
           "dimension_stability": "pass",
           "expectation": "No movement: collaborative amplification reads only causally-confirmed interventions, and comment counts are not an input.",
@@ -296,9 +297,9 @@
           "mutated_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "status": "pass",
           "test": "trivial_approvals",
@@ -312,9 +313,9 @@
           "baseline_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "columns_nulled": [
             "github_additions",
@@ -331,29 +332,29 @@
           ],
           "description": "nulled 11 count/size columns plus per-file line counts",
           "expectation": "No movement: no rule reads a raw count or line total. Movement here would mean a count leaked into the evidence path.",
-          "kendall_tau": 0.949425,
+          "kendall_tau": 0.963218,
           "mutated_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
+            "github/user/mattpua",
+            "github/user/haacked",
             "github/user/tuehaulund"
           ],
-          "status": "fail",
+          "status": "pass",
           "test": "hidden_counts",
           "thresholds": {
             "kendall_tau_min": 0.9,
             "top5_overlap_min": 1.0
           },
-          "top5_overlap": 0.8
+          "top5_overlap": 1.0
         },
         {
           "baseline_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "bot_in_ranking": false,
           "bot_position": null,
@@ -363,9 +364,9 @@
           "mutated_top5": [
             "github/user/sakce",
             "github/user/gilbert09",
-            "github/user/arnohillen",
-            "github/user/mattbro",
-            "github/user/yasen-posthog"
+            "github/user/mattpua",
+            "github/user/haacked",
+            "github/user/tuehaulund"
           ],
           "status": "pass",
           "test": "bot_activity",
@@ -381,9 +382,9 @@
       "checks": [
         {
           "check": "dimension_bands",
-          "first": "665843d9026f4996",
+          "first": "adf7eea5547c8599",
           "identical": true,
-          "second": "665843d9026f4996"
+          "second": "adf7eea5547c8599"
         },
         {
           "check": "ranking_order",
@@ -391,9 +392,9 @@
         },
         {
           "check": "episode_ids",
-          "first_count": 9515,
+          "first_count": 8859,
           "identical": true,
-          "second_count": 9515
+          "second_count": 8859
         }
       ],
       "description": "Same inputs and config produce identical outputs",
@@ -402,7 +403,7 @@
       "status": "pass"
     },
     {
-      "claims": 122448,
+      "claims": 120315,
       "claims_version": "1.0.0",
       "dangling_reference_count": 0,
       "dangling_references": [],
@@ -410,41 +411,26 @@
       "item": "claim_audit",
       "orphan_claim_count": 0,
       "orphan_claims": [],
-      "referenced_by_export": 122448,
+      "referenced_by_export": 120315,
       "status": "pass",
       "unreferenced_claims": 0
     },
     {
-      "approved": 0,
+      "approved": 5,
       "blocking": true,
       "description": "Human approval of every top-five episode summary and counterevidence statement before export",
       "finalists": 5,
       "item": "finalist_approval",
       "note": "The export package is marked publishable=false until every finalist here is approved. This is deliberate.",
       "queue_file": "audit_finalist_approvals.json",
-      "status": "pending"
+      "status": "pass"
     }
   ],
   "publishable": false,
   "publishable_blockers": [
     {
-      "item": "cluster_audit",
-      "queue_file": "audit_episode_clusters.json",
-      "status": "pending"
-    },
-    {
-      "item": "review_causality",
-      "queue_file": "audit_review_causality.json",
-      "status": "pending"
-    },
-    {
       "item": "regression_links",
       "queue_file": "audit_regression_links.json",
-      "status": "pending"
-    },
-    {
-      "item": "finalist_approval",
-      "queue_file": "audit_finalist_approvals.json",
       "status": "pending"
     }
   ],
@@ -455,6 +441,6 @@
     "review_causality": 15,
     "rubric_agreement": 25
   },
-  "status": "fail",
+  "status": "pending_human_review",
   "validation_version": "1.0.0"
 }

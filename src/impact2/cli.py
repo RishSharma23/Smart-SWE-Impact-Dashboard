@@ -266,7 +266,7 @@ def _run_llm(pipeline: Any, *, replay: bool) -> dict[str, Any]:
 
     extractions: list[dict[str, Any]] = []
     ranked = [e for e in pipeline.episodes if e.get("ranked")]
-    for episode in ranked[:400]:
+    for episode in ranked[:120]:
         eid = str(episode["episode_id"])
         text = "\n".join(
             f"TITLE #{n}: {(pipeline.prs.get(n) or {}).get('title_raw')}\n"
@@ -284,7 +284,7 @@ def _run_llm(pipeline: Any, *, replay: bool) -> dict[str, Any]:
 
     consequences = [
         layer.review_consequence(row)
-        for row in pipeline.interventions[:600]
+        for row in pipeline.interventions[:150]
         if row.get("is_consequential")
     ]
 

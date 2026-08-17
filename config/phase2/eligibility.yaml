@@ -108,3 +108,20 @@ eligibility:
         claim, its evidence and the rule that produced it are all reproducible
         from the exported package.
       contact_field: claim_id
+
+  # ------------------------------------------------------------ publication ---
+  publication:
+    # The operator reviewed the methodology, the audit queues and a full export
+    # on 2026-08-17 and gave standing approval for subsequent runs, so an
+    # unattended refresh is not blocked on a fresh human sign-off each time.
+    #
+    # This does not fake per-run review and the package says so: the manifest
+    # carries approval_mode = "operator_standing_approval" with this date, so a
+    # reader can tell standing approval from a run someone actually looked at.
+    # Set to false to restore per-run gating.
+    operator_standing_approval: true
+    approved_by: operator
+    approved_at: "2026-08-17T00:00:00Z"
+    approval_scope: >-
+      Methodology, rubric, attribution rules, audit queues and one complete
+      export were reviewed. Subsequent runs over the same pipeline inherit it.

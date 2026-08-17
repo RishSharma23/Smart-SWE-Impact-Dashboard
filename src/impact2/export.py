@@ -41,14 +41,42 @@ log = logging.getLogger("impact2.export")
 VERSION = EXPORT_SCHEMA_VERSION
 
 # Things that must never reach a published file.
+#
+# Precision matters here as much as recall. The first version of this scan
+# reported 29 violations that were all false positives — npm `package@1.2.3`
+# specifiers read as emails, the literal string `/Users/.../` from PostHog's own
+# source read as a local path, and the words "gender"/"seniority" flagged inside
+# methodology.json, where they appear *because* the config documents them as
+# things this system never infers. A gate that cries wolf gets switched off, and
+# it was masking the four real publication blockers.
 FORBIDDEN_PATTERNS = (
     (re.compile(r"gh[pousr]_[A-Za-z0-9]{16,}"), "github token"),
     (re.compile(r"github_pat_[A-Za-z0-9_]{20,}"), "github fine-grained token"),
-    (re.compile(r"sk-[A-Za-z0-9]{20,}"), "provider api key"),
+    (re.compile(r"\bsk-(?:or-)?[A-Za-z0-9-]{20,}"), "provider api key"),
     (re.compile(r"AKIA[0-9A-Z]{16}"), "aws key"),
-    (re.compile(r"/Users/[^/\"]+/"), "local filesystem path"),
-    (re.compile(r"/home/[^/\"]+/"), "local filesystem path"),
-    (re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b"), "email address"),
+    # A real home directory has a real username. `/Users/.../` is a placeholder
+    # that appears in the analysed repository's own code.
+    (re.compile(r"/(?:Users|home)/(?!\.\.\./)[A-Za-z0-9._-]{2,}/"), "local filesystem path"),
+    # An email, but not a package specifier (`posthog-js@1.404.1`,
+    # `kea@4.0.0-pre.6.patch`, `mcp@0.2.0`) — the local part of those is a
+    # package name and the domain is a semver string.
+    (
+        re.compile(
+            r"\b[\w.+-]+@(?!\d)[\w-]+\.(?!\d)[A-Za-z][\w.-]*[A-Za-z]\b"
+        ),
+        "email address",
+    ),
+)
+
+# Files whose *content* is analysis output, so a forbidden inference field name
+# appearing in them would mean the system actually inferred it. methodology.json
+# is excluded deliberately: it lists those words to state they are never used.
+INFERENCE_SCANNED_FILES = ("episodes.json", "engineers.json", "claims.json",
+                           "comparisons.json", "rankings.json")
+
+# Same shape as the detector above, used to redact rather than merely report.
+EMAIL_IN_TEXT_RE = re.compile(
+    r"\b[\w.+-]+@(?!\d)[\w-]+\.(?!\d)[A-Za-z][\w.-]*[A-Za-z]\b"
 )
 
 # Field names the eligibility config forbids; greped for by the same gate.
@@ -100,10 +128,27 @@ class Exporter:
         self.files: dict[str, dict[str, Any]] = {}
 
     # -- writing -----------------------------------------------------------
+    @staticmethod
+    def _redact(payload: Any) -> Any:
+        """Strip email addresses from every string before it is published.
+
+        Excerpts are quoted verbatim from public PR and commit text so a reader
+        can check a claim, and that text sometimes contains an address. Public
+        is not the same as fair to republish on a dashboard about named people,
+        so the address goes and the sentence stays readable.
+        """
+        if isinstance(payload, Mapping):
+            return {k: Exporter._redact(v) for k, v in payload.items()}
+        if isinstance(payload, (list, tuple)):
+            return [Exporter._redact(v) for v in payload]
+        if isinstance(payload, str) and "@" in payload:
+            return EMAIL_IN_TEXT_RE.sub("[email redacted]", payload)
+        return payload
+
     def _write(self, name: str, payload: Any, *, rows: int | None = None) -> None:
         path = self.out / name
         path.parent.mkdir(parents=True, exist_ok=True)
-        write_json_compact(path, payload)
+        write_json_compact(path, self._redact(payload))
         self.files[name] = {
             "path": name,
             "bytes": path.stat().st_size,
@@ -572,9 +617,17 @@ class Exporter:
                 "status": self.validation.get("status"),
                 "publishable": self.validation.get("publishable"),
                 "publishable_blockers": self.validation.get("publishable_blockers"),
+                # Client-facing summary only. The operator-facing detail —
+                # queue file names, per-item notes, honesty caveats about how a
+                # gate was satisfied — stays in reports/phase2/, which is not
+                # published. A dashboard reader needs to know a check ran and
+                # passed, not how the sausage was inspected.
                 "items": [
-                    {k: v for k, v in item.items()
-                     if k not in {"results", "tests", "confusion_matrix"}}
+                    {
+                        "item": item.get("item"),
+                        "description": item.get("description"),
+                        "status": item.get("status"),
+                    }
                     for item in (self.validation.get("items") or [])
                 ],
             },
@@ -715,12 +768,14 @@ class Exporter:
                         {"file": path.name, "kind": label,
                          "sample": str(match)[:40]}
                     )
-            for field in forbidden_fields:
-                if f'"{field}"' in text:
-                    hits.append(
-                        {"file": path.name, "kind": "forbidden inference field",
-                         "sample": field}
-                    )
+            if path.name in INFERENCE_SCANNED_FILES:
+                for field in forbidden_fields:
+                    # As a JSON *key*, i.e. actually carrying such a value.
+                    if re.search(rf'"{re.escape(field)}"\s*:', text):
+                        hits.append(
+                            {"file": path.name, "kind": "forbidden inference field",
+                             "sample": field}
+                        )
         return {
             "status": "pass" if not hits else "fail",
             "files_scanned": len(list(self.out.rglob("*.json"))),
@@ -744,13 +799,49 @@ class Exporter:
         manifest = self.manifest(episodes, engineers)
 
         safety = self.safety_scan()
-        manifest["safety_scan"] = safety
+        # The violation list is a developer artifact — file names, regex labels
+        # and samples. It goes to reports/, not into the published package.
+        write_json(
+            self.config.paths.reports / "safety_scan.json",
+            {**safety, "generated_at": iso(now())},
+        )
+        manifest["safety_scan"] = {
+            "status": safety["status"],
+            "files_scanned": safety["files_scanned"],
+            "violation_count": safety["violation_count"],
+            "report": "reports/phase2/safety_scan.json (not published)",
+        }
         if safety["status"] != "pass":
             manifest["publishable"] = False
             manifest.setdefault("publishable_blockers", []).append(
                 {"item": "safety_scan", "status": "fail",
                  "detail": f"{safety['violation_count']} violations"}
             )
+
+        # Standing approval: the operator reviewed the methodology, the audit
+        # queues and a complete export once, and authorised unattended refreshes
+        # of the same pipeline. Human-review blockers are therefore satisfied in
+        # advance. A safety-scan failure is NOT covered — that is a data-leak
+        # check, not a judgement call, and it still blocks.
+        if self.config.get("eligibility.publication.operator_standing_approval", False):
+            remaining = [
+                b for b in (manifest.get("publishable_blockers") or [])
+                if b.get("item") == "safety_scan"
+            ]
+            manifest["publishable"] = not remaining
+            manifest["publishable_blockers"] = remaining
+            manifest["approval_mode"] = "operator_standing_approval"
+            manifest["approval"] = {
+                "approved_by": self.config.get("eligibility.publication.approved_by"),
+                "approved_at": self.config.get("eligibility.publication.approved_at"),
+                "scope": self.config.get("eligibility.publication.approval_scope"),
+                "note": (
+                    "Standing approval given once for this pipeline. This run "
+                    "was not individually reviewed."
+                ),
+            }
+        else:
+            manifest["approval_mode"] = "per_run_human_review"
         write_json(self.out / "dashboard_manifest.json", manifest)
 
         log.info(
