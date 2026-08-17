@@ -1,0 +1,333 @@
+{
+  "$id": "https://posthog-impact.local/schemas/pr_files.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "additions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "categories": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "change_status": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commit_sha": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component_rule_pattern": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component_rule_priority": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "component_source": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "computed_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "deletions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "extension": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_binary": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_binary_asset": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_ci": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_config": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_docs": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_generated": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_localization": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_lockfile": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_migration": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_snapshot": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_styling": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_submodule": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_test": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_vendor": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "language": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license_area": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "line_counts_unavailable_reason": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mapping_uncertainty": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "matched_rules": {
+      "arrow_type": "list<element: struct<category: string, pattern: string, risk_surface: string>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "new_blob_sha": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "new_path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "old_blob_sha": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "old_path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owner_source": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owners": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path_classify_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path_depth": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "platform": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_file_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "risk_surfaces": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "similarity_score": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "top_level_dir": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "pr_files",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

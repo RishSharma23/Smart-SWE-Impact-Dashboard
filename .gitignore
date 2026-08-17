@@ -1,0 +1,57 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Virtualenv / Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Data layers.
+# Raw source clone and raw API pages are large + reproducible; they are NOT committed.
+data/raw/git/
+data/raw/github/
+data/raw/web/
+data/normalized/
+data/derived/
+artifacts/*.parquet
+artifacts/*.zip
+
+# Committed on purpose:
+#   data/samples/**   tiny redacted fixtures used by unit tests
+#   artifacts/*.json  compact manifests / coverage reports for Phase 2
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Node dependencies (Phase 3 web app) — never tracked
+node_modules/
+web/node_modules/
+web/dist/
+web/.next/
+
+# ---------------------------------------------------------------- phase 3 ---
+# The Phase 3 export is a generated build input (~190 MB) and the built site is
+# a generated build output (~300 MB). Neither belongs in the source history;
+# docs/DEPLOYMENT_RUNBOOK.md explains how each is reproduced.
+artifacts/phase3/
+web/.data/
+web/out/
+web/test-results/
+web/playwright-report/
+web/*.tsbuildinfo
+web/shot*.mjs
+data/phase2/

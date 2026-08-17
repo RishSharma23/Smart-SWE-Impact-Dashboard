@@ -1,0 +1,95 @@
+{
+  "$id": "https://posthog-impact.local/schemas/dependency_edges.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "crosses_component": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "dependency_graph_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_dynamic": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_type_only": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "kind": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resolution": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_component": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "specifier": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_component": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "dependency_edges",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

@@ -1,0 +1,243 @@
+# Path -> component taxonomy for PostHog/posthog.
+#
+# The spec's priority order is implemented in src/impact/normalize/components.py.
+# Only priority 4 ("stable top-level/path conventions") is hand-written here;
+# priorities 1-3 are DERIVED AT RUN TIME from the analysed commit so they cannot
+# drift from the repository:
+#
+#   1. product manifests            products/<name>/manifest.tsx, package.json
+#   2. distributed ownership        owners.yaml at the nearest enclosing dir
+#                                   (PostHog's own resolver convention) and
+#                                   the nearest AGENTS.md
+#   3. CODEOWNERS / CODEOWNERS-soft .github/CODEOWNERS[-soft]
+#   4. conventions                  the rules in this file
+#   5. module graph                 language-aware import edges
+#   6. unknown
+#
+# Every mapped path records WHICH priority produced it (rule_source,
+# rule_priority, rule_pattern) so unclassified and weakly-classified paths are
+# visible instead of hidden.
+
+taxonomy:
+  # Top level of the hierarchy: platform | product | infrastructure | unknown
+  platforms:
+    - id: product
+      label: Product verticals
+      description: User-facing products under products/*.
+    - id: platform
+      label: Platform and monolith
+      description: Shared backend/frontend platform, legacy monolith, libraries.
+    - id: infrastructure
+      label: Infrastructure and tooling
+      description: CI, deploy, developer tooling, docs, repo config.
+
+# Priority 4 conventions. First match wins, longest prefix evaluated first.
+# `component` is the leaf; `platform` is the top of the hierarchy.
+conventions:
+  # ---- product verticals -------------------------------------------------
+  # products/<name>/... is handled dynamically (one component per directory);
+  # this entry is the fallback if the dynamic scan finds nothing.
+  - pattern: 'products/*/**'
+    component: 'product:{1}'
+    platform: product
+    note: Product vertical directory (products/<name>).
+
+  - pattern: 'products/*'
+    component: 'product:{1}'
+    platform: product
+
+  # ---- platform / monolith ----------------------------------------------
+  - pattern: 'posthog/clickhouse/**'
+    component: platform:clickhouse
+    platform: platform
+  - pattern: 'posthog/hogql/**'
+    component: platform:hogql
+    platform: platform
+  - pattern: 'posthog/hogql_queries/**'
+    component: platform:hogql
+    platform: platform
+  - pattern: 'posthog/temporal/**'
+    component: platform:temporal
+    platform: platform
+  - pattern: 'posthog/dags/**'
+    component: platform:dagster
+    platform: platform
+  - pattern: 'posthog/api/**'
+    component: platform:api
+    platform: platform
+  - pattern: 'posthog/models/**'
+    component: platform:models
+    platform: platform
+  - pattern: 'posthog/session_recordings/**'
+    component: platform:session-recordings
+    platform: platform
+  - pattern: 'posthog/tasks/**'
+    component: platform:tasks
+    platform: platform
+  - pattern: 'posthog/migrations/**'
+    component: platform:migrations
+    platform: platform
+  - pattern: 'posthog/warehouse/**'
+    component: platform:warehouse
+    platform: platform
+  - pattern: 'posthog/management/**'
+    component: platform:management
+    platform: platform
+  - pattern: 'posthog/**'
+    component: platform:monolith
+    platform: platform
+    note: Legacy Django monolith (posthog/).
+
+  - pattern: 'ee/**'
+    component: platform:enterprise
+    platform: platform
+    license_area: enterprise
+    note: Enterprise-licensed code. NOT MIT — must stay separately identifiable.
+
+  # ---- frontend ----------------------------------------------------------
+  - pattern: 'frontend/src/lib/**'
+    component: frontend:shared-lib
+    platform: platform
+  - pattern: 'frontend/src/scenes/**'
+    component: frontend:scenes
+    platform: platform
+  - pattern: 'frontend/src/queries/**'
+    component: frontend:queries
+    platform: platform
+  - pattern: 'frontend/src/toolbar/**'
+    component: frontend:toolbar
+    platform: platform
+  - pattern: 'frontend/src/layout/**'
+    component: frontend:layout
+    platform: platform
+  - pattern: 'frontend/**'
+    component: frontend:app
+    platform: platform
+
+  # ---- ingestion / data plane -------------------------------------------
+  - pattern: 'nodejs/**'
+    component: ingestion:node
+    platform: platform
+    note: Node ingestion / plugin-server successor.
+  - pattern: 'plugin-server/**'
+    component: ingestion:plugin-server
+    platform: platform
+  - pattern: 'rust/**'
+    component: 'rust:{1}'
+    platform: platform
+    note: Rust services (capture, feature-flags, cymbal, ...).
+  - pattern: 'funnel-udf/**'
+    component: rust:funnel-udf
+    platform: platform
+  - pattern: 'livestream/**'
+    component: platform:livestream
+    platform: platform
+
+  # ---- shared libraries / services --------------------------------------
+  - pattern: 'common/**'
+    component: 'common:{1}'
+    platform: platform
+  - pattern: 'packages/**'
+    component: 'packages:{1}'
+    platform: platform
+  - pattern: 'services/**'
+    component: 'services:{1}'
+    platform: platform
+  - pattern: 'proto/**'
+    component: platform:proto
+    platform: platform
+  - pattern: 'cli/**'
+    component: platform:cli
+    platform: platform
+
+  # ---- infrastructure / tooling -----------------------------------------
+  - pattern: '.github/workflows/**'
+    component: infra:ci
+    platform: infrastructure
+  - pattern: '.github/**'
+    component: infra:repo-config
+    platform: infrastructure
+  - pattern: 'docker/**'
+    component: infra:docker
+    platform: infrastructure
+  - pattern: 'terraform/**'
+    component: infra:terraform
+    platform: infrastructure
+  - pattern: 'bin/**'
+    component: infra:scripts
+    platform: infrastructure
+  - pattern: 'tools/**'
+    component: 'tools:{1}'
+    platform: infrastructure
+  - pattern: 'devenv/**'
+    component: infra:devenv
+    platform: infrastructure
+  - pattern: 'docs/**'
+    component: infra:docs
+    platform: infrastructure
+  - pattern: 'playwright/**'
+    component: infra:e2e
+    platform: infrastructure
+  - pattern: 'agent-os/**'
+    component: infra:agent-os
+    platform: infrastructure
+  - pattern: '.agents/**'
+    component: infra:agent-config
+    platform: infrastructure
+  - pattern: '.claude/**'
+    component: infra:agent-config
+    platform: infrastructure
+  - pattern: 'share/**'
+    component: infra:share
+    platform: infrastructure
+  - pattern: 'patches/**'
+    component: infra:patches
+    platform: infrastructure
+  - pattern: 'Dockerfile*'
+    component: infra:docker
+    platform: infrastructure
+  - pattern: 'docker-compose*.yml'
+    component: infra:docker
+    platform: infrastructure
+  - pattern: '*'
+    component: infra:repo-root
+    platform: infrastructure
+    note: Root-level dotfiles and manifests.
+
+# Sources read from the analysed commit to build priorities 1-3.
+dynamic_sources:
+  product_manifest_globs:
+    - 'products/*/manifest.tsx'
+    - 'products/*/manifest.ts'
+    - 'products/*/package.json'
+  owners_files:
+    filename: owners.yaml
+    # PostHog's distributed-ownership format: {version, teams, rules:[{match, owners}]}
+    match_key: match
+    owners_key: owners
+  agents_files:
+    filename: AGENTS.md
+  codeowners_paths:
+    - .github/CODEOWNERS
+    - .github/CODEOWNERS-soft
+    - CODEOWNERS
+    - docs/CODEOWNERS
+
+# Reachability bands for changed-node graph analysis.
+reachability_bands:
+  - id: local
+    description: Reachable set stays inside the changed file's own directory.
+  - id: component
+    description: Reachable set stays inside one component.
+  - id: cross_product
+    description: Reaches two or more product components.
+  - id: platform_wide
+    description: Reaches a shared library or platform component consumed broadly.
+  - id: unknown
+    description: Parser coverage insufficient to decide. Never treat as "small".
+
+# Coverage thresholds surfaced in the quality report (advisory, not blocking).
+coverage_targets:
+  min_path_classification_rate: 0.95
+  max_unknown_component_rate: 0.05
+  min_import_parse_rate: 0.80

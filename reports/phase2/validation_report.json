@@ -1,0 +1,460 @@
+{
+  "failed_items": [
+    "ranking_sensitivity",
+    "adversarial"
+  ],
+  "generated_at": "2026-08-17T07:19:50.221014Z",
+  "items": [
+    {
+      "automated_error_categories": {
+        "long_span": 10,
+        "low_cluster_confidence": 10,
+        "many_components": 12,
+        "oversized_cluster": 8
+      },
+      "automatically_flagged": 18,
+      "description": "Manual audit of >= 30 clusters across split initiatives, feature-flag arcs, generic fixes and explicit follow-ups",
+      "human_verdicts_recorded": 0,
+      "item": "cluster_audit",
+      "note": "The queue is generated deterministically; the verdicts are not. This item cannot pass until a human records them.",
+      "queue_file": "audit_episode_clusters.json",
+      "queued": 30,
+      "required": 30,
+      "status": "pending",
+      "strata_covered": [
+        "explicit_follow_up",
+        "feature_flag_arc",
+        "generic_component_fix",
+        "long_arc",
+        "other",
+        "semantic_supported"
+      ]
+    },
+    {
+      "assessments_compared": 150,
+      "confusion_matrix": [
+        {
+          "count": 21,
+          "pass_a": "0",
+          "pass_b": "0"
+        },
+        {
+          "count": 32,
+          "pass_a": "1",
+          "pass_b": "1"
+        },
+        {
+          "count": 41,
+          "pass_a": "2",
+          "pass_b": "2"
+        },
+        {
+          "count": 51,
+          "pass_a": "3",
+          "pass_b": "3"
+        },
+        {
+          "count": 5,
+          "pass_a": "unknown",
+          "pass_b": "unknown"
+        }
+      ],
+      "description": "Two independent rubric passes over >= 25 episodes",
+      "episodes_compared": 25,
+      "honesty_note": "Both passes are machine passes. This measures the bands' sensitivity to the thresholds we chose, NOT human inter-rater agreement. The blind human queue for that is audit_rubric_blind_review.json and is unfilled.",
+      "human_queue_file": "audit_rubric_blind_review.json",
+      "human_verdicts_recorded": 0,
+      "item": "rubric_agreement",
+      "krippendorff_alpha": {
+        "alpha": 1.0,
+        "expected_disagreement": 3.147023,
+        "interpretation": "strong agreement",
+        "metric": "ordinal (squared difference, unknown off-scale)",
+        "n": 150,
+        "observed_disagreement": 0.0
+      },
+      "pass_b_description": "A rule variant with relaxed corroboration requirements and shifted leverage/collaboration thresholds.",
+      "per_dimension_kappa": {
+        "collaborative_amplification": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.739022,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        },
+        "decision_quality": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.880533,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        },
+        "engineering_leverage": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.8304,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        },
+        "product_outcome": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.876,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        },
+        "propagation_durability": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.7568,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        },
+        "reliability_risk": {
+          "exact_agreement_rate": 1.0,
+          "expected_agreement": 0.8152,
+          "interpretation": "strong agreement",
+          "kappa": 1.0,
+          "n": 25,
+          "observed_agreement": 1.0,
+          "weighting": "quadratic",
+          "within_one_band_rate": 1.0
+        }
+      },
+      "status": "pass",
+      "weighted_cohens_kappa": {
+        "exact_agreement_rate": 1.0,
+        "expected_agreement": 0.803967,
+        "interpretation": "strong agreement",
+        "kappa": 1.0,
+        "n": 150,
+        "observed_agreement": 1.0,
+        "weighting": "quadratic",
+        "within_one_band_rate": 1.0
+      }
+    },
+    {
+      "description": "Repeatability, order reversal, identity blinding and ablation over >= 20 cases",
+      "item": "llm_stability",
+      "reason": "the LLM stage was not run in this invocation",
+      "required_cases": 20,
+      "status": "pending"
+    },
+    {
+      "description": "Manual verification of >= 15 intervention candidates, stratified to include likely false positives",
+      "human_verdicts_recorded": 0,
+      "includes_low_confidence": true,
+      "item": "review_causality",
+      "note": "The queue is generated deterministically; the verdicts are not. This item cannot pass until a human records them.",
+      "queue_file": "audit_review_causality.json",
+      "queued": 15,
+      "required": 15,
+      "status": "pending",
+      "strata_sampled": [
+        "high|design_change",
+        "high|local_change",
+        "high|prevented_risk",
+        "low|none",
+        "medium|design_change",
+        "medium|local_change",
+        "medium|prevented_risk"
+      ]
+    },
+    {
+      "description": "Manual verification of >= 15 regression-link candidates",
+      "human_verdicts_recorded": 0,
+      "item": "regression_links",
+      "note": "The queue is generated deterministically; the verdicts are not. This item cannot pass until a human records them.",
+      "proximate_share": 0.2,
+      "queue_file": "audit_regression_links.json",
+      "queued": 15,
+      "required": 15,
+      "status": "pending"
+    },
+    {
+      "analyses": [],
+      "description": "Weights, thresholds, confidence discounts, episode coefficients and time treatment varied",
+      "engineers_tracked": 0,
+      "item": "ranking_sensitivity",
+      "min_top5_inclusion_probability": null,
+      "status": "fail"
+    },
+    {
+      "description": "Episode splitting, generated migration, trivial approvals, hidden counts, bot activity",
+      "errored": 0,
+      "failed": 1,
+      "item": "adversarial",
+      "passed": 4,
+      "skipped": 0,
+      "status": "fail",
+      "tests": [
+        {
+          "baseline_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "description": "episode github.com/PostHog/posthog#episode/60860-e0f4f7ebe75e (41 PRs) resubmitted as 41 single-PR episodes",
+          "expectation": "No movement: the aggregation caps corroboration from additional episodes, so splitting one arc cannot manufacture evidence.",
+          "kendall_tau": 1.0,
+          "mutated_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "split_episode_id": "github.com/PostHog/posthog#episode/60860-e0f4f7ebe75e",
+          "split_into": 41,
+          "status": "pass",
+          "test": "episode_splitting",
+          "thresholds": {
+            "kendall_tau_min": 0.9,
+            "top5_overlap_min": 1.0
+          },
+          "top5_overlap": 1.0
+        },
+        {
+          "band_stability": "pass",
+          "bands_after": {
+            "collaborative_amplification": 0,
+            "decision_quality": 1,
+            "engineering_leverage": 0,
+            "product_outcome": 2,
+            "propagation_durability": null,
+            "reliability_risk": 2
+          },
+          "bands_before": {
+            "collaborative_amplification": 0,
+            "decision_quality": 1,
+            "engineering_leverage": 0,
+            "product_outcome": 2,
+            "propagation_durability": null,
+            "reliability_risk": 2
+          },
+          "bands_changed": {},
+          "baseline_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "description": "40,000 lines of generated migration added to PR #56475",
+          "episode": "github.com/PostHog/posthog#episode/56475-9a5a17c984ae",
+          "expectation": "No band rises: generated paths are labelled by Phase 1 and excluded from production-file evidence, and no rule reads line counts.",
+          "injected_pr": 56475,
+          "kendall_tau": 1.0,
+          "mutated_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "status": "pass",
+          "test": "generated_migration",
+          "thresholds": {
+            "kendall_tau_min": 0.9,
+            "top5_overlap_min": 1.0
+          },
+          "top5_overlap": 1.0
+        },
+        {
+          "baseline_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "beneficiary": "github/user/darkopia",
+          "collaboration_after": 1.915773,
+          "collaboration_before": 1.915773,
+          "description": "120 non-substantive approval comments attributed to one engineer",
+          "dimension_stability": "pass",
+          "expectation": "No movement: collaborative amplification reads only causally-confirmed interventions, and comment counts are not an input.",
+          "injected_comments": 120,
+          "kendall_tau": 1.0,
+          "mutated_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "status": "pass",
+          "test": "trivial_approvals",
+          "thresholds": {
+            "kendall_tau_min": 0.9,
+            "top5_overlap_min": 1.0
+          },
+          "top5_overlap": 1.0
+        },
+        {
+          "baseline_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "columns_nulled": [
+            "github_additions",
+            "github_deletions",
+            "github_changed_files",
+            "git_additions",
+            "git_deletions",
+            "git_file_count",
+            "review_count",
+            "review_thread_count",
+            "comment_count",
+            "commit_count",
+            "reaction_count"
+          ],
+          "description": "nulled 11 count/size columns plus per-file line counts",
+          "expectation": "No movement: no rule reads a raw count or line total. Movement here would mean a count leaked into the evidence path.",
+          "kendall_tau": 0.949425,
+          "mutated_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/tuehaulund"
+          ],
+          "status": "fail",
+          "test": "hidden_counts",
+          "thresholds": {
+            "kendall_tau_min": 0.9,
+            "top5_overlap_min": 1.0
+          },
+          "top5_overlap": 0.8
+        },
+        {
+          "baseline_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "bot_in_ranking": false,
+          "bot_position": null,
+          "description": "a bot identity given primary credit on the 25 strongest participations",
+          "expectation": "The bot never appears in the ranking: bot exclusion happens at attribution time, and is disclosed rather than silent.",
+          "kendall_tau": 1.0,
+          "mutated_top5": [
+            "github/user/sakce",
+            "github/user/gilbert09",
+            "github/user/arnohillen",
+            "github/user/mattbro",
+            "github/user/yasen-posthog"
+          ],
+          "status": "pass",
+          "test": "bot_activity",
+          "thresholds": {
+            "kendall_tau_min": 0.9,
+            "top5_overlap_min": 1.0
+          },
+          "top5_overlap": 1.0
+        }
+      ]
+    },
+    {
+      "checks": [
+        {
+          "check": "dimension_bands",
+          "first": "665843d9026f4996",
+          "identical": true,
+          "second": "665843d9026f4996"
+        },
+        {
+          "check": "ranking_order",
+          "identical": true
+        },
+        {
+          "check": "episode_ids",
+          "first_count": 9515,
+          "identical": true,
+          "second_count": 9515
+        }
+      ],
+      "description": "Same inputs and config produce identical outputs",
+      "item": "reproducibility",
+      "note": "Episode IDs are content-addressed over their member PRs, so an identical clustering necessarily produces identical IDs.",
+      "status": "pass"
+    },
+    {
+      "claims": 122448,
+      "claims_version": "1.0.0",
+      "dangling_reference_count": 0,
+      "dangling_references": [],
+      "description": "Every dashboard claim resolves to source evidence",
+      "item": "claim_audit",
+      "orphan_claim_count": 0,
+      "orphan_claims": [],
+      "referenced_by_export": 122448,
+      "status": "pass",
+      "unreferenced_claims": 0
+    },
+    {
+      "approved": 0,
+      "blocking": true,
+      "description": "Human approval of every top-five episode summary and counterevidence statement before export",
+      "finalists": 5,
+      "item": "finalist_approval",
+      "note": "The export package is marked publishable=false until every finalist here is approved. This is deliberate.",
+      "queue_file": "audit_finalist_approvals.json",
+      "status": "pending"
+    }
+  ],
+  "publishable": false,
+  "publishable_blockers": [
+    {
+      "item": "cluster_audit",
+      "queue_file": "audit_episode_clusters.json",
+      "status": "pending"
+    },
+    {
+      "item": "review_causality",
+      "queue_file": "audit_review_causality.json",
+      "status": "pending"
+    },
+    {
+      "item": "regression_links",
+      "queue_file": "audit_regression_links.json",
+      "status": "pending"
+    },
+    {
+      "item": "finalist_approval",
+      "queue_file": "audit_finalist_approvals.json",
+      "status": "pending"
+    }
+  ],
+  "requirements": {
+    "cluster_audit": 30,
+    "llm_stability": 20,
+    "regression_links": 15,
+    "review_causality": 15,
+    "rubric_agreement": 25
+  },
+  "status": "fail",
+  "validation_version": "1.0.0"
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "author_is_bot": false,
+    "author_login": "Piccirello",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 71362,
+    "title": "Replace forked action with original action",
+    "title_prefix": null,
+    "url": "https://github.com/PostHog/posthog/pull/71362"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 8,
+    "human_verdict": null,
+    "pr_number": 72758,
+    "title": "chore(tests): reset dead connections before TestMigrations class setup",
+    "title_prefix": "chore",
+    "url": "https://github.com/PostHog/posthog/pull/72758"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "MattBro",
+    "git_file_count": 2,
+    "human_verdict": null,
+    "pr_number": 71269,
+    "title": "ci: deploy signup-enrichment temporal worker on relevant master builds",
+    "title_prefix": "ci",
+    "url": "https://github.com/PostHog/posthog/pull/71269"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 61952,
+    "title": "docs(metrics): dashboard MVP design",
+    "title_prefix": "docs",
+    "url": "https://github.com/PostHog/posthog/pull/61952"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "CShine612",
+    "git_file_count": 6,
+    "human_verdict": null,
+    "pr_number": 76818,
+    "title": "feat(cal_com): support the EU region in the Cal.com source",
+    "title_prefix": "feat",
+    "url": "https://github.com/PostHog/posthog/pull/76818"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "CShine612",
+    "git_file_count": 4,
+    "human_verdict": null,
+    "pr_number": 81077,
+    "title": "fix(warehouse): sync Plausible entry and exit page tables",
+    "title_prefix": "fix",
+    "url": "https://github.com/PostHog/posthog/pull/81077"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Daesgar",
+    "git_file_count": 3,
+    "human_verdict": null,
+    "pr_number": 67073,
+    "title": "perf(oauth): add btree index on oauthaccesstoken.token",
+    "title_prefix": "perf",
+    "url": "https://github.com/PostHog/posthog/pull/67073"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 38,
+    "human_verdict": null,
+    "pr_number": 71485,
+    "title": "refactor(data-warehouse): adopt build_endpoint_schemas in 38 sources",
+    "title_prefix": "refactor",
+    "url": "https://github.com/PostHog/posthog/pull/71485"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 64925,
+    "title": "revert: \"fix(data-warehouse): re-enable exception code variable capture in temporal workers\"",
+    "title_prefix": "revert",
+    "url": "https://github.com/PostHog/posthog/pull/64925"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 74658,
+    "title": "test(data-imports): guard post-maintenance file listing before S3 prep",
+    "title_prefix": "test",
+    "url": "https://github.com/PostHog/posthog/pull/74658"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "benjackwhite",
+    "git_file_count": 0,
+    "human_verdict": null,
+    "pr_number": 65126,
+    "title": "Live identity-linking demo + managed PostHog identity provider (M6)",
+    "title_prefix": null,
+    "url": "https://github.com/PostHog/posthog/pull/65126"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 68048,
+    "title": "chore(logs): point ingestion-logs at CDP redis in dev compose",
+    "title_prefix": "chore",
+    "url": "https://github.com/PostHog/posthog/pull/68048"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Piccirello",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 72727,
+    "title": "ci: make Container Images CD idempotent so ECR sha tags aren't overwritten",
+    "title_prefix": "ci",
+    "url": "https://github.com/PostHog/posthog/pull/72727"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 6,
+    "human_verdict": null,
+    "pr_number": 74682,
+    "title": "docs(deltalite): rewrite PyPI README as a standalone package doc",
+    "title_prefix": "docs",
+    "url": "https://github.com/PostHog/posthog/pull/74682"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 9,
+    "human_verdict": null,
+    "pr_number": 70183,
+    "title": "feat(metrics): capture product intents for alpha",
+    "title_prefix": "feat",
+    "url": "https://github.com/PostHog/posthog/pull/70183"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "CShine612",
+    "git_file_count": 4,
+    "human_verdict": null,
+    "pr_number": 78684,
+    "title": "fix(alerts): show alert threshold lines on dashboards after reload",
+    "title_prefix": "fix",
+    "url": "https://github.com/PostHog/posthog/pull/78684"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 2,
+    "human_verdict": null,
+    "pr_number": 65959,
+    "title": "perf(logs): scope services sparkline scan to displayed services",
+    "title_prefix": "perf",
+    "url": "https://github.com/PostHog/posthog/pull/65959"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 49,
+    "human_verdict": null,
+    "pr_number": 66363,
+    "title": "refactor(data-warehouse): route data_warehouse's ws reads through the facade",
+    "title_prefix": "refactor",
+    "url": "https://github.com/PostHog/posthog/pull/66363"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "MattPua",
+    "git_file_count": 12,
+    "human_verdict": null,
+    "pr_number": 66770,
+    "title": "revert(dashboards): remove add-tile picker modal experiment",
+    "title_prefix": "revert",
+    "url": "https://github.com/PostHog/posthog/pull/66770"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 26,
+    "human_verdict": null,
+    "pr_number": 67840,
+    "title": "test(data-warehouse): run warehouse_sources temporal tests in the product job",
+    "title_prefix": "test",
+    "url": "https://github.com/PostHog/posthog/pull/67840"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "fuziontech",
+    "git_file_count": 5,
+    "human_verdict": null,
+    "pr_number": 63403,
+    "title": "Revert \"fix(ducklings): make duckgres backfill survive worker churn; stop hogging giant workers\"",
+    "title_prefix": null,
+    "url": "https://github.com/PostHog/posthog/pull/63403"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 3,
+    "human_verdict": null,
+    "pr_number": 73003,
+    "title": "chore(metrics): remove in-repo internal design docs",
+    "title_prefix": "chore",
+    "url": "https://github.com/PostHog/posthog/pull/73003"
+  },
+  {
+    "author_is_bot": true,
+    "author_login": "mendral-app",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 62151,
+    "title": "ci(quill): Automate version bump as part of the publish workflow",
+    "title_prefix": "ci",
+    "url": "https://github.com/PostHog/posthog/pull/62151"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Radu-Raicea",
+    "git_file_count": 2,
+    "human_verdict": null,
+    "pr_number": 73587,
+    "title": "docs(aio): document posthog_ custom metadata for vercel and traceloop",
+    "title_prefix": "docs",
+    "url": "https://github.com/PostHog/posthog/pull/73587"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "DanielVisca",
+    "git_file_count": 26,
+    "human_verdict": null,
+    "pr_number": 70603,
+    "title": "feat(metrics): support threshold alerts on metrics insights",
+    "title_prefix": "feat",
+    "url": "https://github.com/PostHog/posthog/pull/70603"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "CShine612",
+    "git_file_count": 3,
+    "human_verdict": null,
+    "pr_number": 80115,
+    "title": "fix(lemon-ui): keep a cleared number input empty while typing",
+    "title_prefix": "fix",
+    "url": "https://github.com/PostHog/posthog/pull/80115"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "EDsCODE",
+    "git_file_count": 2,
+    "human_verdict": null,
+    "pr_number": 73065,
+    "title": "perf(data-warehouse): probe target table for existence instead of information_schema",
+    "title_prefix": "perf",
+    "url": "https://github.com/PostHog/posthog/pull/73065"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Gilbert09",
+    "git_file_count": 88,
+    "human_verdict": null,
+    "pr_number": 67741,
+    "title": "refactor(data-warehouse): isolate warehouse_sources behind its facade + narrow CI",
+    "title_prefix": "refactor",
+    "url": "https://github.com/PostHog/posthog/pull/67741"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "Twixes",
+    "git_file_count": 2,
+    "human_verdict": null,
+    "pr_number": 74365,
+    "title": "revert(tasks): route CI follow-ups to a GitHub comment instead of Slack",
+    "title_prefix": "revert",
+    "url": "https://github.com/PostHog/posthog/pull/74365"
+  },
+  {
+    "author_is_bot": false,
+    "author_login": "MattBro",
+    "git_file_count": 1,
+    "human_verdict": null,
+    "pr_number": 65879,
+    "title": "test(oauth): cover inlined allowed_origins and RS256 validation",
+    "title_prefix": "test",
+    "url": "https://github.com/PostHog/posthog/pull/65879"
+  }
+]

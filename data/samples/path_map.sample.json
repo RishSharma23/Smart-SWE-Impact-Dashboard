@@ -1,0 +1,502 @@
+[
+  {
+    "component": "infra:repo-root",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": "*",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": "$O",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 1,
+    "owner_rule_pattern": "/*",
+    "owner_rule_priority": 2,
+    "owner_source": "owners_yaml:.agents/owners.yaml",
+    "owners": [
+      "team-devex"
+    ],
+    "path": ".agents/owners.yaml",
+    "platform": "infrastructure",
+    "uncertainty": []
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/plans/billing-alerts-shared-alerting-refactor.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 1,
+    "owner_rule_pattern": "/*",
+    "owner_rule_priority": 2,
+    "owner_source": "owners_yaml:.agents/owners.yaml",
+    "owners": [
+      "team-devex"
+    ],
+    "path": ".agents/security.md",
+    "platform": "infrastructure",
+    "uncertainty": []
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-inbox-sources/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-ingestion-warnings/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-mcp-store-servers/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-personhog-rpc/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-product-alerting/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-product-alerting/references/adopting-platform-alerting.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-product-alerting/references/architecture.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-product-alerting/references/extending-platform-alerting.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-product-alerting/references/frontend-alerting.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/adding-project-secret-api-key-auth/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-clickhouse-query-performance/references/materialization-analysis.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-clickhouse-query-performance/references/query-patterns.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-experiment-query-performance/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-insights-across-teams/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-query-costs/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/analyzing-query-costs/references/canned-queries.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/auditing-llm-gateway-parity/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/auditing-warehouse-source-coverage/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/auditing-warehouse-source-coverage/scripts/dump_source_inventory.py",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/authoring-ci-workflows/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  },
+  {
+    "component": "infra:agent-config",
+    "component_map_version": "1.0.0",
+    "component_rule_pattern": ".agents/**",
+    "component_rule_priority": 4,
+    "component_source": "convention",
+    "is_unclassified": false,
+    "license_area": "MIT",
+    "nearest_agents_file": "AGENTS.md",
+    "owner_count": 0,
+    "owner_rule_pattern": null,
+    "owner_rule_priority": null,
+    "owner_source": null,
+    "owners": [],
+    "path": ".agents/skills/autoresolving-pr-conflicts/SKILL.md",
+    "platform": "infrastructure",
+    "uncertainty": [
+      "no owner rule matched this path"
+    ]
+  }
+]

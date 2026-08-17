@@ -1,0 +1,158 @@
+{
+  "$id": "https://posthog-impact.local/schemas/review_threads.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "comment_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "comments_truncated": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "component": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "computed_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diff_side": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "first_comment_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_collapsed": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_outdated": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_resolved": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "line": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "original_line": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "owners": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "participant_logins": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "path": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "resolved_by_actor_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resolved_by_login": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start_line": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "subject_type": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thread_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "review_threads",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

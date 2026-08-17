@@ -1,0 +1,134 @@
+# Phase 2 — optional LLM semantic layer.
+#
+# The LLM is an EVIDENCE EXTRACTOR and a SUMMARISER.  It never produces the
+# final ranking.  The deterministic pipeline runs to completion with or without
+# it; when no provider is configured the tasks below are written to an
+# LLM_PENDING queue and every affected record is marked `llm_status: pending`.
+#
+# Keyword matching is NOT semantic analysis.  Deterministic classifiers in this
+# codebase are labelled `deterministic_rule` and are never presented as, or
+# substituted for, the semantic layer.
+
+llm:
+  version: "1.0.0"
+  # Resolution order for the provider: LLM_PROVIDER env, then the first entry
+  # below whose API key is present. `none` is always a valid outcome.
+  provider_preference: [openrouter, gemini, groq]
+
+  providers:
+    openrouter:
+      api_key_env: OPENROUTER_API_KEY
+      base_url: https://openrouter.ai/api/v1
+      endpoint: /chat/completions
+      # Free endpoints change without notice, so the model is an env override
+      # first and this is only a default.
+      model_env: LLM_MODEL
+      # OpenRouter's auto-router over its free pool: it picks an available free
+      # model per call, which is what survives a free endpoint being retired.
+      default_model: openrouter/free
+      supports_json_schema: true
+      headers:
+        HTTP-Referer: https://localhost/posthog-impact-dashboard
+        X-Title: PostHog Impact Dashboard
+    gemini:
+      api_key_env: GEMINI_API_KEY
+      base_url: https://generativelanguage.googleapis.com/v1beta
+      endpoint: /models/{model}:generateContent
+      model_env: LLM_MODEL
+      default_model: gemini-2.0-flash
+      supports_json_schema: true
+    groq:
+      api_key_env: GROQ_API_KEY
+      base_url: https://api.groq.com/openai/v1
+      endpoint: /chat/completions
+      model_env: LLM_MODEL
+      default_model: llama-3.3-70b-versatile
+      supports_json_schema: true
+
+  request:
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 2048
+    timeout_seconds: 90
+    max_retries: 4
+    backoff_base_seconds: 2.0
+    # Requests per minute, kept low because these are free tiers.
+    requests_per_minute: 12
+
+  cache:
+    # Cache key = sha256(prompt_version | model | schema_version | input payload).
+    # A cached run needs no network and no key at all — this is what makes the
+    # `--replay` mode reproducible.
+    directory: data/phase2/llm_cache
+    enabled: true
+    replay_only_env: LLM_REPLAY_ONLY
+
+  # ----------------------------------------------------------------- tasks ---
+  # Each task has its own prompt version and JSON schema. Every task requires
+  # evidence IDs for every claim it makes.
+  tasks:
+    episode_extraction:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: true
+      description: Extract problem, intervention and claimed outcome from an episode.
+      max_input_chars: 12000
+    dimension_evidence:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: true
+      description: Classify dimension evidence and counterevidence under the fixed rubric.
+      max_input_chars: 12000
+    review_consequence:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: true
+      description: Classify a review comment's concern type and consequence.
+      max_input_chars: 6000
+    semantic_edges:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: true
+      description: Propose semantic episode edges between two candidate PRs.
+      max_input_chars: 6000
+    pairwise_episode_comparison:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: true
+      description: Identity-blinded pairwise episode comparison under the fixed rubric.
+      max_input_chars: 12000
+    executive_summary:
+      prompt_version: "1.0.0"
+      enabled: true
+      identity_blind: false
+      description: Draft an executive summary constrained to supplied evidence IDs.
+      max_input_chars: 16000
+
+  # ---------------------------------------------------------------- controls ---
+  controls:
+    json_schema_output: true
+    require_evidence_ids: true
+    separate_author_claims_from_observed: true
+    # Repeatability and order-reversal testing.
+    stability:
+      repeat_cases: 20
+      repeat_times: 3
+      reverse_artifact_order: true
+      identity_blind_variant: true
+      ablations: [title_only, diff_only, combined]
+    redaction:
+      # Never sent to a provider.
+      strip_emails: true
+      strip_tokens: true
+      strip_urls: false          # URLs are evidence IDs; they are public
+      forbidden_fields: [emails, git_names, author_email, committer_email]
+    audit:
+      # Every finalist narrative is manually audited before export.
+      manual_audit_required_for: [executive_summary, pairwise_episode_comparison]
+
+  # Budget guardrails. Free tiers only; the pipeline must never require billing.
+  budget:
+    max_calls_per_run: 1500
+    max_input_tokens_per_run: 2000000
+    stop_on_budget_exceeded: true
+    fail_open: true            # exceeding budget queues the rest, never crashes

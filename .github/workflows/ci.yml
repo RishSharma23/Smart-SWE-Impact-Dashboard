@@ -1,0 +1,117 @@
+name: CI
+
+# Validates the dashboard application. It deliberately builds against the
+# committed synthetic fixture package (docs/fixtures/phase3), because the real
+# Phase 2 export is ~190 MB of generated data and is not in the repository —
+# see docs/DEPLOYMENT_RUNBOOK.md. The data contract itself is enforced by the
+# build, so a fixture build still exercises schema, integrity and referential
+# checks.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: web
+
+env:
+  IMPACT_DATA_DIR: docs/fixtures/phase3
+  IMPACT_ALLOW_FIXTURE: '1'
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  verify:
+    name: typecheck, unit tests, production build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: web/.nvmrc
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install with the committed lockfile
+        run: npm ci
+
+      - name: Stage and verify the data package
+        run: npm run data
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit and component tests
+        run: npm test
+
+      - name: Production build
+        run: npx next build
+
+      - name: Check the build produced the expected routes
+        run: |
+          for route in index.html engineers/index.html compare/index.html \
+                       methodology/index.html coverage/index.html 404.html; do
+            test -f "out/$route" || { echo "missing out/$route"; exit 1; }
+          done
+          echo "pages built: $(find out -name index.html | wc -l)"
+
+      - name: Upload the built site for inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixture-site
+          path: web/out
+          retention-days: 7
+
+  e2e:
+    name: end-to-end (chromium + mobile)
+    runs-on: ubuntu-latest
+    needs: verify
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: web/.nvmrc
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright system deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - run: npm run data
+      - run: npx next build
+
+      - name: Playwright
+        run: npx playwright test --project=chromium --project=mobile
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: web/playwright-report
+          retention-days: 7

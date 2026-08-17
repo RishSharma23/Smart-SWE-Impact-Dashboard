@@ -1,0 +1,165 @@
+{
+  "counts": {
+    "claims": 106,
+    "dimension_assessments": 30,
+    "engineers": 4,
+    "episodes": 5,
+    "participants": 7,
+    "propagation_edges": 44,
+    "rankable_engineers": 3,
+    "review_interventions": 1
+  },
+  "files": {
+    "claims.json": {
+      "bytes": 62939,
+      "path": "claims.json",
+      "rows": 106,
+      "sha256": "19c9e7b558c8bb56b5e480695ea3f0a8786d3fd56c5f0ea78cc781f441bb4a77"
+    },
+    "comparisons.json": {
+      "bytes": 8385,
+      "path": "comparisons.json",
+      "rows": null,
+      "sha256": "73d9a348a447c055928dfd2003cc7620817d9230a686f67723df73b87cc9f262"
+    },
+    "coverage.json": {
+      "bytes": 3041,
+      "path": "coverage.json",
+      "rows": null,
+      "sha256": "3c53275d5d2d3a5545b7d0de9221203681ae5b94c1e709a06d09df3b83419f79"
+    },
+    "engineers.json": {
+      "bytes": 16161,
+      "path": "engineers.json",
+      "rows": 4,
+      "sha256": "da98e5433f637ab52f44661de25611830c558aaa7e53c8685e88bf233687b57f"
+    },
+    "episodes.json": {
+      "bytes": 27365,
+      "path": "episodes.json",
+      "rows": 5,
+      "sha256": "a72db962ea8086b8c980f9e29dc681e1e24f1120135993a8e356f410128b63e8"
+    },
+    "evidence.json": {
+      "bytes": 446,
+      "path": "evidence.json",
+      "rows": null,
+      "sha256": "fec10eee312e481e3938f707f3eba1401416a3357f7169d0ccaea78bd746a739"
+    },
+    "evidence/feature_flag.json": {
+      "bytes": 412,
+      "path": "evidence/feature_flag.json",
+      "rows": 2,
+      "sha256": "01e72751b5719819840231b73ead7eee9b361abc8e5d8163c9eaef907383a145"
+    },
+    "evidence/file.json": {
+      "bytes": 237,
+      "path": "evidence/file.json",
+      "rows": 1,
+      "sha256": "43c36d37b98bfb1c6c74438781a7162777e03b72157429c792b8f93014ddb288"
+    },
+    "evidence/issue.json": {
+      "bytes": 548,
+      "path": "evidence/issue.json",
+      "rows": 2,
+      "sha256": "b6409bfacbbdf12bb6036a4467ec3ce5743e4294787572a26e31ef2a5e11c877"
+    },
+    "evidence/pull_request.json": {
+      "bytes": 2280,
+      "path": "evidence/pull_request.json",
+      "rows": 9,
+      "sha256": "6dc7f28312b5e6511b3943656a4ac15cd90859ada9063cbe9b88bf6949a3ac32"
+    },
+    "evidence/review_comment.json": {
+      "bytes": 695,
+      "path": "evidence/review_comment.json",
+      "rows": 1,
+      "sha256": "22c575ffb9713f89313b799481b8b67667a6f317667af53220a0ddc63c37fe31"
+    },
+    "indexes.json": {
+      "bytes": 1949,
+      "path": "indexes.json",
+      "rows": null,
+      "sha256": "c8fd79be45852edf65b968c1cf56cbe00d5a0c8e5a090debfb50240a440e3715"
+    },
+    "methodology.json": {
+      "bytes": 1509,
+      "path": "methodology.json",
+      "rows": null,
+      "sha256": "44874550edf92c9b2e13b7cee2f9f747b4face38bc2e868daea6d2704e410882"
+    },
+    "rankings.json": {
+      "bytes": 3889,
+      "path": "rankings.json",
+      "rows": null,
+      "sha256": "2bcf3d11b31465b9c82247a8de47db109f9e5b810cde5682bb59027c9fde2aa4"
+    }
+  },
+  "fixture": true,
+  "fixture_note": "SYNTHETIC DATA for Phase 3 development. Logins are fictional. Swap the data directory for artifacts/phase3/ in production; no code change should be required.",
+  "generated_at": "2026-08-17T00:00:00Z",
+  "indexes": {
+    "available": [
+      "engineers_by_role",
+      "engineers_by_strongest_dimension",
+      "episodes_by_component",
+      "episodes_by_engineer",
+      "episodes_by_status"
+    ],
+    "file": "indexes.json"
+  },
+  "limitations_headline": "This measures observable repository impact in a 90-day public GitHub window. It is not a measure of an engineer's total value.",
+  "manifest_version": "1.0.0",
+  "methodology_version": "1.0.0",
+  "phase1_provenance": {
+    "input_source": "artifacts",
+    "phase1_schema_version": "1.0.0",
+    "verification_status": "verified"
+  },
+  "publishable": false,
+  "publishable_blockers": [
+    {
+      "item": "cluster_audit",
+      "queue_file": "audit_episode_clusters.json",
+      "status": "pending"
+    },
+    {
+      "item": "finalist_approval",
+      "queue_file": "audit_finalist_approvals.json",
+      "status": "pending"
+    }
+  ],
+  "safety_scan": {
+    "status": "pass",
+    "violations": []
+  },
+  "source": {
+    "analyzed_head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+    "is_shallow_clone": true,
+    "repository_url": "https://github.com/PostHog/posthog"
+  },
+  "subtitle": "Explainable impact analytics over a 90-day public GitHub window",
+  "title": "PostHog observable repository impact",
+  "ui_contract": {
+    "claim_lookup": "claims.json -> claims[] keyed by claim_id",
+    "must_display": [
+      "window start and end",
+      "analyzed_head_sha",
+      "the limitations headline",
+      "unknown-vs-zero distinction on every dimension",
+      "release_corroboration alongside episode status"
+    ],
+    "never_render": [
+      "any string not resolvable as a claim_id",
+      "a composite score",
+      "a percentage of shared credit"
+    ],
+    "render_only_claims": true
+  },
+  "validation_status": "pending_human_review",
+  "window": {
+    "end": "2026-08-17T00:00:00Z",
+    "lookback_days": 90,
+    "start": "2026-05-19T00:00:00Z"
+  }
+}

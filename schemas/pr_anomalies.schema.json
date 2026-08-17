@@ -1,0 +1,158 @@
+{
+  "$id": "https://posthog-impact.local/schemas/pr_anomalies.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "additions_delta": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "anomaly_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "anomaly_flags": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "anomaly_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "changed_files_delta": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "changed_files_mismatch": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "deletions_delta": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "git_additions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "git_changed_files": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "git_deletions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "github_additions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "github_changed_files": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "github_deletions": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "has_anomaly": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_lifetime_hours": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "reconciliation_possible": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "reconciliation_skipped_reason": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shape_flag_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "shape_flags": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "title": "pr_anomalies",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

@@ -1,0 +1,88 @@
+{
+  "$id": "https://posthog-impact.local/schemas/candidate_episode_edges.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "edge_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "edge_type": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "episode_edges_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_source": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "strength": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_kind": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "target_pr_in_dataset": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "candidate_episode_edges",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

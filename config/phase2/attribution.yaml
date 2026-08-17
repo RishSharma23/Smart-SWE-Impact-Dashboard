@@ -1,0 +1,165 @@
+# Phase 2 — role-aware attribution and shared credit.
+#
+# An episode's outcome is scored ONCE (config/phase2/rubric.yaml).  This file
+# decides which portions of that evidence enter which engineer's portfolio.
+# That separation is what prevents double counting: five participants on one
+# band-3 episode do not produce five band-3 portfolios.
+#
+# Shared credit is categorical in the UI (primary / material / supporting /
+# unclear).  The numeric interval below exists only so the aggregation has
+# something to multiply; it is never displayed as a percentage.
+
+attribution:
+  version: "1.0.0"
+
+  # ---------------------------------------------------------------- roles ---
+  # A role is only assigned when its evidence requirement is met.  There is no
+  # "was in the thread" role: presence is not a contribution.
+  roles:
+    originator:
+      label: originator / problem framer
+      evidence_required: >
+        Authored the issue the episode closes, or authored the first PR in the
+        arc with a body that frames a problem (not just a change description).
+    core_implementer:
+      label: core implementer
+      evidence_required: >
+        Authored PRs contributing at least `core_implementer_min_code_share` of
+        the episode's production-code files, or authored the single largest
+        production-code PR in the episode.
+    contributing_implementer:
+      label: contributing implementer
+      evidence_required: >
+        Authored a PR in the episode, or is a Git co-author on one of its
+        commits, below the core threshold.
+    decision_shaper:
+      label: decision shaper
+      evidence_required: >
+        Made a review intervention whose concern class is design, architecture,
+        scope or alternative-approach AND which is causally confirmed.
+    risk_preventer:
+      label: risk preventer
+      evidence_required: >
+        Made a causally-confirmed review intervention naming a safety concern
+        (security, privacy, data loss, migration, correctness).
+    integrator:
+      label: integrator
+      evidence_required: >
+        Participated in >= 2 of the episode's PRs across >= 2 components
+        without being their core implementer, or resolved review threads
+        authored by others.
+    rollout_sustainer:
+      label: rollout owner / sustainer
+      evidence_required: >
+        Authored the episode's post-implementation follow-up or corrective PRs,
+        or changed the feature-flag rollout state.
+    enabler:
+      label: enabler / platform author
+      evidence_required: >
+        Authored a PR that introduced a module later depended upon across a
+        component boundary (a time-respecting propagation source).
+    documenter:
+      label: documenter / knowledge amplifier
+      evidence_required: >
+        Authored documentation or changelog changes in the episode, or wrote a
+        long explanatory review comment that was resolved.
+
+  thresholds:
+    core_implementer_min_code_share: 0.40
+    integrator_min_prs: 2
+    integrator_min_components: 2
+    documenter_min_comment_chars: 400
+    originator_problem_framing_min_body_chars: 300
+    # A participant with no role at all is recorded (for transparency) but
+    # contributes nothing to any portfolio.
+    keep_roleless_participants: true
+
+  # ------------------------------------------------------- shared credit ---
+  # Categorical share, with the interval used internally by the aggregation.
+  share_categories:
+    primary:    {factor: 1.00, interval: [0.55, 1.00]}
+    material:   {factor: 0.70, interval: [0.25, 0.70]}
+    supporting: {factor: 0.35, interval: [0.05, 0.35]}
+    unclear:    {factor: 0.15, interval: [0.00, 0.35]}
+
+  # How a role's evidence maps onto each dimension.  A reviewer who prevented a
+  # data-loss bug gets reliability and collaboration credit, not product-outcome
+  # credit for the whole feature.  0.0 means the role contributes nothing to
+  # that dimension.
+  role_dimension_relevance:
+    originator:
+      product_outcome: 0.70
+      reliability_risk: 0.40
+      engineering_leverage: 0.35
+      decision_quality: 0.70
+      propagation_durability: 0.30
+      collaborative_amplification: 0.40
+    core_implementer:
+      product_outcome: 1.00
+      reliability_risk: 1.00
+      engineering_leverage: 0.90
+      decision_quality: 0.50
+      propagation_durability: 1.00
+      collaborative_amplification: 0.20
+    contributing_implementer:
+      product_outcome: 0.40
+      reliability_risk: 0.40
+      engineering_leverage: 0.35
+      decision_quality: 0.20
+      propagation_durability: 0.40
+      collaborative_amplification: 0.20
+    decision_shaper:
+      product_outcome: 0.35
+      reliability_risk: 0.45
+      engineering_leverage: 0.40
+      decision_quality: 1.00
+      propagation_durability: 0.20
+      collaborative_amplification: 1.00
+    risk_preventer:
+      product_outcome: 0.15
+      reliability_risk: 1.00
+      engineering_leverage: 0.20
+      decision_quality: 0.60
+      propagation_durability: 0.20
+      collaborative_amplification: 1.00
+    integrator:
+      product_outcome: 0.30
+      reliability_risk: 0.35
+      engineering_leverage: 0.45
+      decision_quality: 0.30
+      propagation_durability: 0.40
+      collaborative_amplification: 0.85
+    rollout_sustainer:
+      product_outcome: 0.55
+      reliability_risk: 0.70
+      engineering_leverage: 0.30
+      decision_quality: 0.30
+      propagation_durability: 1.00
+      collaborative_amplification: 0.35
+    enabler:
+      product_outcome: 0.35
+      reliability_risk: 0.40
+      engineering_leverage: 1.00
+      decision_quality: 0.45
+      propagation_durability: 0.90
+      collaborative_amplification: 0.45
+    documenter:
+      product_outcome: 0.25
+      reliability_risk: 0.15
+      engineering_leverage: 0.45
+      decision_quality: 0.20
+      propagation_durability: 0.25
+      collaborative_amplification: 0.80
+
+  # ------------------------------------------------- double-count controls ---
+  controls:
+    # A participant's attribution factor for a dimension is
+    #   max over their roles of (role_relevance * share_factor)
+    # — not the sum, which would let stacking roles manufacture credit.
+    combine_roles: max
+    # Total attributed factor across all participants of one episode, per
+    # dimension.  Above this the factors are proportionally scaled down, so an
+    # episode cannot be worth more than itself.
+    max_total_factor_per_dimension: 2.00
+    # Minimum factor worth recording at all.
+    min_recorded_factor: 0.10

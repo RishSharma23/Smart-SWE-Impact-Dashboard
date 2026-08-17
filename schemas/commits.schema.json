@@ -1,0 +1,263 @@
+{
+  "$id": "https://posthog-impact.local/schemas/commits.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "author_actor_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "author_email": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "author_is_committer": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "author_name": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authored_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cherry_pick_of_sha": {
+      "arrow_type": "null",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "co_author_actor_ids": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "co_author_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "co_authors": {
+      "arrow_type": "list<element: struct<email: string, name: string>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "commit_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commit_sha": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committed_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committer_actor_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committer_email": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committer_name": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extractor_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gpg_status": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "has_ai_co_author": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "has_patch_text": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "in_window": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_cherry_pick": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_merge_commit": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_revert": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "message": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message_sha256": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "parent_shas": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "patch_unavailable_reason": {
+      "arrow_type": "null",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_mapping_source": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "pr_number_from_subject": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "revert_of_sha": {
+      "arrow_type": "null",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revert_of_subject": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subject": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trailers": {
+      "arrow_type": "struct<co-authored-by: list<element: string>, signed-off-by: list<element: string>>",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "tree_sha": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "commits",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

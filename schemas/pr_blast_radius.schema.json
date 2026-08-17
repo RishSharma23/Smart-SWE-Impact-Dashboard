@@ -1,0 +1,228 @@
+{
+  "$id": "https://posthog-impact.local/schemas/pr_blast_radius.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blast_radius_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "changed_fan_in_max": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "changed_fan_in_total": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "changed_fan_out_total": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "components_touched": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "crosses_component_boundary": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "crosses_ownership_boundary": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "crosses_product_boundary": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "distinct_components": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "distinct_owners": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "distinct_platforms": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "distinct_products": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "downstream_component_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "downstream_components": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "downstream_file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "downstream_product_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_without_owner": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "graph_coverage_share": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "graph_covered_files": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "hub_files_touched": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "owners_touched": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "products_touched": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "reach_depth_limit": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "reachability_band": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reachability_is_uncertain": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "reachability_uncertainty": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "risk_surface_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "touches_platform_surface": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_shared_library": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "pr_blast_radius",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

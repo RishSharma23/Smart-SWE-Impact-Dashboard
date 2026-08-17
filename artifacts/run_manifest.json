@@ -1,0 +1,1865 @@
+{
+  "api_cost": {
+    "cumulative_graphql_points": 8330,
+    "cumulative_requests": 5996,
+    "cumulative_seconds_in_flight": 16691.7,
+    "last_run": {
+      "graphql_limit": 5000,
+      "graphql_points_spent": 6,
+      "graphql_remaining": 4994,
+      "graphql_requests": 4,
+      "graphql_reset_at": "2026-08-17T15:44:30Z",
+      "rate_limit_sleep_seconds": 0.0,
+      "rest_limit": 5000,
+      "rest_remaining": 4994,
+      "rest_requests": 0,
+      "rest_reset_at": "2026-08-17T15:44:30Z",
+      "retries": 0
+    },
+    "requests_by_entity": {
+      "discovery": 735,
+      "issues": 517,
+      "pr_core": 1357,
+      "pr_detail": 2599,
+      "pr_overflow": 787,
+      "repository": 1
+    },
+    "requests_needing_retry": 56
+  },
+  "coverage": {
+    "completeness_by_month": [
+      {
+        "month": "2026-05",
+        "pull_requests": 1222,
+        "ranking_eligible": 1222,
+        "review_detail_fetched": 1222,
+        "with_files": 1203,
+        "with_merge_commit": 1204,
+        "with_reviews": 1210
+      },
+      {
+        "month": "2026-06",
+        "pull_requests": 4648,
+        "ranking_eligible": 4648,
+        "review_detail_fetched": 4648,
+        "with_files": 4540,
+        "with_merge_commit": 4546,
+        "with_reviews": 4629
+      },
+      {
+        "month": "2026-07",
+        "pull_requests": 5166,
+        "ranking_eligible": 5166,
+        "review_detail_fetched": 5164,
+        "with_files": 5076,
+        "with_merge_commit": 5085,
+        "with_reviews": 5150
+      },
+      {
+        "month": "2026-08",
+        "pull_requests": 2282,
+        "ranking_eligible": 2282,
+        "review_detail_fetched": 2279,
+        "with_files": 2251,
+        "with_merge_commit": 2251,
+        "with_reviews": 2262
+      }
+    ],
+    "features": {
+      "anomaly": {
+        "anomaly_flag_counts": {
+          "duplicate_tree_sha": 32,
+          "github_vs_git_file_count_mismatch": 34,
+          "github_vs_git_line_count_mismatch": 156,
+          "merge_commit_not_in_local_clone": 232,
+          "merged_pr_with_zero_changed_files": 16
+        },
+        "changed_file_agreement_rate": 0.9974,
+        "changed_file_mismatches": 34,
+        "pull_requests": 23855,
+        "reconcilable_prs": 13086,
+        "shape_flag_counts": {
+          "bot_authored": 7965,
+          "bulk_mechanical_change": 7,
+          "docs_only": 339,
+          "generated_only": 5,
+          "lockfile_only": 5,
+          "merge_queue_artifact": 3795,
+          "snapshot_only": 1,
+          "test_only": 262,
+          "title_not_conventional": 50,
+          "very_large_file_count": 31
+        },
+        "with_any_anomaly": 420
+      },
+      "blast_radius": {
+        "band_distribution": {
+          "component": 7542,
+          "cross_product": 1089,
+          "local": 1265,
+          "platform_wide": 3137,
+          "unknown": 10822
+        },
+        "band_distribution_eligible_only": {
+          "component": 7542,
+          "cross_product": 1089,
+          "local": 1265,
+          "platform_wide": 3137,
+          "unknown": 285
+        },
+        "crossing_component_boundary": 5461,
+        "crossing_ownership_boundary": 1071,
+        "pull_requests": 23855,
+        "ranking_eligible_pull_requests": 13318,
+        "unknown_band_rate": 0.4537,
+        "unknown_band_rate_eligible_only": 0.0214,
+        "with_uncertainty": 22966
+      },
+      "change_shape": {
+        "conventional_prefix_rate": 0.8387,
+        "production_without_tests": 3188,
+        "pull_requests": 23855,
+        "title_claim_checked": 17298,
+        "title_claim_mismatch": 6834,
+        "touching_enterprise": 473,
+        "touching_migrations": 724,
+        "touching_public_api": 1455,
+        "with_conventional_prefix": 20007,
+        "with_test_changes": 9544
+      },
+      "episodes": {
+        "by_strength": {
+          "medium": 11808,
+          "strong": 17538,
+          "weak": 1273
+        },
+        "by_type": {
+          "closes_issue": 587,
+          "follow_up": 2022,
+          "part_of": 1657,
+          "reapplies": 51,
+          "references_pr": 3307,
+          "reverts": 1007,
+          "shared_feature_flag": 1000,
+          "shared_issue": 273,
+          "stacked_on": 2573,
+          "supersedes": 1191,
+          "timeline_connected": 16951
+        },
+        "edges": 30619,
+        "episodes": 1602,
+        "largest_episode": 55,
+        "median_episode_size": 2,
+        "prs_in_episodes": 5403
+      },
+      "regression": {
+        "evidence_tier_distribution": {
+          "explicit": 1476,
+          "linked": 34,
+          "none": 15019,
+          "proximate": 7326
+        },
+        "explicitly_reverted": 735,
+        "fixes_that_added_tests": 4213,
+        "pull_requests": 23855,
+        "requiring_human_confirmation": 7326,
+        "survival_30d_mean": 0.9658,
+        "survival_30d_measurable": 2274
+      },
+      "review_intervention": {
+        "intervention_candidates": 5962,
+        "resolved_threads": 45887,
+        "review_comments": 61538,
+        "substance_distribution": {
+          "acknowledgement": 550,
+          "bot": 29989,
+          "empty": 10,
+          "nit": 660,
+          "short": 1766,
+          "substantive": 28563
+        },
+        "substantive_rate": 0.4642,
+        "with_safety_vocabulary": 19963
+      }
+    },
+    "graph": {
+      "graph_nodes": 36412,
+      "internal_edges": 141389,
+      "not_parsed_files": 1774,
+      "not_parsed_languages": [
+        "go",
+        "hog",
+        "rb",
+        "rust",
+        "sql"
+      ],
+      "parse_errors": 0,
+      "python": {
+        "by_resolution": {
+          "exact": 71921,
+          "external": 57144,
+          "prefix": 2
+        },
+        "import_statements": 129067,
+        "internal_resolution_rate": 0.557253,
+        "resolved_internal": 71923
+      },
+      "tracked_files": 43918,
+      "typescript_javascript": {
+        "by_resolution": {
+          "alias": 41412,
+          "external": 29044,
+          "external_alias": 1921,
+          "relative": 28054,
+          "relative_missing": 278,
+          "unresolved": 572
+        },
+        "import_statements": 101281,
+        "internal_resolution_rate": 0.685874,
+        "resolved_internal": 69466
+      }
+    }
+  },
+  "environment": {
+    "cpu_count": 8,
+    "extractor_version": "1.0.0",
+    "machine": "arm64",
+    "pipeline_version": "1.0.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.12.1",
+    "schema_version": "1.0.0"
+  },
+  "generated_at": "2026-08-17T15:03:34.395425Z",
+  "known_gaps": [
+    {
+      "consequence": "has_merge_commit_in_clone=false PRs have no pr_files rows",
+      "detail": "clone strategy shallow_since; oldest available commit 2026-08-17T02:43:54Z. Survival and reachability look forward only.",
+      "gap": "shallow_clone"
+    },
+    {
+      "consequence": "reachability_band='unknown' for changes confined to them",
+      "detail": "1774 files in ['go', 'hog', 'rb', 'rust', 'sql'] have no import parser",
+      "gap": "unparsed_languages"
+    },
+    {
+      "consequence": "graph reach is a lower bound",
+      "detail": "module_nodes.has_dynamic_imports flags affected files",
+      "gap": "dynamic_imports_invisible"
+    },
+    {
+      "consequence": "comment-level evidence incomplete on those threads",
+      "detail": "27 threads truncated at the pagination cap",
+      "gap": "review_thread_pagination"
+    },
+    {
+      "consequence": "never read a NULL survival as 0",
+      "detail": "survival_* is NULL with a reason when the checkpoint falls after the window end",
+      "gap": "survival_beyond_window"
+    },
+    {
+      "consequence": "Phase 1 emits candidates only",
+      "detail": "semantic consequence of review comments is Phase 2 work",
+      "gap": "review_comment_semantics"
+    }
+  ],
+  "manifest_version": "1.0.0",
+  "missing_tables": [],
+  "phase2_contract": "docs/PHASE_2_CONTRACT.md",
+  "quality_gates": [
+    {
+      "detail": "27 tables rehashed from disk; 0 disagree with their sidecar",
+      "gate": "reproducibility",
+      "mismatched": [],
+      "note": "This proves stored bytes and stored metadata agree. The stronger two-full-runs comparison is `impact all` twice with the same --window-start; the content hashes here are what it compares.",
+      "status": "pass",
+      "tables_checked": 27
+    },
+    {
+      "detail": "5996 ledger entries; 0 neither succeeded nor carry a terminal reason",
+      "examples": [],
+      "gate": "resume_without_gaps",
+      "ledger_entries": 5996,
+      "status": "pass",
+      "unexplained": 0
+    },
+    {
+      "detail": "5 fixtures; 0 failed",
+      "failures": [],
+      "gate": "conventional_title_fixtures",
+      "status": "pass"
+    },
+    {
+      "clusters": 934,
+      "detail": "934 clusters; 0 merged two logins without shared-email evidence; 0 actors carry a shared_email ambiguity flag",
+      "gate": "identity_fixtures",
+      "shared_email_flagged": 0,
+      "status": "pass",
+      "suspicious_clusters": []
+    },
+    {
+      "detail": "13318 merged-in-window PRs, 0 boundary violations",
+      "detail_record": {
+        "boundary_violations": 0,
+        "created_before_window_merged_inside": 251,
+        "merged_in_window": 13318,
+        "note": "PRs opened before the window but merged inside it are retained; they are the reason the clone reaches 30 days further back.",
+        "semantics": "half-open [start, end) on mergedAt, UTC",
+        "status": "pass",
+        "violation_examples": [],
+        "window_end": "2026-08-17T15:01:36.152269Z",
+        "window_start": "2026-05-19T00:00:00Z"
+      },
+      "gate": "window_boundary",
+      "status": "pass"
+    },
+    {
+      "detail": "{\"status\": \"pass\", \"merged_in_window\": 13318, \"with_local_merge_commit\": 13086, \"coverage_rate\": 0.98258, \"missing\": 232}",
+      "detail_record": {
+        "coverage_rate": 0.98258,
+        "merged_in_window": 13318,
+        "missing": 232,
+        "note": "A merged PR without a local merge commit is normally one merged to a non-default branch, or one whose commit predates the shallow clone boundary.",
+        "status": "pass",
+        "with_local_merge_commit": 13086
+      },
+      "gate": "merge_commit_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "agreement_rate=0.9974",
+      "detail_record": {
+        "agreement_rate": 0.9974,
+        "changed_file_mismatches": 34,
+        "mean_absolute_file_delta": 0.18,
+        "note": "GitHub counts the full branch diff; Git counts the squashed merge commit. Rebases and merge-queue re-bases make small deltas normal.",
+        "reconcilable_prs": 13086,
+        "status": "pass",
+        "worst_examples": [
+          {
+            "delta": 1030,
+            "git": 2040,
+            "github": 3070,
+            "pr_number": 65817
+          },
+          {
+            "delta": 111,
+            "git": 13,
+            "github": 124,
+            "pr_number": 73203
+          },
+          {
+            "delta": 74,
+            "git": 30,
+            "github": 104,
+            "pr_number": 78691
+          },
+          {
+            "delta": 56,
+            "git": 13,
+            "github": 69,
+            "pr_number": 71979
+          },
+          {
+            "delta": 56,
+            "git": 5,
+            "github": 61,
+            "pr_number": 72857
+          },
+          {
+            "delta": 56,
+            "git": 20,
+            "github": 76,
+            "pr_number": 73107
+          },
+          {
+            "delta": 56,
+            "git": 14,
+            "github": 70,
+            "pr_number": 73303
+          },
+          {
+            "delta": 56,
+            "git": 13,
+            "github": 69,
+            "pr_number": 73331
+          },
+          {
+            "delta": 56,
+            "git": 2,
+            "github": 58,
+            "pr_number": 73333
+          },
+          {
+            "delta": 56,
+            "git": 1,
+            "github": 57,
+            "pr_number": 73365
+          }
+        ]
+      },
+      "gate": "change_size_reconciliation",
+      "status": "pass"
+    },
+    {
+      "detail": "{\"status\": \"pass\", \"query\": \"repo:PostHog/posthog is:pr merged:2026-05-19..2026-08-17\", \"independent_reported_total\": 13418, \"dataset_merged_in_window\": 13318, \"absolute_delta\": 100, \"relative_delta\": 0.00745, \"tolerance\": 0.02}",
+      "detail_record": {
+        "absolute_delta": 100,
+        "dataset_merged_in_window": 13318,
+        "independent_reported_total": 13418,
+        "note": "GitHub search indexes asynchronously and counts PRs merged to any branch; small deltas are expected and are reported rather than hidden.",
+        "query": "repo:PostHog/posthog is:pr merged:2026-05-19..2026-08-17",
+        "relative_delta": 0.00745,
+        "status": "pass",
+        "tolerance": 0.02
+      },
+      "gate": "independent_pr_count",
+      "status": "pass"
+    },
+    {
+      "detail": "30/30 rows queued at audit_stratified_prs.json; 0 carry a recorded human verdict",
+      "file": "audit_stratified_prs.json",
+      "gate": "audit_queue:stratified_prs",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 30,
+      "required": 30,
+      "status": "pass"
+    },
+    {
+      "detail": "10/10 rows queued at audit_regression_candidates.json; 0 carry a recorded human verdict",
+      "file": "audit_regression_candidates.json",
+      "gate": "audit_queue:regression_candidates",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 10,
+      "required": 10,
+      "status": "pass"
+    },
+    {
+      "detail": "10/10 rows queued at audit_review_interventions.json; 0 carry a recorded human verdict",
+      "file": "audit_review_interventions.json",
+      "gate": "audit_queue:review_interventions",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 10,
+      "required": 10,
+      "status": "pass"
+    },
+    {
+      "detail": "36412 nodes, 141389 edges, 1774 files with no parser",
+      "detail_record": {
+        "analyzed_head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+        "computed_at": "2026-08-17T14:50:03.656509Z",
+        "dependency_graph_version": "1.0.0",
+        "files_with_dynamic_imports": 18,
+        "graph_nodes": 36412,
+        "hub_fan_in_threshold": 15,
+        "internal_edges": 141389,
+        "not_parsed_files": 1774,
+        "not_parsed_languages": [
+          "go",
+          "hog",
+          "rb",
+          "rust",
+          "sql"
+        ],
+        "parse_error_examples": [],
+        "parse_errors": 0,
+        "python": {
+          "by_resolution": {
+            "exact": 71921,
+            "external": 57144,
+            "prefix": 2
+          },
+          "import_statements": 129067,
+          "internal_resolution_rate": 0.557253,
+          "resolved_internal": 71923
+        },
+        "tracked_files": 43918,
+        "tsconfig_alias_patterns": 61,
+        "tsconfig_errors": [],
+        "tsconfig_scopes": 15,
+        "typescript_javascript": {
+          "by_resolution": {
+            "alias": 41412,
+            "external": 29044,
+            "external_alias": 1921,
+            "relative": 28054,
+            "relative_missing": 278,
+            "unresolved": 572
+          },
+          "import_statements": 101281,
+          "internal_resolution_rate": 0.685874,
+          "resolved_internal": 69466
+        }
+      },
+      "gate": "graph_parser_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "63 JSON artifacts scanned; 0 credential-shaped matches",
+      "gate": "secret_scan",
+      "matches": [],
+      "status": "pass"
+    }
+  ],
+  "quality_status": "pass",
+  "runs": [
+    {
+      "duration_seconds": 63.779,
+      "run_id": "ce2b8c06e3394c66",
+      "run_started_at": "2026-08-17T03:06:29.206193Z",
+      "stage": "ingest_git",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 184.571,
+      "run_id": "ea5f1c5e76b74c81",
+      "run_started_at": "2026-08-17T03:19:24.074531Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 171.529,
+      "run_id": "334ea4abc63c4726",
+      "run_started_at": "2026-08-17T03:25:32.237959Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 167.716,
+      "run_id": "9b586b7e7cfd452c",
+      "run_started_at": "2026-08-17T03:29:40.500055Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 28.831,
+      "run_id": "c366565aa814449f",
+      "run_started_at": "2026-08-17T04:11:29.213309Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 130.052,
+      "run_id": "d19a81de64b34768",
+      "run_started_at": "2026-08-17T04:14:28.304128Z",
+      "stage": "ingest_git",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 38.737,
+      "run_id": "74e92ffca363476f",
+      "run_started_at": "2026-08-17T04:16:56.958069Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 28.384,
+      "run_id": "af2cdadcea5042ee",
+      "run_started_at": "2026-08-17T04:17:43.712128Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 28.652,
+      "run_id": "8f3ac7c5f7524929",
+      "run_started_at": "2026-08-17T04:21:02.392231Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 19.139,
+      "run_id": "9de0964df47d45db",
+      "run_started_at": "2026-08-17T04:22:59.966436Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 55.746,
+      "run_id": "28ad55b50a074384",
+      "run_started_at": "2026-08-17T04:23:29.129545Z",
+      "stage": "validate",
+      "status": "failed"
+    },
+    {
+      "duration_seconds": 35.507,
+      "run_id": "a6818e7884604d63",
+      "run_started_at": "2026-08-17T04:25:14.616477Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 60.735,
+      "run_id": "589f020bc13d4759",
+      "run_started_at": "2026-08-17T04:25:51.309246Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 53.955,
+      "run_id": "52ad80e63fee408d",
+      "run_started_at": "2026-08-17T04:26:53.918968Z",
+      "stage": "validate",
+      "status": "failed"
+    },
+    {
+      "duration_seconds": 11.695,
+      "run_id": "ad49b06865d844e4",
+      "run_started_at": "2026-08-17T04:30:59.455816Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 105.955,
+      "run_id": "44de0039f89a4538",
+      "run_started_at": "2026-08-17T04:33:12.940681Z",
+      "stage": "ingest_web",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 128.58,
+      "run_id": "176fb54133c84d8e",
+      "run_started_at": "2026-08-17T05:18:23.953786Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 288.097,
+      "run_id": "4e0c0bd3a8584934",
+      "run_started_at": "2026-08-17T05:20:36.693927Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 98.749,
+      "run_id": "3694ffae652c4aa9",
+      "run_started_at": "2026-08-17T05:25:25.485015Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 40.737,
+      "run_id": "84fbe57153664452",
+      "run_started_at": "2026-08-17T05:29:17.509827Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 7368.916,
+      "run_id": "2638117d2fb349b5",
+      "run_started_at": "2026-08-17T03:57:32.797801Z",
+      "stage": "ingest_github",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 708.025,
+      "run_id": "02bddccbde044234",
+      "run_started_at": "2026-08-17T06:01:12.885481Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 11.608,
+      "run_id": "9e2775b9747d44ad",
+      "run_started_at": "2026-08-17T06:13:49.979386Z",
+      "stage": "ingest_web",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 335.025,
+      "run_id": "5edc7cf2bb2f40a5",
+      "run_started_at": "2026-08-17T06:14:02.632772Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 106.601,
+      "run_id": "91013e96b61a432c",
+      "run_started_at": "2026-08-17T06:19:38.812680Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 206.723,
+      "run_id": "4c14f793db694a6d",
+      "run_started_at": "2026-08-17T06:21:28.654461Z",
+      "stage": "validate",
+      "status": "failed"
+    },
+    {
+      "duration_seconds": 34.164,
+      "run_id": "b97ce9c50ec24ba2",
+      "run_started_at": "2026-08-17T06:25:09.372861Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 10.705,
+      "run_id": "94975bdef1f24812",
+      "run_started_at": "2026-08-17T14:44:27.945173Z",
+      "stage": "ingest_github",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 110.467,
+      "run_id": "0d7d8b6b67a54028",
+      "run_started_at": "2026-08-17T14:44:49.412868Z",
+      "stage": "normalize",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 3.143,
+      "run_id": "2c2ed26914264233",
+      "run_started_at": "2026-08-17T14:46:43.925020Z",
+      "stage": "ingest_web",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 196.368,
+      "run_id": "539d37f383b34713",
+      "run_started_at": "2026-08-17T14:46:47.289586Z",
+      "stage": "graph",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 62.607,
+      "run_id": "356d48b3e2b04717",
+      "run_started_at": "2026-08-17T14:50:04.134068Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 107.219,
+      "run_id": "1d21a6efcd2c4d23",
+      "run_started_at": "2026-08-17T14:51:16.360633Z",
+      "stage": "validate",
+      "status": "failed"
+    },
+    {
+      "duration_seconds": 21.027,
+      "run_id": "60df170270824220",
+      "run_started_at": "2026-08-17T14:53:08.179953Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 54.409,
+      "run_id": "04ee414c18ee4340",
+      "run_started_at": "2026-08-17T14:54:23.813255Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 93.236,
+      "run_id": "05da88250af84464",
+      "run_started_at": "2026-08-17T14:55:19.341921Z",
+      "stage": "validate",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 21.154,
+      "run_id": "8a1507197b1c4c41",
+      "run_started_at": "2026-08-17T14:56:54.954734Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 21.422,
+      "run_id": "d09d9b6c934447d6",
+      "run_started_at": "2026-08-17T14:58:45.391308Z",
+      "stage": "export",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 51.267,
+      "run_id": "7c30742aee374734",
+      "run_started_at": "2026-08-17T15:00:32.767704Z",
+      "stage": "features",
+      "status": "ok"
+    },
+    {
+      "duration_seconds": 94.235,
+      "run_id": "a21b98c76d504e0e",
+      "run_started_at": "2026-08-17T15:01:36.349757Z",
+      "stage": "validate",
+      "status": "ok"
+    }
+  ],
+  "source": {
+    "analyzed_head_committed_at": "2026-08-17T02:43:54Z",
+    "analyzed_head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+    "clone_strategy": "shallow_since",
+    "default_branch": "master",
+    "is_shallow_clone": true,
+    "linear_history": true,
+    "oldest_available_commit_at": "2026-08-17T02:43:54Z",
+    "repository_qualifier": "github.com/PostHog/posthog",
+    "repository_url": "https://github.com/PostHog/posthog"
+  },
+  "tables": {
+    "actors": {
+      "column_count": 20,
+      "columns": [
+        "actor_id",
+        "login",
+        "display_name",
+        "github_database_id",
+        "github_typename",
+        "account_type",
+        "bot_probability",
+        "bot_reasons",
+        "is_bot",
+        "is_ai_assistant_identity",
+        "emails",
+        "email_count",
+        "git_names",
+        "identity_cluster_id",
+        "identity_cluster_size",
+        "identity_cluster_members",
+        "ambiguity_status",
+        "ambiguity_reasons",
+        "sources",
+        "actor_identity_version"
+      ],
+      "content_sha256": "25bfcc047f2ae1f9eb09fa9c87ec0989ec72f7f744945da29ca0da8cef0248f4",
+      "file_bytes": 60246,
+      "file_sha256": "30e1971842d83b1c5ace5a856635d8cbb4df2a5a0e9f23cfb0fd59dd570a30c5",
+      "layer": "normalized",
+      "path": "artifacts/actors.parquet",
+      "row_count": 934,
+      "schema": "schemas/actors.schema.json",
+      "sort_keys": [
+        "actor_id"
+      ]
+    },
+    "candidate_episode_edges": {
+      "column_count": 11,
+      "columns": [
+        "edge_id",
+        "source_pr_number",
+        "source_pr_id",
+        "target_kind",
+        "target_number",
+        "target_pr_in_dataset",
+        "edge_type",
+        "strength",
+        "evidence_source",
+        "evidence",
+        "episode_edges_version"
+      ],
+      "content_sha256": "056ba7c5bcf6714133a54ebca74e0177e9d2b8746c5b33e3d410d7f3ef8c7797",
+      "file_bytes": 1175963,
+      "file_sha256": "812a38f60a2ce9e43d6f2f1318f730b4457a2fb0e5a4fdfaa962fe19ae0fa949",
+      "layer": "derived",
+      "path": "artifacts/candidate_episode_edges.parquet",
+      "row_count": 30619,
+      "schema": "schemas/candidate_episode_edges.schema.json",
+      "sort_keys": [
+        "source_pr_number",
+        "edge_type",
+        "target_number"
+      ]
+    },
+    "candidate_episodes": {
+      "column_count": 6,
+      "columns": [
+        "episode_id",
+        "pr_numbers",
+        "pr_count",
+        "edge_types",
+        "root_pr_number",
+        "episode_edges_version"
+      ],
+      "content_sha256": "77801a94a5385cdd7142f662c5b67ecdf58bec6372f0b047f914cad184f254d1",
+      "file_bytes": 35405,
+      "file_sha256": "48f30151277c002699fbd8e90d93db2538342ecb72b031feb867c34778f62bbe",
+      "layer": "derived",
+      "path": "artifacts/candidate_episodes.parquet",
+      "row_count": 1602,
+      "schema": "schemas/candidate_episodes.schema.json",
+      "sort_keys": [
+        "episode_id"
+      ]
+    },
+    "comments": {
+      "column_count": 14,
+      "columns": [
+        "comment_id",
+        "parent_kind",
+        "parent_number",
+        "parent_id",
+        "database_id",
+        "author_actor_id",
+        "author_login",
+        "author_typename",
+        "body_text",
+        "body_length",
+        "created_at",
+        "updated_at",
+        "url",
+        "computed_at"
+      ],
+      "content_sha256": "0755f0d594bc5bee2f9e51232a46cbc76d98be5582a882cdd0791ab52148fcae",
+      "file_bytes": 17515604,
+      "file_sha256": "930ed0d98c590f005a24e25e0858d8a0d686125856d277fc0e03ce01527c8058",
+      "layer": "normalized",
+      "path": "artifacts/comments.parquet",
+      "row_count": 103393,
+      "schema": "schemas/comments.schema.json",
+      "sort_keys": [
+        "parent_kind",
+        "parent_number",
+        "comment_id"
+      ]
+    },
+    "commit_parents": {
+      "column_count": 5,
+      "columns": [
+        "commit_id",
+        "commit_sha",
+        "parent_sha",
+        "parent_position",
+        "parent_commit_id"
+      ],
+      "content_sha256": "4a97149174c50c1e5c1dca668dc1ff7729c87214a8eaf07efd6dd590075e069b",
+      "file_bytes": 1501170,
+      "file_sha256": "a6fa7f05265e31bd3037868927ef45d41ca861d1aba86277b81b15e0f8add6ef",
+      "layer": "normalized",
+      "path": "artifacts/commit_parents.parquet",
+      "row_count": 15484,
+      "schema": "schemas/commit_parents.schema.json",
+      "sort_keys": [
+        "commit_sha",
+        "parent_position"
+      ]
+    },
+    "commits": {
+      "column_count": 36,
+      "columns": [
+        "author_email",
+        "author_is_committer",
+        "author_name",
+        "authored_at",
+        "cherry_pick_of_sha",
+        "co_author_count",
+        "co_authors",
+        "commit_id",
+        "commit_sha",
+        "committed_at",
+        "committer_email",
+        "committer_name",
+        "extractor_version",
+        "gpg_status",
+        "is_cherry_pick",
+        "is_merge_commit",
+        "is_revert",
+        "message",
+        "message_sha256",
+        "parent_count",
+        "parent_shas",
+        "pr_number_from_subject",
+        "revert_of_sha",
+        "revert_of_subject",
+        "subject",
+        "trailers",
+        "tree_sha",
+        "author_actor_id",
+        "committer_actor_id",
+        "co_author_actor_ids",
+        "in_window",
+        "has_patch_text",
+        "patch_unavailable_reason",
+        "pr_number",
+        "pr_mapping_source",
+        "has_ai_co_author"
+      ],
+      "content_sha256": "8393252f111686e6a3550d18565818302876bcaa33a1a94e9095274194c03dba",
+      "file_bytes": 4163111,
+      "file_sha256": "7b0797b1cca385d3188a1ea99483dcce287949ab92b5e63c18e7503d2c1e7265",
+      "layer": "normalized",
+      "path": "artifacts/commits.parquet",
+      "row_count": 15485,
+      "schema": "schemas/commits.schema.json",
+      "sort_keys": [
+        "commit_sha"
+      ]
+    },
+    "component_edges": {
+      "column_count": 4,
+      "columns": [
+        "source_component",
+        "target_component",
+        "edge_count",
+        "dependency_graph_version"
+      ],
+      "content_sha256": "f5c3430a9c894fba544c2207b8e0a995cc6e33d1510be3db0f3dc90dbcb9e615",
+      "file_bytes": 6449,
+      "file_sha256": "5dfd0256f60c700c85adf09bfc17901e87dfb139d572e641b0b52373de6f0680",
+      "layer": "derived",
+      "path": "artifacts/component_edges.parquet",
+      "row_count": 1651,
+      "schema": "schemas/component_edges.schema.json",
+      "sort_keys": [
+        "source_component",
+        "target_component"
+      ]
+    },
+    "components": {
+      "column_count": 9,
+      "columns": [
+        "component",
+        "platform",
+        "label",
+        "source_rule",
+        "path_glob",
+        "manifest_path",
+        "manifest_sha256",
+        "snapshot_commit",
+        "component_map_version"
+      ],
+      "content_sha256": "4e2a1fece08c72f8d6981168dd814e6b4400692e4fb07515f8f758021ca0d45d",
+      "file_bytes": 9741,
+      "file_sha256": "629eb01ee46b35eced9f614bc00517f0b38713947dcd360f76d3293d76bb8e1f",
+      "layer": "normalized",
+      "path": "artifacts/components.parquet",
+      "row_count": 122,
+      "schema": "schemas/components.schema.json",
+      "sort_keys": [
+        "component"
+      ]
+    },
+    "dependency_edges": {
+      "column_count": 12,
+      "columns": [
+        "source_path",
+        "target_path",
+        "specifier",
+        "resolution",
+        "language",
+        "kind",
+        "is_type_only",
+        "is_dynamic",
+        "source_component",
+        "target_component",
+        "crosses_component",
+        "dependency_graph_version"
+      ],
+      "content_sha256": "e5aa9b508d02a05c9319f024bd1ce5bbeb34d62c81a0c66eb72b1423803442e6",
+      "file_bytes": 1399964,
+      "file_sha256": "d09095f77403b54dd134abfe49e8498904a48c15cd28cb155ea23a69286aa3e9",
+      "layer": "derived",
+      "path": "artifacts/dependency_edges.parquet",
+      "row_count": 141389,
+      "schema": "schemas/dependency_edges.schema.json",
+      "sort_keys": [
+        "source_path",
+        "target_path",
+        "kind"
+      ]
+    },
+    "extraction_runs": {
+      "column_count": 17,
+      "columns": [
+        "counters",
+        "duration_seconds",
+        "extractor_version",
+        "host",
+        "notes",
+        "pipeline_version",
+        "platform",
+        "python_version",
+        "repository",
+        "run_finished_at",
+        "run_id",
+        "run_started_at",
+        "schema_version",
+        "stage",
+        "status",
+        "window_end",
+        "window_start"
+      ],
+      "content_sha256": "2a2cfa4afba3a6ea7f95d79ca84a223e2229efda269f8972a7c8caabf7713f28",
+      "file_bytes": 7826,
+      "file_sha256": "95ee03df9e44774b2c4f27cc2bdf48706e6bc1303a1604bf4af245d88d5ffc27",
+      "layer": "normalized",
+      "path": "artifacts/extraction_runs.parquet",
+      "row_count": 28,
+      "schema": "schemas/extraction_runs.schema.json",
+      "sort_keys": [
+        "run_started_at",
+        "stage"
+      ]
+    },
+    "feature_flags": {
+      "column_count": 9,
+      "columns": [
+        "pr_number",
+        "pr_id",
+        "flag_key",
+        "detection",
+        "diff_side",
+        "strength",
+        "evidence",
+        "owner_annotation",
+        "computed_at"
+      ],
+      "content_sha256": "617edd616939e248e4f1ed2ab21d64138ea9f72ba4d5a668fe6c79a1dc78d9df",
+      "file_bytes": 62910,
+      "file_sha256": "530d7bfa6d63845e52d4ba8217a0bf8c1c3dbf693395a501d9998fd1ff5b3798",
+      "layer": "normalized",
+      "path": "artifacts/feature_flags.parquet",
+      "row_count": 1049,
+      "schema": "schemas/feature_flags.schema.json",
+      "sort_keys": [
+        "pr_number",
+        "flag_key",
+        "detection",
+        "diff_side"
+      ]
+    },
+    "issues": {
+      "column_count": 17,
+      "columns": [
+        "issue_id",
+        "issue_number",
+        "url",
+        "title",
+        "body_text",
+        "state",
+        "state_reason",
+        "created_at",
+        "updated_at",
+        "closed_at",
+        "author_actor_id",
+        "author_login",
+        "labels",
+        "assignee_logins",
+        "comment_count",
+        "created_in_window",
+        "computed_at"
+      ],
+      "content_sha256": "2c6d5ae710fab38c685788e5f4f8cedd599a25dfd1acf46bcb392e3e01ea6567",
+      "file_bytes": 638925,
+      "file_sha256": "a785fb0b0f1374573caedc614355d8f87d8621b8332a9bc2a42617c7151aa9bf",
+      "layer": "normalized",
+      "path": "artifacts/issues.parquet",
+      "row_count": 872,
+      "schema": "schemas/issues.schema.json",
+      "sort_keys": [
+        "issue_number"
+      ]
+    },
+    "module_nodes": {
+      "column_count": 12,
+      "columns": [
+        "path",
+        "language",
+        "component",
+        "platform",
+        "parse_status",
+        "parse_error",
+        "has_dynamic_imports",
+        "fan_in",
+        "fan_out",
+        "is_hub",
+        "cross_component_fan_in",
+        "dependency_graph_version"
+      ],
+      "content_sha256": "d0aec984e1ec8f5302336e8aebd8da175d3c74c709625f42f8a00c99adc08a5e",
+      "file_bytes": 413671,
+      "file_sha256": "749a0371fbad96acb8d2cd747f462b405a1749b68559ca4a681f8261cd6fd57b",
+      "layer": "derived",
+      "path": "artifacts/module_nodes.parquet",
+      "row_count": 36412,
+      "schema": "schemas/module_nodes.schema.json",
+      "sort_keys": [
+        "path"
+      ]
+    },
+    "path_map": {
+      "column_count": 16,
+      "columns": [
+        "path",
+        "component",
+        "platform",
+        "component_source",
+        "component_rule_priority",
+        "component_rule_pattern",
+        "owners",
+        "owner_count",
+        "owner_source",
+        "owner_rule_priority",
+        "owner_rule_pattern",
+        "license_area",
+        "uncertainty",
+        "is_unclassified",
+        "nearest_agents_file",
+        "component_map_version"
+      ],
+      "content_sha256": "8dd602b4e8f3a42baec198a1855116b72dda23fe260bc37c82988f7f25e5de35",
+      "file_bytes": 454112,
+      "file_sha256": "3d2ac2872be3485fd25a2933c8bcb39dad5a8361a167c010a0b67c769b6e4f1c",
+      "layer": "normalized",
+      "path": "artifacts/path_map.parquet",
+      "row_count": 43595,
+      "schema": "schemas/path_map.schema.json",
+      "sort_keys": [
+        "path"
+      ]
+    },
+    "pr_anomalies": {
+      "column_count": 21,
+      "columns": [
+        "pr_number",
+        "pr_id",
+        "anomaly_flags",
+        "anomaly_count",
+        "has_anomaly",
+        "shape_flags",
+        "shape_flag_count",
+        "github_changed_files",
+        "git_changed_files",
+        "changed_files_delta",
+        "changed_files_mismatch",
+        "github_additions",
+        "git_additions",
+        "additions_delta",
+        "github_deletions",
+        "git_deletions",
+        "deletions_delta",
+        "reconciliation_possible",
+        "reconciliation_skipped_reason",
+        "pr_lifetime_hours",
+        "anomaly_version"
+      ],
+      "content_sha256": "c39c77eff5d20228de591a9170bd4e0faddcdaa2a72efe04449667438c88dc8e",
+      "file_bytes": 388947,
+      "file_sha256": "1c218448c0f54d3a8ff4d839baeba7b3621d2a9df7edfea0011376edb5ddf02d",
+      "layer": "derived",
+      "path": "artifacts/pr_anomalies.parquet",
+      "row_count": 23855,
+      "schema": "schemas/pr_anomalies.schema.json",
+      "sort_keys": [
+        "pr_number"
+      ]
+    },
+    "pr_blast_radius": {
+      "column_count": 31,
+      "columns": [
+        "pr_number",
+        "pr_id",
+        "distinct_components",
+        "distinct_platforms",
+        "distinct_products",
+        "components_touched",
+        "products_touched",
+        "crosses_component_boundary",
+        "crosses_product_boundary",
+        "distinct_owners",
+        "owners_touched",
+        "crosses_ownership_boundary",
+        "files_without_owner",
+        "graph_covered_files",
+        "graph_coverage_share",
+        "changed_fan_in_total",
+        "changed_fan_out_total",
+        "changed_fan_in_max",
+        "hub_files_touched",
+        "downstream_file_count",
+        "downstream_component_count",
+        "downstream_components",
+        "downstream_product_count",
+        "reach_depth_limit",
+        "risk_surface_count",
+        "touches_shared_library",
+        "touches_platform_surface",
+        "reachability_band",
+        "reachability_uncertainty",
+        "reachability_is_uncertain",
+        "blast_radius_version"
+      ],
+      "content_sha256": "e0f214f73c6d9a3e6fcc3b1478bb4c97a91c2a00cfb8fc2dd3a8f73820edcc7f",
+      "file_bytes": 472740,
+      "file_sha256": "9d80407b1a727a005a4dd33e6cba69659be5faff5454ad901919b0a26a6eb1e3",
+      "layer": "derived",
+      "path": "artifacts/pr_blast_radius.parquet",
+      "row_count": 23855,
+      "schema": "schemas/pr_blast_radius.schema.json",
+      "sort_keys": [
+        "pr_number"
+      ]
+    },
+    "pr_change_shape": {
+      "column_count": 63,
+      "columns": [
+        "pr_number",
+        "pr_id",
+        "title_prefix",
+        "title_scope",
+        "title_parser_confidence",
+        "title_breaking",
+        "title_claim_corroborated",
+        "title_claim_note",
+        "file_count",
+        "dominant_component",
+        "dominant_component_share",
+        "distinct_components",
+        "component_entropy",
+        "component_histogram",
+        "distinct_platforms",
+        "category_histogram",
+        "files_product_code",
+        "files_platform_code",
+        "files_tests",
+        "files_docs",
+        "files_config",
+        "files_migration",
+        "files_generated",
+        "files_dependency",
+        "files_snapshot",
+        "files_styling",
+        "files_localization",
+        "files_infrastructure",
+        "files_binary_asset",
+        "files_unclassified",
+        "files_added",
+        "files_modified",
+        "files_deleted",
+        "files_renamed",
+        "files_copied",
+        "files_type_changed",
+        "code_file_count",
+        "generated_or_mechanical_file_count",
+        "code_share",
+        "test_file_count",
+        "production_file_count",
+        "test_to_production_links",
+        "test_to_production_link_count",
+        "has_test_changes",
+        "has_production_changes",
+        "tests_without_production_change",
+        "production_without_test_change",
+        "risk_surfaces",
+        "touches_public_api",
+        "touches_schema",
+        "touches_migration",
+        "touches_auth_privacy",
+        "touches_billing",
+        "touches_ingestion",
+        "touches_data_pipeline",
+        "touches_deployment",
+        "touches_shared_library",
+        "touches_feature_flag_surface",
+        "language_histogram",
+        "primary_language",
+        "license_areas",
+        "touches_enterprise_licensed_code",
+        "change_shape_version"
+      ],
+      "content_sha256": "57643c46bfd2f8e84286676e97c8169a62910a6f97d35f606283eec789ad322f",
+      "file_bytes": 935839,
+      "file_sha256": "ed414d00a14849dd847a7fe83750e6b89f56bbb0ed6e0cee6c84763120372a07",
+      "layer": "derived",
+      "path": "artifacts/pr_change_shape.parquet",
+      "row_count": 23855,
+      "schema": "schemas/pr_change_shape.schema.json",
+      "sort_keys": [
+        "pr_number"
+      ]
+    },
+    "pr_files": {
+      "column_count": 46,
+      "columns": [
+        "pr_file_id",
+        "pr_id",
+        "pr_number",
+        "commit_sha",
+        "path",
+        "old_path",
+        "new_path",
+        "change_status",
+        "similarity_score",
+        "additions",
+        "deletions",
+        "is_binary",
+        "line_counts_unavailable_reason",
+        "is_submodule",
+        "old_blob_sha",
+        "new_blob_sha",
+        "extension",
+        "language",
+        "categories",
+        "risk_surfaces",
+        "matched_rules",
+        "path_depth",
+        "top_level_dir",
+        "is_test",
+        "is_docs",
+        "is_generated",
+        "is_snapshot",
+        "is_lockfile",
+        "is_vendor",
+        "is_migration",
+        "is_config",
+        "is_binary_asset",
+        "is_styling",
+        "is_localization",
+        "is_ci",
+        "path_classify_version",
+        "component",
+        "platform",
+        "component_source",
+        "component_rule_priority",
+        "component_rule_pattern",
+        "owners",
+        "owner_source",
+        "license_area",
+        "mapping_uncertainty",
+        "computed_at"
+      ],
+      "content_sha256": "c64ea2f80e60610c6bad31d867a75618649faf7cdc4fbebeccff3c598fa50385",
+      "file_bytes": 11114847,
+      "file_sha256": "cd73b17bc0507d16a0e97190e94333504b8358872780b6b2885cc037fece31dd",
+      "layer": "normalized",
+      "path": "artifacts/pr_files.parquet",
+      "row_count": 126552,
+      "schema": "schemas/pr_files.schema.json",
+      "sort_keys": [
+        "pr_number",
+        "path"
+      ]
+    },
+    "pr_regression_candidates": {
+      "column_count": 23,
+      "columns": [
+        "pr_number",
+        "pr_id",
+        "merged_at",
+        "explicit_regression_signals",
+        "explicit_signal_count",
+        "linked_fix_candidates",
+        "linked_candidate_count",
+        "proximate_fix_candidates",
+        "proximate_candidate_count",
+        "regression_evidence_tier",
+        "requires_human_confirmation",
+        "was_reverted",
+        "corrective_churn",
+        "corrective_churn_total",
+        "files_introduced",
+        "survival_30d",
+        "survival_30d_reason",
+        "survival_60d",
+        "survival_60d_reason",
+        "survival_90d",
+        "survival_90d_reason",
+        "tests_added_with_fix",
+        "regression_version"
+      ],
+      "content_sha256": "6e3bba436c1da90529ff69ff91d8f4199dec7f25f0ea2830a78aa8fe1dfd9533",
+      "file_bytes": 1099151,
+      "file_sha256": "72b104b9d610d096fd1adf7c9395341c5dc99768a84bf08a7d9f0bcf157ace96",
+      "layer": "derived",
+      "path": "artifacts/pr_regression_candidates.parquet",
+      "row_count": 23855,
+      "schema": "schemas/pr_regression_candidates.schema.json",
+      "sort_keys": [
+        "pr_number"
+      ]
+    },
+    "pull_requests": {
+      "column_count": 71,
+      "columns": [
+        "pr_id",
+        "pr_number",
+        "repository",
+        "url",
+        "node_id",
+        "database_id",
+        "title_raw",
+        "body_text",
+        "body_length",
+        "state",
+        "is_draft",
+        "created_at",
+        "updated_at",
+        "closed_at",
+        "merged_at",
+        "author_actor_id",
+        "author_login",
+        "author_typename",
+        "merged_by_actor_id",
+        "merged_by_login",
+        "base_ref",
+        "head_ref",
+        "base_sha",
+        "head_sha",
+        "merge_commit_sha",
+        "is_cross_repository",
+        "head_repository_owner",
+        "milestone_title",
+        "labels",
+        "label_count",
+        "assignee_logins",
+        "participant_logins",
+        "participant_count",
+        "github_additions",
+        "github_deletions",
+        "github_changed_files",
+        "review_count",
+        "review_thread_count",
+        "comment_count",
+        "review_detail_fetched",
+        "commit_count",
+        "reaction_count",
+        "title_prefix",
+        "title_prefix_raw",
+        "title_scope",
+        "title_breaking",
+        "title_subject",
+        "title_parser_status",
+        "title_parser_confidence",
+        "title_parser_notes",
+        "title_class",
+        "title_squash_pr_number",
+        "git_file_count",
+        "git_additions",
+        "git_deletions",
+        "has_binary_files",
+        "is_bulk_change",
+        "bulk_category",
+        "bulk_share",
+        "cohorts",
+        "merged_in_window",
+        "created_in_window",
+        "context_only",
+        "is_merge_queue_artifact",
+        "ranking_eligible",
+        "ranking_ineligible_reason",
+        "has_merge_commit_in_clone",
+        "schema_version",
+        "computed_at",
+        "author_is_bot",
+        "author_bot_probability"
+      ],
+      "content_sha256": "48d4111906682b093c90db06a39512d9744172231f1f26a6b4129ad0976edca3",
+      "file_bytes": 23470037,
+      "file_sha256": "85afb1c1a3e221c9a56ba90aa620643db384623172936da9b75199a7495b9c60",
+      "layer": "normalized",
+      "path": "artifacts/pull_requests.parquet",
+      "row_count": 23855,
+      "schema": "schemas/pull_requests.schema.json",
+      "sort_keys": [
+        "pr_number"
+      ]
+    },
+    "raw_pages": {
+      "column_count": 18,
+      "columns": [
+        "attempt_count",
+        "cursor",
+        "elapsed_seconds",
+        "entity",
+        "error",
+        "extracted_at",
+        "extractor_version",
+        "http_status",
+        "page_index",
+        "query_name",
+        "rate_limit_cost",
+        "rate_limit_remaining",
+        "request_hash",
+        "response_path",
+        "response_sha256",
+        "shard",
+        "status",
+        "terminal_reason"
+      ],
+      "content_sha256": "b1ec5a0b0850dd5a292c2babe94ae38243c9301fd56ab4e57fca57f5c3655282",
+      "file_bytes": 809390,
+      "file_sha256": "1d60b029488eb41d49295283d7a8105370ae1286b08f0791b1a6a475b7d99b90",
+      "layer": "normalized",
+      "path": "artifacts/raw_pages.parquet",
+      "row_count": 5996,
+      "schema": "schemas/raw_pages.schema.json",
+      "sort_keys": [
+        "entity",
+        "shard",
+        "page_index",
+        "request_hash"
+      ]
+    },
+    "references": {
+      "column_count": 10,
+      "columns": [
+        "source_kind",
+        "source_number",
+        "source_id",
+        "reference_kind",
+        "reference_value",
+        "reference_subtype",
+        "strength",
+        "source_field",
+        "evidence",
+        "computed_at"
+      ],
+      "content_sha256": "0fe84235ec9bd6b704dceb71ae0700aac18d3d64e186aaf6545dd094833d92c5",
+      "file_bytes": 1806652,
+      "file_sha256": "35b0b6f5c7e450246e3e814c5cef3cf8fa3f5cf3bea053d0183c03326ef6b055",
+      "layer": "normalized",
+      "path": "artifacts/references.parquet",
+      "row_count": 45320,
+      "schema": "schemas/references.schema.json",
+      "sort_keys": [
+        "source_kind",
+        "source_number",
+        "reference_kind",
+        "reference_value",
+        "source_field"
+      ]
+    },
+    "review_comments": {
+      "column_count": 21,
+      "columns": [
+        "comment_id",
+        "thread_id",
+        "pr_id",
+        "pr_number",
+        "database_id",
+        "position_in_thread",
+        "is_thread_opener",
+        "author_actor_id",
+        "author_login",
+        "author_typename",
+        "body_text",
+        "body_length",
+        "created_at",
+        "updated_at",
+        "reply_to_id",
+        "original_commit_sha",
+        "commit_sha",
+        "is_outdated",
+        "path",
+        "url",
+        "computed_at"
+      ],
+      "content_sha256": "24d53d35c67844e05379b7e7f0bf6ea7cd87de9f98b4d75aeba7d38889b5c3a1",
+      "file_bytes": 19387015,
+      "file_sha256": "20d68cce952146c2dc2b59e2c3868126df2be94ece548b730bb561b4dc4241b2",
+      "layer": "normalized",
+      "path": "artifacts/review_comments.parquet",
+      "row_count": 61538,
+      "schema": "schemas/review_comments.schema.json",
+      "sort_keys": [
+        "pr_number",
+        "thread_id",
+        "position_in_thread"
+      ]
+    },
+    "review_intervention_candidates": {
+      "column_count": 36,
+      "columns": [
+        "candidate_id",
+        "pr_number",
+        "pr_id",
+        "comment_id",
+        "thread_id",
+        "url",
+        "commenter_actor_id",
+        "commenter_login",
+        "commenter_is_bot",
+        "pr_author_actor_id",
+        "is_self_comment",
+        "created_at",
+        "position_in_thread",
+        "is_thread_opener",
+        "path",
+        "component",
+        "body_length",
+        "body_text",
+        "substance_class",
+        "is_substantive",
+        "substance_reasons",
+        "matched_nit_pattern",
+        "matched_ack_pattern",
+        "safety_categories",
+        "safety_terms_matched",
+        "has_safety_vocabulary",
+        "thread_is_resolved",
+        "thread_resolved_by_login",
+        "thread_resolved_by_author",
+        "thread_comment_count",
+        "thread_is_outdated",
+        "author_replied_in_thread",
+        "followed_by_change_in_path",
+        "follow_evidence",
+        "is_intervention_candidate",
+        "review_intervention_version"
+      ],
+      "content_sha256": "a153e06c7515261958dba8293085996c4bc1de3c7b499963dd879253fbd34990",
+      "file_bytes": 18091228,
+      "file_sha256": "f9508e3218c9abbff51844094a2bee2195556c52268c891848740284f9152f28",
+      "layer": "derived",
+      "path": "artifacts/review_intervention_candidates.parquet",
+      "row_count": 61538,
+      "schema": "schemas/review_intervention_candidates.schema.json",
+      "sort_keys": [
+        "candidate_id"
+      ]
+    },
+    "review_threads": {
+      "column_count": 21,
+      "columns": [
+        "thread_id",
+        "pr_id",
+        "pr_number",
+        "path",
+        "line",
+        "start_line",
+        "original_line",
+        "diff_side",
+        "subject_type",
+        "is_resolved",
+        "is_outdated",
+        "is_collapsed",
+        "resolved_by_login",
+        "resolved_by_actor_id",
+        "comment_count",
+        "comments_truncated",
+        "component",
+        "owners",
+        "first_comment_at",
+        "participant_logins",
+        "computed_at"
+      ],
+      "content_sha256": "f669a1fb9b576d15d53c2e048baac6bc3a4206314847f2a9ec9218c144ceffdf",
+      "file_bytes": 1255648,
+      "file_sha256": "a1ae54d9b5b0083a43503514121976593dd46399ad0eb29c8f1e3058875ba7c2",
+      "layer": "normalized",
+      "path": "artifacts/review_threads.parquet",
+      "row_count": 38789,
+      "schema": "schemas/review_threads.schema.json",
+      "sort_keys": [
+        "pr_number",
+        "thread_id"
+      ]
+    },
+    "reviewer_intervention_rollup": {
+      "column_count": 11,
+      "columns": [
+        "actor_id",
+        "login",
+        "substantive_comments",
+        "safety_comments",
+        "safety_category_counts",
+        "resolved_threads",
+        "followed_by_change",
+        "review_intervention_version",
+        "distinct_prs",
+        "distinct_authors_helped",
+        "distinct_components"
+      ],
+      "content_sha256": "cde70acbb28e9c0434bb90f1d3e069bbb208fbec4d0f2f07a34e225d269236e2",
+      "file_bytes": 10879,
+      "file_sha256": "2622258d04b6e953d264c46c94cdb2badc98d719b2bc7ce32ab656d82cfa2f89",
+      "layer": "derived",
+      "path": "artifacts/reviewer_intervention_rollup.parquet",
+      "row_count": 112,
+      "schema": "schemas/reviewer_intervention_rollup.schema.json",
+      "sort_keys": [
+        "actor_id"
+      ]
+    },
+    "reviews": {
+      "column_count": 16,
+      "columns": [
+        "review_id",
+        "pr_id",
+        "pr_number",
+        "database_id",
+        "reviewer_actor_id",
+        "reviewer_login",
+        "reviewer_typename",
+        "state",
+        "submitted_at",
+        "created_at",
+        "updated_at",
+        "body_text",
+        "body_length",
+        "commit_sha",
+        "url",
+        "computed_at"
+      ],
+      "content_sha256": "e321d2200ded71c5e4e42b91dd8af1d0e5415aef8283b990a777ef70c7f4b135",
+      "file_bytes": 6166376,
+      "file_sha256": "aa8d01b5553806fb25c03a695a8f8637ea42b98b947fab4012cb6dd444f5a97e",
+      "layer": "normalized",
+      "path": "artifacts/reviews.parquet",
+      "row_count": 65609,
+      "schema": "schemas/reviews.schema.json",
+      "sort_keys": [
+        "pr_number",
+        "review_id"
+      ]
+    },
+    "web_artifacts": {
+      "column_count": 15,
+      "columns": [
+        "content_bytes",
+        "content_sha256",
+        "description",
+        "error",
+        "extraction_status",
+        "extractor_version",
+        "final_url",
+        "host",
+        "http_status",
+        "reference_count",
+        "reference_subtype",
+        "referenced_by",
+        "retrieved_at",
+        "title",
+        "url"
+      ],
+      "content_sha256": "2ab2a81ff4b7ce30c1b10ee60d782e582153b2961e43d0f1327636862bf640b0",
+      "file_bytes": 20234,
+      "file_sha256": "ff0f9cf940b9b4dfe300a35dd2236975ff0e6034f6b989e86d27e7a56268da3d",
+      "layer": "normalized",
+      "path": "artifacts/web_artifacts.parquet",
+      "row_count": 117,
+      "schema": "schemas/web_artifacts.schema.json",
+      "sort_keys": [
+        "url"
+      ]
+    }
+  },
+  "versions": {
+    "extractor": "1.0.0",
+    "features": {
+      "actor_identity": "1.0.0",
+      "anomaly": "1.0.0",
+      "blast_radius": "1.0.0",
+      "change_shape": "1.0.0",
+      "component_map": "1.0.0",
+      "dependency_graph": "1.0.0",
+      "episode_edges": "1.0.0",
+      "path_classify": "1.0.0",
+      "regression": "1.0.0",
+      "review_intervention": "1.0.0",
+      "title_parse": "1.0.0"
+    },
+    "pipeline": "1.0.0",
+    "schema": "1.0.0"
+  },
+  "window": {
+    "also_ingest": [
+      "created"
+    ],
+    "end": "2026-08-17T15:03:12.924557Z",
+    "lookback_days": 90,
+    "primary_cohort": "merged",
+    "slice_days": 3,
+    "start": "2026-05-19T00:00:00Z"
+  }
+}

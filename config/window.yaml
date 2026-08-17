@@ -1,0 +1,40 @@
+# Analysis window.
+#
+# Default = the last 90 COMPLETE UTC days.  start is computed at run time as
+# (floor(now -> UTC midnight) - lookback_days); end is the extraction-start
+# timestamp.  Both are pinned into the run manifest so a rerun is reproducible.
+#
+# To widen to a year or full history, change lookback_days (or pass
+# --window-start/--window-end on the CLI).  No schema changes are required:
+# every table is partitioned by month and keyed by stable IDs.
+window:
+  lookback_days: 90
+  # Explicit overrides. null => computed. ISO-8601 UTC.
+  start: null
+  end: null
+
+  # Cohort definition.  Ranking eligibility is decided on mergedAt; the created
+  # cohort is ingested too so open and closed PRs opened inside the window are
+  # present in raw data, clearly marked as ineligible for merged-cohort ranking.
+  #
+  # `updated` is deliberately NOT ingested.  A PR merely *touched* during the
+  # window can have been opened years earlier -- measured on this repository it
+  # pulled in 2,084 extra PRs, the oldest created 2020-02-09 -- which is not
+  # 90 days of data by any reading.  Artifacts outside the window still enter
+  # the dataset when an in-window PR explicitly references them, via the
+  # `context` block below, where they are marked context_only=true.
+  primary_cohort: merged          # merged | created
+  also_ingest:
+    - created
+
+# Artifacts referenced from inside the window but living outside it (predecessor
+# PRs, follow-up PRs, linked issues) are fetched and marked context_only=true.
+context:
+  fetch_referenced_outside_window: true
+  max_context_artifacts: 4000
+
+# Discovery slicing.  The GitHub search API returns at most 1000 results per
+# query, so the window is cut into slices that each stay under that ceiling.
+discovery:
+  slice_days: 3
+  max_results_per_slice: 1000

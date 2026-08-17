@@ -1,0 +1,669 @@
+[
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "infra:scripts",
+    "computed_at": "2026-08-17T14:45:30.050241Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-01-22T13:41:38Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": 11,
+    "original_line": 6,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "chatgpt-codex-connector"
+    ],
+    "path": "bin/start-backend",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": 1,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5qjXrt"
+  },
+  {
+    "comment_count": 3,
+    "comments_truncated": false,
+    "component": "infra:scripts",
+    "computed_at": "2026-08-17T14:45:30.050297Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-01-28T08:19:01Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 55,
+    "original_line": 45,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "graphite-app",
+      "rafaeelaudibert",
+      "webjunkie"
+    ],
+    "path": "bin/start",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": 53,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5rYhZW"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "common:hogli",
+    "computed_at": "2026-08-17T14:45:30.050556Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-01-28T08:19:03Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 165,
+    "owners": [],
+    "participant_logins": [
+      "graphite-app"
+    ],
+    "path": "common/hogli/core/cli.py",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5rYhal"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "common:hogli",
+    "computed_at": "2026-08-17T14:45:30.050579Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-01-28T09:23:05Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 171,
+    "owners": [],
+    "participant_logins": [
+      "graphite-app"
+    ],
+    "path": "common/hogli/core/cli.py",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/webjunkie",
+    "resolved_by_login": "webjunkie",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5rZQlv"
+  },
+  {
+    "comment_count": 3,
+    "comments_truncated": false,
+    "component": "infra:scripts",
+    "computed_at": "2026-08-17T14:45:30.050612Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-01-29T20:59:08Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 1,
+    "original_line": 1,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "rafaeelaudibert",
+      "webjunkie"
+    ],
+    "path": "bin/start",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": null,
+    "subject_type": "FILE",
+    "thread_id": "PRRT_kwDODg-Tdc5rvuyT"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "infra:repo-root",
+    "computed_at": "2026-08-17T14:45:30.050672Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:49:48Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 28,
+    "owners": [],
+    "participant_logins": [
+      "chatgpt-codex-connector"
+    ],
+    "path": ".env.development",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI2BL"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "tools:hogli",
+    "computed_at": "2026-08-17T14:45:30.050694Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:49:48Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 292,
+    "original_line": 285,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "chatgpt-codex-connector"
+    ],
+    "path": "tools/hogli/src/hogli/cli.py",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": 284,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI2BQ"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "infra:scripts",
+    "computed_at": "2026-08-17T14:45:30.050707Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:49:48Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 60,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "chatgpt-codex-connector"
+    ],
+    "path": "bin/start",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI2BS"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "infra:repo-root",
+    "computed_at": "2026-08-17T14:45:30.050719Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:52:00Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 28,
+    "owners": [],
+    "participant_logins": [
+      "copilot-pull-request-reviewer"
+    ],
+    "path": ".env.development",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI4dp"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "tools:hogli",
+    "computed_at": "2026-08-17T14:45:30.050731Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:52:01Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 310,
+    "original_line": 301,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "copilot-pull-request-reviewer"
+    ],
+    "path": "tools/hogli/src/hogli/cli.py",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": 284,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI4eP"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "infra:docker",
+    "computed_at": "2026-08-17T14:45:30.050744Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-19T11:52:01Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 172,
+    "owners": [
+      "team-devex"
+    ],
+    "participant_logins": [
+      "copilot-pull-request-reviewer"
+    ],
+    "path": "docker-compose.sandbox.yml",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "resolved_by_actor_id": "github/user/posthog-bot-comment-resolver[bot]",
+    "resolved_by_login": "posthog-bot-comment-resolver[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6DI4ev"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "common:storybook",
+    "computed_at": "2026-08-17T14:45:30.050972Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-21T13:54:22Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 80,
+    "owners": [],
+    "participant_logins": [
+      "copilot-pull-request-reviewer"
+    ],
+    "path": "common/storybook/webpack.config.js",
+    "pr_id": "github.com/PostHog/posthog#pr/46726",
+    "pr_number": 46726,
+    "resolved_by_actor_id": "github/user/gantoine",
+    "resolved_by_login": "gantoine",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6D0fV1"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "common:storybook",
+    "computed_at": "2026-08-17T14:45:30.050987Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-21T13:54:23Z",
+    "is_collapsed": true,
+    "is_outdated": false,
+    "is_resolved": true,
+    "line": 55,
+    "original_line": 55,
+    "owners": [],
+    "participant_logins": [
+      "copilot-pull-request-reviewer"
+    ],
+    "path": "common/storybook/package.json",
+    "pr_id": "github.com/PostHog/posthog#pr/46726",
+    "pr_number": 46726,
+    "resolved_by_actor_id": "github/user/gantoine",
+    "resolved_by_login": "gantoine",
+    "start_line": 52,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6D0fW3"
+  },
+  {
+    "comment_count": 2,
+    "comments_truncated": false,
+    "component": "infra:docs",
+    "computed_at": "2026-08-17T14:45:30.051244Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-13T01:53:33Z",
+    "is_collapsed": true,
+    "is_outdated": false,
+    "is_resolved": true,
+    "line": 17,
+    "original_line": 19,
+    "owners": [],
+    "participant_logins": [
+      "copilot-pull-request-reviewer",
+      "rafaeelaudibert"
+    ],
+    "path": "docs/onboarding/product-analytics/_snippets/python-event-capture.tsx",
+    "pr_id": "github.com/PostHog/posthog#pr/47825",
+    "pr_number": 47825,
+    "resolved_by_actor_id": "github/user/rafaeelaudibert",
+    "resolved_by_login": "rafaeelaudibert",
+    "start_line": 17,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5uX9Hb"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051512Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-26T18:20:14Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": 12,
+    "original_line": 6,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "graphite-app"
+    ],
+    "path": "posthog/hogql/database/test/test_postgres_table.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/graphite-app[bot]",
+    "resolved_by_login": "graphite-app[bot]",
+    "start_line": 5,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5xA3U9"
+  },
+  {
+    "comment_count": 2,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051527Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-26T18:25:22Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 42,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "a-lider",
+      "greptile-apps"
+    ],
+    "path": "posthog/hogql/printer/access_control.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/a-lider",
+    "resolved_by_login": "a-lider",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5xA7XI"
+  },
+  {
+    "comment_count": 3,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051569Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-26T18:25:26Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 22,
+    "original_line": 21,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "ReeceJones",
+      "a-lider",
+      "greptile-apps"
+    ],
+    "path": "posthog/hogql/database/postgres_table.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": 15,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5xA7Z4"
+  },
+  {
+    "comment_count": 2,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051546Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-26T18:25:25Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 73,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "a-lider",
+      "greptile-apps"
+    ],
+    "path": "posthog/hogql/printer/access_control.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/a-lider",
+    "resolved_by_login": "a-lider",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5xA7ZE"
+  },
+  {
+    "comment_count": 2,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051596Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-02-26T18:26:40Z",
+    "is_collapsed": true,
+    "is_outdated": false,
+    "is_resolved": true,
+    "line": 846,
+    "original_line": 954,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "a-lider",
+      "graphite-app"
+    ],
+    "path": "posthog/hogql/printer/clickhouse.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/a-lider",
+    "resolved_by_login": "a-lider",
+    "start_line": 933,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc5xA8nu"
+  },
+  {
+    "comment_count": 3,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051615Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-26T21:24:38Z",
+    "is_collapsed": false,
+    "is_outdated": true,
+    "is_resolved": false,
+    "line": null,
+    "original_line": 41,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "ReeceJones",
+      "a-lider"
+    ],
+    "path": "posthog/hogql/printer/access_control.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6E7iwq"
+  },
+  {
+    "comment_count": 2,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051657Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-26T21:27:18Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 1851,
+    "owners": [],
+    "participant_logins": [
+      "ReeceJones",
+      "a-lider"
+    ],
+    "path": "posthog/hogql_queries/query_runner.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/a-lider",
+    "resolved_by_login": "a-lider",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6E7lXY"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051675Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-26T21:27:40Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 1854,
+    "owners": [],
+    "participant_logins": [
+      "ReeceJones"
+    ],
+    "path": "posthog/hogql_queries/query_runner.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/a-lider",
+    "resolved_by_login": "a-lider",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6E7ltS"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051691Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-26T21:37:59Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 1851,
+    "owners": [],
+    "participant_logins": [
+      "veria-ai"
+    ],
+    "path": "posthog/hogql_queries/query_runner.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/veria-ai[bot]",
+    "resolved_by_login": "veria-ai[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6E7uPs"
+  },
+  {
+    "comment_count": 1,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051702Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-27T18:13:05Z",
+    "is_collapsed": true,
+    "is_outdated": true,
+    "is_resolved": true,
+    "line": null,
+    "original_line": 39,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "veria-ai"
+    ],
+    "path": "posthog/hogql/printer/access_control.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": "github/user/veria-ai[bot]",
+    "resolved_by_login": "veria-ai[bot]",
+    "start_line": null,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6FL_Aa"
+  },
+  {
+    "comment_count": 3,
+    "comments_truncated": false,
+    "component": "platform:hogql",
+    "computed_at": "2026-08-17T14:45:30.051718Z",
+    "diff_side": "RIGHT",
+    "first_comment_at": "2026-05-29T12:12:49Z",
+    "is_collapsed": false,
+    "is_outdated": false,
+    "is_resolved": false,
+    "line": 21,
+    "original_line": 21,
+    "owners": [
+      "team-data-tools"
+    ],
+    "participant_logins": [
+      "a-lider",
+      "veria-ai"
+    ],
+    "path": "posthog/hogql/printer/access_control.py",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "resolved_by_actor_id": null,
+    "resolved_by_login": null,
+    "start_line": 21,
+    "subject_type": "LINE",
+    "thread_id": "PRRT_kwDODg-Tdc6FrMTB"
+  }
+]

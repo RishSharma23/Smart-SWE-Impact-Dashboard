@@ -1,0 +1,47 @@
+# Analysis source. This repository is CLONED AND READ ONLY — never modified, never built.
+repository:
+  owner: PostHog
+  name: posthog
+  url: https://github.com/PostHog/posthog
+  default_branch: master
+  # Repository-qualified identifier prefix used to build stable IDs across reruns.
+  qualifier: github.com/PostHog/posthog
+
+clone:
+  # Local path (relative to the project root) for the read-only analysis clone.
+  path: data/raw/git/posthog
+  # Strategy is recorded in the run manifest.
+  #   shallow_since  - blobs present for the window; fast local diffs; no pre-window history
+  #   blob_none      - full DAG + trees, blobs lazily fetched (slow numstat)
+  #   full           - everything (needs ~7 GB free)
+  strategy: shallow_since
+  # Buffer before window_start so PRs opened before the window but merged inside
+  # it still have their commits locally.
+  shallow_since_buffer_days: 30
+  single_branch: true
+  fetch_tags: false
+
+# Files snapshotted at the analyzed HEAD to derive the component/ownership ruleset.
+# Missing files are recorded as missing, never silently skipped.
+snapshot_files:
+  - .github/CODEOWNERS
+  - .github/CODEOWNERS-soft
+  - products/README.md
+  - products/architecture.md
+  - docs/internal/monorepo-layout.md
+  - AGENTS.md
+  - CLAUDE.md
+  - package.json
+  - pyproject.toml
+  - tsconfig.json
+  - ee/LICENSE
+  - LICENSE
+
+# Path prefixes whose license area differs from the repository default.
+license_areas:
+  - path_prefix: ee/
+    license: PostHog Enterprise (proprietary)
+    note: Not MIT. Must never be aggregated as ordinary open-source code.
+  - path_prefix: ""
+    license: MIT
+    note: Repository default per LICENSE.

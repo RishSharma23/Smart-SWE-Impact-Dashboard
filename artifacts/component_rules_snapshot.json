@@ -1,0 +1,171 @@
+{
+  "agents_files": 44,
+  "codeowners_rules": 21,
+  "codeowners_sources": [
+    ".github/CODEOWNERS"
+  ],
+  "convention_rules": 49,
+  "head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+  "owners_files": {
+    "": {
+      "path": "owners.yaml",
+      "rule_count": 21,
+      "sha256": "8e13f07db21d508d54585dd3b999da4abce065315789c4fe0b160768aeb59951"
+    },
+    ".agents": {
+      "path": ".agents/owners.yaml",
+      "rule_count": 1,
+      "sha256": "348ce9daf12d0472a446a16046d550c7814776fe4868dbfa904b70fffb1921af"
+    },
+    ".agents/skills": {
+      "path": ".agents/skills/owners.yaml",
+      "rule_count": 1,
+      "sha256": "dcedce3e3d167366481c7211708fc853c9b482482f7e476895ab65e025ae3130"
+    },
+    ".github": {
+      "path": ".github/owners.yaml",
+      "rule_count": 5,
+      "sha256": "0d4dfb45ee23fdd2139972011998872ba01d6ca68ed03eba5fae4ca4e244fda7"
+    },
+    "ee": {
+      "path": "ee/owners.yaml",
+      "rule_count": 8,
+      "sha256": "f45e73c7524bea3f9bc450a0bc2e74ecc4b90aac8f429c490039462131dd3b95"
+    },
+    "frontend/src/lib/components": {
+      "path": "frontend/src/lib/components/owners.yaml",
+      "rule_count": 3,
+      "sha256": "867d2606bf99d07d1381ef0e9cc7b7b7ecc0f177a2f1b322a2419d46263b26d0"
+    },
+    "frontend/src/scenes": {
+      "path": "frontend/src/scenes/owners.yaml",
+      "rule_count": 43,
+      "sha256": "9ed729be96ed4425a42ab98b8b0358802b4f1b48e5810904f2555eeb2d631286"
+    },
+    "frontend/src/scenes/settings/environment": {
+      "path": "frontend/src/scenes/settings/environment/owners.yaml",
+      "rule_count": 3,
+      "sha256": "fb8f439f2cdf748b8301a18586d94723f2787df3f395cf154bef6f7d1749aaf6"
+    },
+    "frontend/src/toolbar": {
+      "path": "frontend/src/toolbar/owners.yaml",
+      "rule_count": 3,
+      "sha256": "5956b708068ddf8f27c136d8e70625c49ee08d3130dc287fd28256e84fa67d6d"
+    },
+    "nodejs/src": {
+      "path": "nodejs/src/owners.yaml",
+      "rule_count": 5,
+      "sha256": "9a546a2de9e1b1b8299e4eaf6cd296b6199f356a034dd8837a989cba480fb850"
+    },
+    "nodejs/src/ingestion/pipelines/ai/costs": {
+      "path": "nodejs/src/ingestion/pipelines/ai/costs/owners.yaml",
+      "rule_count": 1,
+      "sha256": "cb07f676e9971072f13bf9a84fee4ab9f04d6307e160566594d9cc60acede47a"
+    },
+    "posthog": {
+      "path": "posthog/owners.yaml",
+      "rule_count": 14,
+      "sha256": "75769b75c0a275cd0be46164e730dce4894d9685a3307a4ebd74d7d556092701"
+    },
+    "posthog/api": {
+      "path": "posthog/api/owners.yaml",
+      "rule_count": 9,
+      "sha256": "49110b802e7c5550d7850733ece9b1e57bcd3a7219ba6b550dd1ac75c2edf154"
+    },
+    "posthog/dags": {
+      "path": "posthog/dags/owners.yaml",
+      "rule_count": 2,
+      "sha256": "45697955a171bff727eb72e4ad23629c52f0cfb6383711ac4c389bf958c8a511"
+    },
+    "posthog/dags/locations": {
+      "path": "posthog/dags/locations/owners.yaml",
+      "rule_count": 1,
+      "sha256": "71d41ea24092bb4ef49483025c19ef84fa0853d0b80e17577a457fb7d15d3604"
+    },
+    "posthog/hogql/database/schema": {
+      "path": "posthog/hogql/database/schema/owners.yaml",
+      "rule_count": 3,
+      "sha256": "bce35d1ff1be0f4726fbb480ca0e2661149b292d7e6a951344aec2d01173f6f8"
+    },
+    "posthog/hogql_queries": {
+      "path": "posthog/hogql_queries/owners.yaml",
+      "rule_count": 9,
+      "sha256": "183af1d3785dc4d2b341568f3347492119fba0424f7626147b54dfd532ca6712"
+    },
+    "posthog/models": {
+      "path": "posthog/models/owners.yaml",
+      "rule_count": 14,
+      "sha256": "0d0ab5cedc7e97381dfc4acf7f2446f554c5e4d71d90d0e6e0afffc95500de2d"
+    },
+    "posthog/session_recordings": {
+      "path": "posthog/session_recordings/owners.yaml",
+      "rule_count": 1,
+      "sha256": "42845d74b541cac9cb73397729ced162924b97f1c0b2a4b05bf589be44531bda"
+    },
+    "posthog/tasks": {
+      "path": "posthog/tasks/owners.yaml",
+      "rule_count": 10,
+      "sha256": "48cd91aa3622c889e35b12b48132cc819255af42c1919d4088c8a04fc4068007"
+    },
+    "posthog/templates/email": {
+      "path": "posthog/templates/email/owners.yaml",
+      "rule_count": 2,
+      "sha256": "49e5fe670034d79eaeb6cb54746f123bd520a7c0d63b9270e43f8c94652c4bca"
+    },
+    "posthog/temporal": {
+      "path": "posthog/temporal/owners.yaml",
+      "rule_count": 17,
+      "sha256": "d849b67e06ba1a2728b97d945e4fcf0d333dbac8a35ce906ad18f9a77f206eb9"
+    },
+    "products/ai_observability/backend": {
+      "path": "products/ai_observability/backend/owners.yaml",
+      "rule_count": 2,
+      "sha256": "8cd86b2bbf0eece504c433ec6a69fb5e786eecdfbe3ad2531c1472068cb663b2"
+    },
+    "products/ai_observability/frontend/prompts": {
+      "path": "products/ai_observability/frontend/prompts/owners.yaml",
+      "rule_count": 0,
+      "sha256": "7298154f5b073b6d8e176ac922b0ab418f927a5492fda3d943bdaedc25227312"
+    },
+    "rust": {
+      "path": "rust/owners.yaml",
+      "rule_count": 7,
+      "sha256": "32fd6fe11478939b0346ff5c53d91b29c885e88f04d4b7a4ea962040b98d0dd0"
+    },
+    "services/mcp/src": {
+      "path": "services/mcp/src/owners.yaml",
+      "rule_count": 1,
+      "sha256": "aa3081205d9a5fb0f2e78d3d947d8427e230d2212cf21221f713f402aa0a3e92"
+    }
+  },
+  "product_count": 84,
+  "source_hashes": {
+    ".agents/owners.yaml": "348ce9daf12d0472a446a16046d550c7814776fe4868dbfa904b70fffb1921af",
+    ".agents/skills/owners.yaml": "dcedce3e3d167366481c7211708fc853c9b482482f7e476895ab65e025ae3130",
+    ".github/CODEOWNERS": "21f64caf4987eb9ce7c6f1fd8f7c3d60d37e74e497d1d8dcf82cd890deb7721f",
+    ".github/owners.yaml": "0d4dfb45ee23fdd2139972011998872ba01d6ca68ed03eba5fae4ca4e244fda7",
+    "ee/owners.yaml": "f45e73c7524bea3f9bc450a0bc2e74ecc4b90aac8f429c490039462131dd3b95",
+    "frontend/src/lib/components/owners.yaml": "867d2606bf99d07d1381ef0e9cc7b7b7ecc0f177a2f1b322a2419d46263b26d0",
+    "frontend/src/scenes/owners.yaml": "9ed729be96ed4425a42ab98b8b0358802b4f1b48e5810904f2555eeb2d631286",
+    "frontend/src/scenes/settings/environment/owners.yaml": "fb8f439f2cdf748b8301a18586d94723f2787df3f395cf154bef6f7d1749aaf6",
+    "frontend/src/toolbar/owners.yaml": "5956b708068ddf8f27c136d8e70625c49ee08d3130dc287fd28256e84fa67d6d",
+    "nodejs/src/ingestion/pipelines/ai/costs/owners.yaml": "cb07f676e9971072f13bf9a84fee4ab9f04d6307e160566594d9cc60acede47a",
+    "nodejs/src/owners.yaml": "9a546a2de9e1b1b8299e4eaf6cd296b6199f356a034dd8837a989cba480fb850",
+    "owners.yaml": "8e13f07db21d508d54585dd3b999da4abce065315789c4fe0b160768aeb59951",
+    "posthog/api/owners.yaml": "49110b802e7c5550d7850733ece9b1e57bcd3a7219ba6b550dd1ac75c2edf154",
+    "posthog/dags/locations/owners.yaml": "71d41ea24092bb4ef49483025c19ef84fa0853d0b80e17577a457fb7d15d3604",
+    "posthog/dags/owners.yaml": "45697955a171bff727eb72e4ad23629c52f0cfb6383711ac4c389bf958c8a511",
+    "posthog/hogql/database/schema/owners.yaml": "bce35d1ff1be0f4726fbb480ca0e2661149b292d7e6a951344aec2d01173f6f8",
+    "posthog/hogql_queries/owners.yaml": "183af1d3785dc4d2b341568f3347492119fba0424f7626147b54dfd532ca6712",
+    "posthog/models/owners.yaml": "0d0ab5cedc7e97381dfc4acf7f2446f554c5e4d71d90d0e6e0afffc95500de2d",
+    "posthog/owners.yaml": "75769b75c0a275cd0be46164e730dce4894d9685a3307a4ebd74d7d556092701",
+    "posthog/session_recordings/owners.yaml": "42845d74b541cac9cb73397729ced162924b97f1c0b2a4b05bf589be44531bda",
+    "posthog/tasks/owners.yaml": "48cd91aa3622c889e35b12b48132cc819255af42c1919d4088c8a04fc4068007",
+    "posthog/templates/email/owners.yaml": "49e5fe670034d79eaeb6cb54746f123bd520a7c0d63b9270e43f8c94652c4bca",
+    "posthog/temporal/owners.yaml": "d849b67e06ba1a2728b97d945e4fcf0d333dbac8a35ce906ad18f9a77f206eb9",
+    "products/ai_observability/backend/owners.yaml": "8cd86b2bbf0eece504c433ec6a69fb5e786eecdfbe3ad2531c1472068cb663b2",
+    "products/ai_observability/frontend/prompts/owners.yaml": "7298154f5b073b6d8e176ac922b0ab418f927a5492fda3d943bdaedc25227312",
+    "rust/owners.yaml": "32fd6fe11478939b0346ff5c53d91b29c885e88f04d4b7a4ea962040b98d0dd0",
+    "services/mcp/src/owners.yaml": "aa3081205d9a5fb0f2e78d3d947d8427e230d2212cf21221f713f402aa0a3e92"
+  }
+}

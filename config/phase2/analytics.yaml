@@ -1,0 +1,194 @@
+# Phase 2 — deterministic advanced analytics (spec sections A–G).
+#
+# All of it is explainable arithmetic over Phase 1 evidence.  No model, no
+# learned weight, no black box.  Every number produced here is reported
+# alongside the raw inputs that produced it.
+
+analytics:
+  version: "1.0.0"
+
+  # ------------------------------------------- A. dependency propagation ---
+  propagation:
+    # Only time-respecting edges: an adopter must be merged strictly after the
+    # thing it adopts.
+    require_time_respecting: true
+    max_depth: 3
+    # Files a PR *introduced* are the strongest propagation sources; modified
+    # files are included at a lower weight because the dependency may predate
+    # the change.
+    source_weight:
+      introduced: 1.00
+      modified: 0.45
+    # A single heavily-connected utility must not dominate. Each source path is
+    # damped by its fan-in, and the per-episode contribution is capped.
+    hub_damping: inverse_log_fan_in     # w = 1 / (1 + log2(1 + fan_in))
+    hub_fan_in_percentile_exclude: 99.5
+    max_paths_per_episode: 400
+    max_propagation_mass_per_episode: 25.0
+    # Hard stop on the walk. One episode touching a widely-imported module can
+    # otherwise enumerate tens of thousands of adoption events, which does not
+    # change its band (the mass is capped above). Truncation is recorded per
+    # episode as `walk_truncated`, never hidden.
+    max_edges_per_episode: 4000
+    # Aggregates are computed over EVERY event above; a full edge record is
+    # materialised for only this many, as concrete examples for the UI. The
+    # summary reports `adoption_events` and `edges_recorded` so the sampling is
+    # explicit rather than implied.
+    max_recorded_edges_per_episode: 60
+    # Beyond depth 1 the walk keeps only the strongest-carrying paths. An
+    # unbounded frontier in a monorepo reaches everything by depth 3, which
+    # stops being evidence of anything.
+    max_frontier_per_depth: 150
+    # What is reported per episode.
+    report:
+      - reach_file_count
+      - distinct_component_penetration
+      - distinct_downstream_authors
+      - max_path_depth
+      - mass_after_cap
+
+  # ------------------------- B. time decay with foundational persistence ---
+  decay:
+    half_life_days: 180
+    # exp(-ln(2) * age_days / half_life)
+    formula: "exp(-ln(2) * t / H)"
+    # Foundational persistence override: an artifact still being referenced
+    # late in the window keeps at least this much weight regardless of age.
+    survival_floor: 0.35
+    persistence_window_days: 45     # "still referenced" = adopted within this
+                                    # many days of the window end
+    min_events_for_persistence: 2
+    # Raw age, decay factor and persistence are always reported separately —
+    # never collapsed into one opaque number.
+    report_components_separately: true
+
+  # ------------------------------- C. novelty and replaceability evidence ---
+  novelty:
+    classes:
+      - new_capability      # new module/product/API introduced
+      - extension           # existing module extended
+      - simplification      # net removal with tests intact
+      - maintenance_repeat  # same area repeatedly touched, routine
+    # A token appearing in more than this share of PR titles is not a
+    # distinctive problem framing.
+    distinctive_token_max_document_frequency: 0.02
+    new_capability_markers:
+      - new_directory
+      - new_product_manifest
+      - new_public_export
+      - new_migration_with_new_table
+    # Novelty is EVIDENCE, never a quality claim, and never a band by itself.
+    may_set_band_alone: false
+
+  # -------------------------------------------------- D. corrective burden ---
+  corrective:
+    classes:
+      healthy_iteration:
+        description: Self follow-up shortly after, no revert, tests present.
+        max_days_after: 14
+        penalty: 0.0
+      self_correction:
+        description: The same engineer fixed their own change.
+        penalty: 0.15
+      unrelated_same_area:
+        description: >
+          Proximate-only evidence with no shared issue/flag and a different
+          component focus. Phase 1 marks these requires_human_confirmation.
+        penalty: 0.0
+      probable_regression:
+        description: >
+          Explicit or linked evidence that a later fix corrected this change.
+        penalty: 0.5
+      confirmed_revert:
+        description: An explicit revert of this change that was not reapplied.
+        penalty: 1.0
+    # Capped so experimentation is never punished twice, and applied to exactly
+    # one dimension (propagation_durability) — recorded as counterevidence text
+    # everywhere else.
+    max_total_penalty: 1.0
+    applies_to_dimension: propagation_durability
+    record_as_counterevidence_everywhere: true
+
+  # -------------------------------------------- E. review causal evidence ---
+  review_causality:
+    # Confidence in "this comment caused that change".
+    high_requires:
+      - comment_precedes_change
+      - acknowledged_or_resolved
+      - concern_is_consequential
+    medium_requires:
+      - comment_precedes_change
+      - concern_is_consequential
+    # Squash merging removes intra-PR commit history from master, so a literal
+    # pre/post revision diff is usually impossible. GitHub's `outdated` flag on
+    # a review comment is the surviving evidence that the code under the
+    # comment moved after it was written.
+    outdated_comment_is_change_evidence: true
+    pre_post_revision_available: false
+    pre_post_unavailable_reason: >
+      PostHog squash-merges; intra-PR commit history is absent from the analysed
+      branch. Documented in Phase 1 handover §10.5.
+    concern_classes:
+      correctness: ['this is wrong', 'incorrect', 'bug', 'race condition',
+                    'off by one', 'edge case', 'null', 'undefined', 'will throw',
+                    'does not handle', "doesn't handle"]
+      design_architecture: ['abstraction', 'coupling', 'should live', 'belongs in',
+                            'separate', 'architecture', 'design', 'pattern',
+                            'refactor this', 'restructure', 'circular']
+      alternative_approach: ['instead of', 'why not', 'consider using', 'rather than',
+                             'alternative', 'simpler to', 'we could just']
+      scope: ['out of scope', 'separate pr', 'split this', 'too big', 'descope',
+              'do we need', 'is this necessary', 'yagni']
+      security: ['security', 'vulnerab', 'injection', 'xss', 'csrf', 'exploit',
+                 'sanitiz', 'escape', 'auth bypass', 'secret', 'credential']
+      privacy: ['pii', 'gdpr', 'personal data', 'privacy', 'anonymi']
+      data_integrity: ['data loss', 'lose data', 'drop table', 'truncate',
+                       'irreversible', 'destructive', 'corrupt']
+      migration_safety: ['migration', 'backfill', 'schema change', 'alter table',
+                         'downtime', 'lock the table', 'blocking migration']
+      performance: ['performance', 'n+1', 'latency', 'timeout', 'index',
+                    'query plan', 'memory leak', 'o(n']
+      api_contract: ['breaking change', 'backwards incompat', 'backward incompat',
+                     'public api', 'will break', 'deprecat', 'versioning']
+      testing: ['add a test', 'needs a test', 'test coverage', 'untested', 'no test']
+    consequential_classes:
+      - correctness
+      - design_architecture
+      - alternative_approach
+      - scope
+      - security
+      - privacy
+      - data_integrity
+      - migration_safety
+      - performance
+      - api_contract
+    # Explicitly NOT consequential on its own.
+    non_consequential_classes:
+      - testing
+    consequence_bands:
+      none: No observable change followed.
+      local_change: The referenced file changed after the comment.
+      design_change: The change spans multiple files or components.
+      prevented_risk: A safety concern was raised and the code changed.
+
+  # ------------------------------------------------- F. portfolio diversity ---
+  diversity:
+    # Descriptive only. Breadth is never rewarded and concentration is never
+    # punished; the profile exists so a reader can see which it is.
+    entropy_base: 2
+    concentration_labels:
+      single_episode_dominant: 0.60   # top episode holds >= 60% of the mass
+      few_episodes: 0.85              # top three hold >= 85%
+    affects_ranking: false
+
+  # -------------------------------------------------------- G. uncertainty ---
+  uncertainty:
+    bootstrap_resamples: 150
+    random_seed: 20260816
+    # Missing data widens the interval; it never lowers the point estimate.
+    missing_data_widens_only: true
+    report:
+      - rank_distribution
+      - top5_inclusion_probability
+      - rank_stability_index
+      - band_intervals

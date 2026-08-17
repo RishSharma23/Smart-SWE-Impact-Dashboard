@@ -1,0 +1,3606 @@
+[
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 7,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 8,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-20T07:59:49Z",
+    "pr_id": "github.com/PostHog/posthog#pr/45696",
+    "pr_number": 45696,
+    "proximate_candidate_count": 8,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.12,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59173 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "bin/start"
+        ],
+        "strength": "weak",
+        "target_number": 59173
+      },
+      {
+        "days_after": 0.18,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59183 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "bin/start",
+          "tools/hogli/src/hogli/cli.py"
+        ],
+        "strength": "weak",
+        "target_number": 59183
+      },
+      {
+        "days_after": 0.24,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59199 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "tools/hogli/src/hogli/cli.py"
+        ],
+        "strength": "weak",
+        "target_number": 59199
+      },
+      {
+        "days_after": 1.52,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59486 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "bin/deploy-hobby"
+        ],
+        "strength": "weak",
+        "target_number": 59486
+      },
+      {
+        "days_after": 1.78,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59554 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".env.development"
+        ],
+        "strength": "weak",
+        "target_number": 59554
+      },
+      {
+        "days_after": 5.35,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59930 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".env.services"
+        ],
+        "strength": "weak",
+        "target_number": 59930
+      },
+      {
+        "days_after": 7.45,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60298 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-security.yaml"
+        ],
+        "strength": "weak",
+        "target_number": 60298
+      },
+      {
+        "days_after": 7.5,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60312 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "tools/hogli/src/hogli/cli.py"
+        ],
+        "strength": "weak",
+        "target_number": 60312
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 3,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 3,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-21T17:58:52Z",
+    "pr_id": "github.com/PostHog/posthog#pr/46473",
+    "pr_number": 46473,
+    "proximate_candidate_count": 3,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.07,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59400 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59400
+      },
+      {
+        "days_after": 5.54,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60033 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60033
+      },
+      {
+        "days_after": 12.98,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61440 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61440
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-21T15:22:09Z",
+    "pr_id": "github.com/PostHog/posthog#pr/46726",
+    "pr_number": 46726,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-29T14:52:34Z",
+    "pr_id": "github.com/PostHog/posthog#pr/46785",
+    "pr_number": 46785,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-11T19:24:46Z",
+    "pr_id": "github.com/PostHog/posthog#pr/47825",
+    "pr_number": 47825,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 6,
+      "replacement": 1,
+      "revert": 1,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 8,
+    "explicit_regression_signals": [
+      {
+        "edge_id": "edge/supersedes/1405ffdc9fa1ccfbedd2",
+        "edge_type": "supersedes",
+        "episode_edges_version": "1.0.0",
+        "evidence": "HogQL's object-level access control on system.* tables (PR #49264) emitsnotIn(toString(id), tuple($v0, $v1, ...)) against the",
+        "evidence_source": "phrase:supersedes+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/60062",
+        "source_pr_number": 60062,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 49264,
+        "target_pr_in_dataset": true
+      },
+      {
+        "edge_id": "edge/reverts/de70a54187d96b75a2e1",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "requisite cleanup for object-level access control in HogQL (#49264) Changes  Set system.accounts access_scope to account Add a",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/61614",
+        "source_pr_number": 61614,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 49264,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "explicit_signal_count": 2,
+    "files_introduced": 1,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-24T10:54:40Z",
+    "pr_id": "github.com/PostHog/posthog#pr/49264",
+    "pr_number": 49264,
+    "proximate_candidate_count": 6,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 4.9,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66507 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/rbac/user_access_control.py"
+        ],
+        "strength": "weak",
+        "target_number": 66507
+      },
+      {
+        "days_after": 5.53,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66814 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/rbac/user_access_control.py"
+        ],
+        "strength": "weak",
+        "target_number": 66814
+      },
+      {
+        "days_after": 5.87,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66925 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/rbac/user_access_control.py"
+        ],
+        "strength": "weak",
+        "target_number": 66925
+      },
+      {
+        "days_after": 11.89,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #67414 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/hogql/database/schema/system.py"
+        ],
+        "strength": "weak",
+        "target_number": 67414
+      },
+      {
+        "days_after": 12.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68226 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/hogql/printer/base.py"
+        ],
+        "strength": "weak",
+        "target_number": 68226
+      },
+      {
+        "days_after": 13.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68728 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/hogql/printer/clickhouse.py"
+        ],
+        "strength": "weak",
+        "target_number": 68728
+      }
+    ],
+    "regression_evidence_tier": "explicit",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": null,
+    "survival_60d_reason": "insufficient follow-up history: +60d falls after the window end",
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": true
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 27,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 28,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-05T10:38:50Z",
+    "pr_id": "github.com/PostHog/posthog#pr/50122",
+    "pr_number": 50122,
+    "proximate_candidate_count": 28,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61691 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 61691
+      },
+      {
+        "days_after": 2.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62071 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62071
+      },
+      {
+        "days_after": 4.9,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62156 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62156
+      },
+      {
+        "days_after": 4.98,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62539 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62539
+      },
+      {
+        "days_after": 5.09,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62663 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62663
+      },
+      {
+        "days_after": 5.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62368 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62368
+      },
+      {
+        "days_after": 5.41,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62380 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62380
+      },
+      {
+        "days_after": 5.45,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62382 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62382
+      },
+      {
+        "days_after": 5.9,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60849 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/workflows/backend/models/__init__.py"
+        ],
+        "strength": "weak",
+        "target_number": 60849
+      },
+      {
+        "days_after": 6.0,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62384 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62384
+      },
+      {
+        "days_after": 6.99,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62726 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/models/team/team.py"
+        ],
+        "strength": "weak",
+        "target_number": 62726
+      },
+      {
+        "days_after": 8.0,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62386 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62386
+      },
+      {
+        "days_after": 8.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62388 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62388
+      },
+      {
+        "days_after": 9.93,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63299 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63299
+      },
+      {
+        "days_after": 10.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63301 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63301
+      },
+      {
+        "days_after": 10.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63520 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63520
+      },
+      {
+        "days_after": 10.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62389 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62389
+      },
+      {
+        "days_after": 10.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63546 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63546
+      },
+      {
+        "days_after": 10.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63595 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "posthog/api/team.py",
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63595
+      },
+      {
+        "days_after": 10.32,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63025 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/lib/constants.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 63025
+      },
+      {
+        "days_after": 11.35,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63880 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63880
+      },
+      {
+        "days_after": 11.38,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64105 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64105
+      },
+      {
+        "days_after": 12.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63612 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63612
+      },
+      {
+        "days_after": 12.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64295 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64295
+      },
+      {
+        "days_after": 12.31,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64307 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/scenes/settings/SettingsMap.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 64307
+      },
+      {
+        "days_after": 12.36,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62649 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62649
+      },
+      {
+        "days_after": 13.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64451 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64451
+      },
+      {
+        "days_after": 13.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64618 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64618
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 3,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 3,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-08-13T21:11:15Z",
+    "pr_id": "github.com/PostHog/posthog#pr/51311",
+    "pr_number": 51311,
+    "proximate_candidate_count": 3,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.64,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #83032 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 83032
+      },
+      {
+        "days_after": 0.66,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #83071 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 83071
+      },
+      {
+        "days_after": 0.81,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #79051 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 79051
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 21,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 21,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 7,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-27T07:35:44Z",
+    "pr_id": "github.com/PostHog/posthog#pr/51923",
+    "pr_number": 51923,
+    "proximate_candidate_count": 21,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60202 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/tasks/usage_report.py"
+        ],
+        "strength": "weak",
+        "target_number": 60202
+      },
+      {
+        "days_after": 0.17,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #58375 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 58375
+      },
+      {
+        "days_after": 0.28,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59100 is a fix touching 3 of the same non-test file(s)",
+        "shared_path_count": 3,
+        "shared_paths": [
+          "products/feature_flags/backend/flag_matching.py",
+          "products/feature_flags/backend/flags_cache.py",
+          "products/feature_flags/backend/models/feature_flag.py"
+        ],
+        "strength": "weak",
+        "target_number": 59100
+      },
+      {
+        "days_after": 1.59,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60532 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/experiments/backend/experiment_service.py"
+        ],
+        "strength": "weak",
+        "target_number": 60532
+      },
+      {
+        "days_after": 2.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60611 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "posthog/tasks/usage_report.py",
+          "posthog/temporal/usage_report/queries.py"
+        ],
+        "strength": "weak",
+        "target_number": 60611
+      },
+      {
+        "days_after": 2.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60624 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 60624
+      },
+      {
+        "days_after": 5.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60462 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/tasks/usage_report.py"
+        ],
+        "strength": "weak",
+        "target_number": 60462
+      },
+      {
+        "days_after": 5.09,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59394 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/models/remote_config.py"
+        ],
+        "strength": "weak",
+        "target_number": 59394
+      },
+      {
+        "days_after": 5.17,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60687 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 60687
+      },
+      {
+        "days_after": 5.41,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60533 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "products/feature_flags/backend/flags_cache.py",
+          "products/feature_flags/backend/local_evaluation.py"
+        ],
+        "strength": "weak",
+        "target_number": 60533
+      },
+      {
+        "days_after": 5.44,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60967 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/api/team.py"
+        ],
+        "strength": "weak",
+        "target_number": 60967
+      },
+      {
+        "days_after": 5.44,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59454 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/management/commands/sync_feature_flags.py"
+        ],
+        "strength": "weak",
+        "target_number": 59454
+      },
+      {
+        "days_after": 7.1,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61112 is a perf touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "posthog/api/cohort.py",
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 61112
+      },
+      {
+        "days_after": 7.27,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60981 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/tasks/usage_report.py"
+        ],
+        "strength": "weak",
+        "target_number": 60981
+      },
+      {
+        "days_after": 7.47,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61278 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/feature_flags/backend/sdk_cache_provider.py"
+        ],
+        "strength": "weak",
+        "target_number": 61278
+      },
+      {
+        "days_after": 7.51,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61179 is a fix touching 5 of the same non-test file(s)",
+        "shared_path_count": 5,
+        "shared_paths": [
+          "posthog/tasks/scheduled.py",
+          "products/feature_flags/backend/api/feature_flag.py",
+          "products/feature_flags/backend/flags_cache.py",
+          "products/feature_flags/backend/local_evaluation.py",
+          "products/feature_flags/backend/tasks.py"
+        ],
+        "strength": "weak",
+        "target_number": 61179
+      },
+      {
+        "days_after": 10.65,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61785 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/demo/products/hedgebox/matrix.py"
+        ],
+        "strength": "weak",
+        "target_number": 61785
+      },
+      {
+        "days_after": 12.39,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62174 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/middleware.py"
+        ],
+        "strength": "weak",
+        "target_number": 62174
+      },
+      {
+        "days_after": 13.4,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62209 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/demo/products/hedgebox/matrix.py"
+        ],
+        "strength": "weak",
+        "target_number": 62209
+      },
+      {
+        "days_after": 13.51,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61519 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/feature_flags/backend/api/feature_flag.py"
+        ],
+        "strength": "weak",
+        "target_number": 61519
+      },
+      {
+        "days_after": 13.74,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61310 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "posthog/apps.py",
+          "products/feature_flags/backend/sdk_cache_provider.py"
+        ],
+        "strength": "weak",
+        "target_number": 61310
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 1,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 1,
+    "linked_fix_candidates": [
+      {
+        "days_after": 6.0,
+        "edge_type": "later_fix_linked",
+        "evidence": "PR #61942 (fix) shares flag(s) ['web-analytics-precompute-toggle']",
+        "shared_path_count": 0,
+        "strength": "medium",
+        "target_number": 61942
+      }
+    ],
+    "merged_at": "2026-06-02T16:17:06Z",
+    "pr_id": "github.com/PostHog/posthog#pr/52155",
+    "pr_number": 52155,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "linked",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 4,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 4,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-28T15:54:59Z",
+    "pr_id": "github.com/PostHog/posthog#pr/52267",
+    "pr_number": 52267,
+    "proximate_candidate_count": 4,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 2.42,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59840 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-e2e-playwright.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59840
+      },
+      {
+        "days_after": 6.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61440 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61440
+      },
+      {
+        "days_after": 6.67,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61531 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-storybook.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61531
+      },
+      {
+        "days_after": 8.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61862 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61862
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-22T15:31:23Z",
+    "pr_id": "github.com/PostHog/posthog#pr/53492",
+    "pr_number": 53492,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-19T13:16:44Z",
+    "pr_id": "github.com/PostHog/posthog#pr/53793",
+    "pr_number": 53793,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": true,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-01T15:54:42Z",
+    "pr_id": "github.com/PostHog/posthog#pr/53803",
+    "pr_number": 53803,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 4,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 5,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 1,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-21T08:12:30Z",
+    "pr_id": "github.com/PostHog/posthog#pr/53837",
+    "pr_number": 53837,
+    "proximate_candidate_count": 5,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 6.15,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #58375 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 58375
+      },
+      {
+        "days_after": 8.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60624 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 60624
+      },
+      {
+        "days_after": 11.15,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60687 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 60687
+      },
+      {
+        "days_after": 13.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61112 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/migrations/max_migration.txt"
+        ],
+        "strength": "weak",
+        "target_number": 61112
+      },
+      {
+        "days_after": 13.49,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61179 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/tasks/scheduled.py"
+        ],
+        "strength": "weak",
+        "target_number": 61179
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 32,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 32,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 10,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-25T14:49:38Z",
+    "pr_id": "github.com/PostHog/posthog#pr/53998",
+    "pr_number": 53998,
+    "proximate_candidate_count": 32,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.15,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59735 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59735
+      },
+      {
+        "days_after": 0.57,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59932 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59932
+      },
+      {
+        "days_after": 0.65,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59999 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59999
+      },
+      {
+        "days_after": 0.79,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60021 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60021
+      },
+      {
+        "days_after": 0.97,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60074 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60074
+      },
+      {
+        "days_after": 1.31,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60159 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60159
+      },
+      {
+        "days_after": 1.59,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60170 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60170
+      },
+      {
+        "days_after": 1.66,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60189 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60189
+      },
+      {
+        "days_after": 2.66,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60318 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60318
+      },
+      {
+        "days_after": 3.18,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60305 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60305
+      },
+      {
+        "days_after": 5.75,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60774 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60774
+      },
+      {
+        "days_after": 6.01,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60143 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60143
+      },
+      {
+        "days_after": 6.18,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60810 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60810
+      },
+      {
+        "days_after": 7.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59454 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 59454
+      },
+      {
+        "days_after": 7.18,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60843 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60843
+      },
+      {
+        "days_after": 7.23,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61008 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61008
+      },
+      {
+        "days_after": 7.53,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60934 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60934
+      },
+      {
+        "days_after": 7.73,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61054 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61054
+      },
+      {
+        "days_after": 7.76,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60963 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60963
+      },
+      {
+        "days_after": 7.84,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61069 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61069
+      },
+      {
+        "days_after": 8.11,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61194 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61194
+      },
+      {
+        "days_after": 8.78,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60946 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60946
+      },
+      {
+        "days_after": 8.8,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61112 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61112
+      },
+      {
+        "days_after": 9.21,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61180 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61180
+      },
+      {
+        "days_after": 9.71,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61343 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61343
+      },
+      {
+        "days_after": 9.72,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61531 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61531
+      },
+      {
+        "days_after": 9.76,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61526 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61526
+      },
+      {
+        "days_after": 9.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61562 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61562
+      },
+      {
+        "days_after": 10.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61479 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61479
+      },
+      {
+        "days_after": 10.7,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61727 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61727
+      },
+      {
+        "days_after": 10.74,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61792 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61792
+      },
+      {
+        "days_after": 11.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61925 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61925
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 35,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 35,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-07-24T11:35:35Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54108",
+    "pr_number": 54108,
+    "proximate_candidate_count": 35,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73531 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73531
+      },
+      {
+        "days_after": 1.15,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73664 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73664
+      },
+      {
+        "days_after": 3.52,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74035 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74035
+      },
+      {
+        "days_after": 3.79,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73960 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73960
+      },
+      {
+        "days_after": 3.91,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73875 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73875
+      },
+      {
+        "days_after": 3.92,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73979 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73979
+      },
+      {
+        "days_after": 3.93,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74128 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74128
+      },
+      {
+        "days_after": 4.05,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74037 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74037
+      },
+      {
+        "days_after": 4.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #72017 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 72017
+      },
+      {
+        "days_after": 4.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74191 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74191
+      },
+      {
+        "days_after": 4.55,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74326 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74326
+      },
+      {
+        "days_after": 6.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74800 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74800
+      },
+      {
+        "days_after": 6.22,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #74295 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 74295
+      },
+      {
+        "days_after": 6.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75549 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75549
+      },
+      {
+        "days_after": 6.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75886 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75886
+      },
+      {
+        "days_after": 7.07,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75887 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75887
+      },
+      {
+        "days_after": 7.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75667 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75667
+      },
+      {
+        "days_after": 7.16,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75889 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75889
+      },
+      {
+        "days_after": 7.27,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69091 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 69091
+      },
+      {
+        "days_after": 8.42,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #76023 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 76023
+      },
+      {
+        "days_after": 8.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75986 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75986
+      },
+      {
+        "days_after": 10.47,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #76733 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 76733
+      },
+      {
+        "days_after": 11.26,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #75918 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 75918
+      },
+      {
+        "days_after": 11.29,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #73256 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 73256
+      },
+      {
+        "days_after": 11.39,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #77482 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 77482
+      },
+      {
+        "days_after": 11.97,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #77608 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 77608
+      },
+      {
+        "days_after": 12.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78099 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78099
+      },
+      {
+        "days_after": 12.19,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #76378 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 76378
+      },
+      {
+        "days_after": 12.27,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #76082 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 76082
+      },
+      {
+        "days_after": 12.96,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78350 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78350
+      },
+      {
+        "days_after": 12.98,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78780 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78780
+      },
+      {
+        "days_after": 12.98,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78534 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78534
+      },
+      {
+        "days_after": 13.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78238 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78238
+      },
+      {
+        "days_after": 13.53,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78609 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78609
+      },
+      {
+        "days_after": 13.82,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #78857 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/snapshots.yml"
+        ],
+        "strength": "weak",
+        "target_number": 78857
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 4,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 4,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 1,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-07-03T16:48:26Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54124",
+    "pr_number": 54124,
+    "proximate_candidate_count": 4,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 4.2,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68058 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/feature_flags/backend/flags_cache.py"
+        ],
+        "strength": "weak",
+        "target_number": 68058
+      },
+      {
+        "days_after": 9.57,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69650 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/cohorts/backend/models/cohort.py"
+        ],
+        "strength": "weak",
+        "target_number": 69650
+      },
+      {
+        "days_after": 10.32,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68338 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/feature_flags/backend/flags_cache.py"
+        ],
+        "strength": "weak",
+        "target_number": 68338
+      },
+      {
+        "days_after": 11.98,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70554 is a fix touching 8 of the same non-test file(s)",
+        "shared_path_count": 8,
+        "shared_paths": [
+          "products/cohorts/backend/migrations/max_migration.txt",
+          "products/cohorts/backend/models/cohort.py",
+          "products/feature_flags/backend/flags_cache.py",
+          "rust/feature-flags/src/cohorts/cohort_cache_manager.rs",
+          "rust/feature-flags/src/cohorts/cohort_models.rs",
+          "rust/feature-flags/src/cohorts/cohort_operations.rs",
+          "rust/feature-flags/src/utils/mock.rs",
+          "rust/feature-flags/src/utils/test_utils.rs"
+        ],
+        "strength": "weak",
+        "target_number": 70554
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": null,
+    "survival_60d_reason": "insufficient follow-up history: +60d falls after the window end",
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 2,
+      "replacement": 0,
+      "revert": 2,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 5,
+    "explicit_regression_signals": [
+      {
+        "edge_id": "edge/reverts/87e630d6e927ef5a613b",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "Follow-up to #54280 \u2014 surfaced during a sanity-check of \"are all tests in the c",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/60622",
+        "source_pr_number": 60622,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 54280,
+        "target_pr_in_dataset": true
+      },
+      {
+        "edge_id": "edge/reverts/91409fa069c29384a3e8",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "mdahl style, like the Django segments) before reverting it: #54280 deliberately keeps inflation out of the split count, setup",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/69886",
+        "source_pr_number": 69886,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 54280,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "explicit_signal_count": 2,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-29T08:08:11Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54280",
+    "pr_number": 54280,
+    "proximate_candidate_count": 3,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.27,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60639 is a fix touching 3 of the same non-test file(s)",
+        "shared_path_count": 3,
+        "shared_paths": [
+          ".github/scripts/optimize_test_durations.py",
+          ".github/scripts/turbo-discover.js",
+          ".github/workflows/ci-backend-update-test-timing.yml"
+        ],
+        "strength": "weak",
+        "target_number": 60639
+      },
+      {
+        "days_after": 5.39,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61440 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61440
+      },
+      {
+        "days_after": 7.57,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61862 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          ".github/workflows/ci-backend.yml"
+        ],
+        "strength": "weak",
+        "target_number": 61862
+      }
+    ],
+    "regression_evidence_tier": "explicit",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": true
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 0,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 0,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-08T15:16:15Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54283",
+    "pr_number": 54283,
+    "proximate_candidate_count": 0,
+    "proximate_fix_candidates": [],
+    "regression_evidence_tier": "none",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": true,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 1,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 1,
+      "unknown": 0
+    },
+    "corrective_churn_total": 2,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 1,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-03T12:00:36Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54418",
+    "pr_number": 54418,
+    "proximate_candidate_count": 2,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 6.82,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62608 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "nodejs/src/cdp/services/hog-executor.service.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62608
+      },
+      {
+        "days_after": 7.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62644 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "nodejs/src/cdp/types.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62644
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 5,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 5,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-02T10:33:50Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54592",
+    "pr_number": 54592,
+    "proximate_candidate_count": 5,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 1.32,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61254 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/ai_observability/frontend/aiObservabilityTraceLogic.ts"
+        ],
+        "strength": "weak",
+        "target_number": 61254
+      },
+      {
+        "days_after": 6.2,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60729 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/ai_observability/frontend/tags/llmTaggerLogic.ts"
+        ],
+        "strength": "weak",
+        "target_number": 60729
+      },
+      {
+        "days_after": 9.23,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62508 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/ai_observability/frontend/AIObservabilityTraceScene.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 62508
+      },
+      {
+        "days_after": 10.01,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63142 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/ai_observability/frontend/aiObservabilityTraceLogic.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63142
+      },
+      {
+        "days_after": 10.28,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63234 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "products/ai_observability/frontend/AIObservabilityTraceScene.tsx",
+          "products/ai_observability/frontend/ConversationDisplay/TagDisplay.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 63234
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 34,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 2,
+      "unknown": 0
+    },
+    "corrective_churn_total": 36,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-07-03T08:51:34Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54628",
+    "pr_number": 54628,
+    "proximate_candidate_count": 36,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.08,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68159 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 68159
+      },
+      {
+        "days_after": 0.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #67744 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 67744
+      },
+      {
+        "days_after": 3.33,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68601 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 68601
+      },
+      {
+        "days_after": 4.46,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68724 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 68724
+      },
+      {
+        "days_after": 4.99,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68949 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/conversations/backend/slack.py"
+        ],
+        "strength": "weak",
+        "target_number": 68949
+      },
+      {
+        "days_after": 5.0,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68995 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/conversations/backend/slack.py"
+        ],
+        "strength": "weak",
+        "target_number": 68995
+      },
+      {
+        "days_after": 5.04,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69190 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69190
+      },
+      {
+        "days_after": 5.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69196 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69196
+      },
+      {
+        "days_after": 5.34,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68764 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 68764
+      },
+      {
+        "days_after": 5.76,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69422 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69422
+      },
+      {
+        "days_after": 5.97,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69178 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69178
+      },
+      {
+        "days_after": 6.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69209 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "products/conversations/backend/tasks.py",
+          "products/conversations/frontend/scenes/ticket/SupportTicketScene.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 69209
+      },
+      {
+        "days_after": 6.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #67329 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 67329
+      },
+      {
+        "days_after": 6.29,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69661 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/conversations/frontend/scenes/ticket/SupportTicketScene.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 69661
+      },
+      {
+        "days_after": 6.66,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69412 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69412
+      },
+      {
+        "days_after": 7.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #67437 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 67437
+      },
+      {
+        "days_after": 7.15,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69244 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/conversations/backend/api/tickets.py"
+        ],
+        "strength": "weak",
+        "target_number": 69244
+      },
+      {
+        "days_after": 7.23,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #69830 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 69830
+      },
+      {
+        "days_after": 10.02,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70348 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70348
+      },
+      {
+        "days_after": 10.17,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70113 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70113
+      },
+      {
+        "days_after": 10.5,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70509 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70509
+      },
+      {
+        "days_after": 10.58,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #67532 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/layout/scenes/components/SceneTitleSection.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 67532
+      },
+      {
+        "days_after": 11.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70552 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70552
+      },
+      {
+        "days_after": 11.28,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70494 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70494
+      },
+      {
+        "days_after": 11.38,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70688 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70688
+      },
+      {
+        "days_after": 11.41,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70135 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70135
+      },
+      {
+        "days_after": 11.7,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70927 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70927
+      },
+      {
+        "days_after": 12.06,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #68554 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 68554
+      },
+      {
+        "days_after": 12.09,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70997 is a fix touching 4 of the same non-test file(s)",
+        "shared_path_count": 4,
+        "shared_paths": [
+          "products/conversations/backend/api/email_events.py",
+          "products/conversations/backend/slack.py",
+          "products/conversations/backend/tasks.py",
+          "products/conversations/backend/teams.py"
+        ],
+        "strength": "weak",
+        "target_number": 70997
+      },
+      {
+        "days_after": 12.31,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70554 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70554
+      },
+      {
+        "days_after": 12.32,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70876 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70876
+      },
+      {
+        "days_after": 12.32,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #70566 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 70566
+      },
+      {
+        "days_after": 13.2,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #71527 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "products/conversations/backend/api/email_events.py",
+          "products/conversations/backend/tasks.py"
+        ],
+        "strength": "weak",
+        "target_number": 71527
+      },
+      {
+        "days_after": 13.21,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #71250 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 71250
+      },
+      {
+        "days_after": 13.25,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #71435 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 71435
+      },
+      {
+        "days_after": 13.26,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #71554 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/conversations/backend/api/tickets.py"
+        ],
+        "strength": "weak",
+        "target_number": 71554
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": null,
+    "survival_60d_reason": "insufficient follow-up history: +60d falls after the window end",
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 35,
+      "replacement": 1,
+      "revert": 0,
+      "self_follow_up": 0,
+      "unknown": 0
+    },
+    "corrective_churn_total": 36,
+    "explicit_regression_signals": [
+      {
+        "edge_id": "edge/supersedes/fb346dee9f525fea78fc",
+        "edge_type": "supersedes",
+        "episode_edges_version": "1.0.0",
+        "evidence": "Problem The used-in lookup introduced in #54738 works, but both of its scans get expensive on large teams:",
+        "evidence_source": "phrase:supersedes+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/62820",
+        "source_pr_number": 62820,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 54738,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "explicit_signal_count": 1,
+    "files_introduced": 0,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-06-11T23:56:52Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54738",
+    "pr_number": 54738,
+    "proximate_candidate_count": 35,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 0.46,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63199 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/cohorts/mcp/tools.yaml"
+        ],
+        "strength": "weak",
+        "target_number": 63199
+      },
+      {
+        "days_after": 1.44,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62386 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62386
+      },
+      {
+        "days_after": 1.46,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62388 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62388
+      },
+      {
+        "days_after": 3.38,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63299 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63299
+      },
+      {
+        "days_after": 3.47,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63301 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63301
+      },
+      {
+        "days_after": 3.51,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63520 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63520
+      },
+      {
+        "days_after": 3.53,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62389 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62389
+      },
+      {
+        "days_after": 3.58,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63546 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63546
+      },
+      {
+        "days_after": 3.67,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63595 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63595
+      },
+      {
+        "days_after": 4.8,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63880 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63880
+      },
+      {
+        "days_after": 4.83,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62820 is a perf touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "frontend/src/scenes/cohorts/cohortEditLogic.ts",
+          "posthog/api/cohort.py"
+        ],
+        "strength": "weak",
+        "target_number": 62820
+      },
+      {
+        "days_after": 4.83,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64105 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64105
+      },
+      {
+        "days_after": 5.58,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63612 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63612
+      },
+      {
+        "days_after": 5.58,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64295 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64295
+      },
+      {
+        "days_after": 5.81,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62649 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62649
+      },
+      {
+        "days_after": 6.14,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63610 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/scenes/cohorts/cohortEditLogic.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63610
+      },
+      {
+        "days_after": 6.58,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64451 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64451
+      },
+      {
+        "days_after": 6.69,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64618 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64618
+      },
+      {
+        "days_after": 7.56,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64571 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64571
+      },
+      {
+        "days_after": 8.24,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #62941 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 62941
+      },
+      {
+        "days_after": 9.9,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65077 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65077
+      },
+      {
+        "days_after": 10.6,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63120 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63120
+      },
+      {
+        "days_after": 10.7,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64935 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64935
+      },
+      {
+        "days_after": 10.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65333 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65333
+      },
+      {
+        "days_after": 11.43,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65251 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65251
+      },
+      {
+        "days_after": 11.46,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65185 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65185
+      },
+      {
+        "days_after": 11.55,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63393 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63393
+      },
+      {
+        "days_after": 11.72,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65481 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65481
+      },
+      {
+        "days_after": 12.09,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65280 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65280
+      },
+      {
+        "days_after": 12.36,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #65415 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 65415
+      },
+      {
+        "days_after": 12.45,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #64200 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 64200
+      },
+      {
+        "days_after": 13.53,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66002 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 66002
+      },
+      {
+        "days_after": 13.6,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66078 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 66078
+      },
+      {
+        "days_after": 13.79,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #66099 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 66099
+      },
+      {
+        "days_after": 13.81,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #63358 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 63358
+      }
+    ],
+    "regression_evidence_tier": "explicit",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": false,
+    "survival_30d": null,
+    "survival_30d_reason": "no files introduced",
+    "survival_60d": null,
+    "survival_60d_reason": "no files introduced",
+    "survival_90d": null,
+    "survival_90d_reason": "no files introduced",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  },
+  {
+    "corrective_churn": {
+      "collaborator_follow_up": 14,
+      "replacement": 0,
+      "revert": 0,
+      "self_follow_up": 2,
+      "unknown": 0
+    },
+    "corrective_churn_total": 16,
+    "explicit_regression_signals": [],
+    "explicit_signal_count": 0,
+    "files_introduced": 3,
+    "linked_candidate_count": 0,
+    "linked_fix_candidates": [],
+    "merged_at": "2026-05-19T19:18:31Z",
+    "pr_id": "github.com/PostHog/posthog#pr/54799",
+    "pr_number": 54799,
+    "proximate_candidate_count": 16,
+    "proximate_fix_candidates": [
+      {
+        "days_after": 1.74,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59277 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59277
+      },
+      {
+        "days_after": 1.85,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59200 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59200
+      },
+      {
+        "days_after": 1.92,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59392 is a fix touching 2 of the same non-test file(s)",
+        "shared_path_count": 2,
+        "shared_paths": [
+          "posthog/urls.py",
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59392
+      },
+      {
+        "days_after": 2.62,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59576 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/lib/hog-charts/core/Chart.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 59576
+      },
+      {
+        "days_after": 2.62,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59490 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59490
+      },
+      {
+        "days_after": 2.84,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59573 is a perf touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59573
+      },
+      {
+        "days_after": 5.84,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59796 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59796
+      },
+      {
+        "days_after": 5.94,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59928 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 59928
+      },
+      {
+        "days_after": 6.13,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #54801 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "products/access_control/backend/property_access_control.py"
+        ],
+        "strength": "weak",
+        "target_number": 54801
+      },
+      {
+        "days_after": 9.73,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #57928 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 57928
+      },
+      {
+        "days_after": 9.77,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60424 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 60424
+      },
+      {
+        "days_after": 9.97,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60445 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 60445
+      },
+      {
+        "days_after": 12.95,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59454 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "frontend/src/lib/constants.tsx"
+        ],
+        "strength": "weak",
+        "target_number": 59454
+      },
+      {
+        "days_after": 13.35,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61037 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 61037
+      },
+      {
+        "days_after": 13.6,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60664 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 60664
+      },
+      {
+        "days_after": 13.78,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #61107 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/api/generated.ts"
+        ],
+        "strength": "weak",
+        "target_number": 61107
+      }
+    ],
+    "regression_evidence_tier": "proximate",
+    "regression_version": "1.0.0",
+    "requires_human_confirmation": true,
+    "survival_30d": 1.0,
+    "survival_30d_reason": null,
+    "survival_60d": 1.0,
+    "survival_60d_reason": null,
+    "survival_90d": null,
+    "survival_90d_reason": "insufficient follow-up history: +90d falls after the window end",
+    "tests_added_with_fix": false,
+    "was_reverted": false
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "common:esbuilder",
+    "target_component": "frontend:app"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 2,
+    "source_component": "common:hogql_parser",
+    "target_component": "platform:hogql"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 7,
+    "source_component": "common:hogvm",
+    "target_component": "platform:hogql"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 2,
+    "source_component": "common:hogvm",
+    "target_component": "platform:models"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 7,
+    "source_component": "common:replay-headless",
+    "target_component": "common:replay-shared"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "common:storybook",
+    "target_component": "common:tailwind"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 10,
+    "source_component": "common:storybook",
+    "target_component": "frontend:app"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "common:storybook",
+    "target_component": "frontend:queries"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 5,
+    "source_component": "common:storybook",
+    "target_component": "frontend:scenes"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 4,
+    "source_component": "common:storybook",
+    "target_component": "frontend:shared-lib"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "frontend:app",
+    "target_component": "common:replay-shared"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 6,
+    "source_component": "frontend:app",
+    "target_component": "frontend:layout"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 38,
+    "source_component": "frontend:app",
+    "target_component": "frontend:queries"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 82,
+    "source_component": "frontend:app",
+    "target_component": "frontend:scenes"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 184,
+    "source_component": "frontend:app",
+    "target_component": "frontend:shared-lib"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "frontend:app",
+    "target_component": "frontend:toolbar"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 3,
+    "source_component": "frontend:app",
+    "target_component": "infra:e2e"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 6,
+    "source_component": "frontend:app",
+    "target_component": "packages:quill"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 3,
+    "source_component": "frontend:app",
+    "target_component": "product:actions"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "frontend:app",
+    "target_component": "product:ai_gateway"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 17,
+    "source_component": "frontend:app",
+    "target_component": "product:ai_observability"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 3,
+    "source_component": "frontend:app",
+    "target_component": "product:alerts"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "frontend:app",
+    "target_component": "product:business_knowledge"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 1,
+    "source_component": "frontend:app",
+    "target_component": "product:cohorts"
+  },
+  {
+    "dependency_graph_version": "1.0.0",
+    "edge_count": 4,
+    "source_component": "frontend:app",
+    "target_component": "product:conversations"
+  }
+]

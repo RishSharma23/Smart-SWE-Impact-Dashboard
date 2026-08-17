@@ -1,0 +1,289 @@
+# Phase 2 — the six impact dimensions.
+#
+# Each episode is evaluated INDEPENDENTLY on six dimensions using ordinal
+# evidence bands.  A band is never inferred from volume: no rule below counts
+# PRs, commits, lines or reviews as a quantity that raises a band.  Where a
+# count appears it is a count of *distinct corroborating artifacts* or
+# *distinct downstream components/authors*, which is a breadth-of-evidence
+# statement, not a productivity statement.
+#
+# Bands
+#   0  no evidence
+#   1  local
+#   2  material
+#   3  broad          <- requires corroboration from >= 2 artifact classes
+#   4  transformative <- requires explicit textual evidence AND high confidence
+#   null = UNKNOWN, which is distinct from 0 and never treated as 0.
+#
+# Every assigned band carries: rationale, >= 1 direct artifact, corroboration
+# status, counterevidence, confidence, and this rubric version.
+
+rubric:
+  version: "1.0.0"
+
+  bands:
+    0: no_evidence
+    1: local
+    2: material
+    3: broad
+    4: transformative
+
+  # A band of 3 needs at least this many DISTINCT classes of corroborating
+  # artifact (issue / review thread / feature flag / docs / downstream
+  # adoption / test / migration).  A band of 4 needs the higher figure and an
+  # explicit textual marker from `transformative_markers`.
+  corroboration:
+    band_3_min_artifact_classes: 2
+    band_4_min_artifact_classes: 3
+    band_4_requires_high_confidence: true
+    band_4_requires_explicit_marker: true
+
+  # Confidence is computed from evidence quality, then used twice: to discount
+  # criterion evidence in the outranking model, and to widen band intervals.
+  confidence:
+    discount:
+      high: 1.00
+      medium: 0.75
+      low: 0.45
+    # Unknown does NOT equal zero.  An unknown criterion contributes no value
+    # but widens the interval instead of dragging the engineer down.
+    unknown_contributes_value: false
+    interval_halfwidth:
+      high: 0.0
+      medium: 0.5
+      low: 1.0
+      unknown: 2.0
+    # Downgrades applied when the underlying Phase 1 evidence is itself weak.
+    downgrade_reasons:
+      reachability_unknown: 1          # blast band 'unknown'
+      requires_human_confirmation: 1   # proximate-only regression evidence
+      survival_unmeasurable: 1         # window ended before the checkpoint
+      thread_truncated: 1              # review evidence incomplete
+      no_merge_commit_in_clone: 2      # no diff at all
+      llm_only_evidence: 1             # semantic layer with no deterministic backing
+    # steps of downgrade -> level
+    levels_by_downgrade: [high, medium, low, low]
+
+  dimensions:
+
+    # ---------------------------------------------------------------------
+    product_outcome:
+      label: Product / User Outcome
+      description: >
+        A defensible change in product capability or user experience.
+        Evidence is what the change touched and what corroborates that it
+        reached users, never how much of it there was.
+      band_rules:
+        0: No product or platform code changed (tests, docs, dependencies or
+           configuration only).
+        1: Product or platform code changed inside a single component with no
+           linked issue, flag, or documentation corroboration.
+        2: A linked issue is resolved, or the change ships behind a named
+           feature flag, or the conventional title claim is corroborated by the
+           paths touched, within one product surface.
+        3: Band 2 plus corroboration from >= 2 artifact classes AND either
+           multiple product surfaces touched or multiple distinct user
+           workflows affected.
+        4: Band 3 plus an explicit transformative marker and high confidence —
+           a new product directory/manifest, or a documented strategic shift.
+      transformative_markers:
+        - new_product_manifest_added
+        - new_top_level_product_directory
+        - explicit_launch_language          # body says launch/GA/public beta
+      artifact_classes:
+        - linked_issue
+        - feature_flag
+        - docs_or_changelog
+        - downstream_adoption
+        - review_thread
+        - test_coverage
+
+    # ---------------------------------------------------------------------
+    reliability_risk:
+      label: Reliability / Risk
+      description: >
+        Defect and risk reduction.  Incidents are only asserted when the text
+        says so — the rubric never invents one from a fix title.
+      band_rules:
+        0: No reliability-relevant change observed.
+        1: Localized hardening — a fix or perf change inside one component with
+           no risk surface touched.
+        2: A consequential defect or risk reduction — a fix touching a risk
+           surface, or a fix that adds tests and crosses a component boundary.
+        3: High-blast-radius reliability, privacy, security, migration or
+           data-integrity improvement — a risk surface touched with
+           cross_product or platform_wide reach, corroborated.
+        4: Prevention or remediation of an existential/platform-wide risk.
+           Requires explicit incident, security-advisory or postmortem
+           evidence in the text or labels.
+      risk_surfaces:
+        high: [auth_privacy, schema, migration, data_pipeline, ingestion, billing]
+        medium: [public_api, deployment, shared_library, feature_flag_surface]
+      incident_markers:
+        labels: [incident, sev1, sev2, sev-1, sev-2, security, vulnerability,
+                 postmortem, outage, data-loss]
+        phrases:
+          - 'incident'
+          - 'postmortem'
+          - 'post-mortem'
+          - 'outage'
+          - 'data loss'
+          - 'security advisory'
+          - 'cve-'
+          - 'sev1'
+          - 'sev2'
+          - 'p0 '
+      artifact_classes:
+        - risk_surface
+        - test_coverage
+        - linked_issue
+        - review_safety_thread
+        - migration
+        - incident_marker
+
+    # ---------------------------------------------------------------------
+    engineering_leverage:
+      label: Engineering Leverage
+      description: >
+        Whether the work makes later work cheaper.  Measured from time-
+        respecting downstream adoption of what the episode introduced, not from
+        how many files it contained.
+      band_rules:
+        0: Nothing reusable observed.
+        1: Helps the immediate area only.
+        2: Reusable by a team or component — introduced modules adopted by
+           >= 2 distinct later files, or a shared library changed.
+        3: Adopted across products or teams — downstream adoption in >= 2
+           distinct components by >= 2 distinct later authors, or a recurring
+           constraint measurably removed.
+        4: Foundational platform work that materially enables many later
+           initiatives — >= 4 downstream components and >= 5 distinct
+           downstream authors, sustained (persistence evidence), high
+           confidence.
+      thresholds:
+        band_2_min_downstream_files: 2
+        band_3_min_downstream_components: 2
+        band_3_min_downstream_authors: 2
+        band_4_min_downstream_components: 4
+        band_4_min_downstream_authors: 5
+      artifact_classes:
+        - propagation_edge
+        - shared_library
+        - introduced_module
+        - review_thread
+        - docs_or_changelog
+
+    # ---------------------------------------------------------------------
+    decision_quality:
+      label: Decision Quality
+      description: >
+        Observable before/after evidence that a decision changed the shape of
+        the work: a redesign after review, a descope, a simplification, or
+        avoided waste.  With no before/after, the band is 0 — not a guess.
+      band_rules:
+        0: No observable decision evidence.
+        1: A useful implementation choice documented in the PR body (rationale
+           or alternatives considered).
+        2: A clear simplification, descope, design correction or avoided waste
+           with before/after evidence — net production-code removal with intact
+           tests, a superseded approach, or an accepted review redesign inside
+           one component.
+        3: A material architecture or product-direction intervention — a
+           review-driven change spanning >= 2 files or components, acknowledged
+           and resolved.
+        4: An unusually consequential redirection, with explicit textual
+           evidence and high confidence.
+      requires_before_after: true
+      simplification:
+        min_net_production_deletions: 200
+        must_keep_tests: true
+      rationale_markers:
+        - 'instead of'
+        - 'we considered'
+        - 'alternative'
+        - 'trade-off'
+        - 'tradeoff'
+        - 'decided to'
+        - 'rather than'
+        - 'the reason'
+        - 'why not'
+        - 'rejected'
+      redirection_markers:
+        - 'changed approach'
+        - 'rewrote'
+        - 're-architected'
+        - 'scrapped'
+        - 'abandoned in favour'
+        - 'abandoned in favor'
+        - 'going a different direction'
+      artifact_classes:
+        - review_thread
+        - superseded_edge
+        - simplification_diff
+        - pr_body_rationale
+
+    # ---------------------------------------------------------------------
+    propagation_durability:
+      label: Propagation / Durability
+      description: >
+        Whether the change lasted and spread.  Reversion is counterevidence,
+        not automatic failure; missing survival data widens uncertainty rather
+        than lowering the band.
+      band_rules:
+        0: No durability evidence available.
+        1: Survives locally — introduced files still present at the last
+           observable checkpoint.
+        2: Persists and receives normal follow-up — survival plus non-corrective
+           later work in the same area.
+        3: Demonstrable downstream reuse across component boundaries.
+        4: Multi-generation enablement — depth >= 2 propagation sustained past
+           the persistence horizon.
+      thresholds:
+        band_3_min_downstream_components: 2
+        band_4_min_path_depth: 2
+        band_4_min_persistence_days: 60
+      reversion:
+        # A confirmed, un-reapplied revert caps the band. It does not zero it:
+        # the work still happened and the revert may be unrelated to quality.
+        confirmed_revert_caps_band_at: 1
+        reapplied_removes_cap: true
+      artifact_classes:
+        - survival_measurement
+        - propagation_edge
+        - follow_up_pr
+        - persistence_evidence
+
+    # ---------------------------------------------------------------------
+    collaborative_amplification:
+      label: Collaborative Amplification
+      description: >
+        Whether this engineer made other engineers more effective.  Driven
+        exclusively by review interventions with CAUSAL evidence and by
+        knowledge artifacts.  Review count is never an input — the rubric
+        cannot see it.
+      band_rules:
+        0: No collaborative evidence.
+        1: Helpful local collaboration — a substantive review thread that was
+           resolved.
+        2: A material unblock — a causally-confirmed intervention that changed
+           the code, or a substantial knowledge/documentation contribution.
+        3: Enables several engineers or areas — >= 3 distinct authors helped
+           across >= 2 components with causally-confirmed interventions, or a
+           prevented major error (safety concern followed by a change).
+        4: Organization-scale visible amplification, with explicit evidence and
+           high confidence.
+      thresholds:
+        band_3_min_distinct_authors_helped: 3
+        band_3_min_distinct_components: 2
+        band_4_min_distinct_authors_helped: 8
+        band_4_min_distinct_components: 4
+      forbidden_inputs:
+        - review_count
+        - comment_count
+        - substantive_comment_count
+      artifact_classes:
+        - causal_review_intervention
+        - safety_intervention
+        - docs_or_changelog
+        - co_authorship
+        - issue_triage

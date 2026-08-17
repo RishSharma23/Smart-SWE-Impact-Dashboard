@@ -1,0 +1,1382 @@
+[
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5143,
+    "confidence_reasons": [
+      "9 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/62038-f3b7df57f868",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "shared_named_entity",
+      "supersedes",
+      "timeline_connected"
+    ],
+    "pr_count": 9,
+    "pr_numbers": [
+      62038,
+      62942,
+      62943,
+      62944,
+      62945,
+      64791,
+      65479,
+      66260,
+      66611
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62038",
+      "https://github.com/PostHog/posthog/pull/62942",
+      "https://github.com/PostHog/posthog/pull/62943",
+      "https://github.com/PostHog/posthog/pull/62944",
+      "https://github.com/PostHog/posthog/pull/62945",
+      "https://github.com/PostHog/posthog/pull/64791",
+      "https://github.com/PostHog/posthog/pull/65479",
+      "https://github.com/PostHog/posthog/pull/66260",
+      "https://github.com/PostHog/posthog/pull/66611"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "superseded",
+    "stratum": "explicit_follow_up",
+    "title": "feat(experiments): use running time calculation in the frontend"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "oversized_cluster",
+      "long_span",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5082,
+    "confidence_reasons": [
+      "cluster spans 84 days",
+      "34 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58677-dc3f7f9f698e",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "direct_mention",
+      "follow_up",
+      "migration_dependency",
+      "part_of",
+      "reapplies",
+      "reverts",
+      "shared_feature_flag",
+      "shared_named_entity",
+      "stacked_branch",
+      "supersedes",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 34,
+    "pr_numbers": [
+      58677,
+      59228,
+      59288,
+      59801,
+      61781,
+      64569,
+      66675,
+      66937,
+      67414,
+      67562,
+      67733,
+      68280,
+      68419,
+      68502,
+      68562,
+      69032,
+      69703,
+      70015,
+      70168,
+      70176,
+      70418,
+      71424,
+      71709,
+      72362,
+      72363,
+      74656,
+      75296,
+      75573,
+      76646,
+      76699,
+      77637,
+      81036,
+      81368,
+      82467
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58677",
+      "https://github.com/PostHog/posthog/pull/59228",
+      "https://github.com/PostHog/posthog/pull/59288",
+      "https://github.com/PostHog/posthog/pull/59801",
+      "https://github.com/PostHog/posthog/pull/61781",
+      "https://github.com/PostHog/posthog/pull/64569",
+      "https://github.com/PostHog/posthog/pull/66675",
+      "https://github.com/PostHog/posthog/pull/66937",
+      "https://github.com/PostHog/posthog/pull/67414",
+      "https://github.com/PostHog/posthog/pull/67562",
+      "https://github.com/PostHog/posthog/pull/67733",
+      "https://github.com/PostHog/posthog/pull/68280",
+      "https://github.com/PostHog/posthog/pull/68419",
+      "https://github.com/PostHog/posthog/pull/68502",
+      "https://github.com/PostHog/posthog/pull/68562",
+      "https://github.com/PostHog/posthog/pull/69032",
+      "https://github.com/PostHog/posthog/pull/69703",
+      "https://github.com/PostHog/posthog/pull/70015",
+      "https://github.com/PostHog/posthog/pull/70168",
+      "https://github.com/PostHog/posthog/pull/70176",
+      "https://github.com/PostHog/posthog/pull/70418",
+      "https://github.com/PostHog/posthog/pull/71424",
+      "https://github.com/PostHog/posthog/pull/71709",
+      "https://github.com/PostHog/posthog/pull/72362",
+      "https://github.com/PostHog/posthog/pull/72363",
+      "https://github.com/PostHog/posthog/pull/74656",
+      "https://github.com/PostHog/posthog/pull/75296",
+      "https://github.com/PostHog/posthog/pull/75573",
+      "https://github.com/PostHog/posthog/pull/76646",
+      "https://github.com/PostHog/posthog/pull/76699",
+      "https://github.com/PostHog/posthog/pull/77637",
+      "https://github.com/PostHog/posthog/pull/81036",
+      "https://github.com/PostHog/posthog/pull/81368",
+      "https://github.com/PostHog/posthog/pull/82467"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "superseded",
+    "stratum": "feature_flag_arc",
+    "title": "feat(notebooks): rewrite in markdown"
+  },
+  {
+    "automated_flags": [
+      "many_components"
+    ],
+    "cluster_confidence": 0.9357,
+    "confidence_reasons": [
+      "86% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61184-2f4bcbd366d1",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 4,
+    "pr_numbers": [
+      61184,
+      64577,
+      65394,
+      65568
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61184",
+      "https://github.com/PostHog/posthog/pull/64577",
+      "https://github.com/PostHog/posthog/pull/65394",
+      "https://github.com/PostHog/posthog/pull/65568"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "maintenance",
+    "stratum": "generic_component_fix",
+    "title": "perf(hogql): drop tuple wrapping in argMax for non-nullable columns"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "oversized_cluster",
+      "long_span"
+    ],
+    "cluster_confidence": 0.4667,
+    "confidence_reasons": [
+      "cluster spans 81 days",
+      "15 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/57884-424ffead5ac2",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "reverts",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 15,
+    "pr_numbers": [
+      57884,
+      64962,
+      68121,
+      71531,
+      71545,
+      72173,
+      72504,
+      73126,
+      73128,
+      73135,
+      73137,
+      73146,
+      73278,
+      74967,
+      80281
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/57884",
+      "https://github.com/PostHog/posthog/pull/64962",
+      "https://github.com/PostHog/posthog/pull/68121",
+      "https://github.com/PostHog/posthog/pull/71531",
+      "https://github.com/PostHog/posthog/pull/71545",
+      "https://github.com/PostHog/posthog/pull/72173",
+      "https://github.com/PostHog/posthog/pull/72504",
+      "https://github.com/PostHog/posthog/pull/73126",
+      "https://github.com/PostHog/posthog/pull/73128",
+      "https://github.com/PostHog/posthog/pull/73135",
+      "https://github.com/PostHog/posthog/pull/73137",
+      "https://github.com/PostHog/posthog/pull/73146",
+      "https://github.com/PostHog/posthog/pull/73278",
+      "https://github.com/PostHog/posthog/pull/74967",
+      "https://github.com/PostHog/posthog/pull/80281"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "long_arc",
+    "title": "feat(flags): mark internal Django callers as non-billable"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "long_span"
+    ],
+    "cluster_confidence": 0.4,
+    "confidence_reasons": [
+      "cluster spans 63 days"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/60070-709ee42cd920",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 3,
+    "pr_numbers": [
+      60070,
+      67717,
+      72366
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/60070",
+      "https://github.com/PostHog/posthog/pull/67717",
+      "https://github.com/PostHog/posthog/pull/72366"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "other",
+    "title": "feat(organization): improve orgless landing with invites and nav fix"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.595,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/67709-5e697c7d4dd9",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "semantic_similarity",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 6,
+    "pr_numbers": [
+      67709,
+      67753,
+      67911,
+      68009,
+      68010,
+      73815
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/67709",
+      "https://github.com/PostHog/posthog/pull/67753",
+      "https://github.com/PostHog/posthog/pull/67911",
+      "https://github.com/PostHog/posthog/pull/68009",
+      "https://github.com/PostHog/posthog/pull/68010",
+      "https://github.com/PostHog/posthog/pull/73815"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "semantic_supported",
+    "title": "fix(bigquery): retry transient job-not-found in temp-table copy query"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "oversized_cluster",
+      "many_components"
+    ],
+    "cluster_confidence": 0.525,
+    "confidence_reasons": [
+      "15 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/67000-d89c87a13ee3",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "follow_up",
+      "part_of",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 15,
+    "pr_numbers": [
+      67000,
+      67031,
+      67048,
+      67124,
+      67505,
+      68165,
+      68219,
+      68455,
+      68980,
+      69643,
+      69702,
+      69877,
+      69968,
+      69980,
+      70488
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/67000",
+      "https://github.com/PostHog/posthog/pull/67031",
+      "https://github.com/PostHog/posthog/pull/67048",
+      "https://github.com/PostHog/posthog/pull/67124",
+      "https://github.com/PostHog/posthog/pull/67505",
+      "https://github.com/PostHog/posthog/pull/68165",
+      "https://github.com/PostHog/posthog/pull/68219",
+      "https://github.com/PostHog/posthog/pull/68455",
+      "https://github.com/PostHog/posthog/pull/68980",
+      "https://github.com/PostHog/posthog/pull/69643",
+      "https://github.com/PostHog/posthog/pull/69702",
+      "https://github.com/PostHog/posthog/pull/69877",
+      "https://github.com/PostHog/posthog/pull/69968",
+      "https://github.com/PostHog/posthog/pull/69980",
+      "https://github.com/PostHog/posthog/pull/70488"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "explicit_follow_up",
+    "title": "fix(experiments): skip precompute for group-aggregated experiments"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/64552-8fdb61cc2688",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      64552,
+      73003
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/64552",
+      "https://github.com/PostHog/posthog/pull/73003"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "feature_flag_arc",
+    "title": "chore(ci): emit per-test traces on all in-repo PRs with branch attribute"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 1.0,
+    "confidence_reasons": [
+      "100% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61337-f8735a800b10",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "timeline_connected"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      61337,
+      61708
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61337",
+      "https://github.com/PostHog/posthog/pull/61708"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "maintenance",
+    "stratum": "generic_component_fix",
+    "title": "chore(hogql): indent nested subqueries in test pretty-printer"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/61439-e5371d01748a",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 7,
+    "pr_numbers": [
+      61439,
+      61852,
+      65342,
+      69953,
+      70439,
+      72189,
+      74217
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61439",
+      "https://github.com/PostHog/posthog/pull/61852",
+      "https://github.com/PostHog/posthog/pull/65342",
+      "https://github.com/PostHog/posthog/pull/69953",
+      "https://github.com/PostHog/posthog/pull/70439",
+      "https://github.com/PostHog/posthog/pull/72189",
+      "https://github.com/PostHog/posthog/pull/74217"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "long_arc",
+    "title": "feat(signals): canonical scout self-improvement via agent-feedback"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/82512-be714fae9111",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      82512,
+      82667
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/82512",
+      "https://github.com/PostHog/posthog/pull/82667"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "other",
+    "title": "refactor(duckgres): turn the anomaly checks into one table"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.685,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/64602-49422cc944a7",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "semantic_similarity",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 4,
+    "pr_numbers": [
+      64602,
+      64603,
+      64738,
+      70385
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/64602",
+      "https://github.com/PostHog/posthog/pull/64603",
+      "https://github.com/PostHog/posthog/pull/64738",
+      "https://github.com/PostHog/posthog/pull/70385"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "semantic_supported",
+    "title": "fix(snowflake): treat invalid key-pair JWT as non-retryable"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5294,
+    "confidence_reasons": [
+      "9 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/65437-d362177c00a6",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "direct_mention",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 9,
+    "pr_numbers": [
+      65437,
+      65709,
+      65730,
+      65851,
+      71917,
+      75903,
+      78119,
+      78699,
+      78777
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/65437",
+      "https://github.com/PostHog/posthog/pull/65709",
+      "https://github.com/PostHog/posthog/pull/65730",
+      "https://github.com/PostHog/posthog/pull/65851",
+      "https://github.com/PostHog/posthog/pull/71917",
+      "https://github.com/PostHog/posthog/pull/75903",
+      "https://github.com/PostHog/posthog/pull/78119",
+      "https://github.com/PostHog/posthog/pull/78699",
+      "https://github.com/PostHog/posthog/pull/78777"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "explicit_follow_up",
+    "title": "feat(experiments): extend metric-events precomputation to retention metrics"
+  },
+  {
+    "automated_flags": [
+      "oversized_cluster",
+      "long_span",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5681,
+    "confidence_reasons": [
+      "cluster spans 85 days",
+      "43 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58407-2cb9f7a4ccb3",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "direct_mention",
+      "follow_up",
+      "migration_dependency",
+      "part_of",
+      "reverts",
+      "shared_feature_flag",
+      "shared_named_entity",
+      "supersedes",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 43,
+    "pr_numbers": [
+      58407,
+      59684,
+      59685,
+      59686,
+      59687,
+      59688,
+      59689,
+      59690,
+      59691,
+      59705,
+      61043,
+      61350,
+      62060,
+      62061,
+      63631,
+      63844,
+      63869,
+      65045,
+      66428,
+      67545,
+      67705,
+      67745,
+      67992,
+      70135,
+      70374,
+      71316,
+      71317,
+      71318,
+      71319,
+      71435,
+      71465,
+      71977,
+      72442,
+      72444,
+      74244,
+      74544,
+      74565,
+      75886,
+      75887,
+      75888,
+      75889,
+      76741,
+      80951
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58407",
+      "https://github.com/PostHog/posthog/pull/59684",
+      "https://github.com/PostHog/posthog/pull/59685",
+      "https://github.com/PostHog/posthog/pull/59686",
+      "https://github.com/PostHog/posthog/pull/59687",
+      "https://github.com/PostHog/posthog/pull/59688",
+      "https://github.com/PostHog/posthog/pull/59689",
+      "https://github.com/PostHog/posthog/pull/59690",
+      "https://github.com/PostHog/posthog/pull/59691",
+      "https://github.com/PostHog/posthog/pull/59705",
+      "https://github.com/PostHog/posthog/pull/61043",
+      "https://github.com/PostHog/posthog/pull/61350",
+      "https://github.com/PostHog/posthog/pull/62060",
+      "https://github.com/PostHog/posthog/pull/62061",
+      "https://github.com/PostHog/posthog/pull/63631",
+      "https://github.com/PostHog/posthog/pull/63844",
+      "https://github.com/PostHog/posthog/pull/63869",
+      "https://github.com/PostHog/posthog/pull/65045",
+      "https://github.com/PostHog/posthog/pull/66428",
+      "https://github.com/PostHog/posthog/pull/67545",
+      "https://github.com/PostHog/posthog/pull/67705",
+      "https://github.com/PostHog/posthog/pull/67745",
+      "https://github.com/PostHog/posthog/pull/67992",
+      "https://github.com/PostHog/posthog/pull/70135",
+      "https://github.com/PostHog/posthog/pull/70374",
+      "https://github.com/PostHog/posthog/pull/71316",
+      "https://github.com/PostHog/posthog/pull/71317",
+      "https://github.com/PostHog/posthog/pull/71318",
+      "https://github.com/PostHog/posthog/pull/71319",
+      "https://github.com/PostHog/posthog/pull/71435",
+      "https://github.com/PostHog/posthog/pull/71465",
+      "https://github.com/PostHog/posthog/pull/71977",
+      "https://github.com/PostHog/posthog/pull/72442",
+      "https://github.com/PostHog/posthog/pull/72444",
+      "https://github.com/PostHog/posthog/pull/74244",
+      "https://github.com/PostHog/posthog/pull/74544",
+      "https://github.com/PostHog/posthog/pull/74565",
+      "https://github.com/PostHog/posthog/pull/75886",
+      "https://github.com/PostHog/posthog/pull/75887",
+      "https://github.com/PostHog/posthog/pull/75888",
+      "https://github.com/PostHog/posthog/pull/75889",
+      "https://github.com/PostHog/posthog/pull/76741",
+      "https://github.com/PostHog/posthog/pull/80951"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "feature_flag_arc",
+    "title": "feat(mcp-analytics): add mcp analytics"
+  },
+  {
+    "automated_flags": [
+      "long_span"
+    ],
+    "cluster_confidence": 0.8591,
+    "confidence_reasons": [
+      "9 PRs is a large arc for one initiative",
+      "91% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/62884-81494f759ef0",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 9,
+    "pr_numbers": [
+      62884,
+      70712,
+      80086,
+      80088,
+      80090,
+      80091,
+      80093,
+      80097,
+      80105
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62884",
+      "https://github.com/PostHog/posthog/pull/70712",
+      "https://github.com/PostHog/posthog/pull/80086",
+      "https://github.com/PostHog/posthog/pull/80088",
+      "https://github.com/PostHog/posthog/pull/80090",
+      "https://github.com/PostHog/posthog/pull/80091",
+      "https://github.com/PostHog/posthog/pull/80093",
+      "https://github.com/PostHog/posthog/pull/80097",
+      "https://github.com/PostHog/posthog/pull/80105"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "long_arc",
+    "title": "feat(data-warehouse): implement llama cloud import source"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/62563-3e20b1405085",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      62563,
+      63911
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62563",
+      "https://github.com/PostHog/posthog/pull/63911"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "other",
+    "title": "chore(ci): gate prod build/deploy on CD DEPLOY ENABLED variable"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.7,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/63688-0a1d3619b982",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "semantic_similarity",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      63688,
+      63730
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/63688",
+      "https://github.com/PostHog/posthog/pull/63730"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "semantic_supported",
+    "title": "fix(temporalio): treat TLS CertificateParseError as non-retryable"
+  },
+  {
+    "automated_flags": [
+      "low_cluster_confidence",
+      "oversized_cluster",
+      "long_span",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5489,
+    "confidence_reasons": [
+      "cluster spans 83 days",
+      "15 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58820-7277bd2400c4",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "closes_issue",
+      "depends_on",
+      "direct_mention",
+      "follow_up",
+      "part_of",
+      "reverts",
+      "supersedes",
+      "timeline_connected"
+    ],
+    "pr_count": 15,
+    "pr_numbers": [
+      58820,
+      58822,
+      58841,
+      59650,
+      59668,
+      59751,
+      60023,
+      60101,
+      60151,
+      60154,
+      60236,
+      60237,
+      66097,
+      78791,
+      80498
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58820",
+      "https://github.com/PostHog/posthog/pull/58822",
+      "https://github.com/PostHog/posthog/pull/58841",
+      "https://github.com/PostHog/posthog/pull/59650",
+      "https://github.com/PostHog/posthog/pull/59668",
+      "https://github.com/PostHog/posthog/pull/59751",
+      "https://github.com/PostHog/posthog/pull/60023",
+      "https://github.com/PostHog/posthog/pull/60101",
+      "https://github.com/PostHog/posthog/pull/60151",
+      "https://github.com/PostHog/posthog/pull/60154",
+      "https://github.com/PostHog/posthog/pull/60236",
+      "https://github.com/PostHog/posthog/pull/60237",
+      "https://github.com/PostHog/posthog/pull/66097",
+      "https://github.com/PostHog/posthog/pull/78791",
+      "https://github.com/PostHog/posthog/pull/80498"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "explicit_follow_up",
+    "title": "Reports that users will need"
+  },
+  {
+    "automated_flags": [
+      "oversized_cluster",
+      "long_span",
+      "many_components"
+    ],
+    "cluster_confidence": 0.5827,
+    "confidence_reasons": [
+      "cluster spans 76 days",
+      "24 PRs is a large arc for one initiative",
+      "63% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/59062-b5162ced29a6",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "closes_issue",
+      "depends_on",
+      "direct_mention",
+      "part_of",
+      "shared_feature_flag",
+      "shared_named_entity",
+      "supersedes",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 24,
+    "pr_numbers": [
+      59062,
+      59109,
+      59111,
+      59304,
+      60225,
+      60951,
+      64917,
+      66168,
+      66486,
+      66490,
+      66491,
+      68052,
+      68248,
+      68738,
+      68758,
+      69024,
+      69089,
+      74880,
+      75697,
+      75734,
+      77849,
+      78394,
+      79251,
+      79264
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/59062",
+      "https://github.com/PostHog/posthog/pull/59109",
+      "https://github.com/PostHog/posthog/pull/59111",
+      "https://github.com/PostHog/posthog/pull/59304",
+      "https://github.com/PostHog/posthog/pull/60225",
+      "https://github.com/PostHog/posthog/pull/60951",
+      "https://github.com/PostHog/posthog/pull/64917",
+      "https://github.com/PostHog/posthog/pull/66168",
+      "https://github.com/PostHog/posthog/pull/66486",
+      "https://github.com/PostHog/posthog/pull/66490",
+      "https://github.com/PostHog/posthog/pull/66491",
+      "https://github.com/PostHog/posthog/pull/68052",
+      "https://github.com/PostHog/posthog/pull/68248",
+      "https://github.com/PostHog/posthog/pull/68738",
+      "https://github.com/PostHog/posthog/pull/68758",
+      "https://github.com/PostHog/posthog/pull/69024",
+      "https://github.com/PostHog/posthog/pull/69089",
+      "https://github.com/PostHog/posthog/pull/74880",
+      "https://github.com/PostHog/posthog/pull/75697",
+      "https://github.com/PostHog/posthog/pull/75734",
+      "https://github.com/PostHog/posthog/pull/77849",
+      "https://github.com/PostHog/posthog/pull/78394",
+      "https://github.com/PostHog/posthog/pull/79251",
+      "https://github.com/PostHog/posthog/pull/79264"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "superseded",
+    "stratum": "feature_flag_arc",
+    "title": "Self-driving onboarding"
+  },
+  {
+    "automated_flags": [
+      "oversized_cluster"
+    ],
+    "cluster_confidence": 0.8789,
+    "confidence_reasons": [
+      "24 PRs is a large arc for one initiative",
+      "95% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/64605-b3b0e2fbf6e6",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "reverts",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 24,
+    "pr_numbers": [
+      64605,
+      64631,
+      64647,
+      64650,
+      64676,
+      64677,
+      64680,
+      64740,
+      64781,
+      65018,
+      65068,
+      65083,
+      65151,
+      65281,
+      65349,
+      65352,
+      65362,
+      65608,
+      65658,
+      65706,
+      65710,
+      66510,
+      66672,
+      68069
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/64605",
+      "https://github.com/PostHog/posthog/pull/64631",
+      "https://github.com/PostHog/posthog/pull/64647",
+      "https://github.com/PostHog/posthog/pull/64650",
+      "https://github.com/PostHog/posthog/pull/64676",
+      "https://github.com/PostHog/posthog/pull/64677",
+      "https://github.com/PostHog/posthog/pull/64680",
+      "https://github.com/PostHog/posthog/pull/64740",
+      "https://github.com/PostHog/posthog/pull/64781",
+      "https://github.com/PostHog/posthog/pull/65018",
+      "https://github.com/PostHog/posthog/pull/65068",
+      "https://github.com/PostHog/posthog/pull/65083",
+      "https://github.com/PostHog/posthog/pull/65151",
+      "https://github.com/PostHog/posthog/pull/65281",
+      "https://github.com/PostHog/posthog/pull/65349",
+      "https://github.com/PostHog/posthog/pull/65352",
+      "https://github.com/PostHog/posthog/pull/65362",
+      "https://github.com/PostHog/posthog/pull/65608",
+      "https://github.com/PostHog/posthog/pull/65658",
+      "https://github.com/PostHog/posthog/pull/65706",
+      "https://github.com/PostHog/posthog/pull/65710",
+      "https://github.com/PostHog/posthog/pull/66510",
+      "https://github.com/PostHog/posthog/pull/66672",
+      "https://github.com/PostHog/posthog/pull/68069"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "long_arc",
+    "title": "fix(postgres): retry transient SSL connection drops on connect"
+  },
+  {
+    "automated_flags": [
+      "many_components"
+    ],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/59264-b64973940f7f",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "migration_dependency"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      59264,
+      59479
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/59264",
+      "https://github.com/PostHog/posthog/pull/59479"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "other",
+    "title": "chore(llma): rename visible/comments from LLMA to AIO"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.775,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/68544-c6a2901f7463",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "semantic_similarity",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      68544,
+      68548
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/68544",
+      "https://github.com/PostHog/posthog/pull/68548"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "semantic_supported",
+    "title": "fix(postgres): absorb transient slot-active during CDC slot advance"
+  },
+  {
+    "automated_flags": [
+      "oversized_cluster",
+      "long_span",
+      "many_components"
+    ],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [
+      "cluster spans 64 days",
+      "17 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/54418-d5d76e852cb3",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "direct_mention",
+      "follow_up",
+      "reverts",
+      "shared_named_entity",
+      "supersedes",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 17,
+    "pr_numbers": [
+      54418,
+      58772,
+      58997,
+      59190,
+      59343,
+      59605,
+      60356,
+      60611,
+      60706,
+      62202,
+      62419,
+      64803,
+      65364,
+      65806,
+      65870,
+      65939,
+      72735
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/54418",
+      "https://github.com/PostHog/posthog/pull/58772",
+      "https://github.com/PostHog/posthog/pull/58997",
+      "https://github.com/PostHog/posthog/pull/59190",
+      "https://github.com/PostHog/posthog/pull/59343",
+      "https://github.com/PostHog/posthog/pull/59605",
+      "https://github.com/PostHog/posthog/pull/60356",
+      "https://github.com/PostHog/posthog/pull/60611",
+      "https://github.com/PostHog/posthog/pull/60706",
+      "https://github.com/PostHog/posthog/pull/62202",
+      "https://github.com/PostHog/posthog/pull/62419",
+      "https://github.com/PostHog/posthog/pull/64803",
+      "https://github.com/PostHog/posthog/pull/65364",
+      "https://github.com/PostHog/posthog/pull/65806",
+      "https://github.com/PostHog/posthog/pull/65870",
+      "https://github.com/PostHog/posthog/pull/65939",
+      "https://github.com/PostHog/posthog/pull/72735"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "explicit_follow_up",
+    "title": "feat(cdp): hardcode hogflow queue to postgres-v2"
+  },
+  {
+    "automated_flags": [
+      "long_span"
+    ],
+    "cluster_confidence": 0.625,
+    "confidence_reasons": [
+      "cluster spans 61 days"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58306-088d3e939b4b",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_feature_flag",
+      "symbol_downstream"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      58306,
+      76717
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58306",
+      "https://github.com/PostHog/posthog/pull/76717"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "feature_flag_arc",
+    "title": "feat(error-tracking): add missing source maps recommendation"
+  },
+  {
+    "automated_flags": [
+      "many_components"
+    ],
+    "cluster_confidence": 0.9,
+    "confidence_reasons": [
+      "10 PRs is a large arc for one initiative",
+      "100% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/63854-2c09bac15146",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "timeline_connected"
+    ],
+    "pr_count": 10,
+    "pr_numbers": [
+      63854,
+      63855,
+      63856,
+      63858,
+      63859,
+      63860,
+      63861,
+      63862,
+      63863,
+      63864
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/63854",
+      "https://github.com/PostHog/posthog/pull/63855",
+      "https://github.com/PostHog/posthog/pull/63856",
+      "https://github.com/PostHog/posthog/pull/63858",
+      "https://github.com/PostHog/posthog/pull/63859",
+      "https://github.com/PostHog/posthog/pull/63860",
+      "https://github.com/PostHog/posthog/pull/63861",
+      "https://github.com/PostHog/posthog/pull/63862",
+      "https://github.com/PostHog/posthog/pull/63863",
+      "https://github.com/PostHog/posthog/pull/63864"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "long_arc",
+    "title": "refactor: Split utils file in many different files"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/64760-edfd6f93dbf9",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "shared_named_entity"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      64760,
+      73836
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/64760",
+      "https://github.com/PostHog/posthog/pull/73836"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "other",
+    "title": "feat(experiments): use timeseries data as cold-start results for experiments"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.775,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/62962-854e92d56ffb",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "semantic_similarity",
+      "shared_named_entity",
+      "timeline_connected"
+    ],
+    "pr_count": 3,
+    "pr_numbers": [
+      62962,
+      62963,
+      63108
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62962",
+      "https://github.com/PostHog/posthog/pull/62963",
+      "https://github.com/PostHog/posthog/pull/63108"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "semantic_supported",
+    "title": "feat(data-warehouse): namespace grouping in Schemas tab + generic multi-schema utils"
+  },
+  {
+    "automated_flags": [],
+    "cluster_confidence": 0.55,
+    "confidence_reasons": [],
+    "episode_id": "github.com/PostHog/posthog#episode/61610-002c529acc73",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "stacked_branch"
+    ],
+    "pr_count": 2,
+    "pr_numbers": [
+      61610,
+      61625
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61610",
+      "https://github.com/PostHog/posthog/pull/61625"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "shipped_observable",
+    "stratum": "explicit_follow_up",
+    "title": "fix(data-warehouse): match MongoDB auth failure casing in non-retryable errors"
+  },
+  {
+    "automated_flags": [
+      "oversized_cluster"
+    ],
+    "cluster_confidence": 0.6488,
+    "confidence_reasons": [
+      "13 PRs is a large arc for one initiative"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/65056-3317a22b6eda",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "depends_on",
+      "direct_mention",
+      "follow_up",
+      "part_of",
+      "reapplies",
+      "semantic_similarity",
+      "shared_feature_flag",
+      "shared_named_entity",
+      "supersedes",
+      "symbol_downstream",
+      "timeline_connected"
+    ],
+    "pr_count": 13,
+    "pr_numbers": [
+      65056,
+      65059,
+      65098,
+      65102,
+      65519,
+      65522,
+      65531,
+      65553,
+      65910,
+      65994,
+      65995,
+      65996,
+      66016
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/65056",
+      "https://github.com/PostHog/posthog/pull/65059",
+      "https://github.com/PostHog/posthog/pull/65098",
+      "https://github.com/PostHog/posthog/pull/65102",
+      "https://github.com/PostHog/posthog/pull/65519",
+      "https://github.com/PostHog/posthog/pull/65522",
+      "https://github.com/PostHog/posthog/pull/65531",
+      "https://github.com/PostHog/posthog/pull/65553",
+      "https://github.com/PostHog/posthog/pull/65910",
+      "https://github.com/PostHog/posthog/pull/65994",
+      "https://github.com/PostHog/posthog/pull/65995",
+      "https://github.com/PostHog/posthog/pull/65996",
+      "https://github.com/PostHog/posthog/pull/66016"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "superseded",
+    "stratum": "feature_flag_arc",
+    "title": "refactor(lemon-ui): decouple LemonCalendar per-cell hooks from LemonButton"
+  },
+  {
+    "automated_flags": [
+      "many_components"
+    ],
+    "cluster_confidence": 0.9,
+    "confidence_reasons": [
+      "10 PRs is a large arc for one initiative",
+      "100% of internal edges are deterministic (tier A)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/60469-82c222d6d744",
+    "human_notes": null,
+    "human_verdict": null,
+    "internal_edge_types": [
+      "direct_mention",
+      "reverts",
+      "timeline_connected"
+    ],
+    "pr_count": 10,
+    "pr_numbers": [
+      60469,
+      60650,
+      61396,
+      61397,
+      61400,
+      61404,
+      61408,
+      61423,
+      61537,
+      61612
+    ],
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/60469",
+      "https://github.com/PostHog/posthog/pull/60650",
+      "https://github.com/PostHog/posthog/pull/61396",
+      "https://github.com/PostHog/posthog/pull/61397",
+      "https://github.com/PostHog/posthog/pull/61400",
+      "https://github.com/PostHog/posthog/pull/61404",
+      "https://github.com/PostHog/posthog/pull/61408",
+      "https://github.com/PostHog/posthog/pull/61423",
+      "https://github.com/PostHog/posthog/pull/61537",
+      "https://github.com/PostHog/posthog/pull/61612"
+    ],
+    "question": "Do these PRs belong to ONE initiative? Answer: correct | over_merged | under_split | wrong_members | unclear",
+    "status": "reverted",
+    "stratum": "long_arc",
+    "title": "feat(tracing): add excludeAttributes to span query to shrink payloads"
+  }
+]

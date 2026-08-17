@@ -1,0 +1,99 @@
+# Actor classification.
+#
+# Principle 6: humans, bots, generated changes, imported history and ambiguous
+# identities must stay separable.  Nothing here DELETES data -- every actor is
+# retained with a probability and the reasons that produced it, so a downstream
+# consumer can choose its own threshold and audit the call.
+
+# Deterministic, high-confidence signals.  Each contributes evidence; the
+# classifier combines them and records which ones fired.
+rules:
+  # GitHub marks App accounts with a literal "[bot]" login suffix and reports
+  # __typename == "Bot" in GraphQL.  This is the only *authoritative* signal.
+  - id: login_bot_suffix
+    kind: login_regex
+    pattern: '\[bot\]$'
+    probability: 0.99
+    reason: GitHub App accounts carry a [bot] login suffix.
+
+  - id: graphql_bot_typename
+    kind: typename
+    value: Bot
+    probability: 1.0
+    reason: GitHub GraphQL reported __typename=Bot for this actor.
+
+  - id: noreply_bot_email
+    kind: email_regex
+    pattern: '\[bot\]@users\.noreply\.github\.com$'
+    probability: 0.99
+    reason: Git author email is a GitHub App noreply address.
+
+  # Naming conventions.  Suggestive, not proof -- a human may be called
+  # "robot-anna".  Kept well below 1.0 on purpose.
+  - id: login_bot_word
+    kind: login_regex
+    pattern: '(^|[-_])(bot|bots|automation|autoupdate|renovate|dependabot)([-_]|$)'
+    probability: 0.75
+    reason: Login contains an automation keyword.
+
+  - id: known_bot_login
+    kind: login_in_list
+    probability: 1.0
+    reason: Login appears in the curated bot registry observed in this repository.
+
+# Observed in PostHog/posthog during the 2026-05-19..2026-08-17 window.
+# Extend freely; unknown "[bot]" logins are still caught by login_bot_suffix.
+known_bot_logins:
+  - dependabot[bot]
+  - github-actions[bot]
+  - posthog[bot]
+  - posthog-bot
+  - tests-posthog[bot]
+  - scheduled-actions-posthog[bot]
+  - clickhouse-sync-posthog[bot]
+  - releaser-posthog-cli[bot]
+  - posthog-js-upgrader[bot]
+  - mendral-app[bot]
+  - inkeep[bot]
+  - greptile-apps[bot]
+  - sentry-io[bot]
+  - renovate[bot]
+  - codecov[bot]
+  - snyk-bot
+  - vercel[bot]
+  - coderabbitai[bot]
+  - graphite-app[bot]
+  - depot-dev[bot]
+
+# AI coding assistants appear as CO-AUTHOR trailers on commits written by a
+# human, not as the commit author.  They are NOT bots in the "ignore this
+# actor" sense: a human still opened, defended and merged the PR.  They are
+# tracked separately so that "AI-assisted" never silently reads as either
+# "bot noise" or "unassisted human work".
+ai_assistant_identities:
+  emails:
+    - noreply@anthropic.com
+    - cursoragent@cursor.com
+    - noreply@openai.com
+    - devin-ai-integration@users.noreply.github.com
+  login_patterns:
+    - '^(claude|cursor|devin|codex|copilot)'
+
+# Accounts that are automation but whose output still needs review attribution
+# (a human approves them).  Recorded, never dropped.
+service_accounts: []
+
+# Identity clustering.  Git lets one person appear under several emails; we
+# cluster conservatively and mark anything uncertain rather than guessing.
+identity:
+  # A GitHub login is authoritative: same login => same person.
+  cluster_on_login: true
+  # Same normalised email => same person.
+  cluster_on_email: true
+  # Same display name alone is NOT enough (two "Michael"s exist). Merging on
+  # name only produces an `ambiguous` cluster flagged for manual review.
+  cluster_on_display_name: false
+  # GitHub noreply addresses embed the numeric user id: 12345+login@users...
+  parse_github_noreply_ids: true
+  # Emails are only retained when they are already public in Git history.
+  retain_emails_public_in_git_only: true

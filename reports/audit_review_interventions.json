@@ -1,0 +1,122 @@
+[
+  {
+    "body_text": "See, this is wrong, we can't have this one. We must keep LLM analytics as the path or else all sidebar links will break",
+    "candidate_id": "59532:PRRC_kwDODg-Tdc7EJPYU",
+    "commenter_login": "rafaeelaudibert",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "breaking_change",
+      "correctness"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/59532#discussion_r3290756628"
+  },
+  {
+    "body_text": "suggestion: This continue looks redundant next to stop_at_static=True two lines up, which is a trap: a future reader may delete it and reintroduce the bug this PR fixes. They aren't redundant. get_all_cohort_dependencies appends a nested cohort to its result before deciding whether to expand it, so static nested cohorts still come back in dependency_cohorts; stop_at_static only stops their expansion. A one-line comment naming why static cohorts are skipped locks it in:\n  \n    \n      \n        Suggested change\n      \n    \n    \n      \n          \n            \n                                      ",
+    "candidate_id": "65355:PRRC_kwDODg-Tdc7ODZCn",
+    "commenter_login": "haacked",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "correctness"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/65355#discussion_r3456995495"
+  },
+  {
+    "body_text": "super duper tiny nit: intern before truncate so the token map keys on the real URL, not the truncated one maybe?",
+    "candidate_id": "58728:PRRC_kwDODg-Tdc7DMpk2",
+    "commenter_login": "fasyy612",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "data_loss"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/58728#discussion_r3274873142"
+  },
+  {
+    "body_text": "blocking: A project whose web scripts are all legacy plugin site apps gets told to create its first one, and loses access to the scripts running on its site today. This counts only site_app hog functions, but the scene it gates also lists plugin-backed site apps loaded from pipeline_frontend_apps_configs and passed in as manualFunctions. Those projects count zero, and skippable: false means there's no way to the list or the History tab. The loader that fetches them still calls the migration \"super temporary\", so these projects are expected to exist.\nCount both sources:\nconst [hogFunctions, leg",
+    "candidate_id": "74452:PRRC_kwDODg-Tdc7bZYvf",
+    "commenter_login": "haacked",
+    "followed_by_change_in_path": false,
+    "human_verdict": null,
+    "safety_categories": [
+      "migration",
+      "security"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/74452#discussion_r3680865247"
+  },
+  {
+    "body_text": "Already addressed in round 1 of this review loop. See the earlier discussion on this PR for context.",
+    "candidate_id": "60975:PRRC_kwDODg-Tdc7KL5Sq",
+    "commenter_login": "haacked",
+    "followed_by_change_in_path": false,
+    "human_verdict": null,
+    "safety_categories": [],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/60975#discussion_r3392115882"
+  },
+  {
+    "body_text": "we run the SELECT id FROM posthog_person WHERE team_id = $1 AND uuid = ANY($2) query twice, once in this subquery and then once later on when we are running the person delete.\nWe could separate that out into its own statement, then use the results to seed the two delete queries:\n  let person_ids: Vec<i64> = sqlx::query_scalar!(\n      \"SELECT id FROM posthog_person WHERE team_id = $1 AND uuid = ANY($2)\",\n      team_id as i32, uuids\n  ).fetch_all(&mut *tx).await?;\n\n  // Delete distinct_ids by person_id (no subquery)\n  sqlx::query!(\"DELETE FROM posthog_persondistinctid WHERE team_id = $1 AND pers",
+    "candidate_id": "59519:PRRC_kwDODg-Tdc7DyUiG",
+    "commenter_login": "nickbest-ph",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "performance"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/59519#discussion_r3284748422"
+  },
+  {
+    "body_text": "I think this matches the Rust but I wonder if that is too defensive and will do more harm than good. I think url() is basically never PII bearing",
+    "candidate_id": "65916:PRRC_kwDODg-Tdc7PGbLs",
+    "commenter_login": "nicowaltz",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "privacy"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/65916#discussion_r3474567916"
+  },
+  {
+    "body_text": "This comment says the leader's healer clears a ghost fence on observation, but maybe_heal is only called from the property-write path and from fold_person_document \u2014 fence_person's rejection branch returns fenced_status(...) without calling it. So the one caller that observes the ghost fence repeatedly (this retry loop) can never trigger the heal, and for a low-traffic person nobody else will either. The seal step then retries forever, and since this op already holds marks on its target and other sources, those persons are stuck too.\nConcrete way to get a ghost: an op releases a fence with Abo",
+    "candidate_id": "79227:PRRC_kwDODg-Tdc7flc4Y",
+    "commenter_login": "jose-sequeira",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "scaling"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/79227#discussion_r3751136792"
+  },
+  {
+    "body_text": "suggestion: psak_allowed_actions is read here via getattr(view, \"psak_allowed_actions\", None) or [], but ScopeBasePermission declares scope_object_read_actions and scope_object_write_actions as class-level attributes with empty-list defaults. The next person adding a PSAK-supporting viewset has to know psak_allowed_actions exists; right now it's discoverable only by reading this branch.\nDeclare it on the base so the convention sits next to the related allowlists:\nclass ScopeBasePermission(BasePermission):\n    write_actions: list[str] = [\"create\", \"update\", \"partial_update\", \"patch\", \"destroy\"]",
+    "candidate_id": "56190:PRRC_kwDODg-Tdc6-7zcy",
+    "commenter_login": "haacked",
+    "followed_by_change_in_path": false,
+    "human_verdict": null,
+    "safety_categories": [
+      "security"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/56190#discussion_r3203348274"
+  },
+  {
+    "body_text": "Note\ud83e\udd16 Automated comment by QA Swarm \u2014 not written by a human\n\n[convergent: qa-team/data-integrity + paul + xp] \ud83d\udfe0 HIGH\nThis is a behavioural fix for a silent failure mode (a pinned pgbouncer slot doesn't throw \u2014 it quietly eats the pool until alarms fire), and it ships with no test. Nothing fails if someone deletes a _release_request_connections() line because it \"looks redundant,\" or adds in-stream request-thread DB work \u2014 and the existing tests only exercise sse_streaming_response, the helper these four sites don't use.\nFix: a single unit test on the consolidated path (open a connection, buil",
+    "candidate_id": "66282:PRRC_kwDODg-Tdc7PjAPw",
+    "commenter_login": "pauldambra",
+    "followed_by_change_in_path": true,
+    "human_verdict": null,
+    "safety_categories": [
+      "test_gap"
+    ],
+    "substance_class": "substantive",
+    "url": "https://github.com/PostHog/posthog/pull/66282#discussion_r3482059760"
+  }
+]

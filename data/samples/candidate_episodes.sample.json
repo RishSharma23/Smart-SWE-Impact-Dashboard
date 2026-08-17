@@ -1,0 +1,485 @@
+[
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/45696",
+    "pr_count": 3,
+    "pr_numbers": [
+      45696,
+      59173,
+      59183
+    ],
+    "root_pr_number": 45696
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "reverts",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/49264",
+    "pr_count": 4,
+    "pr_numbers": [
+      49264,
+      60062,
+      61614,
+      67392
+    ],
+    "root_pr_number": 49264
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/50122",
+    "pr_count": 5,
+    "pr_numbers": [
+      50122,
+      60212,
+      60229,
+      63550,
+      63586
+    ],
+    "root_pr_number": 50122
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/53837",
+    "pr_count": 2,
+    "pr_numbers": [
+      53837,
+      59177
+    ],
+    "root_pr_number": 53837
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54280",
+    "pr_count": 16,
+    "pr_numbers": [
+      54280,
+      59223,
+      59224,
+      60001,
+      60167,
+      60292,
+      60622,
+      64461,
+      67741,
+      67840,
+      68118,
+      69499,
+      69871,
+      69886,
+      69887,
+      72289
+    ],
+    "root_pr_number": 54280
+  },
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54418",
+    "pr_count": 2,
+    "pr_numbers": [
+      54418,
+      62202
+    ],
+    "root_pr_number": 54418
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54628",
+    "pr_count": 6,
+    "pr_numbers": [
+      54628,
+      66053,
+      68199,
+      72221,
+      72954,
+      78470
+    ],
+    "root_pr_number": 54628
+  },
+  {
+    "edge_types": [
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54738",
+    "pr_count": 3,
+    "pr_numbers": [
+      54738,
+      62820,
+      64089
+    ],
+    "root_pr_number": 54738
+  },
+  {
+    "edge_types": [
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54878",
+    "pr_count": 2,
+    "pr_numbers": [
+      54878,
+      62398
+    ],
+    "root_pr_number": 54878
+  },
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54879",
+    "pr_count": 2,
+    "pr_numbers": [
+      54879,
+      63256
+    ],
+    "root_pr_number": 54879
+  },
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/54880",
+    "pr_count": 2,
+    "pr_numbers": [
+      54880,
+      65674
+    ],
+    "root_pr_number": 54880
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/55005",
+    "pr_count": 19,
+    "pr_numbers": [
+      55005,
+      58162,
+      58989,
+      59075,
+      59076,
+      59247,
+      59295,
+      59510,
+      59551,
+      59552,
+      59614,
+      59665,
+      59679,
+      59695,
+      59696,
+      59792,
+      59979,
+      59981,
+      59994
+    ],
+    "root_pr_number": 55005
+  },
+  {
+    "edge_types": [
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/55298",
+    "pr_count": 3,
+    "pr_numbers": [
+      55298,
+      57321,
+      60732
+    ],
+    "root_pr_number": 55298
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/55946",
+    "pr_count": 8,
+    "pr_numbers": [
+      55946,
+      62475,
+      62653,
+      62654,
+      62655,
+      62658,
+      62664,
+      62666
+    ],
+    "root_pr_number": 55946
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57102",
+    "pr_count": 16,
+    "pr_numbers": [
+      57102,
+      57119,
+      64402,
+      64530,
+      64819,
+      65731,
+      65795,
+      70880,
+      71817,
+      74218,
+      74301,
+      76499,
+      76518,
+      79002,
+      80640,
+      82103
+    ],
+    "root_pr_number": 57102
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57655",
+    "pr_count": 7,
+    "pr_numbers": [
+      57655,
+      59443,
+      59890,
+      60249,
+      60670,
+      61333,
+      62165
+    ],
+    "root_pr_number": 57655
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57755",
+    "pr_count": 7,
+    "pr_numbers": [
+      57755,
+      57756,
+      57757,
+      57758,
+      57759,
+      57760,
+      77353
+    ],
+    "root_pr_number": 57755
+  },
+  {
+    "edge_types": [
+      "part_of",
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57847",
+    "pr_count": 3,
+    "pr_numbers": [
+      57847,
+      58033,
+      59299
+    ],
+    "root_pr_number": 57847
+  },
+  {
+    "edge_types": [
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57988",
+    "pr_count": 2,
+    "pr_numbers": [
+      57988,
+      69555
+    ],
+    "root_pr_number": 57988
+  },
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57995",
+    "pr_count": 3,
+    "pr_numbers": [
+      57995,
+      59351,
+      59599
+    ],
+    "root_pr_number": 57995
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "reverts",
+      "stacked_on"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/57997",
+    "pr_count": 4,
+    "pr_numbers": [
+      57997,
+      58019,
+      60078,
+      60084
+    ],
+    "root_pr_number": 57997
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/58000",
+    "pr_count": 14,
+    "pr_numbers": [
+      58000,
+      58836,
+      58924,
+      58925,
+      59424,
+      59480,
+      59499,
+      59520,
+      59533,
+      59537,
+      62203,
+      67596,
+      67597,
+      67599
+    ],
+    "root_pr_number": 58000
+  },
+  {
+    "edge_types": [
+      "follow_up"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/58021",
+    "pr_count": 2,
+    "pr_numbers": [
+      58021,
+      62207
+    ],
+    "root_pr_number": 58021
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/58053",
+    "pr_count": 22,
+    "pr_numbers": [
+      58053,
+      60703,
+      62721,
+      65900,
+      65921,
+      68640,
+      70907,
+      72978,
+      73160,
+      73166,
+      73694,
+      73742,
+      74000,
+      74017,
+      74032,
+      74065,
+      74204,
+      74230,
+      74266,
+      74367,
+      77481,
+      78225
+    ],
+    "root_pr_number": 58053
+  },
+  {
+    "edge_types": [
+      "follow_up",
+      "part_of",
+      "reapplies",
+      "reverts",
+      "stacked_on",
+      "supersedes"
+    ],
+    "episode_edges_version": "1.0.0",
+    "episode_id": "episode/58079",
+    "pr_count": 9,
+    "pr_numbers": [
+      58079,
+      58080,
+      58081,
+      58251,
+      59350,
+      59681,
+      61036,
+      61041,
+      62767
+    ],
+    "root_pr_number": 58079
+  }
+]

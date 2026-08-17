@@ -1,0 +1,174 @@
+# Phase 2 — portfolio aggregation and multi-criteria outranking.
+#
+# There is no impact score.  Engineers are compared PAIRWISE on six criteria
+# using ELECTRE III (credibility of "a outranks b"), with PROMETHEE II run as
+# an independent cross-check.  Weights below are NORMATIVE STARTING
+# PREFERENCES that the UI exposes and the sensitivity analysis varies — they
+# are not learned, and there is no ground truth that could learn them.
+
+outranking:
+  version: "1.0.0"
+  method: electre_iii
+  cross_check: promethee_ii
+
+  # ------------------------------------------------ portfolio aggregation ---
+  # Per dimension, an engineer's attributed episode evidence is ordered
+  # strongest-first and combined with diminishing returns.  Ten local episodes
+  # must not outweigh one broad episode.
+  aggregation:
+    method: ordered_weighted_average
+    # Coefficients for the first five qualifying independent episodes.
+    coefficients: [1.00, 0.55, 0.30, 0.17, 0.10]
+    # Corroboration headroom: everything after the strongest episode may add at
+    # most this much, in band units, on top of the strongest episode's value.
+    # This is the hard cap the phase spec asks for and is what guarantees a
+    # single transformative episode can outrank many moderate ones.
+    corroboration_headroom: 1.00
+    scale_max: 4.0
+    # Episodes in the same propagation lineage or closing the same issue are
+    # not independent; the strongest of the group is used once.
+    independence:
+      same_root_issue_counts_once: true
+      same_propagation_lineage_counts_once: true
+    # An episode only qualifies for aggregation if the engineer's attributed
+    # factor reaches this, and the dimension band is not unknown.
+    min_attribution_factor: 0.10
+
+  # -------------------------------------------------------------- criteria ---
+  # Suggested balanced weights for pairwise preference only.
+  criteria:
+    product_outcome:            {weight: 0.22, q: 0.0, p: 1.0, v: 3.0}
+    reliability_risk:           {weight: 0.18, q: 0.0, p: 1.0, v: 3.0}
+    engineering_leverage:       {weight: 0.20, q: 0.0, p: 1.0, v: 3.0}
+    decision_quality:           {weight: 0.14, q: 0.0, p: 1.0, v: 3.0}
+    propagation_durability:     {weight: 0.16, q: 0.0, p: 1.0, v: 3.0}
+    collaborative_amplification: {weight: 0.10, q: 0.0, p: 1.0, v: 3.0}
+
+  # Confidence discounts applied to criterion evidence before comparison.
+  confidence_discount:
+    high: 1.00
+    medium: 0.75
+    low: 0.45
+  # Unknown is not zero: an unknown criterion is excluded from BOTH sides of
+  # the pairwise comparison and recorded, rather than scored as 0.
+  unknown_handling: exclude_from_pair_and_record
+
+  # ------------------------------------------------------------- veto rule ---
+  veto:
+    # Standard ELECTRE III veto threshold is per-criterion (`v` above).
+    # In addition, severe high-confidence counterevidence vetoes an outranking
+    # that would otherwise rest on a single dimension.
+    counterevidence_veto:
+      enabled: true
+      # A confirmed, un-reapplied revert of an episode at band >= 3, or a
+      # probable regression with explicit evidence at band >= 3.
+      min_reverted_band: 3
+      requires_confidence: high
+      # Applies only when the outranking is carried by one criterion.
+      only_when_single_criterion_carries: true
+
+  # ------------------------------------------------------------ distillation ---
+  distillation:
+    # Roy's descending/ascending distillation discrimination threshold:
+    #   s(lambda) = alpha - beta * lambda
+    alpha: 0.30
+    beta: 0.15
+    max_iterations: 60
+
+  # --------------------------------------------------------------- scenarios ---
+  # Weight vectors per scenario.  Absent keys inherit the balanced weight and
+  # the whole vector is renormalised.
+  scenarios:
+    balanced:
+      label: Balanced
+      description: The normative starting preference across all six dimensions.
+      weights: {}
+    product_emphasis:
+      label: Product outcome emphasised
+      weights:
+        product_outcome: 0.40
+        reliability_risk: 0.13
+        engineering_leverage: 0.15
+        decision_quality: 0.10
+        propagation_durability: 0.13
+        collaborative_amplification: 0.09
+    reliability_emphasis:
+      label: Reliability / risk emphasised
+      weights:
+        product_outcome: 0.13
+        reliability_risk: 0.40
+        engineering_leverage: 0.14
+        decision_quality: 0.11
+        propagation_durability: 0.13
+        collaborative_amplification: 0.09
+    leverage_emphasis:
+      label: Engineering leverage emphasised
+      weights:
+        product_outcome: 0.14
+        reliability_risk: 0.13
+        engineering_leverage: 0.40
+        decision_quality: 0.10
+        propagation_durability: 0.14
+        collaborative_amplification: 0.09
+    high_confidence_only:
+      label: High-confidence evidence only
+      weights: {}
+      filters:
+        min_dimension_confidence: high
+    last_90_days:
+      label: Last 90 days
+      weights: {}
+      filters:
+        window_days: 90
+    last_12_months:
+      label: Last 12 months
+      weights: {}
+      filters:
+        window_days: 365
+      requires_window_days: 365      # marked unavailable if the data is shorter
+    foundational_full_history:
+      label: Foundational / full history
+      weights: {}
+      filters:
+        window_days: null            # everything available
+        time_decay: disabled
+      requires_full_history: true
+
+  # -------------------------------------------------------------- eligibility ---
+  ranking_eligibility:
+    # An engineer must clear a minimum evidence bar to be RANKED at all.
+    # Below it they are labelled "insufficient evidence" — never ranked last.
+    min_episodes_with_evidence: 1
+    min_dimensions_with_band: 2
+    min_mean_confidence_discount: 0.45
+    max_unknown_dimensions: 4
+
+  # ------------------------------------------------------------- sensitivity ---
+  sensitivity:
+    # Stability analysis re-runs the whole outranking model once per trial, and
+    # the model is O(n^2) in engineers. Restricting each trial to the engineers
+    # who are plausibly competing for a top-five slot keeps the analysis honest
+    # (it answers "is THIS top five stable?") while making it affordable. The
+    # pool is taken from the base balanced ranking; the size is reported.
+    candidate_pool_size: 30
+    weight_perturbations: 80
+    weight_dirichlet_concentration: 40.0
+    threshold_variants:
+      - {q: 0.0, p: 1.0, v: 3.0}
+      - {q: 0.25, p: 1.0, v: 3.0}
+      - {q: 0.0, p: 1.5, v: 3.0}
+      - {q: 0.0, p: 0.75, v: 2.0}
+      - {q: 0.5, p: 2.0, v: 4.0}
+    confidence_discount_variants:
+      - {high: 1.0, medium: 0.75, low: 0.45}
+      - {high: 1.0, medium: 0.9, low: 0.7}
+      - {high: 1.0, medium: 0.6, low: 0.25}
+    coefficient_variants:
+      - [1.00, 0.55, 0.30, 0.17, 0.10]
+      - [1.00, 0.70, 0.50, 0.35, 0.25]
+      - [1.00, 0.35, 0.15, 0.08, 0.04]
+      - [1.00, 1.00, 1.00, 1.00, 1.00]    # deliberately volume-friendly control
+    time_treatments: [decayed, undecayed]
+  bootstrap:
+    resamples: 150
+    random_seed: 20260816

@@ -1,0 +1,110 @@
+# Phase 2 — who is eligible, and what this measurement is not.
+#
+# The result is named OBSERVABLE REPOSITORY IMPACT.  It is not total employee
+# value, not productivity, and not a performance rating.  Everything in this
+# file exists to keep that claim honest.
+
+eligibility:
+  version: "1.0.0"
+
+  # ------------------------------------------------------------- inclusion ---
+  include:
+    # Group by identity cluster, never by raw actor_id: one human is commonly a
+    # GitHub login plus several Git email identities.
+    group_by: identity_cluster_id
+    # External / community contributors stay in, labelled as unknown
+    # affiliation. We do not claim every contributor is a PostHog employee.
+    keep_external_contributors: true
+    affiliation_default: unknown
+    affiliation_evidence_required: >
+      Affiliation is only asserted when public evidence in the dataset supports
+      it. No inference from email domain alone, and never from a display name.
+
+  exclude:
+    bots:
+      # Phase 1 gives a probability plus reasons, never a silent drop.
+      min_bot_probability: 0.90
+      # Name-shaped guesses cap at 0.75 and are flagged uncertain; those stay
+      # in with a visible caveat rather than being deleted.
+      uncertain_are_flagged_not_dropped: true
+      # Merge-queue automation.
+      logins: [trunk-io]
+    # AI co-authorship is NOT an exclusion and NOT a discount. It is disclosed.
+    ai_co_authorship: disclose_only
+
+  # -------------------------------------------------- observation fairness ---
+  observation:
+    # Active observed period per engineer, from first to last observed artifact,
+    # clipped to the window. Used to DESCRIBE coverage, never as a denominator.
+    compute_active_period: true
+    forbid_per_day_normalisation: true
+    # Do not penalise inactivity. An engineer absent for six weeks is not
+    # ranked down for it; their evidence is simply what it is.
+    penalise_inactivity: false
+    # Window-boundary effects that must be disclosed on every profile.
+    boundary_effects:
+      - Episodes in flight at the window start have their earlier PRs missing.
+      - Episodes in flight at the window end have no durability measurement.
+      - Survival checkpoints past the window end are NULL, never 0.
+    # Imported/vendored commits are labelled and excluded from authorship
+    # evidence.
+    exclude_imported_commits: true
+
+  # ------------------------------------------------------- minimum evidence ---
+  minimum_evidence_to_rank:
+    # Below this an engineer is labelled "insufficient observable evidence".
+    # That is a statement about the data, not about the engineer.
+    min_episodes: 1
+    min_high_or_medium_confidence_dimensions: 2
+    label_when_below: insufficient_observable_evidence
+
+  # ------------------------------------------------------------- forbidden ---
+  # Inferences this system must never make. Enforced by a validation gate that
+  # greps the export for these field names.
+  forbidden_inferences:
+    - demographics
+    - gender
+    - ethnicity
+    - age
+    - seniority
+    - job_title
+    - tenure_rating
+    - effort
+    - hours_worked
+    - personality
+    - intent
+    - motivation
+    - employee_value
+    - productivity_score
+
+  # -------------------------------------------------------- limitations UI ---
+  limitations:
+    headline: >
+      This measures observable repository impact in a 90-day public GitHub
+      window. It is not a measure of an engineer's total value.
+    items:
+      - Public GitHub omits customer conversations, private incidents,
+        mentoring, internal design documents, analytics work and private
+        repositories.
+      - No evidence is not negative evidence. An engineer with little visible
+        evidence here may have had enormous impact elsewhere.
+      - The window is 90 days. Foundational work that predates it is invisible;
+        work in flight at either boundary is truncated.
+      - The repository clone is shallow. Survival and reachability look forward
+        only.
+      - Rust, Go, SQL, Hog and Ruby imports are not parsed, so blast radius for
+        changes confined to those languages is unknown, not small.
+      - Review-comment causality is inferred from ordering, thread resolution
+        and GitHub's outdated flag — it is evidence, not proof.
+      - AI-assisted authorship is widespread in this repository and inflates
+        raw volume, which is one reason volume is not used.
+      - Shared credit intervals are estimates. Where attribution is unclear it
+        is labelled unclear rather than guessed.
+    correction_pathway:
+      enabled: true
+      instructions: >
+        Every claim on this dashboard links to the artifact it rests on. If a
+        claim is wrong, open an issue quoting the claim_id shown beside it; the
+        claim, its evidence and the rule that produced it are all reproducible
+        from the exported package.
+      contact_field: claim_id

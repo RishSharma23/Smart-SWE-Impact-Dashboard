@@ -1,0 +1,452 @@
+{
+  "$id": "https://posthog-impact.local/schemas/pr_change_shape.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "category_histogram": {
+      "arrow_type": "struct<binary_asset: int64, config: int64, dependency: int64, docs: int64, generated: int64, infrastructure: int64, migration: int64, platform_code: int64, product_code: int64, snapshot: int64, styling: int64, tests: int64, unclassified: int64>",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "change_shape_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "code_file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "code_share": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "component_entropy": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "component_histogram": {
+      "arrow_type": "struct<common:AGENTS.md: int64, common:CLAUDE.md: int64, common:README.md: int64, common:alerting: int64, common:esbuilder: int64, common:fixtures: int64, common:hogql_parser: int64, common:hogvm: int64, common:ingestion: int64, common:replay-headless: int64, common:replay-shared: int64, common:storybook: int64, common:tailwind: int64, frontend:app: int64, frontend:layout: int64, frontend:queries: int64, frontend:scenes: int64, frontend:shared-lib: int64, frontend:toolbar: int64, infra:agent-config: int64, infra:agent-os: int64, infra:ci: int64, infra:devenv: int64, infra:docker: int64, infra:docs: int64, infra:e2e: int64, infra:patches: int64, infra:repo-config: int64, infra:repo-root: int64, infra:scripts: int64, infra:terraform: int64, ingestion:node: int64, packages:llm-normalizer: int64, packages:quill: int64, platform:api: int64, platform:cli: int64, platform:clickhouse: int64, platform:dagster: int64, platform:enterprise: int64, platform:hogql: int64, platform:livestream: int64, platform:management: int64, platform:migrations: int64, platform:models: int64, platform:monolith: int64, platform:proto: int64, platform:session-recordings: int64, platform:tasks: int64, platform:temporal: int64, product:README.md: int64, product:access_control: int64, product:actions: int64, product:agent_platform: int64, product:ai_gateway: int64, product:ai_observability: int64, product:alerts: int64, product:analytics_platform: int64, product:annotations: int64, product:apm: int64, product:approvals: int64, product:architecture.md: int64, product:batch_exports: int64, product:business_knowledge: int64, product:canvas: int64, product:cdp: int64, product:cohorts: int64, product:conftest.py: int64, product:conversations: int64, product:core_events: int64, product:customer_analytics: int64, product:dashboards: int64, product:data_catalog: int64, product:data_modeling: int64, product:data_quality: int64, product:data_tools: int64, product:data_warehouse: int64, product:db_routing.yaml: int64, product:demo: int64, product:deployments: int64, product:desktop: int64, product:desktop_recordings: int64, product:early_access_features: int64, product:endpoints: int64, product:engineering_analytics: int64, product:error_tracking: int64, product:event_definitions: int64, product:experiments: int64, product:exports: int64, product:feature_flags: int64, product:field_notes: int64, product:games: int64, product:groups: int64, product:growth: int64, product:inbox: int64, product:ingestion: int64, product:integrations: int64, product:legal_documents: int64, product:links: int64, product:live_debugger: int64, product:llm_analytics: int64, product:logs: int64, product:managed_migrations: int64, product:managed_warehouse: int64, product:marketing_analytics: int64, product:mcp_analytics: int64, product:mcp_store: int64, product:messaging: int64, product:metrics: int64, product:notebooks: int64, product:notifications: int64, product:persons: int64, product:platform_features: int64, product:posthog_ai: int64, product:product_analytics: int64, product:product_tours: int64, product:pulse: int64, product:query_performance_ai: int64, product:reminders: int64, product:replay: int64, product:replay_vision: int64, product:revenue_analytics: int64, product:review_hog: int64, product:ruff.toml: int64, product:session_replay: int64, product:session_summaries: int64, product:signals: int64, product:skills: int64, product:slack_app: int64, product:stamphog: int64, product:streamlit_apps: int64, product:subscriptions: int64, product:support: int64, product:surveys: int64, product:tasks: int64, product:tracing: int64, product:user_interviews: int64, product:visual_review: int64, product:warehouse_sources: int64, product:warehouse_sources_queue: int64, product:web_analytics: int64, product:wizard: int64, product:workflows: int64, rust:.config: int64, rust:.sqlx: int64, rust:AGENTS.md: int64, rust:CLAUDE.md: int64, rust:Cargo.lock: int64, rust:Cargo.toml: int64, rust:Dockerfile: int64, rust:Dockerfile.sqlx-migrate: int64, rust:affected-services: int64, rust:batch-import-worker: int64, rust:capture: int64, rust:capture-load-gen: int64, rust:capture-logs: int64, rust:cohort-core: int64, rust:cohort-event-shuffler: int64, rust:cohort-seeder: int64, rust:cohort-stream-processor: int64, rust:common: int64, rust:cyclotron-node: int64, rust:cyclotron-node-migrations: int64, rust:cymbal: int64, rust:cymbal-proto: int64, rust:cymbal-resolution: int64, rust:deltalite: int64, rust:docker-compose.yml: int64, rust:embedding-worker: int64, rust:feature-flags: int64, rust:flags-consumer: int64, rust:flags_read_store_migrations: int64, rust:hogql: int64, rust:hypercache-server: int64, rust:ingestion-consumer: int64, rust:ingestion-control-plane: int64, rust:kafka-assigner: int64, rust:kafka-deduplicator: int64, rust:owners.yaml: int64, rust:personhog-common: int64, rust:personhog-coordination: int64, rust:personhog-identity: int64, rust:personhog-leader: int64, rust:personhog-proto: int64, rust:personhog-replica: int64, rust:personhog-router: int64, rust:personhog-stateright: int64, rust:personhog-test-harness: int64, rust:personhog-writer: int64, rust:persons_migrations: int64, rust:property-defs-rs: int64, rust:property-vals-rs: int64, rust:replay-anonymizer: int64, rust:replay-anonymizer-node: int64, rust:rust: int64, services:agent-proxy: int64, services:integration-service: int64, services:llm-gateway: int64, services:mcp: int64, services:oauth-proxy: int64, services:stripe-app: int64, services:stripe-mock: int64, tools:hedgebox-dummy: int64, tools:hogbox-preview: int64, tools:hogli: int64, tools:hogli-commands: int64, tools:infra-scripts: int64, tools:openapi-codegen: int64, tools:owners: int64, tools:phrocs: int64, tools:playwright_area_map.json: int64, tools:playwright_spec_selection.py: int64, tools:pr-approval-agent: int64, tools:query-performance-ai: int64, tools:snob_backend_test_selection_shadow.py: int64, tools:test_playwright_spec_selection.py: int64, tools:test_snob_backend_test_selection_shadow.py: int64, tools:testmon_high_fanout_files.txt: int64, unknown: int64>",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "distinct_components": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "distinct_platforms": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "dominant_component": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dominant_component_share": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_added": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_binary_asset": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_config": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_copied": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_deleted": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_dependency": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_docs": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_generated": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_infrastructure": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_localization": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_migration": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_modified": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_platform_code": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_product_code": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_renamed": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_snapshot": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_styling": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_tests": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_type_changed": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_unclassified": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "generated_or_mechanical_file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "has_production_changes": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "has_test_changes": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "language_histogram": {
+      "arrow_type": "struct<css: int64, go: int64, hog: int64, html: int64, javascript: int64, json: int64, markdown: int64, protobuf: int64, python: int64, rust: int64, scss: int64, shell: int64, snapshot: int64, sql: int64, terraform: int64, toml: int64, typescript: int64, unknown: int64, xml: int64, yaml: int64>",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "license_areas": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "primary_language": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "production_file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "production_without_test_change": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "risk_surfaces": {
+      "arrow_type": "list<element: string>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "test_file_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "test_to_production_link_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "test_to_production_links": {
+      "arrow_type": "list<element: struct<production_path: string, test_path: string>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "tests_without_production_change": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "title_breaking": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "title_claim_corroborated": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "title_claim_note": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title_parser_confidence": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "title_prefix": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title_scope": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "touches_auth_privacy": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_billing": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_data_pipeline": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_deployment": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_enterprise_licensed_code": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_feature_flag_surface": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_ingestion": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_migration": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_public_api": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_schema": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "touches_shared_library": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "pr_change_shape",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

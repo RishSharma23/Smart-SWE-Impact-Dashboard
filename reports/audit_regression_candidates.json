@@ -1,0 +1,219 @@
+[
+  {
+    "explicit": [
+      {
+        "edge_id": "edge/reverts/013ffd7a09ba0433ab75",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "ew/. The other PRs in this small series are #59002, #59007, #59010. Decisions worth surfacing:  react-hooks/exhaustive-deps su",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/59018",
+        "source_pr_number": 59018,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 59010,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 59010,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "explicit"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [
+      {
+        "days_after": 13.12,
+        "edge_type": "later_fix_linked",
+        "evidence": "PR #74656 (fix) shares flag(s) ['revamped-py-notebooks']",
+        "shared_path_count": 0,
+        "strength": "medium",
+        "target_number": 74656
+      }
+    ],
+    "pr_number": 71424,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "linked"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 58937,
+    "proximate": [
+      {
+        "days_after": 1.62,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #59148 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/hogql_queries/web_analytics/web_analytics_query_runner.py"
+        ],
+        "strength": "weak",
+        "target_number": 59148
+      }
+    ],
+    "requires_human_confirmation": true,
+    "tier": "proximate"
+  },
+  {
+    "explicit": [
+      {
+        "edge_id": "edge/reverts/023558b76b29734b260b",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "Problem Stacks on top of #58862. That PR routed all /usage AI-credit queries to the US inte",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/58967",
+        "source_pr_number": 58967,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 58862,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 58862,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "explicit"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [
+      {
+        "days_after": 6.0,
+        "edge_type": "later_fix_linked",
+        "evidence": "PR #61942 (fix) shares flag(s) ['web-analytics-precompute-toggle']",
+        "shared_path_count": 0,
+        "strength": "medium",
+        "target_number": 61942
+      }
+    ],
+    "pr_number": 52155,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "linked"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 58874,
+    "proximate": [
+      {
+        "days_after": 0.18,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #58999 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "posthog/hogql/database/schema/error_tracking_fingerprint_issue_state.py"
+        ],
+        "strength": "weak",
+        "target_number": 58999
+      }
+    ],
+    "requires_human_confirmation": true,
+    "tier": "proximate"
+  },
+  {
+    "explicit": [
+      {
+        "edge_id": "edge/reverts/02508921c5318f37d9b9",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "ayload leaf, and no leaf is the empty string.  Split out of #77906, which should carry only desktop changes. Changes  The loop",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/78632",
+        "source_pr_number": 78632,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 77906,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 77906,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "explicit"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [
+      {
+        "days_after": 0.76,
+        "edge_type": "later_fix_linked",
+        "evidence": "PR #65533 (fix) shares flag(s) ['PRODUCT_ANALYTICS_QUILL_LEGEND']",
+        "shared_path_count": 1,
+        "strength": "medium",
+        "target_number": 65533
+      },
+      {
+        "days_after": 1.26,
+        "edge_type": "later_fix_linked",
+        "evidence": "PR #65799 (fix) shares flag(s) ['PRODUCT_ANALYTICS_QUILL_LEGEND']",
+        "shared_path_count": 0,
+        "strength": "medium",
+        "target_number": 65799
+      }
+    ],
+    "pr_number": 65406,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "linked"
+  },
+  {
+    "explicit": [],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 58979,
+    "proximate": [
+      {
+        "days_after": 9.16,
+        "edge_type": "later_fix_same_paths",
+        "evidence": "PR #60288 is a fix touching 1 of the same non-test file(s)",
+        "shared_path_count": 1,
+        "shared_paths": [
+          "services/mcp/src/lib/posthog/analytics.ts"
+        ],
+        "strength": "weak",
+        "target_number": 60288
+      }
+    ],
+    "requires_human_confirmation": true,
+    "tier": "proximate"
+  },
+  {
+    "explicit": [
+      {
+        "edge_id": "edge/reverts/02aa40fff4077f0bf554",
+        "edge_type": "reverts",
+        "episode_edges_version": "1.0.0",
+        "evidence": "ore time than the recording holds, is handled by open draft #80421. This PR covers the two defects that PR leaves untouched: t",
+        "evidence_source": "phrase:reverts+mention",
+        "source_pr_id": "github.com/PostHog/posthog#pr/83311",
+        "source_pr_number": 83311,
+        "strength": "medium",
+        "target_kind": "pull_request",
+        "target_number": 80421,
+        "target_pr_in_dataset": true
+      }
+    ],
+    "human_verdict": null,
+    "linked": [],
+    "pr_number": 80421,
+    "proximate": [],
+    "requires_human_confirmation": false,
+    "tier": "explicit"
+  }
+]

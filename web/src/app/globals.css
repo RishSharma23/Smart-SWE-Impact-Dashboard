@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Technical editorial palette. Warm off-white ground, near-black ink, a single
+   yellow accent, and six dimension hues that are *always* paired with a label —
+   nothing on this dashboard is encoded by colour alone.
+   Every foreground/background pair below is >= 4.5:1 (WCAG 2.2 AA).
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-ground: #f3f2ec;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eae8df;
+  --color-ink: #14161b;
+  --color-ink-soft: #3c414d;
+  --color-muted: #5a6071;
+  --color-line: #d8d5c8;
+  --color-line-strong: #b9b5a4;
+
+  --color-accent: #f0b400;
+  --color-accent-ink: #6b4e00;
+  --color-accent-wash: #fdf3d4;
+
+  --color-d1: #cf4318; /* product outcome */
+  --color-d2: #1f4fd8; /* reliability & risk */
+  --color-d3: #7b34c4; /* engineering leverage */
+  --color-d4: #0f6f61; /* decision quality */
+  --color-d5: #a35c00; /* propagation & durability */
+  --color-d6: #b02a5b; /* collaborative amplification */
+
+  --color-ok: #146c43;
+  --color-warn: #8a5300;
+  --color-danger: #a62121;
+  --color-unknown: #6b6f7c;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  --radius-card: 0.75rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    /* Fine editorial grid, well below text contrast so it never interferes. */
+    background-image:
+      linear-gradient(to right, rgba(20, 22, 27, 0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20, 22, 27, 0.028) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-attachment: fixed;
+  }
+
+  /* Visible focus everywhere, including inside cards. */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Tables scroll inside their own container; the page never scrolls sideways. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgba(20, 22, 27, 0.04);
+  }
+
+  .card-interactive {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 22, 27, 0.08);
+    border-color: var(--color-line-strong);
+  }
+
+  .card-interactive:focus-within {
+    box-shadow: 0 0 0 3px var(--color-accent-wash);
+    border-color: var(--color-accent);
+  }
+
+  /* Hatched fill for "not assessable". Never an empty or zero-length bar. */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-line-strong) 0,
+      var(--color-line-strong) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  }
+
+  .prose-editorial p {
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+  }
+
+  .prose-editorial p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Motion is decoration. Remove all of it on request. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-interactive:hover {
+    transform: none;
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 220ms ease-out both;
+}

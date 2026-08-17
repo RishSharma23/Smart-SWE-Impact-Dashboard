@@ -1,0 +1,828 @@
+[
+  {
+    "counterevidence": [
+      "PR #61072 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61072-5056ea811683",
+    "intervention": "Across 2 pull request(s) the work added 1 file(s), modified 30 in services:mcp, tools:openapi-codegen, product:alerts.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change is routine maintenance. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61072",
+      "https://github.com/PostHog/posthog/pull/61256"
+    ],
+    "problem": "Problem In \"tools\" mode the MCP server validates arguments with schema.safeParse(...), which applies Zod defaults.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "fix(mcp): Fix default(null) injection in generated tool schemas that allow null",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #74333 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #76886 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/74333-648055670945",
+    "intervention": "Across 2 pull request(s) the work added 17 file(s), modified 36 in product:marketing_analytics, frontend:scenes, frontend:queries.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 635 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/74333",
+      "https://github.com/PostHog/posthog/pull/76886"
+    ],
+    "problem": "Problem Marketing analytics already knows how to attribute conversions five ways, but attribution mode is a single team setting.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(marketing): add attribution explorer comparing all five models side by side",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #57884 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #64962 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #71531 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #71545 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/57884-424ffead5ac2",
+    "intervention": "Across 15 pull request(s) the work added 2 file(s), modified 43 in product:warehouse_sources, platform:temporal, platform:api.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/57884",
+      "https://github.com/PostHog/posthog/pull/64962",
+      "https://github.com/PostHog/posthog/pull/68121",
+      "https://github.com/PostHog/posthog/pull/71531",
+      "https://github.com/PostHog/posthog/pull/71545",
+      "https://github.com/PostHog/posthog/pull/72173",
+      "https://github.com/PostHog/posthog/pull/72504",
+      "https://github.com/PostHog/posthog/pull/73126",
+      "https://github.com/PostHog/posthog/pull/73128",
+      "https://github.com/PostHog/posthog/pull/73135",
+      "https://github.com/PostHog/posthog/pull/73137",
+      "https://github.com/PostHog/posthog/pull/73146",
+      "https://github.com/PostHog/posthog/pull/73278",
+      "https://github.com/PostHog/posthog/pull/74967",
+      "https://github.com/PostHog/posthog/pull/80281"
+    ],
+    "problem": "Problem Three Django handlers proxy to the Rust feature-flags service for in-app PostHog UI: prepare toolbar preloaded flags (toolbar launch) my flags (the flags-list UI) evaluation reasons (the Person \u2192 Feature flags debug tab) They all use the customer's team API token, so they currently land in t",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(flags): mark internal Django callers as non-billable",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #60070 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #67717 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "production code changed with no accompanying test change",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/60070-709ee42cd920",
+    "intervention": "Across 3 pull request(s) the work modified 9 in frontend:layout, frontend:scenes, platform:models.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed on the default branch. Release corroborated by: 158 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/60070",
+      "https://github.com/PostHog/posthog/pull/67717",
+      "https://github.com/PostHog/posthog/pull/72366"
+    ],
+    "problem": "Problem EU cloud orgs default to being opted in to AI training when created.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(organization): improve orgless landing with invites and nav fix",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #59228 has explicit evidence of later corrective work",
+      "PR #59288 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59801 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #61781 has explicit evidence of later corrective work"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58677-dc3f7f9f698e",
+    "intervention": "Across 34 pull request(s) the work added 155 file(s), modified 540, removed 41 in frontend:scenes, product:notebooks, frontend:shared-lib.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58677",
+      "https://github.com/PostHog/posthog/pull/59228",
+      "https://github.com/PostHog/posthog/pull/59288",
+      "https://github.com/PostHog/posthog/pull/59801",
+      "https://github.com/PostHog/posthog/pull/61781",
+      "https://github.com/PostHog/posthog/pull/64569",
+      "https://github.com/PostHog/posthog/pull/66675",
+      "https://github.com/PostHog/posthog/pull/66937",
+      "https://github.com/PostHog/posthog/pull/67414",
+      "https://github.com/PostHog/posthog/pull/67562",
+      "https://github.com/PostHog/posthog/pull/67733",
+      "https://github.com/PostHog/posthog/pull/68280",
+      "https://github.com/PostHog/posthog/pull/68419",
+      "https://github.com/PostHog/posthog/pull/68502",
+      "https://github.com/PostHog/posthog/pull/68562",
+      "https://github.com/PostHog/posthog/pull/69032",
+      "https://github.com/PostHog/posthog/pull/69703",
+      "https://github.com/PostHog/posthog/pull/70015",
+      "https://github.com/PostHog/posthog/pull/70168",
+      "https://github.com/PostHog/posthog/pull/70176",
+      "https://github.com/PostHog/posthog/pull/70418",
+      "https://github.com/PostHog/posthog/pull/71424",
+      "https://github.com/PostHog/posthog/pull/71709",
+      "https://github.com/PostHog/posthog/pull/72362",
+      "https://github.com/PostHog/posthog/pull/72363",
+      "https://github.com/PostHog/posthog/pull/74656",
+      "https://github.com/PostHog/posthog/pull/75296",
+      "https://github.com/PostHog/posthog/pull/75573",
+      "https://github.com/PostHog/posthog/pull/76646",
+      "https://github.com/PostHog/posthog/pull/76699",
+      "https://github.com/PostHog/posthog/pull/77637",
+      "https://github.com/PostHog/posthog/pull/81036",
+      "https://github.com/PostHog/posthog/pull/81368",
+      "https://github.com/PostHog/posthog/pull/82467"
+    ],
+    "problem": "Problem In collab mode, clicking Revert to this version in the notebook history panel doesn't trigger collab/save Master works around this by dispatching clearPreviewContent first, then relying on setShowHistory(false) listener to fire a second clearPreviewContent that picks up localContent and snap",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(notebooks): rewrite in markdown",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #61707 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #64487 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users.",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61707-79b316c3b200",
+    "intervention": "Across 4 pull request(s) the work added 3 file(s), modified 236 in platform:hogql, product:experiments, product:web_analytics.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change is routine maintenance. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61707",
+      "https://github.com/PostHog/posthog/pull/61745",
+      "https://github.com/PostHog/posthog/pull/64487",
+      "https://github.com/PostHog/posthog/pull/65689"
+    ],
+    "problem": "Problem Trends queries (and other HogQL queries) have been failing in production with a ClickHouse planner error: Code: 8.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "fix(hogql): disable AND-to-NOT-IN rewrite to avoid distributed planner error",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #68095 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "production code changed with no accompanying test change",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/59312-800eb23808f6",
+    "intervention": "Across 3 pull request(s) the work added 3 file(s), modified 13 in frontend:scenes.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 267 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/59312",
+      "https://github.com/PostHog/posthog/pull/59319",
+      "https://github.com/PostHog/posthog/pull/68095"
+    ],
+    "problem": "Problem Launching a hosted survey (SurveyType.ExternalSurvey) showed the same in-app warning as a popover survey \u2014 \"This survey will be shown to all users\" \u2014 even though hosted surveys are never shown automatically; they're only reachable via their shareable link.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "fix(surveys): hide wizard schedule when survey repeats on every event",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #58841 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59650 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59668 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59751 has explicit evidence of later corrective work"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58820-7277bd2400c4",
+    "intervention": "Across 15 pull request(s) the work added 5 file(s), modified 86, removed 1 in platform:api, frontend:scenes, rust:deltalite.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58820",
+      "https://github.com/PostHog/posthog/pull/58822",
+      "https://github.com/PostHog/posthog/pull/58841",
+      "https://github.com/PostHog/posthog/pull/59650",
+      "https://github.com/PostHog/posthog/pull/59668",
+      "https://github.com/PostHog/posthog/pull/59751",
+      "https://github.com/PostHog/posthog/pull/60023",
+      "https://github.com/PostHog/posthog/pull/60101",
+      "https://github.com/PostHog/posthog/pull/60151",
+      "https://github.com/PostHog/posthog/pull/60154",
+      "https://github.com/PostHog/posthog/pull/60236",
+      "https://github.com/PostHog/posthog/pull/60237",
+      "https://github.com/PostHog/posthog/pull/66097",
+      "https://github.com/PostHog/posthog/pull/78791",
+      "https://github.com/PostHog/posthog/pull/80498"
+    ],
+    "problem": "Reports that users will need",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "Reports that users will need",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #67000 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #67031 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #67048 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #67124 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/67000-d89c87a13ee3",
+    "intervention": "Across 15 pull request(s) the work added 4 file(s), modified 43 in frontend:scenes, platform:api, product:experiments.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed on the default branch. Release corroborated by: 618 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/67000",
+      "https://github.com/PostHog/posthog/pull/67031",
+      "https://github.com/PostHog/posthog/pull/67048",
+      "https://github.com/PostHog/posthog/pull/67124",
+      "https://github.com/PostHog/posthog/pull/67505",
+      "https://github.com/PostHog/posthog/pull/68165",
+      "https://github.com/PostHog/posthog/pull/68219",
+      "https://github.com/PostHog/posthog/pull/68455",
+      "https://github.com/PostHog/posthog/pull/68980",
+      "https://github.com/PostHog/posthog/pull/69643",
+      "https://github.com/PostHog/posthog/pull/69702",
+      "https://github.com/PostHog/posthog/pull/69877",
+      "https://github.com/PostHog/posthog/pull/69968",
+      "https://github.com/PostHog/posthog/pull/69980",
+      "https://github.com/PostHog/posthog/pull/70488"
+    ],
+    "problem": "Problem The \"Slowest queries\" table on /instance/query performance already fetched each query's query id and experiment query group id but never displayed them.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "fix(experiments): skip precompute for group-aggregated experiments",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #62038 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #62942 has explicit evidence of later corrective work",
+      "PR #62943 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #62945 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/62038-f3b7df57f868",
+    "intervention": "Across 9 pull request(s) the work added 2 file(s), modified 65 in services:mcp, product:experiments, frontend:app.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62038",
+      "https://github.com/PostHog/posthog/pull/62942",
+      "https://github.com/PostHog/posthog/pull/62943",
+      "https://github.com/PostHog/posthog/pull/62944",
+      "https://github.com/PostHog/posthog/pull/62945",
+      "https://github.com/PostHog/posthog/pull/64791",
+      "https://github.com/PostHog/posthog/pull/65479",
+      "https://github.com/PostHog/posthog/pull/66260",
+      "https://github.com/PostHog/posthog/pull/66611"
+    ],
+    "problem": "Problem The experiment-update MCP tool could not set a custom exposure event.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(experiments): use running time calculation in the frontend",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #61184 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #64577 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65394 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61184-2f4bcbd366d1",
+    "intervention": "Across 4 pull request(s) the work added 5 file(s), modified 108 in platform:hogql, product:experiments, product:revenue_analytics.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change is routine maintenance. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61184",
+      "https://github.com/PostHog/posthog/pull/64577",
+      "https://github.com/PostHog/posthog/pull/65394",
+      "https://github.com/PostHog/posthog/pull/65568"
+    ],
+    "problem": "Problem HogQL queries that read a single property off the groups or persons lazy table through an explicit JSONExtractString(properties, 'name') can hit the query memory limit.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "perf(hogql): drop tuple wrapping in argMax for non-nullable columns",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #59188 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59590 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #60122 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #60783 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/59188-062d297b55d2",
+    "intervention": "Across 5 pull request(s) the work added 10 file(s), modified 26 in frontend:scenes, platform:enterprise, frontend:shared-lib.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/59188",
+      "https://github.com/PostHog/posthog/pull/59575",
+      "https://github.com/PostHog/posthog/pull/59590",
+      "https://github.com/PostHog/posthog/pull/60122",
+      "https://github.com/PostHog/posthog/pull/60783"
+    ],
+    "problem": "Problem Typing on a phone while at the gym, walking, or otherwise hands-busy is genuinely painful \u2014 and the kind of light analytical curiosity that fits the moment (\"how's signup conversion this week\", \"did the deploy break anything\") matches Max's capability surprisingly well.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(max): add hands-free voice mode for mobile chat",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #54418 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #58997 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59190 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59343 has explicit evidence of later corrective work"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/54418-d5d76e852cb3",
+    "intervention": "Across 17 pull request(s) the work added 12 file(s), modified 126, removed 2 in ingestion:node, platform:tasks, platform:temporal.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/54418",
+      "https://github.com/PostHog/posthog/pull/58772",
+      "https://github.com/PostHog/posthog/pull/58997",
+      "https://github.com/PostHog/posthog/pull/59190",
+      "https://github.com/PostHog/posthog/pull/59343",
+      "https://github.com/PostHog/posthog/pull/59605",
+      "https://github.com/PostHog/posthog/pull/60356",
+      "https://github.com/PostHog/posthog/pull/60611",
+      "https://github.com/PostHog/posthog/pull/60706",
+      "https://github.com/PostHog/posthog/pull/62202",
+      "https://github.com/PostHog/posthog/pull/62419",
+      "https://github.com/PostHog/posthog/pull/64803",
+      "https://github.com/PostHog/posthog/pull/65364",
+      "https://github.com/PostHog/posthog/pull/65806",
+      "https://github.com/PostHog/posthog/pull/65870",
+      "https://github.com/PostHog/posthog/pull/65939",
+      "https://github.com/PostHog/posthog/pull/72735"
+    ],
+    "problem": "Problem Email sending is tightly coupled to the hog execution pipeline \u2014 when a workflow calls sendEmail(), the SES call happens inline in the same worker, same batch.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(cdp): hardcode hogflow queue to postgres-v2",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #65437 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65709 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65730 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65851 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/65437-d362177c00a6",
+    "intervention": "Across 9 pull request(s) the work added 2 file(s), modified 38 in product:experiments, frontend:scenes, platform:api.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed on the default branch. Release corroborated by: 3 documentation file(s) changed, e.g. products/experiments/backend/hogql_queries/LAZY_COMPUTATION.md; 991 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/65437",
+      "https://github.com/PostHog/posthog/pull/65709",
+      "https://github.com/PostHog/posthog/pull/65730",
+      "https://github.com/PostHog/posthog/pull/65851",
+      "https://github.com/PostHog/posthog/pull/71917",
+      "https://github.com/PostHog/posthog/pull/75903",
+      "https://github.com/PostHog/posthog/pull/78119",
+      "https://github.com/PostHog/posthog/pull/78699",
+      "https://github.com/PostHog/posthog/pull/78777"
+    ],
+    "problem": "Problem The query performance \"Path\" column only tracked exposures precomputation, so it couldn't distinguish whether an experiment query used exposures precompute, metric-events precompute, both, or neither.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(experiments): extend metric-events precomputation to retention metrics",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #60477 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #61223 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #61711 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #61715 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/60477-9a38a62fe91d",
+    "intervention": "Across 18 pull request(s) the work added 10 file(s), modified 121, removed 2 in platform:api, platform:monolith, services:mcp.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/60477",
+      "https://github.com/PostHog/posthog/pull/61223",
+      "https://github.com/PostHog/posthog/pull/61225",
+      "https://github.com/PostHog/posthog/pull/61711",
+      "https://github.com/PostHog/posthog/pull/61715",
+      "https://github.com/PostHog/posthog/pull/61759",
+      "https://github.com/PostHog/posthog/pull/61940",
+      "https://github.com/PostHog/posthog/pull/62180",
+      "https://github.com/PostHog/posthog/pull/62276",
+      "https://github.com/PostHog/posthog/pull/62478",
+      "https://github.com/PostHog/posthog/pull/62557",
+      "https://github.com/PostHog/posthog/pull/62729",
+      "https://github.com/PostHog/posthog/pull/64087",
+      "https://github.com/PostHog/posthog/pull/70538",
+      "https://github.com/PostHog/posthog/pull/71246",
+      "https://github.com/PostHog/posthog/pull/76812",
+      "https://github.com/PostHog/posthog/pull/77558",
+      "https://github.com/PostHog/posthog/pull/77562"
+    ],
+    "problem": "refactor(provisioning): replace ALLOWED PROVISIONING SCOPES with app.scopes ceiling",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "refactor(provisioning): replace ALLOWED PROVISIONING SCOPES with app.scopes ceiling",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/61337-f8735a800b10",
+    "intervention": "Across 2 pull request(s) the work modified 36 in platform:hogql, product:marketing_analytics, product:web_analytics.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change is routine maintenance. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/61337",
+      "https://github.com/PostHog/posthog/pull/61708"
+    ],
+    "problem": "Problem pretty print in tests (a test-only helper that sprinkles newlines before SQL keywords for readable snapshots) inserted those newlines with naive substring .replace() calls.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "chore(hogql): indent nested subqueries in test pretty-printer",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #58360 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #58688 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/58360-775e2eb1d3e8",
+    "intervention": "Across 2 pull request(s) the work added 20 file(s), modified 21 in product:marketing_analytics, platform:monolith, frontend:queries.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/58360",
+      "https://github.com/PostHog/posthog/pull/58688"
+    ],
+    "problem": "Problem There is no easy way for users to diagnose their Web Analytics setup via Posthog AI.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(marketing-analytics): add Max AI tools for diagnostics and audits",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #68024 has explicit evidence of later corrective work",
+      "PR #68024 was explicitly reverted",
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users.",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/68024-2f13f8a43be6",
+    "intervention": "Across 2 pull request(s) the work modified 2 in frontend:scenes, unknown.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/68024",
+      "https://github.com/PostHog/posthog/pull/79705"
+    ],
+    "problem": "Problem On the AI-first Home page (which nearly every logged-in user lands on), the grid's column headers \u2014 \"Recents\", \"Pinned dashboards\", \"Starred\" \u2014 read as interactive menu chrome.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "fix(homepage): mark AI-first grid headers as non-interactive",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users.",
+      "prefix 'refactor' expects ['platform_code', 'product_code']; observed []",
+      "prefix 'refactor' expects ['platform_code', 'product_code']; observed []"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/82512-be714fae9111",
+    "intervention": "No file-level diff is available in the clone. Titles state: refactor(duckgres): turn the anomaly checks into one table; refactor(duckgres): move the poller into the managed warehouse product",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/82512",
+      "https://github.com/PostHog/posthog/pull/82667"
+    ],
+    "problem": "No problem statement is recorded in the linked issue or PR bodies.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "refactor(duckgres): turn the anomaly checks into one table",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #59062 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #59109 has explicit evidence of later corrective work",
+      "PR #59304 has explicit evidence of later corrective work",
+      "PR #60951 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/59062-b5162ced29a6",
+    "intervention": "Across 24 pull request(s) the work added 157 file(s), modified 857, removed 29 in frontend:scenes, infra:docs, product:wizard.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/59062",
+      "https://github.com/PostHog/posthog/pull/59109",
+      "https://github.com/PostHog/posthog/pull/59111",
+      "https://github.com/PostHog/posthog/pull/59304",
+      "https://github.com/PostHog/posthog/pull/60225",
+      "https://github.com/PostHog/posthog/pull/60951",
+      "https://github.com/PostHog/posthog/pull/64917",
+      "https://github.com/PostHog/posthog/pull/66168",
+      "https://github.com/PostHog/posthog/pull/66486",
+      "https://github.com/PostHog/posthog/pull/66490",
+      "https://github.com/PostHog/posthog/pull/66491",
+      "https://github.com/PostHog/posthog/pull/68052",
+      "https://github.com/PostHog/posthog/pull/68248",
+      "https://github.com/PostHog/posthog/pull/68738",
+      "https://github.com/PostHog/posthog/pull/68758",
+      "https://github.com/PostHog/posthog/pull/69024",
+      "https://github.com/PostHog/posthog/pull/69089",
+      "https://github.com/PostHog/posthog/pull/74880",
+      "https://github.com/PostHog/posthog/pull/75697",
+      "https://github.com/PostHog/posthog/pull/75734",
+      "https://github.com/PostHog/posthog/pull/77849",
+      "https://github.com/PostHog/posthog/pull/78394",
+      "https://github.com/PostHog/posthog/pull/79251",
+      "https://github.com/PostHog/posthog/pull/79264"
+    ],
+    "problem": "Self-driving onboarding",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "Self-driving onboarding",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #76606 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/76606-148e382119b1",
+    "intervention": "Across 1 pull request(s) the work added 1 file(s), modified 51 in services:mcp, frontend:app, platform:migrations.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change is routine maintenance. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/76606"
+    ],
+    "problem": "Problem The \"What is your role?\" question at signup has a fixed list of eight options, and students have to pick \"Other\".",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(signup): add student role and randomize role order",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #69359 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/69359-e3e07a03b60d",
+    "intervention": "Across 2 pull request(s) the work added 5 file(s), modified 7 in frontend:shared-lib, frontend:app.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 5 later change(s) depend on what this episode introduced.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/69359",
+      "https://github.com/PostHog/posthog/pull/69654"
+    ],
+    "problem": "Problem Dashboard text cards support plain markdown only.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(dashboards): add word art blocks to text cards",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #57102 has explicit evidence of later corrective work",
+      "PR #57119 has explicit evidence of later corrective work",
+      "PR #63644 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #64402 has explicit evidence of later corrective work"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/57102-6975684cd383",
+    "intervention": "Across 13 pull request(s) the work added 2 file(s), modified 50 in platform:hogql, services:mcp, frontend:queries.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/57102",
+      "https://github.com/PostHog/posthog/pull/57119",
+      "https://github.com/PostHog/posthog/pull/60110",
+      "https://github.com/PostHog/posthog/pull/63644",
+      "https://github.com/PostHog/posthog/pull/64402",
+      "https://github.com/PostHog/posthog/pull/64530",
+      "https://github.com/PostHog/posthog/pull/65731",
+      "https://github.com/PostHog/posthog/pull/70880",
+      "https://github.com/PostHog/posthog/pull/71817",
+      "https://github.com/PostHog/posthog/pull/74218",
+      "https://github.com/PostHog/posthog/pull/76499",
+      "https://github.com/PostHog/posthog/pull/76512",
+      "https://github.com/PostHog/posthog/pull/76518"
+    ],
+    "problem": "Problem Retention insights with a data warehouse series didn't handle property aggregation backend side.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "feat(retention): add feature flag for variant and compare in tests",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #62563 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "production code changed with no accompanying test change"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/62563-3e20b1405085",
+    "intervention": "Across 2 pull request(s) the work added 1 file(s), modified 11 in infra:ci, infra:agent-config, infra:repo-root.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change landed on the default branch. Release corroborated by: 2 documentation file(s) changed, e.g. .agents/skills/gating-production-deploys/SKILL.md.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/62563",
+      "https://github.com/PostHog/posthog/pull/63911"
+    ],
+    "problem": "Problem Production container builds and Charts deploy dispatches are hardcoded to run only when github.repository == 'PostHog/posthog'.",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "chore(ci): gate prod build/deploy on CD DEPLOY ENABLED variable",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  },
+  {
+    "counterevidence": [
+      "PR #65056 has explicit evidence of later corrective work",
+      "PR #65059 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65102 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+      "PR #65519 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+    ],
+    "episode_id": "github.com/PostHog/posthog#episode/65056-3317a22b6eda",
+    "intervention": "Across 13 pull request(s) the work added 10 file(s), modified 48 in frontend:shared-lib, packages:quill, frontend:app.",
+    "machine_bands": "[hidden until you record yours]",
+    "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+    "pr_urls": [
+      "https://github.com/PostHog/posthog/pull/65056",
+      "https://github.com/PostHog/posthog/pull/65059",
+      "https://github.com/PostHog/posthog/pull/65098",
+      "https://github.com/PostHog/posthog/pull/65102",
+      "https://github.com/PostHog/posthog/pull/65519",
+      "https://github.com/PostHog/posthog/pull/65522",
+      "https://github.com/PostHog/posthog/pull/65531",
+      "https://github.com/PostHog/posthog/pull/65553",
+      "https://github.com/PostHog/posthog/pull/65910",
+      "https://github.com/PostHog/posthog/pull/65994",
+      "https://github.com/PostHog/posthog/pull/65995",
+      "https://github.com/PostHog/posthog/pull/65996",
+      "https://github.com/PostHog/posthog/pull/66016"
+    ],
+    "problem": "Problem Part of the LemonUI - Quill date-picker parity audit ( 65019).",
+    "question": "Assign each dimension a band 0-4, or null for unknown.",
+    "title": "refactor(lemon-ui): decouple LemonCalendar per-cell hooks from LemonButton",
+    "your_bands": {
+      "collaborative_amplification": null,
+      "decision_quality": null,
+      "engineering_leverage": null,
+      "product_outcome": null,
+      "propagation_durability": null,
+      "reliability_risk": null
+    }
+  }
+]

@@ -1,0 +1,105 @@
+# Model-free deterministic feature versions.
+#
+# These MIRROR src/impact/versions.py::FEATURE_VERSIONS and exist so the values
+# are readable without importing Python.  A quality gate asserts the two agree;
+# they must be bumped together.
+#
+# Nothing in this file is a score or a weight.  Phase 1 emits evidence only;
+# any weighting is Phase 2's job and must be justified there.
+feature_versions:
+  title_parse: 1.0.0
+  path_classify: 1.0.0
+  component_map: 1.0.0
+  actor_identity: 1.0.0
+  change_shape: 1.0.0
+  blast_radius: 1.0.0
+  episode_edges: 1.0.0
+  regression: 1.0.0
+  review_intervention: 1.0.0
+  anomaly: 1.0.0
+  dependency_graph: 1.0.0
+
+pipeline_version: 1.0.0
+extractor_version: 1.0.0
+schema_version: 1.0.0
+
+# Tunables that change feature VALUES. Changing any of these requires bumping
+# the owning feature version above, otherwise two runs would disagree while
+# claiming the same version.
+parameters:
+  regression:
+    # Windows at which survival of introduced symbols/files is evaluated.
+    survival_days: [30, 60, 90]
+    # A later fix PR touching the same files within this many days is a
+    # *candidate* signal only -- never automatic blame.
+    fix_proximity_days: 14
+    # Minimum shared-path overlap for a follow-up candidate edge.
+    min_path_overlap: 1
+
+  review_intervention:
+    # Comments at or below this length that match an acknowledgement or nit
+    # pattern are classified as non-substantive.
+    short_comment_chars: 40
+    # A comment counts as "followed by change" when a later commit in the same
+    # PR touches the referenced file within this many hours.
+    change_follow_hours: 336
+    safety_vocabulary:
+      data_loss: ['data loss', 'lose data', 'drop table', 'truncate', 'delete all', 'irreversible', 'destructive']
+      migration: ['migration', 'backfill', 'schema change', 'alter table', 'downtime']
+      security: ['security', 'vulnerab', 'injection', 'xss', 'csrf', 'exploit', 'sanitiz', 'escape', 'auth bypass', 'secret', 'credential']
+      privacy: ['pii', 'gdpr', 'personal data', 'privacy', 'anonymi']
+      performance: ['performance', 'slow', 'n+1', 'latency', 'timeout', 'index', 'query plan', 'memory leak', 'o(n']
+      scaling: ['scale', 'scaling', 'throughput', 'backpressure', 'rate limit', 'shard', 'partition']
+      breaking_change: ['breaking change', 'backwards incompat', 'backward incompat', 'will break', 'deprecat']
+      correctness: ['this is wrong', 'bug', 'incorrect', 'race condition', 'off by one', 'edge case', 'null', 'undefined behaviour']
+      ux: ['ux', 'confusing', 'accessib', 'a11y', 'user will', 'copy is']
+      test_gap: ['add a test', 'needs a test', 'test coverage', 'untested', 'no test']
+    acknowledgement_patterns:
+      # Word-boundary forms. `\b` is correct here because these end in letters.
+      - '^(lgtm|looks good|nice|thanks|thank you|ty|ship it|approved?|\+1)\b'
+      - '^(done|fixed|good catch|makes sense|agreed|will do|sounds good)\b'
+      # Emoji-only approvals need their own rule: emoji are not word characters,
+      # so a trailing `\b` never matches when the emoji is the entire comment.
+      - '^[\s]*[👍🚀✅💯🎉🙌❤️➕]+[\s]*$'
+    nit_patterns:
+      - '^\s*(nit|nitpick|style|typo|super minor|tiny)\b'
+      - '^\s*\[?(nit|nitpick)\]?\s*[:.-]'
+
+  episodes:
+    # Reference phrases that create candidate episode edges between PRs.
+    edge_phrases:
+      follow_up: ['follow up', 'follow-up', 'followup', 'as a follow up']
+      part_of: ['part of', 'part 1', 'part 2', 'first of', 'series']
+      stacked_on: ['stacked on', 'stacked upon', 'builds on', 'depends on', 'blocked by', 'requires']
+      reverts: ['revert', 'reverts', 'reverting']
+      reapplies: ['reland', 're-land', 'reapply', 're-apply', 'redo of']
+      fixes: ['fixes', 'fix', 'closes', 'close', 'resolves', 'resolve']
+    strength_bands:
+      strong: Explicit closing/revert reference emitted by GitHub itself.
+      medium: Explicit issue/PR number plus an edge phrase in the body.
+      weak: Shared feature flag, symbol or narrow component within the window.
+
+  blast_radius:
+    # Fan-in/out are read off the import graph; nodes above this degree are
+    # labelled "hub" as context, never as a score.
+    hub_fan_in_percentile: 0.95
+
+    # Reverse-reachability depth: how far downstream to walk from the changed
+    # files. Measured on 4,000 eligible PRs, distinct downstream products:
+    #
+    #   depth  median   p75   p90   max(of 84)   platform_wide share
+    #     1       0       2    36       80            24%
+    #     2       0      10    69       81            34%
+    #     3       1      33    76       82            40%
+    #
+    # Transitive reach saturates in a monorepo: by depth 2 the 90th percentile
+    # already touches 69 of 84 products, so the signal stops distinguishing a
+    # broad change from a narrow one. Depth 1 -- "files that DIRECTLY import
+    # what you changed" -- is both the most discriminating and the only claim a
+    # reader can verify by opening a file. Raise it if you want transitive
+    # reach, but read the table above first.
+    max_reachability_depth: 1
+
+  change_shape:
+    # Shannon entropy over component shares; reported raw, not bucketed.
+    entropy_base: 2

@@ -1,0 +1,58 @@
+{
+  "name": "posthog-impact-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@11.12.1",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "data": "node scripts/build-data.mjs",
+    "dev": "npm run data && next dev",
+    "build": "npm run data && next build",
+    "start": "npx serve out --no-clipboard",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "1.2.12",
+    "@radix-ui/react-dialog": "1.1.15",
+    "@radix-ui/react-select": "2.2.6",
+    "@radix-ui/react-slot": "1.2.3",
+    "@radix-ui/react-tabs": "1.1.13",
+    "@radix-ui/react-tooltip": "1.2.8",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "0.544.0",
+    "next": "^15.5.23",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "2.6.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/postcss": "4.1.13",
+    "@testing-library/jest-dom": "6.6.4",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "^14.6.4",
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.9",
+    "@types/react-dom": "19.1.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "eslint": "9.34.0",
+    "eslint-config-next": "^15.5.23",
+    "jsdom": "26.1.0",
+    "postcss": "^8.5.26",
+    "tailwindcss": "4.1.13",
+    "typescript": "5.7.3",
+    "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "postcss": "^8.5.26"
+  }
+}

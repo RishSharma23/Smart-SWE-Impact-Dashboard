@@ -1,0 +1,46 @@
+{
+  "analyzed_head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+  "computed_at": "2026-08-17T14:50:03.656509Z",
+  "dependency_graph_version": "1.0.0",
+  "files_with_dynamic_imports": 18,
+  "graph_nodes": 36412,
+  "hub_fan_in_threshold": 15,
+  "internal_edges": 141389,
+  "not_parsed_files": 1774,
+  "not_parsed_languages": [
+    "go",
+    "hog",
+    "rb",
+    "rust",
+    "sql"
+  ],
+  "parse_error_examples": [],
+  "parse_errors": 0,
+  "python": {
+    "by_resolution": {
+      "exact": 71921,
+      "external": 57144,
+      "prefix": 2
+    },
+    "import_statements": 129067,
+    "internal_resolution_rate": 0.557253,
+    "resolved_internal": 71923
+  },
+  "tracked_files": 43918,
+  "tsconfig_alias_patterns": 61,
+  "tsconfig_errors": [],
+  "tsconfig_scopes": 15,
+  "typescript_javascript": {
+    "by_resolution": {
+      "alias": 41412,
+      "external": 29044,
+      "external_alias": 1921,
+      "relative": 28054,
+      "relative_missing": 278,
+      "unresolved": 572
+    },
+    "import_statements": 101281,
+    "internal_resolution_rate": 0.685874,
+    "resolved_internal": 69466
+  }
+}

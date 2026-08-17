@@ -1,0 +1,477 @@
+[
+  {
+    "content_bytes": 56597,
+    "content_sha256": "d532e0791ad46434e4df2f5ca6e11d14852b646f478327cc58a4adb3269937dd",
+    "description": "Eine REST API (JSON), die alle relevanten Zahlen zur Corona Lage in Deutschland liefert, basierend auf den Daten des RKI. Inzidenzen, F\u00e4lle, Hospitalisierung, Altersgruppen, Impfquote.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://api.corona-zahlen.org/docs/",
+    "host": "api.corona-zahlen.org",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/72618"
+    ],
+    "retrieved_at": "2026-08-17T04:33:14.978252Z",
+    "title": "Robert Koch-Institut API - by Marlon L\u00fcckert | Robert Koch-Institut COVID-19 API - von Marlon L\u00fcckert",
+    "url": "https://api.corona-zahlen.org/docs/"
+  },
+  {
+    "content_bytes": 13258,
+    "content_sha256": "19ad0a0544fd0d73f97bbc2f4eb8ff65c7fb8ba6fff6ac49f4210d8c4f51bee7",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md",
+    "host": "chromium.googlesource.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/61515"
+    ],
+    "retrieved_at": "2026-08-17T04:33:15.819975Z",
+    "title": "Chromium Docs - Linux SUID Sandbox Development",
+    "url": "https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md"
+  },
+  {
+    "content_bytes": 309925,
+    "content_sha256": "6b22490b411f91d7389bd94acabce9a6c5800d0e918a44bc76d3c084bf778fb8",
+    "description": "Viewing the status of repos and test performance",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://circleci.com/docs/guides/insights/insights/",
+    "host": "circleci.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71192"
+    ],
+    "retrieved_at": "2026-08-17T04:33:16.377553Z",
+    "title": "Using Insights - CircleCI Docs",
+    "url": "https://circleci.com/docs/insights/"
+  },
+  {
+    "content_bytes": 171075,
+    "content_sha256": "7fa9ab9f15564249f056d90bbd7d33b6937231c94373a6ec30fe9c608cbb60e1",
+    "description": "Depot offers several different types of GitHub Actions runners, depending on your needs.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://depot.dev/docs/github-actions/runner-types",
+    "host": "depot.dev",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/62498"
+    ],
+    "retrieved_at": "2026-08-17T04:33:17.150991Z",
+    "title": "Depot GitHub Actions runner types | GitHub Actions | Depot Documentation",
+    "url": "https://depot.dev/docs/github-actions/runner-types"
+  },
+  {
+    "content_bytes": 41640,
+    "content_sha256": "edb86cac3c2b1177c68e95bbf13ebe43296fb78b4e9c2b5d2cc517e3b8e29c08",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://dev.mention.com/current/src/Changelog.html",
+    "host": "dev.mention.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "changelog",
+    "referenced_by": [
+      "pull_request/80093"
+    ],
+    "retrieved_at": "2026-08-17T06:13:52.351485Z",
+    "title": "CHANGELOG | Mention Api Reference",
+    "url": "https://dev.mention.com/current/src/Changelog.html"
+  },
+  {
+    "content_bytes": 5602,
+    "content_sha256": "501943d1a0c5579503adaaa31e702f9537095817746046cde9b5eb6f25cb77b7",
+    "description": "The Analytics 2.0 API overview page.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://developer.adobe.com/analytics-apis/docs/2.0/",
+    "host": "developer.adobe.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/73792"
+    ],
+    "retrieved_at": "2026-08-17T04:33:17.608412Z",
+    "title": "Adobe Analytics 2.0 APIs",
+    "url": "https://developer.adobe.com/analytics-apis/docs/2.0/"
+  },
+  {
+    "content_bytes": 1003341,
+    "content_sha256": "c324bc2b3c1e639b729bd4c66bdde5eee86e8421bb2717186c84a510bf70e317",
+    "description": "The Graph API allows you to read and write data to and from the Facebook social graph.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://developers.facebook.com/docs/graph-api",
+    "host": "developers.facebook.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/75431"
+    ],
+    "retrieved_at": "2026-08-17T04:33:18.350274Z",
+    "title": "Graph API - Documentation - Meta for Developers",
+    "url": "https://developers.facebook.com/docs/graph-api"
+  },
+  {
+    "content_bytes": 1032199,
+    "content_sha256": "7927fcfe53805ea50561c1c559b90f00d739b6e6dc223b2660f687162477061d",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://developers.facebook.com/documentation/instagram-platform",
+    "host": "developers.facebook.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/73782"
+    ],
+    "retrieved_at": "2026-08-17T04:33:20.904926Z",
+    "title": "Instagram Platform",
+    "url": "https://developers.facebook.com/docs/instagram-platform"
+  },
+  {
+    "content_bytes": 64907,
+    "content_sha256": "7e85f06dd302c3b4b24f74ebc0b61089496d86325fefe4c4a2b426579cf12f30",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://developers.google.com/fonts/docs/developer_api",
+    "host": "developers.google.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/67793"
+    ],
+    "retrieved_at": "2026-08-17T04:33:22.116103Z",
+    "title": "Developer API | Google Fonts | Google for Developers",
+    "url": "https://developers.google.com/fonts/docs/developer_api"
+  },
+  {
+    "content_bytes": 213137,
+    "content_sha256": "4fbeb0f695b6a330c1c5df9ddc84b07557fea8dd4d798ad32977a6f8e0a5ba6f",
+    "description": "Today we",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://developers.hubspot.com/changelog/introducing-date-based-api-versioning",
+    "host": "developers.hubspot.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "changelog",
+    "referenced_by": [
+      "pull_request/71669"
+    ],
+    "retrieved_at": "2026-08-17T04:33:22.651498Z",
+    "title": "Introducing date-based API versioning",
+    "url": "https://developers.hubspot.com/changelog/introducing-date-based-api-versioning"
+  },
+  {
+    "content_bytes": 832272,
+    "content_sha256": "1fd2623d6d68f6a9e5c27cb45a581af42a2648d387417a4e26c21a2b2d371683",
+    "description": "Learn the concept of an access token and its scopes.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://docs.dynatrace.com/docs/manage/identity-access-management/access-tokens-and-oauth-clients/access-tokens",
+    "host": "docs.dynatrace.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71238"
+    ],
+    "retrieved_at": "2026-08-17T04:33:22.846401Z",
+    "title": "Access tokens classic \u00e2\u0080\u0094 Dynatrace Docs",
+    "url": "https://docs.dynatrace.com/docs/manage/identity-access-management/access-tokens-and-oauth-clients/access-tokens"
+  },
+  {
+    "content_bytes": 1786333,
+    "content_sha256": "79a21e4066ede55bc5e1085d080746b4e4ca5594dff38ccaf96747e99d42a731",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://help.gladly.com/docs/contact-timestamps",
+    "host": "help.gladly.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/80027"
+    ],
+    "retrieved_at": "2026-08-17T06:13:53.566447Z",
+    "title": "Contact Timestamps",
+    "url": "https://help.gladly.com/docs/contact-timestamps"
+  },
+  {
+    "content_bytes": 1715139,
+    "content_sha256": "07335bb5a4358f34c8367a8025ee91a9efdc3863611da6877eb25fb1582163da",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://help.gladly.com/docs/conversation-timestamps",
+    "host": "help.gladly.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/80027"
+    ],
+    "retrieved_at": "2026-08-17T06:13:54.588286Z",
+    "title": "Conversation Timestamps",
+    "url": "https://help.gladly.com/docs/conversation-timestamps"
+  },
+  {
+    "content_bytes": 175380,
+    "content_sha256": "1522d1807f87a1ed3fce794898b480d2820bf90a72a651fa6e7e3706c859d97c",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://www.sumologic.com:443/help/docs/api/search-job/",
+    "host": "help.sumologic.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71171"
+    ],
+    "retrieved_at": "2026-08-17T04:33:23.732879Z",
+    "title": "Search Job APIs | Sumo Logic Docs",
+    "url": "https://help.sumologic.com/docs/api/search-job/"
+  },
+  {
+    "content_bytes": 89478,
+    "content_sha256": "cbcf194f425a6102767e4674cbd2394485a6460144fabf9a8bc0c9bcc0aa1a50",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://www.sumologic.com:443/help/docs/manage/security/access-keys/",
+    "host": "help.sumologic.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71171"
+    ],
+    "retrieved_at": "2026-08-17T04:33:24.738275Z",
+    "title": "Access Keys | Sumo Logic Docs",
+    "url": "https://help.sumologic.com/docs/manage/security/access-keys/"
+  },
+  {
+    "content_bytes": 70578,
+    "content_sha256": "cc1b85142bbe7a9f8bc3755e038f3a7855de43d83b8600d5d7af737500dbf480",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://www.sumologic.com:443/help/docs/manage/security/service-accounts/",
+    "host": "help.sumologic.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71171"
+    ],
+    "retrieved_at": "2026-08-17T04:33:25.786999Z",
+    "title": "Service Accounts | Sumo Logic Docs",
+    "url": "https://help.sumologic.com/docs/manage/security/service-accounts/"
+  },
+  {
+    "content_bytes": 215267,
+    "content_sha256": "5fd7d40003baf3e5dd29411f5972e4d0a486836c93955058d2474200653f3ad8",
+    "description": null,
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/changelog.md",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "changelog",
+    "referenced_by": [
+      "pull_request/77334"
+    ],
+    "retrieved_at": "2026-08-17T04:33:26.020540Z",
+    "title": null,
+    "url": "https://posthog.com/changelog.md"
+  },
+  {
+    "content_bytes": 1071936,
+    "content_sha256": "a2dd777fda0394d36368baf7cf0fbe6d42b4d4dbd4e147d6fab076d3400c0093",
+    "description": "The activity tab is a customizable list of events that you've captured. It's great for checking events are being captured, debugging captured events\u2026",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/activity#terminal-live-events-posthog-live",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/69040"
+    ],
+    "retrieved_at": "2026-08-17T04:33:27.209671Z",
+    "title": "Activity tab - Docs - PostHog",
+    "url": "https://posthog.com/docs/activity#terminal-live-events-posthog-live"
+  },
+  {
+    "content_bytes": 1134879,
+    "content_sha256": "d111eab360d6f379e4aef0e271034b19a8bfc2de72e2e288ca624ef21ae3a13d",
+    "description": "PostHog supports OAuth 2.0 for third-party applications to access PostHog on behalf of users. This page explains how to integrate with PostHog's\u2026",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/api/oauth",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/61015"
+    ],
+    "retrieved_at": "2026-08-17T04:33:28.299879Z",
+    "title": "OAuth integration - Docs - PostHog",
+    "url": "https://posthog.com/docs/api/oauth"
+  },
+  {
+    "content_bytes": 1669381,
+    "content_sha256": "c45d3238f50ac44003af0e47ca2775c30ed9104cd270da0adb7ae88dc1921f7b",
+    "description": "The single platform for engineers to analyze, test, observe, and deploy new features. Product analytics, session replay, feature flags, experiments, CDP, and more.",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/api/persons#post-api-environments-environment_id-persons-id-split",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/61756"
+    ],
+    "retrieved_at": "2026-08-17T04:33:29.056724Z",
+    "title": "Persons API Reference - PostHog",
+    "url": "https://posthog.com/docs/api/persons#post-api-environments-environment_id-persons-id-split"
+  },
+  {
+    "content_bytes": 1625100,
+    "content_sha256": "7c9b051dc26f00e84a68f1a374c9fd53f098ccf2c44215ca18c8e83d9d0c031d",
+    "description": "Connect AirOps to PostHog",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/cdp/sources/airops",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/69993"
+    ],
+    "retrieved_at": "2026-08-17T04:33:30.075498Z",
+    "title": "AirOps source - Docs - PostHog",
+    "url": "https://posthog.com/docs/cdp/sources/airops"
+  },
+  {
+    "content_bytes": 1625264,
+    "content_sha256": "c20493f5e8c401025bfde1acf7a7a0252ab9a8419bdc43d8696590a3d50ab097",
+    "description": "Connect Anthropic to PostHog",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/cdp/sources/anthropic",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/69621"
+    ],
+    "retrieved_at": "2026-08-17T04:33:31.325657Z",
+    "title": "Anthropic source - Docs - PostHog",
+    "url": "https://posthog.com/docs/cdp/sources/anthropic"
+  },
+  {
+    "content_bytes": 1652316,
+    "content_sha256": "64b8286903d96cf12bb7a290d355393fc30edec5dbf77f7ad03845887e1ec721",
+    "description": "The Appfigures connector syncs your app-store analytics \u2013 products, reviews, and sales and revenue reports \u2013 into PostHog, so you can analyze your\u2026",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/cdp/sources/appfigures",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/66737"
+    ],
+    "retrieved_at": "2026-08-17T04:33:32.242605Z",
+    "title": "Linking Appfigures as a source - Docs - PostHog",
+    "url": "https://posthog.com/docs/cdp/sources/appfigures"
+  },
+  {
+    "content_bytes": 1650875,
+    "content_sha256": "675da6ae5a1e10da38d2f81a1d5abd86162e507f005401f1740b0c1375181675",
+    "description": "The AssemblyAI connector syncs your speech-to-text transcripts into the PostHog Data warehouse, so you can analyze your transcription data alongside\u2026",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/cdp/sources/assemblyai",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/66730"
+    ],
+    "retrieved_at": "2026-08-17T04:33:33.655649Z",
+    "title": "Linking AssemblyAI as a source - Docs - PostHog",
+    "url": "https://posthog.com/docs/cdp/sources/assemblyai"
+  },
+  {
+    "content_bytes": 1656490,
+    "content_sha256": "fb9187de545e377d7b47be5f83180f7452da0bcdc9505bc07a51de86c223785f",
+    "description": "The Automox connector syncs your patch management and endpoint data into the PostHog Data warehouse, so you can trend remediation coverage and device\u2026",
+    "error": null,
+    "extraction_status": "ok",
+    "extractor_version": "1.0.0",
+    "final_url": "https://posthog.com/docs/cdp/sources/automox",
+    "host": "posthog.com",
+    "http_status": 200,
+    "reference_count": 1,
+    "reference_subtype": "docs",
+    "referenced_by": [
+      "pull_request/71234"
+    ],
+    "retrieved_at": "2026-08-17T04:33:34.056259Z",
+    "title": "Linking Automox as a source - Docs - PostHog",
+    "url": "https://posthog.com/docs/cdp/sources/automox"
+  }
+]

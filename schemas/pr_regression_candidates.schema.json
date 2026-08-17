@@ -1,0 +1,172 @@
+{
+  "$id": "https://posthog-impact.local/schemas/pr_regression_candidates.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "corrective_churn": {
+      "arrow_type": "struct<collaborator_follow_up: int64, replacement: int64, revert: int64, self_follow_up: int64, unknown: int64>",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "corrective_churn_total": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "explicit_regression_signals": {
+      "arrow_type": "list<element: struct<edge_id: string, edge_type: string, episode_edges_version: string, evidence: string, evidence_source: string, source_pr_id: string, source_pr_number: int64, strength: string, target_kind: string, target_number: int64, target_pr_in_dataset: bool>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "explicit_signal_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "files_introduced": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "linked_candidate_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "linked_fix_candidates": {
+      "arrow_type": "list<element: struct<days_after: double, edge_type: string, evidence: string, shared_path_count: int64, strength: string, target_number: int64>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "merged_at": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_id": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pr_number": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "proximate_candidate_count": {
+      "arrow_type": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "proximate_fix_candidates": {
+      "arrow_type": "list<element: struct<days_after: double, edge_type: string, evidence: string, shared_path_count: int64, shared_paths: list<element: string>, strength: string, target_number: int64>>",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "regression_evidence_tier": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "regression_version": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requires_human_confirmation": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "survival_30d": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "survival_30d_reason": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "survival_60d": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "survival_60d_reason": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "survival_90d": {
+      "arrow_type": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "survival_90d_reason": {
+      "arrow_type": "string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tests_added_with_fix": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "was_reverted": {
+      "arrow_type": "bool",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "pr_regression_candidates",
+  "type": "object",
+  "x-pipeline-version": "1.0.0",
+  "x-schema-version": "1.0.0"
+}

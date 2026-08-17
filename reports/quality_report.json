@@ -1,0 +1,1687 @@
+{
+  "gates": [
+    {
+      "detail": "27 tables rehashed from disk; 0 disagree with their sidecar",
+      "gate": "reproducibility",
+      "mismatched": [],
+      "note": "This proves stored bytes and stored metadata agree. The stronger two-full-runs comparison is `impact all` twice with the same --window-start; the content hashes here are what it compares.",
+      "status": "pass",
+      "tables_checked": 27
+    },
+    {
+      "detail": "5996 ledger entries; 0 neither succeeded nor carry a terminal reason",
+      "examples": [],
+      "gate": "resume_without_gaps",
+      "ledger_entries": 5996,
+      "status": "pass",
+      "unexplained": 0
+    },
+    {
+      "detail": "5 fixtures; 0 failed",
+      "failures": [],
+      "gate": "conventional_title_fixtures",
+      "status": "pass"
+    },
+    {
+      "clusters": 934,
+      "detail": "934 clusters; 0 merged two logins without shared-email evidence; 0 actors carry a shared_email ambiguity flag",
+      "gate": "identity_fixtures",
+      "shared_email_flagged": 0,
+      "status": "pass",
+      "suspicious_clusters": []
+    },
+    {
+      "detail": "13318 merged-in-window PRs, 0 boundary violations",
+      "detail_record": {
+        "boundary_violations": 0,
+        "created_before_window_merged_inside": 251,
+        "merged_in_window": 13318,
+        "note": "PRs opened before the window but merged inside it are retained; they are the reason the clone reaches 30 days further back.",
+        "semantics": "half-open [start, end) on mergedAt, UTC",
+        "status": "pass",
+        "violation_examples": [],
+        "window_end": "2026-08-17T15:01:36.152269Z",
+        "window_start": "2026-05-19T00:00:00Z"
+      },
+      "gate": "window_boundary",
+      "status": "pass"
+    },
+    {
+      "detail": "{\"status\": \"pass\", \"merged_in_window\": 13318, \"with_local_merge_commit\": 13086, \"coverage_rate\": 0.98258, \"missing\": 232}",
+      "detail_record": {
+        "coverage_rate": 0.98258,
+        "merged_in_window": 13318,
+        "missing": 232,
+        "note": "A merged PR without a local merge commit is normally one merged to a non-default branch, or one whose commit predates the shallow clone boundary.",
+        "status": "pass",
+        "with_local_merge_commit": 13086
+      },
+      "gate": "merge_commit_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "agreement_rate=0.9974",
+      "detail_record": {
+        "agreement_rate": 0.9974,
+        "changed_file_mismatches": 34,
+        "mean_absolute_file_delta": 0.18,
+        "note": "GitHub counts the full branch diff; Git counts the squashed merge commit. Rebases and merge-queue re-bases make small deltas normal.",
+        "reconcilable_prs": 13086,
+        "status": "pass",
+        "worst_examples": [
+          {
+            "delta": 1030,
+            "git": 2040,
+            "github": 3070,
+            "pr_number": 65817
+          },
+          {
+            "delta": 111,
+            "git": 13,
+            "github": 124,
+            "pr_number": 73203
+          },
+          {
+            "delta": 74,
+            "git": 30,
+            "github": 104,
+            "pr_number": 78691
+          },
+          {
+            "delta": 56,
+            "git": 13,
+            "github": 69,
+            "pr_number": 71979
+          },
+          {
+            "delta": 56,
+            "git": 5,
+            "github": 61,
+            "pr_number": 72857
+          },
+          {
+            "delta": 56,
+            "git": 20,
+            "github": 76,
+            "pr_number": 73107
+          },
+          {
+            "delta": 56,
+            "git": 14,
+            "github": 70,
+            "pr_number": 73303
+          },
+          {
+            "delta": 56,
+            "git": 13,
+            "github": 69,
+            "pr_number": 73331
+          },
+          {
+            "delta": 56,
+            "git": 2,
+            "github": 58,
+            "pr_number": 73333
+          },
+          {
+            "delta": 56,
+            "git": 1,
+            "github": 57,
+            "pr_number": 73365
+          }
+        ]
+      },
+      "gate": "change_size_reconciliation",
+      "status": "pass"
+    },
+    {
+      "detail": "{\"status\": \"pass\", \"query\": \"repo:PostHog/posthog is:pr merged:2026-05-19..2026-08-17\", \"independent_reported_total\": 13418, \"dataset_merged_in_window\": 13318, \"absolute_delta\": 100, \"relative_delta\": 0.00745, \"tolerance\": 0.02}",
+      "detail_record": {
+        "absolute_delta": 100,
+        "dataset_merged_in_window": 13318,
+        "independent_reported_total": 13418,
+        "note": "GitHub search indexes asynchronously and counts PRs merged to any branch; small deltas are expected and are reported rather than hidden.",
+        "query": "repo:PostHog/posthog is:pr merged:2026-05-19..2026-08-17",
+        "relative_delta": 0.00745,
+        "status": "pass",
+        "tolerance": 0.02
+      },
+      "gate": "independent_pr_count",
+      "status": "pass"
+    },
+    {
+      "detail": "30/30 rows queued at audit_stratified_prs.json; 0 carry a recorded human verdict",
+      "file": "audit_stratified_prs.json",
+      "gate": "audit_queue:stratified_prs",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 30,
+      "required": 30,
+      "status": "pass"
+    },
+    {
+      "detail": "10/10 rows queued at audit_regression_candidates.json; 0 carry a recorded human verdict",
+      "file": "audit_regression_candidates.json",
+      "gate": "audit_queue:regression_candidates",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 10,
+      "required": 10,
+      "status": "pass"
+    },
+    {
+      "detail": "10/10 rows queued at audit_review_interventions.json; 0 carry a recorded human verdict",
+      "file": "audit_review_interventions.json",
+      "gate": "audit_queue:review_interventions",
+      "manual_audit_recorded": 0,
+      "note": "Queue existence is automated; the verdicts are not.",
+      "queued": 10,
+      "required": 10,
+      "status": "pass"
+    },
+    {
+      "detail": "36412 nodes, 141389 edges, 1774 files with no parser",
+      "detail_record": {
+        "analyzed_head_sha": "d4295d5794f95a0ae726edd0e27450115f3fc0a3",
+        "computed_at": "2026-08-17T14:50:03.656509Z",
+        "dependency_graph_version": "1.0.0",
+        "files_with_dynamic_imports": 18,
+        "graph_nodes": 36412,
+        "hub_fan_in_threshold": 15,
+        "internal_edges": 141389,
+        "not_parsed_files": 1774,
+        "not_parsed_languages": [
+          "go",
+          "hog",
+          "rb",
+          "rust",
+          "sql"
+        ],
+        "parse_error_examples": [],
+        "parse_errors": 0,
+        "python": {
+          "by_resolution": {
+            "exact": 71921,
+            "external": 57144,
+            "prefix": 2
+          },
+          "import_statements": 129067,
+          "internal_resolution_rate": 0.557253,
+          "resolved_internal": 71923
+        },
+        "tracked_files": 43918,
+        "tsconfig_alias_patterns": 61,
+        "tsconfig_errors": [],
+        "tsconfig_scopes": 15,
+        "typescript_javascript": {
+          "by_resolution": {
+            "alias": 41412,
+            "external": 29044,
+            "external_alias": 1921,
+            "relative": 28054,
+            "relative_missing": 278,
+            "unresolved": 572
+          },
+          "import_statements": 101281,
+          "internal_resolution_rate": 0.685874,
+          "resolved_internal": 69466
+        }
+      },
+      "gate": "graph_parser_coverage",
+      "status": "pass"
+    },
+    {
+      "detail": "63 JSON artifacts scanned; 0 credential-shaped matches",
+      "gate": "secret_scan",
+      "matches": [],
+      "status": "pass"
+    }
+  ],
+  "generated_at": "2026-08-17T15:03:10.580754Z",
+  "invariant_checks": [
+    {
+      "check": "row_count",
+      "detail": "934 rows",
+      "offending_count": 934,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "not_null:actor_id",
+      "detail": "0 null values in required column 'actor_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "not_null:account_type",
+      "detail": "0 null values in required column 'account_type'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "not_null:bot_probability",
+      "detail": "0 null values in required column 'bot_probability'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "not_null:ambiguity_status",
+      "detail": "0 null values in required column 'ambiguity_status'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "unique:actor_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "range:bot_probability[0.0,1.0]",
+      "detail": "0 values outside [0.0,1.0] in 'bot_probability'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "actors"
+    },
+    {
+      "check": "row_count",
+      "detail": "23855 rows",
+      "offending_count": 23855,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "not_null:pr_id",
+      "detail": "0 null values in required column 'pr_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "not_null:state",
+      "detail": "0 null values in required column 'state'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "not_null:created_at",
+      "detail": "0 null values in required column 'created_at'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "not_null:ranking_eligible",
+      "detail": "0 null values in required column 'ranking_eligible'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "unique:pr_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "unique:pr_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "fk:author_actor_id->actors.actor_id",
+      "detail": "0 rows reference a missing actors row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:github_additions",
+      "detail": "0 negative values in 'github_additions'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:github_deletions",
+      "detail": "0 negative values in 'github_deletions'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:github_changed_files",
+      "detail": "0 negative values in 'github_changed_files'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:review_count",
+      "detail": "0 negative values in 'review_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:comment_count",
+      "detail": "0 negative values in 'comment_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "nonneg:git_file_count",
+      "detail": "0 negative values in 'git_file_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "range:title_parser_confidence[0.0,1.0]",
+      "detail": "0 values outside [0.0,1.0] in 'title_parser_confidence'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "row_count",
+      "detail": "15485 rows",
+      "offending_count": 15485,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "not_null:commit_sha",
+      "detail": "0 null values in required column 'commit_sha'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "not_null:commit_id",
+      "detail": "0 null values in required column 'commit_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "not_null:authored_at",
+      "detail": "0 null values in required column 'authored_at'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "not_null:committed_at",
+      "detail": "0 null values in required column 'committed_at'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "unique:commit_sha",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "fk:author_actor_id->actors.actor_id",
+      "detail": "0 rows reference a missing actors row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commits"
+    },
+    {
+      "check": "row_count",
+      "detail": "15484 rows",
+      "offending_count": 15484,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commit_parents"
+    },
+    {
+      "check": "not_null:commit_sha",
+      "detail": "0 null values in required column 'commit_sha'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commit_parents"
+    },
+    {
+      "check": "not_null:parent_sha",
+      "detail": "0 null values in required column 'parent_sha'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commit_parents"
+    },
+    {
+      "check": "unique:commit_sha+parent_position",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commit_parents"
+    },
+    {
+      "check": "fk:commit_sha->commits.commit_sha",
+      "detail": "0 rows reference a missing commits row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "commit_parents"
+    },
+    {
+      "check": "row_count",
+      "detail": "126552 rows",
+      "offending_count": 126552,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "not_null:path",
+      "detail": "0 null values in required column 'path'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "not_null:change_status",
+      "detail": "0 null values in required column 'change_status'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "not_null:component",
+      "detail": "0 null values in required column 'component'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "unique:pr_number+path",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "nonneg:additions",
+      "detail": "0 negative values in 'additions'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "nonneg:deletions",
+      "detail": "0 negative values in 'deletions'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "row_count",
+      "detail": "65609 rows",
+      "offending_count": 65609,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "not_null:review_id",
+      "detail": "0 null values in required column 'review_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "not_null:state",
+      "detail": "0 null values in required column 'state'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "unique:review_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviews"
+    },
+    {
+      "check": "row_count",
+      "detail": "38789 rows",
+      "offending_count": 38789,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_threads"
+    },
+    {
+      "check": "not_null:thread_id",
+      "detail": "0 null values in required column 'thread_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_threads"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_threads"
+    },
+    {
+      "check": "unique:thread_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_threads"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_threads"
+    },
+    {
+      "check": "row_count",
+      "detail": "61538 rows",
+      "offending_count": 61538,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "not_null:comment_id",
+      "detail": "0 null values in required column 'comment_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "not_null:thread_id",
+      "detail": "0 null values in required column 'thread_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "unique:comment_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "fk:thread_id->review_threads.thread_id",
+      "detail": "0 rows reference a missing review_threads row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_comments"
+    },
+    {
+      "check": "row_count",
+      "detail": "103393 rows",
+      "offending_count": 103393,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "comments"
+    },
+    {
+      "check": "not_null:comment_id",
+      "detail": "0 null values in required column 'comment_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "comments"
+    },
+    {
+      "check": "not_null:parent_kind",
+      "detail": "0 null values in required column 'parent_kind'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "comments"
+    },
+    {
+      "check": "not_null:parent_number",
+      "detail": "0 null values in required column 'parent_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "comments"
+    },
+    {
+      "check": "unique:comment_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "comments"
+    },
+    {
+      "check": "row_count",
+      "detail": "872 rows",
+      "offending_count": 872,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "issues"
+    },
+    {
+      "check": "not_null:issue_number",
+      "detail": "0 null values in required column 'issue_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "issues"
+    },
+    {
+      "check": "not_null:state",
+      "detail": "0 null values in required column 'state'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "issues"
+    },
+    {
+      "check": "unique:issue_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "issues"
+    },
+    {
+      "check": "row_count",
+      "detail": "45320 rows",
+      "offending_count": 45320,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "not_null:source_kind",
+      "detail": "0 null values in required column 'source_kind'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "not_null:source_number",
+      "detail": "0 null values in required column 'source_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "not_null:reference_kind",
+      "detail": "0 null values in required column 'reference_kind'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "not_null:reference_value",
+      "detail": "0 null values in required column 'reference_value'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "not_null:strength",
+      "detail": "0 null values in required column 'strength'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "enum:strength",
+      "detail": "0 values outside ['medium', 'strong', 'weak']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "references"
+    },
+    {
+      "check": "row_count",
+      "detail": "1049 rows",
+      "offending_count": 1049,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "feature_flags"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "feature_flags"
+    },
+    {
+      "check": "not_null:flag_key",
+      "detail": "0 null values in required column 'flag_key'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "feature_flags"
+    },
+    {
+      "check": "not_null:detection",
+      "detail": "0 null values in required column 'detection'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "feature_flags"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "feature_flags"
+    },
+    {
+      "check": "row_count",
+      "detail": "122 rows",
+      "offending_count": 122,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "components"
+    },
+    {
+      "check": "not_null:component",
+      "detail": "0 null values in required column 'component'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "components"
+    },
+    {
+      "check": "not_null:platform",
+      "detail": "0 null values in required column 'platform'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "components"
+    },
+    {
+      "check": "not_null:source_rule",
+      "detail": "0 null values in required column 'source_rule'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "components"
+    },
+    {
+      "check": "unique:component",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "components"
+    },
+    {
+      "check": "row_count",
+      "detail": "43595 rows",
+      "offending_count": 43595,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "path_map"
+    },
+    {
+      "check": "not_null:path",
+      "detail": "0 null values in required column 'path'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "path_map"
+    },
+    {
+      "check": "not_null:component",
+      "detail": "0 null values in required column 'component'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "path_map"
+    },
+    {
+      "check": "not_null:component_rule_priority",
+      "detail": "0 null values in required column 'component_rule_priority'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "path_map"
+    },
+    {
+      "check": "unique:path",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "path_map"
+    },
+    {
+      "check": "row_count",
+      "detail": "23855 rows",
+      "offending_count": 23855,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "not_null:file_count",
+      "detail": "0 null values in required column 'file_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "not_null:change_shape_version",
+      "detail": "0 null values in required column 'change_shape_version'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "unique:pr_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "nonneg:file_count",
+      "detail": "0 negative values in 'file_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "nonneg:code_file_count",
+      "detail": "0 negative values in 'code_file_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "nonneg:test_file_count",
+      "detail": "0 negative values in 'test_file_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "row_count",
+      "detail": "23855 rows",
+      "offending_count": 23855,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "not_null:reachability_band",
+      "detail": "0 null values in required column 'reachability_band'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "not_null:blast_radius_version",
+      "detail": "0 null values in required column 'blast_radius_version'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "unique:pr_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "enum:reachability_band",
+      "detail": "0 values outside ['component', 'cross_product', 'local', 'platform_wide', 'unknown']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "row_count",
+      "detail": "30619 rows",
+      "offending_count": 30619,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "not_null:source_pr_number",
+      "detail": "0 null values in required column 'source_pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "not_null:edge_type",
+      "detail": "0 null values in required column 'edge_type'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "not_null:strength",
+      "detail": "0 null values in required column 'strength'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "not_null:evidence",
+      "detail": "0 null values in required column 'evidence'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "fk:source_pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "enum:strength",
+      "detail": "0 values outside ['medium', 'strong', 'weak']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "row_count",
+      "detail": "1602 rows",
+      "offending_count": 1602,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episodes"
+    },
+    {
+      "check": "not_null:episode_id",
+      "detail": "0 null values in required column 'episode_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episodes"
+    },
+    {
+      "check": "not_null:pr_count",
+      "detail": "0 null values in required column 'pr_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episodes"
+    },
+    {
+      "check": "unique:episode_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episodes"
+    },
+    {
+      "check": "row_count",
+      "detail": "23855 rows",
+      "offending_count": 23855,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "not_null:regression_evidence_tier",
+      "detail": "0 null values in required column 'regression_evidence_tier'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "unique:pr_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "range:survival_30d[0.0,1.0]",
+      "detail": "0 values outside [0.0,1.0] in 'survival_30d'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "range:survival_60d[0.0,1.0]",
+      "detail": "0 values outside [0.0,1.0] in 'survival_60d'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "range:survival_90d[0.0,1.0]",
+      "detail": "0 values outside [0.0,1.0] in 'survival_90d'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "enum:regression_evidence_tier",
+      "detail": "0 values outside ['explicit', 'linked', 'none', 'proximate']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "row_count",
+      "detail": "61538 rows",
+      "offending_count": 61538,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "not_null:candidate_id",
+      "detail": "0 null values in required column 'candidate_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "not_null:substance_class",
+      "detail": "0 null values in required column 'substance_class'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "unique:candidate_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "enum:substance_class",
+      "detail": "0 values outside ['acknowledgement', 'bot', 'empty', 'nit', 'short', 'substantive']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "row_count",
+      "detail": "112 rows",
+      "offending_count": 112,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviewer_intervention_rollup"
+    },
+    {
+      "check": "not_null:actor_id",
+      "detail": "0 null values in required column 'actor_id'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviewer_intervention_rollup"
+    },
+    {
+      "check": "not_null:substantive_comments",
+      "detail": "0 null values in required column 'substantive_comments'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviewer_intervention_rollup"
+    },
+    {
+      "check": "unique:actor_id",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "reviewer_intervention_rollup"
+    },
+    {
+      "check": "row_count",
+      "detail": "23855 rows",
+      "offending_count": 23855,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "not_null:pr_number",
+      "detail": "0 null values in required column 'pr_number'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "not_null:anomaly_count",
+      "detail": "0 null values in required column 'anomaly_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "unique:pr_number",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "fk:pr_number->pull_requests.pr_number",
+      "detail": "0 rows reference a missing pull_requests row",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "row_count",
+      "detail": "36412 rows",
+      "offending_count": 36412,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "not_null:path",
+      "detail": "0 null values in required column 'path'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "not_null:language",
+      "detail": "0 null values in required column 'language'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "not_null:parse_status",
+      "detail": "0 null values in required column 'parse_status'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "unique:path",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "nonneg:fan_in",
+      "detail": "0 negative values in 'fan_in'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "nonneg:fan_out",
+      "detail": "0 negative values in 'fan_out'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    },
+    {
+      "check": "row_count",
+      "detail": "141389 rows",
+      "offending_count": 141389,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "dependency_edges"
+    },
+    {
+      "check": "not_null:source_path",
+      "detail": "0 null values in required column 'source_path'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "dependency_edges"
+    },
+    {
+      "check": "not_null:target_path",
+      "detail": "0 null values in required column 'target_path'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "dependency_edges"
+    },
+    {
+      "check": "not_null:resolution",
+      "detail": "0 null values in required column 'resolution'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "dependency_edges"
+    },
+    {
+      "check": "row_count",
+      "detail": "1651 rows",
+      "offending_count": 1651,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "component_edges"
+    },
+    {
+      "check": "not_null:source_component",
+      "detail": "0 null values in required column 'source_component'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "component_edges"
+    },
+    {
+      "check": "not_null:target_component",
+      "detail": "0 null values in required column 'target_component'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "component_edges"
+    },
+    {
+      "check": "not_null:edge_count",
+      "detail": "0 null values in required column 'edge_count'",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "component_edges"
+    },
+    {
+      "check": "unique:source_component+target_component",
+      "detail": "0 duplicated key(s)",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "component_edges"
+    },
+    {
+      "check": "null_semantics:binary_line_counts",
+      "detail": "0 binary files carry numeric line counts instead of NULL",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "null_semantics:unavailable_reason_present",
+      "detail": "0 files have NULL additions with no unavailable reason",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_files"
+    },
+    {
+      "check": "null_semantics:survival_reason_present",
+      "detail": "0 rows have NULL survival_30d with no stated reason",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "null_semantics:ineligible_reason_present",
+      "detail": "0 ineligible PRs carry no reason",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pull_requests"
+    },
+    {
+      "check": "version_stamp:pr_change_shape",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_change_shape"
+    },
+    {
+      "check": "version_stamp:pr_blast_radius",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_blast_radius"
+    },
+    {
+      "check": "version_stamp:candidate_episode_edges",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "candidate_episode_edges"
+    },
+    {
+      "check": "version_stamp:pr_regression_candidates",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_regression_candidates"
+    },
+    {
+      "check": "version_stamp:review_intervention_candidates",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "review_intervention_candidates"
+    },
+    {
+      "check": "version_stamp:pr_anomalies",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "pr_anomalies"
+    },
+    {
+      "check": "version_stamp:module_nodes",
+      "detail": "expected all rows stamped '1.0.0', found ['1.0.0']",
+      "offending_count": 0,
+      "offending_examples": [],
+      "status": "pass",
+      "table": "module_nodes"
+    }
+  ],
+  "invariant_summary": {
+    "fail": 0,
+    "pass": 172,
+    "skipped": 0,
+    "warn": 0
+  },
+  "known_gaps": [
+    {
+      "consequence": "has_merge_commit_in_clone=false PRs have no pr_files rows",
+      "detail": "clone strategy shallow_since; oldest available commit 2026-08-17T02:43:54Z. Survival and reachability look forward only.",
+      "gap": "shallow_clone"
+    },
+    {
+      "consequence": "reachability_band='unknown' for changes confined to them",
+      "detail": "1774 files in ['go', 'hog', 'rb', 'rust', 'sql'] have no import parser",
+      "gap": "unparsed_languages"
+    },
+    {
+      "consequence": "graph reach is a lower bound",
+      "detail": "module_nodes.has_dynamic_imports flags affected files",
+      "gap": "dynamic_imports_invisible"
+    },
+    {
+      "consequence": "comment-level evidence incomplete on those threads",
+      "detail": "27 threads truncated at the pagination cap",
+      "gap": "review_thread_pagination"
+    },
+    {
+      "consequence": "never read a NULL survival as 0",
+      "detail": "survival_* is NULL with a reason when the checkpoint falls after the window end",
+      "gap": "survival_beyond_window"
+    },
+    {
+      "consequence": "Phase 1 emits candidates only",
+      "detail": "semantic consequence of review comments is Phase 2 work",
+      "gap": "review_comment_semantics"
+    }
+  ],
+  "status": "pass",
+  "tables": {
+    "actors": 934,
+    "candidate_episode_edges": 30619,
+    "candidate_episodes": 1602,
+    "comments": 103393,
+    "commit_parents": 15484,
+    "commits": 15485,
+    "component_edges": 1651,
+    "components": 122,
+    "dependency_edges": 141389,
+    "extraction_runs": 28,
+    "feature_flags": 1049,
+    "issues": 872,
+    "module_nodes": 36412,
+    "path_map": 43595,
+    "pr_anomalies": 23855,
+    "pr_blast_radius": 23855,
+    "pr_change_shape": 23855,
+    "pr_files": 126552,
+    "pr_regression_candidates": 23855,
+    "pull_requests": 23855,
+    "raw_pages": 5996,
+    "references": 45320,
+    "review_comments": 61538,
+    "review_intervention_candidates": 61538,
+    "review_threads": 38789,
+    "reviewer_intervention_rollup": 112,
+    "reviews": 65609
+  }
+}

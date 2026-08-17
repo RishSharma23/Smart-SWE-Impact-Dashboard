@@ -1,0 +1,165 @@
+# Phase 2 — impact-episode construction.
+#
+# The unit of analysis is the IMPACT EPISODE: a connected initiative arc
+# (motivating issue -> implementation PRs -> reviews -> rollout -> follow-up
+# corrections -> documentation -> downstream adoption).  Not the PR, and not
+# the commit.
+#
+# Everything below is a CLUSTERING CONTROL.  None of these numbers is an impact
+# weight and none of them enters a score.  Changing one changes which artifacts
+# are grouped together, which is why every value is versioned
+# (episode_construction in src/impact2/versions.py) and echoed into the run
+# manifest.
+
+episodes:
+  # ---------------------------------------------------------------- tiers ---
+  # Edge strength by evidence tier.  The phase spec's recommended starting
+  # points: Tier A 1.0, Tier B 0.7, Tier C 0.35.
+  tier_strength:
+    A: 1.00      # deterministic: GitHub itself, or Git itself, created the link
+    B: 0.70      # strong structural: symbol/migration/stacked-branch/named entity
+    C: 0.35      # semantic candidate: similarity + temporal + component fit
+
+  # Per-edge-type multiplier applied INSIDE its tier.  A plain "#1234" mention
+  # is deterministic (the number is literally in the text) but is much weaker
+  # evidence of one initiative than a closing reference, so it is damped rather
+  # than promoted out of its tier.  Documented deviation from a flat tier value.
+  edge_type_multiplier:
+    closes_issue: 1.00
+    reverts: 1.00
+    reapplies: 1.00
+    supersedes: 1.00
+    timeline_connected: 0.95
+    commit_membership: 1.00
+    review_thread_change: 0.90
+    changelog_link: 0.90
+    shared_feature_flag: 0.85
+    direct_mention: 0.60
+    references_pr: 0.60
+    # Tier B
+    symbol_downstream: 1.00
+    migration_dependency: 0.85
+    stacked_branch: 1.00
+    follow_up: 0.95
+    part_of: 1.00
+    depends_on: 0.90
+    shared_named_entity: 0.80
+    # Tier C
+    semantic_similarity: 1.00
+
+  # ------------------------------------------------------------ guardrails ---
+  guards:
+    # A feature flag touched by more PRs than this is infrastructure, not an
+    # initiative.  Above `tier_a_max_fanout` the edge is demoted to tier B;
+    # above `max_fanout` it is recorded as evidence but never used to cluster.
+    flag_tier_a_max_fanout: 8
+    flag_max_fanout: 40
+    # Same for an issue that many PRs close (an epic/tracking issue).
+    issue_tier_a_max_fanout: 12
+    issue_max_fanout: 25
+    # A shared "named entity" must be rare in the corpus to mean anything.
+    named_entity_max_document_frequency: 6
+    named_entity_min_length: 6
+    # Titles matching these are generic maintenance and never justify a
+    # structural or semantic join on their own.
+    generic_title_patterns:
+      - '^(fix|chore)(\(.+\))?: (flaky|flake|typo|lint|format|bump|update deps)'
+      - '^chore\(deps\)'
+      - '^chore: (bump|update|upgrade|release)'
+      - '^fix: (test|tests|ci|typing|types|mypy|eslint)\b'
+      - '^(feat|fix): update snapshots?$'
+    # A change that is only lockfiles/generated/snapshots cannot anchor an
+    # episode join.
+    exclude_mechanical_only_from_clustering: true
+
+  # ------------------------------------------------------------ clustering ---
+  clustering:
+    algorithm: weighted_louvain        # deterministic implementation, see clustering.py
+    resolution: 1.0
+    max_passes: 12
+    random_seed: 20260816              # tie-breaks only; node order is sorted
+    # Minimum total edge strength between two PRs before the pair may be
+    # considered at all.  A single tier-C edge (0.35) is below this on purpose:
+    # a semantic edge cannot merge episodes by itself.
+    min_pair_strength: 0.50
+    # A tier-C edge needs corroboration from another signal (any other edge
+    # between the same pair, or a shared linked issue/flag) to count.
+    tier_c_requires_corroboration: true
+    # Cluster size controls.  A cluster above `split_threshold` is re-clustered
+    # on tier A+B edges only; if it is still above `hard_max` it is split into
+    # connected components of tier A edges.  Both are logged.
+    split_threshold: 12
+    hard_max: 25
+    # Temporal coherence: PRs more than this many days apart may only be joined
+    # by a tier A edge.
+    max_span_days_for_structural_join: 45
+    # Review queue: clusters whose confidence falls below this are queued for a
+    # human rather than presented as fact.
+    review_queue_confidence_below: 0.55
+
+  # -------------------------------------------------------------- semantic ---
+  semantic:
+    # Deterministic TF-IDF cosine over title + body + touched components.
+    # This is a CANDIDATE GENERATOR, never a semantic understanding claim; the
+    # method name is recorded on every edge so nothing can pretend otherwise.
+    method: tfidf_cosine
+    min_similarity: 0.62
+    max_candidates_per_pr: 12
+    max_days_apart: 30
+    require_component_overlap: true
+    min_token_length: 3
+    max_document_frequency_ratio: 0.30   # drop tokens present in >30% of PRs
+    stopwords:
+      - the
+      - and
+      - for
+      - with
+      - this
+      - that
+      - from
+      - into
+      - when
+      - what
+      - will
+      - should
+      - would
+      - could
+      - posthog
+      - pull
+      - request
+      - branch
+      - master
+      - main
+      - update
+      - updates
+      - updated
+      - change
+      - changes
+      - changed
+      - add
+      - adds
+      - added
+      - fix
+      - fixes
+      - fixed
+      - remove
+      - removes
+      - removed
+      - test
+      - tests
+
+  # ---------------------------------------------------------------- status ---
+  status:
+    # A feature flag added and never removed inside the window means the arc is
+    # still gated: partial, not shipped.
+    flag_still_gated_is_partial: true
+    # Corroborating release evidence.  Merging to master is NOT one of these:
+    # the phase spec is explicit that merge is not proof of user release.
+    release_evidence_kinds:
+      - docs_or_changelog_touched
+      - feature_flag_removed
+      - downstream_adoption_observed
+      - linked_issue_closed_as_completed
+    # An episode whose files are >= this share mechanical (lockfile, generated,
+    # snapshot, vendored) is maintenance.
+    maintenance_mechanical_share: 0.80

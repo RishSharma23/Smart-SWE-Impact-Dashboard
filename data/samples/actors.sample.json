@@ -1,0 +1,815 @@
+[
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/000f1f290844d853",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Sachin Ranchod",
+    "email_count": 1,
+    "emails": [
+      "sachin.ranchod@gmail.com"
+    ],
+    "git_names": [
+      "Sachin Ranchod"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/000f1f290844d853",
+    "identity_cluster_members": [
+      "git/email/000f1f290844d853"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/0027f67ffa878114",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Andy Zhao",
+    "email_count": 1,
+    "emails": [
+      "andy.z@posthog.com"
+    ],
+    "git_names": [
+      "Andy Zhao",
+      "andyzzhao"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/0027f67ffa878114",
+    "identity_cluster_members": [
+      "git/email/0027f67ffa878114"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/00fd1032c57f3114",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Chris Volzer",
+    "email_count": 1,
+    "emails": [
+      "chris.v@posthog.com"
+    ],
+    "git_names": [
+      "Chris Volzer"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/00fd1032c57f3114",
+    "identity_cluster_members": [
+      "git/email/00fd1032c57f3114"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/0249acf36d5f7f46",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "George Munyoro",
+    "email_count": 1,
+    "emails": [
+      "george.t@posthog.com"
+    ],
+    "git_names": [
+      "George Munyoro"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/0249acf36d5f7f46",
+    "identity_cluster_members": [
+      "git/email/0249acf36d5f7f46"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/02f7536e46dfc140",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Ahmed Aly",
+    "email_count": 1,
+    "emails": [
+      "ahmedzak.23@gmail.com"
+    ],
+    "git_names": [
+      "Ahmed Aly"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/02f7536e46dfc140",
+    "identity_cluster_members": [
+      "git/email/02f7536e46dfc140"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/071a30c8078bb1d4",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Andrew Maguire",
+    "email_count": 1,
+    "emails": [
+      "andy.m@posthog.com"
+    ],
+    "git_names": [
+      "Andrew Maguire",
+      "Andy Maguire"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/071a30c8078bb1d4",
+    "identity_cluster_members": [
+      "git/email/071a30c8078bb1d4"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/08f19f0df4b37451",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "ruby childs",
+    "email_count": 1,
+    "emails": [
+      "ruby.childs1@gmail.com"
+    ],
+    "git_names": [
+      "ruby childs"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/08f19f0df4b37451",
+    "identity_cluster_members": [
+      "git/email/08f19f0df4b37451"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/0a161b94c3116919",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Dana Zou",
+    "email_count": 1,
+    "emails": [
+      "danazou@danas-macbook-pro.local"
+    ],
+    "git_names": [
+      "Dana Zou"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/0a161b94c3116919",
+    "identity_cluster_members": [
+      "git/email/0a161b94c3116919"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/0b0b69edb18ed1b4",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Gustavo H. Strassburger",
+    "email_count": 1,
+    "emails": [
+      "gustavo@posthog.com"
+    ],
+    "git_names": [
+      "Gustavo H. Strassburger"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/0b0b69edb18ed1b4",
+    "identity_cluster_members": [
+      "git/email/0b0b69edb18ed1b4"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/0e9f834c84bab6d9",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "estefania",
+    "email_count": 1,
+    "emails": [
+      "estefania.rabadan@gmail.com"
+    ],
+    "git_names": [
+      "estefania"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/0e9f834c84bab6d9",
+    "identity_cluster_members": [
+      "git/email/0e9f834c84bab6d9"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/10976308714ecf69",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Dennis Kugelmann",
+    "email_count": 1,
+    "emails": [
+      "dennis.kugelmann@simpleclub.com"
+    ],
+    "git_names": [
+      "Dennis Kugelmann"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/10976308714ecf69",
+    "identity_cluster_members": [
+      "git/email/10976308714ecf69"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/11be7cc8b2aa9bcf",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Souheyl Gouadria",
+    "email_count": 1,
+    "emails": [
+      "souheyl.gouadria@medius.com"
+    ],
+    "git_names": [
+      "Souheyl Gouadria"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/11be7cc8b2aa9bcf",
+    "identity_cluster_members": [
+      "git/email/11be7cc8b2aa9bcf"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/125a91d6b62d48b1",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Joshua Snyder",
+    "email_count": 1,
+    "emails": [
+      "joshua@posthog.com"
+    ],
+    "git_names": [
+      "Joshua Snyder"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/125a91d6b62d48b1",
+    "identity_cluster_members": [
+      "git/email/125a91d6b62d48b1"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "bot",
+    "actor_id": "git/email/12e1cf857f707e25",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.99,
+    "bot_reasons": [
+      "noreply_bot_email: Git author email is a GitHub App noreply address."
+    ],
+    "display_name": "scheduled-actions-posthog[bot]",
+    "email_count": 1,
+    "emails": [
+      "250428249+scheduled-actions-posthog[bot]@users.noreply.github.com"
+    ],
+    "git_names": [
+      "scheduled-actions-posthog[bot]"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/12e1cf857f707e25",
+    "identity_cluster_members": [
+      "git/email/12e1cf857f707e25"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": true,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/13ec1b12603d9688",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Rabuma A. Bekele",
+    "email_count": 1,
+    "emails": [
+      "iamrabuma@gmail.com"
+    ],
+    "git_names": [
+      "Rabuma A. Bekele"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/13ec1b12603d9688",
+    "identity_cluster_members": [
+      "git/email/13ec1b12603d9688"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/1467ea91df2801cb",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Harley Alexander",
+    "email_count": 1,
+    "emails": [
+      "harley.a@posthog.com"
+    ],
+    "git_names": [
+      "Harley Alexander"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/1467ea91df2801cb",
+    "identity_cluster_members": [
+      "git/email/1467ea91df2801cb"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/16f4bad46c377dd4",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Richard Solomou",
+    "email_count": 1,
+    "emails": [
+      "richard.s@posthog.com"
+    ],
+    "git_names": [
+      "Richard Solomou"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/16f4bad46c377dd4",
+    "identity_cluster_members": [
+      "git/email/16f4bad46c377dd4"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/194ef6445eae3ef8",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "mjwarren3",
+    "email_count": 1,
+    "emails": [
+      "mike@posthog.com"
+    ],
+    "git_names": [
+      "mjwarren3"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/194ef6445eae3ef8",
+    "identity_cluster_members": [
+      "git/email/194ef6445eae3ef8"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/1d9df23b5baa0cc6",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Andrew Maguire",
+    "email_count": 1,
+    "emails": [
+      "andrewm4894@gmail.com"
+    ],
+    "git_names": [
+      "Andrew Maguire"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/1d9df23b5baa0cc6",
+    "identity_cluster_members": [
+      "git/email/1d9df23b5baa0cc6"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/1d9e8015df0bba49",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Hayne Ryu",
+    "email_count": 1,
+    "emails": [
+      "fasyy612@hotmail.com"
+    ],
+    "git_names": [
+      "Hayne Ryu"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/1d9e8015df0bba49",
+    "identity_cluster_members": [
+      "git/email/1d9e8015df0bba49"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/204d8d9210a3cad3",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Joshua Snyder",
+    "email_count": 1,
+    "emails": [
+      "joshua@timenavi.com"
+    ],
+    "git_names": [
+      "Joshua Snyder"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/204d8d9210a3cad3",
+    "identity_cluster_members": [
+      "git/email/204d8d9210a3cad3"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/20e910db748ea8fe",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Michi",
+    "email_count": 1,
+    "emails": [
+      "michael.k@posthog.com"
+    ],
+    "git_names": [
+      "Michi"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/20e910db748ea8fe",
+    "identity_cluster_members": [
+      "git/email/20e910db748ea8fe"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/2221d0e173893c86",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Eli Reisman",
+    "email_count": 1,
+    "emails": [
+      "eli.r@posthog.com"
+    ],
+    "git_names": [
+      "Eli Reisman"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/2221d0e173893c86",
+    "identity_cluster_members": [
+      "git/email/2221d0e173893c86"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/223a15833dd92691",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Lucas Flores",
+    "email_count": 1,
+    "emails": [
+      "lucas.henrique.flores2001@gmail.com"
+    ],
+    "git_names": [
+      "Lucas Flores"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/223a15833dd92691",
+    "identity_cluster_members": [
+      "git/email/223a15833dd92691"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author"
+    ]
+  },
+  {
+    "account_type": "git_identity",
+    "actor_id": "git/email/232372188cfb5a89",
+    "actor_identity_version": "1.0.0",
+    "ambiguity_reasons": [
+      "no_github_login: identified by git email only"
+    ],
+    "ambiguity_status": "ambiguous",
+    "bot_probability": 0.0,
+    "bot_reasons": [],
+    "display_name": "Tom Owers",
+    "email_count": 1,
+    "emails": [
+      "tom@posthog.com"
+    ],
+    "git_names": [
+      "Tom Owers"
+    ],
+    "github_database_id": null,
+    "github_typename": null,
+    "identity_cluster_id": "git/email/232372188cfb5a89",
+    "identity_cluster_members": [
+      "git/email/232372188cfb5a89"
+    ],
+    "identity_cluster_size": 1,
+    "is_ai_assistant_identity": false,
+    "is_bot": false,
+    "login": null,
+    "sources": [
+      "git_author",
+      "git_co_author"
+    ]
+  }
+]

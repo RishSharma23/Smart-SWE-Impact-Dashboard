@@ -1,0 +1,156 @@
+{
+  "anomaly": {
+    "anomaly_flag_counts": {
+      "duplicate_tree_sha": 32,
+      "github_vs_git_file_count_mismatch": 34,
+      "github_vs_git_line_count_mismatch": 156,
+      "merge_commit_not_in_local_clone": 232,
+      "merged_pr_with_zero_changed_files": 16
+    },
+    "changed_file_agreement_rate": 0.9974,
+    "changed_file_mismatches": 34,
+    "pull_requests": 23855,
+    "reconcilable_prs": 13086,
+    "shape_flag_counts": {
+      "bot_authored": 7965,
+      "bulk_mechanical_change": 7,
+      "docs_only": 339,
+      "generated_only": 5,
+      "lockfile_only": 5,
+      "merge_queue_artifact": 3795,
+      "snapshot_only": 1,
+      "test_only": 262,
+      "title_not_conventional": 50,
+      "very_large_file_count": 31
+    },
+    "with_any_anomaly": 420
+  },
+  "blast_radius": {
+    "band_distribution": {
+      "component": 7542,
+      "cross_product": 1089,
+      "local": 1265,
+      "platform_wide": 3137,
+      "unknown": 10822
+    },
+    "band_distribution_eligible_only": {
+      "component": 7542,
+      "cross_product": 1089,
+      "local": 1265,
+      "platform_wide": 3137,
+      "unknown": 285
+    },
+    "crossing_component_boundary": 5461,
+    "crossing_ownership_boundary": 1071,
+    "pull_requests": 23855,
+    "ranking_eligible_pull_requests": 13318,
+    "unknown_band_rate": 0.4537,
+    "unknown_band_rate_eligible_only": 0.0214,
+    "with_uncertainty": 22966
+  },
+  "change_shape": {
+    "conventional_prefix_rate": 0.8387,
+    "production_without_tests": 3188,
+    "pull_requests": 23855,
+    "title_claim_checked": 17298,
+    "title_claim_mismatch": 6834,
+    "touching_enterprise": 473,
+    "touching_migrations": 724,
+    "touching_public_api": 1455,
+    "with_conventional_prefix": 20007,
+    "with_test_changes": 9544
+  },
+  "completeness_by_month": [
+    {
+      "month": "2026-05",
+      "pull_requests": 1222,
+      "ranking_eligible": 1222,
+      "review_detail_fetched": 1222,
+      "with_files": 1203,
+      "with_merge_commit": 1204,
+      "with_reviews": 1210
+    },
+    {
+      "month": "2026-06",
+      "pull_requests": 4648,
+      "ranking_eligible": 4648,
+      "review_detail_fetched": 4648,
+      "with_files": 4540,
+      "with_merge_commit": 4546,
+      "with_reviews": 4629
+    },
+    {
+      "month": "2026-07",
+      "pull_requests": 5166,
+      "ranking_eligible": 5166,
+      "review_detail_fetched": 5164,
+      "with_files": 5076,
+      "with_merge_commit": 5085,
+      "with_reviews": 5150
+    },
+    {
+      "month": "2026-08",
+      "pull_requests": 2282,
+      "ranking_eligible": 2282,
+      "review_detail_fetched": 2279,
+      "with_files": 2251,
+      "with_merge_commit": 2251,
+      "with_reviews": 2262
+    }
+  ],
+  "computed_at": "2026-08-17T15:01:23.882361Z",
+  "episodes": {
+    "by_strength": {
+      "medium": 11808,
+      "strong": 17538,
+      "weak": 1273
+    },
+    "by_type": {
+      "closes_issue": 587,
+      "follow_up": 2022,
+      "part_of": 1657,
+      "reapplies": 51,
+      "references_pr": 3307,
+      "reverts": 1007,
+      "shared_feature_flag": 1000,
+      "shared_issue": 273,
+      "stacked_on": 2573,
+      "supersedes": 1191,
+      "timeline_connected": 16951
+    },
+    "edges": 30619,
+    "episodes": 1602,
+    "largest_episode": 55,
+    "median_episode_size": 2,
+    "prs_in_episodes": 5403
+  },
+  "regression": {
+    "evidence_tier_distribution": {
+      "explicit": 1476,
+      "linked": 34,
+      "none": 15019,
+      "proximate": 7326
+    },
+    "explicitly_reverted": 735,
+    "fixes_that_added_tests": 4213,
+    "pull_requests": 23855,
+    "requiring_human_confirmation": 7326,
+    "survival_30d_mean": 0.9658,
+    "survival_30d_measurable": 2274
+  },
+  "review_intervention": {
+    "intervention_candidates": 5962,
+    "resolved_threads": 45887,
+    "review_comments": 61538,
+    "substance_distribution": {
+      "acknowledgement": 550,
+      "bot": 29989,
+      "empty": 10,
+      "nit": 660,
+      "short": 1766,
+      "substantive": 28563
+    },
+    "substantive_rate": 0.4642,
+    "with_safety_vocabulary": 19963
+  }
+}

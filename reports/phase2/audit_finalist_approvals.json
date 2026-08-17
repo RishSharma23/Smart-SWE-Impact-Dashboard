@@ -1,0 +1,784 @@
+[
+  {
+    "actor_cluster_id": "github/user/sakce",
+    "approved": null,
+    "approved_at": null,
+    "approved_by": null,
+    "episodes": [
+      {
+        "counterevidence": [
+          "PR #49264 has explicit evidence of later corrective work",
+          "PR #49264 was explicitly reverted",
+          "PR #60072 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #61614 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/49264-8f36279f6276",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/49264",
+          "https://github.com/PostHog/posthog/pull/60072",
+          "https://github.com/PostHog/posthog/pull/61614",
+          "https://github.com/PostHog/posthog/pull/61686",
+          "https://github.com/PostHog/posthog/pull/61889",
+          "https://github.com/PostHog/posthog/pull/61928",
+          "https://github.com/PostHog/posthog/pull/62134",
+          "https://github.com/PostHog/posthog/pull/62251",
+          "https://github.com/PostHog/posthog/pull/62739",
+          "https://github.com/PostHog/posthog/pull/64312",
+          "https://github.com/PostHog/posthog/pull/64872",
+          "https://github.com/PostHog/posthog/pull/64936",
+          "https://github.com/PostHog/posthog/pull/65234",
+          "https://github.com/PostHog/posthog/pull/66066",
+          "https://github.com/PostHog/posthog/pull/66507",
+          "https://github.com/PostHog/posthog/pull/66536",
+          "https://github.com/PostHog/posthog/pull/66649",
+          "https://github.com/PostHog/posthog/pull/66658",
+          "https://github.com/PostHog/posthog/pull/66668",
+          "https://github.com/PostHog/posthog/pull/66677",
+          "https://github.com/PostHog/posthog/pull/66925",
+          "https://github.com/PostHog/posthog/pull/67384",
+          "https://github.com/PostHog/posthog/pull/67392",
+          "https://github.com/PostHog/posthog/pull/67539",
+          "https://github.com/PostHog/posthog/pull/67906",
+          "https://github.com/PostHog/posthog/pull/69568",
+          "https://github.com/PostHog/posthog/pull/72440",
+          "https://github.com/PostHog/posthog/pull/73591",
+          "https://github.com/PostHog/posthog/pull/74201",
+          "https://github.com/PostHog/posthog/pull/75940"
+        ],
+        "status": "reverted",
+        "title": "feat: HogQL access control for warehouse tables and views"
+      },
+      {
+        "counterevidence": [
+          "PR #54878 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #54879 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #54880 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #63012 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/54878-1f1b23d50097",
+        "observable_outcome": "The change landed but remains behind a feature flag. Release corroborated by: 2 documentation file(s) changed, e.g. products/streamlit_apps/skills/managing-streamlit-apps/SKILL.md; 803 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/54878",
+          "https://github.com/PostHog/posthog/pull/54879",
+          "https://github.com/PostHog/posthog/pull/54880",
+          "https://github.com/PostHog/posthog/pull/63012",
+          "https://github.com/PostHog/posthog/pull/63256",
+          "https://github.com/PostHog/posthog/pull/73939"
+        ],
+        "status": "partial_or_behind_flag",
+        "title": "feat(streamlit-apps): add sandbox runtime, services, auth proxy"
+      },
+      {
+        "counterevidence": [
+          "PR #56190 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #62549 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #62550 has explicit evidence of later corrective work",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56190-aa70a4f99a9a",
+        "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56190",
+          "https://github.com/PostHog/posthog/pull/62549",
+          "https://github.com/PostHog/posthog/pull/62550",
+          "https://github.com/PostHog/posthog/pull/62794"
+        ],
+        "status": "superseded",
+        "title": "feat(auth): add ProjectSecretAPIKey auth machinery (unwired)"
+      },
+      {
+        "counterevidence": [
+          "PR #57189 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "production code changed with no accompanying test change"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/57189-199e88e06faf",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 3922 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/57189"
+        ],
+        "status": "shipped_observable",
+        "title": "feat: add project secret api keys to frontend"
+      },
+      {
+        "counterevidence": [
+          "PR #58375 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #60636 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "prefix 'fix' expects ['platform_code', 'product_code']; observed ['migration', 'tests']",
+          "production code changed with no accompanying test change"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58375-72e372043ca3",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 3846 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58375",
+          "https://github.com/PostHog/posthog/pull/60636"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(api): backfill non-array test account filters rows"
+      },
+      {
+        "counterevidence": [],
+        "episode_id": "github.com/PostHog/posthog#episode/58952-8220ac522fdc",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 1 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58952"
+        ],
+        "status": "shipped_observable",
+        "title": "chore(hogli): accept numbers in devenv wizard exclude prompt"
+      },
+      {
+        "counterevidence": [],
+        "episode_id": "github.com/PostHog/posthog#episode/58956-33ac858663db",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 27 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58956"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(endpoints): handle tz-aware datetime objects in materialized read"
+      },
+      {
+        "counterevidence": [
+          "PR #59048 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59197 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/59048-374bdc003850",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 68 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59048",
+          "https://github.com/PostHog/posthog/pull/59197"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(endpoints): refresh saved query before materialization"
+      }
+    ],
+    "login": "sakce",
+    "notes": null,
+    "position": 1,
+    "question": "Are every summary and every counterevidence statement here accurate and fair? Set approved to true/false.",
+    "tier": 1
+  },
+  {
+    "actor_cluster_id": "github/user/gilbert09",
+    "approved": null,
+    "approved_at": null,
+    "approved_by": null,
+    "episodes": [
+      {
+        "counterevidence": [
+          "PR #57494 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #58053 has explicit evidence of later corrective work",
+          "PR #58053 was explicitly reverted",
+          "PR #59428 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/53803-518e15041e4e",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/53803",
+          "https://github.com/PostHog/posthog/pull/57494",
+          "https://github.com/PostHog/posthog/pull/58053",
+          "https://github.com/PostHog/posthog/pull/59428",
+          "https://github.com/PostHog/posthog/pull/60703",
+          "https://github.com/PostHog/posthog/pull/60989",
+          "https://github.com/PostHog/posthog/pull/60992",
+          "https://github.com/PostHog/posthog/pull/61406",
+          "https://github.com/PostHog/posthog/pull/62657",
+          "https://github.com/PostHog/posthog/pull/65921",
+          "https://github.com/PostHog/posthog/pull/68640",
+          "https://github.com/PostHog/posthog/pull/70907",
+          "https://github.com/PostHog/posthog/pull/73160",
+          "https://github.com/PostHog/posthog/pull/73742",
+          "https://github.com/PostHog/posthog/pull/74000",
+          "https://github.com/PostHog/posthog/pull/74017",
+          "https://github.com/PostHog/posthog/pull/74032",
+          "https://github.com/PostHog/posthog/pull/74230",
+          "https://github.com/PostHog/posthog/pull/78225"
+        ],
+        "status": "reverted",
+        "title": "ci: run selected tests in draft, full suite when PR ready"
+      },
+      {
+        "counterevidence": [
+          "PR #54418 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #58997 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59190 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59343 has explicit evidence of later corrective work"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/54418-d5d76e852cb3",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/54418",
+          "https://github.com/PostHog/posthog/pull/58772",
+          "https://github.com/PostHog/posthog/pull/58997",
+          "https://github.com/PostHog/posthog/pull/59190",
+          "https://github.com/PostHog/posthog/pull/59343",
+          "https://github.com/PostHog/posthog/pull/59605",
+          "https://github.com/PostHog/posthog/pull/60356",
+          "https://github.com/PostHog/posthog/pull/60611",
+          "https://github.com/PostHog/posthog/pull/60706",
+          "https://github.com/PostHog/posthog/pull/62202",
+          "https://github.com/PostHog/posthog/pull/62419",
+          "https://github.com/PostHog/posthog/pull/64803",
+          "https://github.com/PostHog/posthog/pull/65364",
+          "https://github.com/PostHog/posthog/pull/65806",
+          "https://github.com/PostHog/posthog/pull/65870",
+          "https://github.com/PostHog/posthog/pull/65939",
+          "https://github.com/PostHog/posthog/pull/72735"
+        ],
+        "status": "reverted",
+        "title": "feat(cdp): hardcode hogflow queue to postgres-v2"
+      },
+      {
+        "counterevidence": [
+          "PR #55946 has explicit evidence of later corrective work",
+          "PR #55946 was explicitly reverted",
+          "PR #62435 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #62475 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/55946-b557d0644a1f",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/55946",
+          "https://github.com/PostHog/posthog/pull/62435",
+          "https://github.com/PostHog/posthog/pull/62475",
+          "https://github.com/PostHog/posthog/pull/62653",
+          "https://github.com/PostHog/posthog/pull/62654",
+          "https://github.com/PostHog/posthog/pull/62655",
+          "https://github.com/PostHog/posthog/pull/62658",
+          "https://github.com/PostHog/posthog/pull/62664",
+          "https://github.com/PostHog/posthog/pull/62666",
+          "https://github.com/PostHog/posthog/pull/63045"
+        ],
+        "status": "reverted",
+        "title": "feat(data-warehouse): scaffold missing warehouse import sources"
+      },
+      {
+        "counterevidence": [
+          "PR #56470 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56470-6259f54248d4",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56470"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(google ads): treat OAuth invalid grant as non-retryable"
+      },
+      {
+        "counterevidence": [
+          "PR #56471 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56471-3461b6fd0bfc",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56471"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(meta ads): treat 'reduce the amount of data' 500 as non-retryable"
+      },
+      {
+        "counterevidence": [
+          "PR #56473 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56473-9e5ead33392e",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56473"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(postgres): treat SSH gateway failures as non-retryable"
+      },
+      {
+        "counterevidence": [
+          "PR #56474 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56474-1181f61c5e9d",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56474"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(google ads): treat OAuth invalid grant as non-retryable"
+      },
+      {
+        "counterevidence": [
+          "PR #56475 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/56475-9a5a17c984ae",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/56475"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(google ads): treat REQUESTED METRICS FOR MANAGER as non-retryable"
+      }
+    ],
+    "login": "Gilbert09",
+    "notes": null,
+    "position": 2,
+    "question": "Are every summary and every counterevidence statement here accurate and fair? Set approved to true/false.",
+    "tier": 2
+  },
+  {
+    "actor_cluster_id": "github/user/arnohillen",
+    "approved": null,
+    "approved_at": null,
+    "approved_by": null,
+    "episodes": [
+      {
+        "counterevidence": [
+          "PR #57997 has explicit evidence of later corrective work",
+          "PR #57997 was explicitly reverted",
+          "PR #58019 has explicit evidence of later corrective work",
+          "PR #58019 was explicitly reverted"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/57997-a82b87ddcc05",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/57997",
+          "https://github.com/PostHog/posthog/pull/58019",
+          "https://github.com/PostHog/posthog/pull/60078",
+          "https://github.com/PostHog/posthog/pull/60084"
+        ],
+        "status": "reverted",
+        "title": "feat(session-replay): run the surfacing score sweep against session replay events"
+      },
+      {
+        "counterevidence": [
+          "PR #58816 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #61562 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #63420 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #63533 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58816-a3dbde733415",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 2 documentation file(s) changed, e.g. packages/quill/packages/primitives/AGENTS.md; feature flag 'TAXONOMIC_FILTER_HEADLESS' removed from the registry, which is how a rollout ends.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58816",
+          "https://github.com/PostHog/posthog/pull/61562",
+          "https://github.com/PostHog/posthog/pull/63420",
+          "https://github.com/PostHog/posthog/pull/63444",
+          "https://github.com/PostHog/posthog/pull/63533",
+          "https://github.com/PostHog/posthog/pull/63794",
+          "https://github.com/PostHog/posthog/pull/63807",
+          "https://github.com/PostHog/posthog/pull/63895",
+          "https://github.com/PostHog/posthog/pull/63965",
+          "https://github.com/PostHog/posthog/pull/63983",
+          "https://github.com/PostHog/posthog/pull/63989",
+          "https://github.com/PostHog/posthog/pull/64084",
+          "https://github.com/PostHog/posthog/pull/64162",
+          "https://github.com/PostHog/posthog/pull/64227",
+          "https://github.com/PostHog/posthog/pull/64313",
+          "https://github.com/PostHog/posthog/pull/64316",
+          "https://github.com/PostHog/posthog/pull/64330",
+          "https://github.com/PostHog/posthog/pull/64333"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(data-warehouse): scaffold ahrefs source"
+      },
+      {
+        "counterevidence": [
+          "PR #58913 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #64168 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #64177 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #64702 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58913-a1d7b795d925",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58913",
+          "https://github.com/PostHog/posthog/pull/64168",
+          "https://github.com/PostHog/posthog/pull/64176",
+          "https://github.com/PostHog/posthog/pull/64177",
+          "https://github.com/PostHog/posthog/pull/64702",
+          "https://github.com/PostHog/posthog/pull/64730",
+          "https://github.com/PostHog/posthog/pull/64737",
+          "https://github.com/PostHog/posthog/pull/64739",
+          "https://github.com/PostHog/posthog/pull/64986",
+          "https://github.com/PostHog/posthog/pull/65264",
+          "https://github.com/PostHog/posthog/pull/65318",
+          "https://github.com/PostHog/posthog/pull/65332",
+          "https://github.com/PostHog/posthog/pull/66814",
+          "https://github.com/PostHog/posthog/pull/69459",
+          "https://github.com/PostHog/posthog/pull/76378",
+          "https://github.com/PostHog/posthog/pull/79866",
+          "https://github.com/PostHog/posthog/pull/80311",
+          "https://github.com/PostHog/posthog/pull/80777",
+          "https://github.com/PostHog/posthog/pull/81210",
+          "https://github.com/PostHog/posthog/pull/83095"
+        ],
+        "status": "reverted",
+        "title": "feat(replay-vision): add a summarize button to the replay dock"
+      },
+      {
+        "counterevidence": [
+          "PR #59227 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59372 has explicit evidence of later corrective work",
+          "PR #59518 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59642 has explicit evidence of later corrective work"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/59227-ece4f1380456",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59227",
+          "https://github.com/PostHog/posthog/pull/59372",
+          "https://github.com/PostHog/posthog/pull/59518",
+          "https://github.com/PostHog/posthog/pull/59642",
+          "https://github.com/PostHog/posthog/pull/59645",
+          "https://github.com/PostHog/posthog/pull/59649",
+          "https://github.com/PostHog/posthog/pull/59661",
+          "https://github.com/PostHog/posthog/pull/59779",
+          "https://github.com/PostHog/posthog/pull/59780",
+          "https://github.com/PostHog/posthog/pull/59787",
+          "https://github.com/PostHog/posthog/pull/59840",
+          "https://github.com/PostHog/posthog/pull/59842",
+          "https://github.com/PostHog/posthog/pull/60069"
+        ],
+        "status": "reverted",
+        "title": "chore(replay): consume rrweb from posthog-js instead of @posthog/rrweb"
+      },
+      {
+        "counterevidence": [
+          "PR #60143 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/60143-15fce30e7f4d",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 226 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/60143"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(notebooks): expand flattened markdown tables on paste"
+      },
+      {
+        "counterevidence": [],
+        "episode_id": "github.com/PostHog/posthog#episode/60147-000f008e6512",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 1 documentation file(s) changed, e.g. AGENTS.md.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/60147"
+        ],
+        "status": "shipped_observable",
+        "title": "chore: tighten AGENTS.md comment rules"
+      },
+      {
+        "counterevidence": [],
+        "episode_id": "github.com/PostHog/posthog#episode/60897-f62c287f8cd1",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 2545 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/60897",
+          "https://github.com/PostHog/posthog/pull/60915"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(replay): load org members so @-mentions resolve in player comments"
+      },
+      {
+        "counterevidence": [
+          "PR #61377 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/61377-214d3c0fce1a",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 2674 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/61377"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(session-replay): apply view recordings filter over defaults"
+      }
+    ],
+    "login": "arnohillen",
+    "notes": null,
+    "position": 3,
+    "question": "Are every summary and every counterevidence statement here accurate and fair? Set approved to true/false.",
+    "tier": 3
+  },
+  {
+    "actor_cluster_id": "github/user/mattbro",
+    "approved": null,
+    "approved_at": null,
+    "approved_by": null,
+    "episodes": [
+      {
+        "counterevidence": [
+          "production code changed with no accompanying test change"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/53492-1b4869b7e271",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 161 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/53492"
+        ],
+        "status": "shipped_observable",
+        "title": "feat: environment mapping for Vercel connectable integrations"
+      },
+      {
+        "counterevidence": [
+          "PR #57579 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/57579-c349f67f4deb",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 203 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/57579"
+        ],
+        "status": "shipped_observable",
+        "title": "refactor(onboarding): compose flow from per-product step providers"
+      },
+      {
+        "counterevidence": [
+          "PR #57811 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/57811-2eb99e47da48",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/57811"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(toolbar): use ? separator for SPA hash route OAuth callback"
+      },
+      {
+        "counterevidence": [
+          "PR #58199 has explicit evidence of later corrective work",
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58199-bbd359313fe7",
+        "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58199"
+        ],
+        "status": "superseded",
+        "title": "fix(oauth): insert new access token per non-rotating refresh"
+      },
+      {
+        "counterevidence": [
+          "PR #58841 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59650 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59668 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59751 has explicit evidence of later corrective work"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58820-7277bd2400c4",
+        "observable_outcome": "The change was reverted. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58820",
+          "https://github.com/PostHog/posthog/pull/58822",
+          "https://github.com/PostHog/posthog/pull/58841",
+          "https://github.com/PostHog/posthog/pull/59650",
+          "https://github.com/PostHog/posthog/pull/59668",
+          "https://github.com/PostHog/posthog/pull/59751",
+          "https://github.com/PostHog/posthog/pull/60023",
+          "https://github.com/PostHog/posthog/pull/60101",
+          "https://github.com/PostHog/posthog/pull/60151",
+          "https://github.com/PostHog/posthog/pull/60154",
+          "https://github.com/PostHog/posthog/pull/60236",
+          "https://github.com/PostHog/posthog/pull/60237",
+          "https://github.com/PostHog/posthog/pull/66097",
+          "https://github.com/PostHog/posthog/pull/78791",
+          "https://github.com/PostHog/posthog/pull/80498"
+        ],
+        "status": "reverted",
+        "title": "feat(security): credential review screen on first login post-provisioning"
+      },
+      {
+        "counterevidence": [
+          "PR #58880 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58880-23313e7af95d",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 1590 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58880"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(agentic): add account-mismatch page for provisioning partners"
+      },
+      {
+        "counterevidence": [
+          "PR #59062 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #59109 has explicit evidence of later corrective work",
+          "PR #59304 has explicit evidence of later corrective work",
+          "PR #60951 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/59062-f746804370d2",
+        "observable_outcome": "The change was superseded by later work. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59062",
+          "https://github.com/PostHog/posthog/pull/59109",
+          "https://github.com/PostHog/posthog/pull/59111",
+          "https://github.com/PostHog/posthog/pull/59304",
+          "https://github.com/PostHog/posthog/pull/60225",
+          "https://github.com/PostHog/posthog/pull/60951",
+          "https://github.com/PostHog/posthog/pull/64917",
+          "https://github.com/PostHog/posthog/pull/66168",
+          "https://github.com/PostHog/posthog/pull/66486",
+          "https://github.com/PostHog/posthog/pull/66490",
+          "https://github.com/PostHog/posthog/pull/66491",
+          "https://github.com/PostHog/posthog/pull/68052",
+          "https://github.com/PostHog/posthog/pull/68248",
+          "https://github.com/PostHog/posthog/pull/68738",
+          "https://github.com/PostHog/posthog/pull/68758",
+          "https://github.com/PostHog/posthog/pull/69024",
+          "https://github.com/PostHog/posthog/pull/69089",
+          "https://github.com/PostHog/posthog/pull/74880",
+          "https://github.com/PostHog/posthog/pull/75697",
+          "https://github.com/PostHog/posthog/pull/77849",
+          "https://github.com/PostHog/posthog/pull/78394",
+          "https://github.com/PostHog/posthog/pull/79251",
+          "https://github.com/PostHog/posthog/pull/79264"
+        ],
+        "status": "superseded",
+        "title": "refactor(onboarding): restructuring onboarding folder arch"
+      },
+      {
+        "counterevidence": [
+          "No documentation, changelog, flag removal, closed issue or downstream adoption corroborates that this reached users."
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/60315-9a9027017db2",
+        "observable_outcome": "The change landed on the default branch. Release is not independently corroborated \u2014 merging to the default branch is not proof that users saw the change.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/60315"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(agentic-provisioning): include team id in new user account request events"
+      }
+    ],
+    "login": "MattBro",
+    "notes": null,
+    "position": 4,
+    "question": "Are every summary and every counterevidence statement here accurate and fair? Set approved to true/false.",
+    "tier": 3
+  },
+  {
+    "actor_cluster_id": "github/user/yasen-posthog",
+    "approved": null,
+    "approved_at": null,
+    "approved_by": null,
+    "episodes": [
+      {
+        "counterevidence": [
+          "PR #54900 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #62874 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "production code changed with no accompanying test change",
+          "prefix 'fix' expects ['platform_code', 'product_code']; observed []"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/54900-a341cc55c128",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/54900",
+          "https://github.com/PostHog/posthog/pull/60194",
+          "https://github.com/PostHog/posthog/pull/62874",
+          "https://github.com/PostHog/posthog/pull/63303",
+          "https://github.com/PostHog/posthog/pull/64104"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(data-warehouse): email users when external data syncs fail"
+      },
+      {
+        "counterevidence": [
+          "PR #57189 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "production code changed with no accompanying test change"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/57189-199e88e06faf",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 3922 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/57189"
+        ],
+        "status": "shipped_observable",
+        "title": "feat: add project secret api keys to frontend"
+      },
+      {
+        "counterevidence": [
+          "PR #58011 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58011-d51d3aa2cbce",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 655 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58011"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(notifications): group runs of identical events in the bell sidebar"
+      },
+      {
+        "counterevidence": [
+          "PR #58816 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #61562 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #63420 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)",
+          "PR #63533 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58816-a3dbde733415",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 2 documentation file(s) changed, e.g. packages/quill/packages/primitives/AGENTS.md; feature flag 'TAXONOMIC_FILTER_HEADLESS' removed from the registry, which is how a rollout ends.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58816",
+          "https://github.com/PostHog/posthog/pull/61562",
+          "https://github.com/PostHog/posthog/pull/63420",
+          "https://github.com/PostHog/posthog/pull/63444",
+          "https://github.com/PostHog/posthog/pull/63533",
+          "https://github.com/PostHog/posthog/pull/63794",
+          "https://github.com/PostHog/posthog/pull/63807",
+          "https://github.com/PostHog/posthog/pull/63895",
+          "https://github.com/PostHog/posthog/pull/63965",
+          "https://github.com/PostHog/posthog/pull/63983",
+          "https://github.com/PostHog/posthog/pull/63989",
+          "https://github.com/PostHog/posthog/pull/64084",
+          "https://github.com/PostHog/posthog/pull/64162",
+          "https://github.com/PostHog/posthog/pull/64227",
+          "https://github.com/PostHog/posthog/pull/64313",
+          "https://github.com/PostHog/posthog/pull/64316",
+          "https://github.com/PostHog/posthog/pull/64330",
+          "https://github.com/PostHog/posthog/pull/64333"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(data-warehouse): scaffold ahrefs source"
+      },
+      {
+        "counterevidence": [
+          "production code changed with no accompanying test change",
+          "production code changed with no accompanying test change"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/58989-7f0e1a9d285d",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 238 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/58989",
+          "https://github.com/PostHog/posthog/pull/59076"
+        ],
+        "status": "shipped_observable",
+        "title": "fix(hog-functions): use activity payload for actor in defaults"
+      },
+      {
+        "counterevidence": [
+          "PR #59589 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/59589-53646de16f54",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59589"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(activity-logs): add ip address to activity logs"
+      },
+      {
+        "counterevidence": [],
+        "episode_id": "github.com/PostHog/posthog#episode/59899-e66f987a3bbe",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 3634 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59899"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(auth): add admin switch to disable email MFA globally"
+      },
+      {
+        "counterevidence": [
+          "PR #59907 has proximate evidence of later corrective work (proximate-only: not confirmed to be a regression)"
+        ],
+        "episode_id": "github.com/PostHog/posthog#episode/59907-9163e4b70a01",
+        "observable_outcome": "The change landed on the default branch. Release corroborated by: 4000 later change(s) depend on what this episode introduced.",
+        "pr_urls": [
+          "https://github.com/PostHog/posthog/pull/59907"
+        ],
+        "status": "shipped_observable",
+        "title": "feat(auth): add xaa support pt. 1"
+      }
+    ],
+    "login": "yasen-posthog",
+    "notes": null,
+    "position": 5,
+    "question": "Are every summary and every counterevidence statement here accurate and fair? Set approved to true/false.",
+    "tier": 4
+  }
+]
