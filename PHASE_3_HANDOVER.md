@@ -2,53 +2,52 @@
 
 _Prepared 17 August 2026._
 
-> **Read this first.** The dashboard is built, tested and verified against the
-> real Phase 2 export. It is **not yet reachable on a public URL**: `git push` is
-> blocked by this environment's permission layer, so the two publish commands
-> could not be run. Everything needed is committed and scripted — see
-> [§1](#1-the-one-thing-left-to-do). Until that runs, the Phase 3 definition of
-> done is **not** met, because it requires a reachable public URL.
+> **Live: <https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/>**
+>
+> Deployed from the real Phase 2 export, verified from a clean browser session
+> with no console errors and no failed requests. CI is green on the first run.
 
 ---
 
-## 1. The one thing left to do
+## 1. Deployment
 
-Two commands, from the repository root:
+| | |
+|---|---|
+| **Production URL** | <https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/> |
+| Provider | GitHub Pages, free tier, `build_type: legacy` (branch deploy) |
+| Pages source | branch `gh-pages`, path `/` |
+| Status | `built` |
+| Deployed export | generated 2026-08-17T07:20:04Z, 9,515 episodes |
+| Analysed commit | `d4295d5794f95a0ae726edd0e27450115f3fc0a3` |
+| Source commit deployed from | `7a377101` on `main` |
+| Secrets used | **none** |
+
+Verified live: all six routes return 200, `/definitely-not-a-route/` returns 404,
+the top five render with real names and tiers, the evidence drawer opens and links
+to `github.com`, the pairwise trace renders with concordance and credibility, and
+a real browser session reported **zero console errors and zero failed requests**.
+
+### Redeploy
 
 ```bash
-# 1. Publish the source (branch `main-clean` → remote `main`; remote is empty)
-git push -u origin main-clean:main
-
-# 2. Build from the current export and publish the site
-scripts/deploy-dashboard.sh "Reviewed and approved for publication by Rish Sharma on 17 Aug 2026."
-
-# 3. Enable Pages on the branch the deploy created (once only)
-gh api -X POST repos/RishSharma23/Smart-SWE-Impact-Dashboard/pages \
-  -f 'source[branch]=gh-pages' -f 'source[path]=/'
-
-# 4. Confirm
-gh api repos/RishSharma23/Smart-SWE-Impact-Dashboard/pages --jq '.html_url, .status'
+scripts/deploy-dashboard.sh "Reviewed and approved by <name> on <date>: <what you checked>"
 ```
 
-To let me do it instead, allow `Bash(git push:*)` and `Bash(gh api:*)` in
-`.claude/settings.local.json`.
+### Why `main-clean` was pushed as `main`
 
-Expected URL: **<https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/>**
-
-### Why `main-clean` and not `main`
-
-Your `main` history contains generated files committed before Phase 3's
+Your original `main` history contained generated files committed before Phase 3's
 `.gitignore` existed, including
 `web/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node` at
-**124 MB**. GitHub hard-rejects any blob over 100 MB, so **`main` cannot be
+**124 MB** — over GitHub's 100 MB hard limit, so **that history could not be
 pushed at all**. `data/phase2/claims.json` (99 MB) and
-`artifacts/phase3/{episodes,claims}.json` (86 MB, 81 MB) are in there too.
+`artifacts/phase3/{episodes,claims}.json` (86 MB, 81 MB) were in there too.
 
-Rather than rewrite your commits, I created `main-clean` — an orphan branch with
-the same working tree minus generated output (289 files, 22 MB). Your original
-history is intact locally on `main` and on `backup/pre-cleanup` (`b2b4dd86`).
+Rather than rewrite your commits, Phase 3's source went onto an orphan branch
+`main-clean` (289 files, 22 MB) which was pushed as remote `main`. **Your original
+history is intact locally** on `main` and on `backup/pre-cleanup` (`b2b4dd86`).
 
-If you would rather keep the original history, strip the blobs first:
+If you want the original history on the remote, strip the blobs first, then
+force-push:
 
 ```bash
 FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --index-filter \
@@ -57,15 +56,16 @@ FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --index-filter \
 git reflog expire --expire=now --all && git gc --prune=now --aggressive
 ```
 
----
+Otherwise nothing needs doing: `main-clean` and local `main` have identical
+working trees.
 
 ## 2. What was built
 
 | | |
 |---|---|
 | Repository | `RishSharma23/Smart-SWE-Impact-Dashboard` (public) |
-| Source branch | `main-clean` → to be pushed as `main` |
-| Source commit | `4857e1fb` |
+| Source branch | `main-clean`, pushed as remote `main` |
+| Source commit | `7a377101` |
 | Site branch | `gh-pages` (orphan, force-replaced per deploy) |
 | Provider | GitHub Pages, free tier, no payment method |
 | Secrets | **none** — no deploy token, no API key, no env value |
@@ -177,8 +177,8 @@ safety, and long/sparse/high-count edge cases.
 
 CI is `.github/workflows/ci.yml`: install with the committed lockfile → stage and
 verify the data package → typecheck → unit tests → production build → route
-existence check → Playwright. It has **not run yet** — it fires on the first push
-to `main`.
+existence check → Playwright. **Run 32043919057 passed on the first push**, both
+jobs green.
 
 CI builds against the committed fixture, not the real export, because the export
 is 190 MB and gitignored. The data contract is enforced *by the build*, so a
@@ -319,20 +319,21 @@ fixed, may flip `publishable` to true. Neither needs a UI change.
 
 ## 11. Recommended next iteration, in priority order
 
-1. **Run the two publish commands in §1.** Nothing else matters until the URL is
-   reachable from a clean browser session.
-2. **Re-export with sensitivity** so stability ranges appear.
-3. **Fix the safety scanner's three false-positive classes** so the run can pass
+1. **Re-export with sensitivity** so stability ranges appear — this is the most
+   visible gap on the live site, which currently says "Rank stability was not
+   measured for this run" on every card. Start `scripts/watch-phase2.sh` and it
+   redeploys itself.
+2. **Fix the safety scanner's three false-positive classes** so the run can pass
    its own gate honestly instead of relying on a recorded override.
-4. **Prune the export package to what the UI renders.** Writing only referenced
+3. **Prune the export package to what the UI renders.** Writing only referenced
    claims and episodes would take 190 MB to roughly 10 MB — committable, which
    lets CI build production and removes the local-build requirement and the
    orphan-branch deploy entirely. This is the single highest-leverage change.
-5. **Measure Lighthouse against the live URL.**
-6. **Close out accessibility** — re-add the axe project and do a keyboard and
+4. **Measure Lighthouse against the live URL** — now possible.
+5. **Close out accessibility** — re-add the axe project and do a keyboard and
    screen-reader pass. `docs/ACCESSIBILITY.md` lists precisely what is unverified.
-7. **Cluster or drop the five `git/email/*` participants.**
-8. Cross-browser and visual-regression runs; a link check over sampled evidence
+6. **Cluster or drop the five `git/email/*` participants.**
+7. Cross-browser and visual-regression runs; a link check over sampled evidence
    URLs.
 
 ---

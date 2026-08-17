@@ -142,39 +142,42 @@ rather than hidden: `max_edges_per_episode` (4,000, sets `walk_truncated`) and
 
 _Updated 17 August 2026._
 
-## Deployment status: BUILT AND VERIFIED, NOT YET PUBLIC
+## Deployment status: LIVE
 
-The dashboard builds from the real export, passes its tests, and renders
-correctly. It is **not on a public URL yet**: `git push` is blocked by this
-environment's permission layer.
+**<https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/>**
 
-**Next command** (from the repository root):
+Built from the real Phase 2 export (9,515 episodes, generated
+2026-08-17T07:20:04Z), 608 pages, deployed to GitHub Pages from the `gh-pages`
+branch. Verified from a clean browser session: all six routes 200, 404 correct,
+zero console errors, zero failed requests. CI run 32043919057 green on both jobs.
+
+**Next command** — start the auto-refresh watcher so the site follows Phase 2:
 
 ```bash
-git push -u origin main-clean:main
-scripts/deploy-dashboard.sh "Reviewed and approved by Rish Sharma on 17 Aug 2026."
-gh api -X POST repos/RishSharma23/Smart-SWE-Impact-Dashboard/pages \
-  -f 'source[branch]=gh-pages' -f 'source[path]=/'
+nohup scripts/watch-phase2.sh > /tmp/phase3-watch.log 2>&1 &
 ```
 
-Expected URL: <https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/>
+To redeploy by hand:
+
+```bash
+scripts/deploy-dashboard.sh "Reviewed and approved by <name> on <date>."
+```
 
 Full detail in `PHASE_3_HANDOVER.md`.
 
 ## Blockers
 
-1. **`git push` is denied by the permission layer.** Allow `Bash(git push:*)`
-   and `Bash(gh api:*)` in `.claude/settings.local.json`, or run the three
-   commands above by hand.
+None for Phase 3. One thing to be aware of:
 
-2. **`main` cannot be pushed at all.** Its history contains
+1. **The original `main` history cannot be pushed.** Its history contains
    `web/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node` at
    **124 MB**, over GitHub's 100 MB hard limit, plus `data/phase2/claims.json`
    (99 MB) and `artifacts/phase3/{episodes,claims}.json` (86/81 MB). Phase 3's
-   source is therefore on the orphan branch **`main-clean`** (289 files, 22 MB),
-   to be pushed as remote `main`. Original history is safe locally on `main` and
-   `backup/pre-cleanup` (`b2b4dd86`). A `filter-branch` recipe to salvage the
-   original history is in `PHASE_3_HANDOVER.md` §1.
+   source therefore went onto the orphan branch **`main-clean`**, which was
+   pushed as remote `main`. Your original history is intact locally on `main` and
+   `backup/pre-cleanup` (`b2b4dd86`); a `filter-branch` recipe to salvage it is
+   in `PHASE_3_HANDOVER.md` §1. Nothing needs doing unless you want that history
+   on the remote.
 
 ## Highest-risk assumptions
 
