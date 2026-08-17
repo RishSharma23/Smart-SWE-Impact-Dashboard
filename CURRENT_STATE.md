@@ -135,3 +135,92 @@ rather than hidden: `max_edges_per_episode` (4,000, sets `walk_truncated`) and
 7. **Static import parsing is a lower bound.** Rust/Go/SQL/Hog/Ruby are not
    parsed; leverage and durability for work confined to them are `unknown`,
    never `low`.
+
+---
+
+# PHASE 3 — UI, integration and hosting
+
+_Updated 17 August 2026._
+
+## Deployment status: BUILT AND VERIFIED, NOT YET PUBLIC
+
+The dashboard builds from the real export, passes its tests, and renders
+correctly. It is **not on a public URL yet**: `git push` is blocked by this
+environment's permission layer.
+
+**Next command** (from the repository root):
+
+```bash
+git push -u origin main-clean:main
+scripts/deploy-dashboard.sh "Reviewed and approved by Rish Sharma on 17 Aug 2026."
+gh api -X POST repos/RishSharma23/Smart-SWE-Impact-Dashboard/pages \
+  -f 'source[branch]=gh-pages' -f 'source[path]=/'
+```
+
+Expected URL: <https://rishsharma23.github.io/Smart-SWE-Impact-Dashboard/>
+
+Full detail in `PHASE_3_HANDOVER.md`.
+
+## Blockers
+
+1. **`git push` is denied by the permission layer.** Allow `Bash(git push:*)`
+   and `Bash(gh api:*)` in `.claude/settings.local.json`, or run the three
+   commands above by hand.
+
+2. **`main` cannot be pushed at all.** Its history contains
+   `web/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node` at
+   **124 MB**, over GitHub's 100 MB hard limit, plus `data/phase2/claims.json`
+   (99 MB) and `artifacts/phase3/{episodes,claims}.json` (86/81 MB). Phase 3's
+   source is therefore on the orphan branch **`main-clean`** (289 files, 22 MB),
+   to be pushed as remote `main`. Original history is safe locally on `main` and
+   `backup/pre-cleanup` (`b2b4dd86`). A `filter-branch` recipe to salvage the
+   original history is in `PHASE_3_HANDOVER.md` §1.
+
+## Highest-risk assumptions
+
+1. **A recorded human approval is standing in for Phase 2's own gate.** The
+   export says `publishable: false`, `validation_status: fail`,
+   `safety_scan: fail`. The owner reviewed and authorised publication; that is
+   recorded as build metadata and the manifest is untouched, with both the
+   approval and Phase 2's verdict shown on the site. If the approval was given
+   without reading §6 of the handover, re-read it — the reasoning is that all 20
+   safety findings are demonstrable false positives.
+
+2. **The safety scanner cannot pass as written.** It reads `pkg@semver` as an
+   email address and flags `methodology.json`'s own `forbidden_inferences` list.
+   Until fixed, every run needs a manual override, which erodes the value of the
+   gate.
+
+3. **Rank stability is missing from this export** (`--skip-sensitivity`). The UI
+   says so rather than implying certainty, but the top five are currently
+   published without any position-range evidence. A full re-export fixes it with
+   no UI change.
+
+4. **250 of 9,515 episodes have dedicated pages.** Chosen by top-five relevance.
+   Correct for the deliverable's scope; wrong if someone expects every episode to
+   be individually addressable.
+
+## Phase 2 defects to fix (found while integrating)
+
+| # | Defect | Where documented |
+|---|---|---|
+| 1 | `claim.confidence` carries `corroborated`/`merged_only`, not the documented `high\|medium\|low\|null` | `docs/DATA_INTEGRATION.md` |
+| 2 | `interval` is `[null, null]` where the contract says `[number, number]` | `docs/DATA_INTEGRATION.md` |
+| 3 | 5 episode participants reference `git/email/*` actors absent from `engineers.json` | surfaced on the site's coverage page |
+| 4 | Safety scanner false positives (3 classes) block `publishable` permanently | `PHASE_3_HANDOVER.md` §6 |
+| 5 | Recommended: prune the export to what the UI renders (190 MB → ~10 MB) so CI can build production | `PHASE_3_HANDOVER.md` §11 |
+
+## What was verified
+
+- Typecheck clean; 31/31 component tests; 25 Playwright tests pass (3 conditional skips)
+- Production build against the real export: 608 pages, 282 MB, ~105 s
+- No console errors, page errors or hydration warnings on any route with real data
+- Top five names, order and tiers checked by hand against `rankings.json`
+- Every package file's sha256 verified against `dashboard_manifest.json`
+- No horizontal scroll at 360 px on any top-level route
+
+## Not verified
+
+Lighthouse/Core Web Vitals (needs the live URL), accessibility audit
+(deliberately deferred — see `docs/ACCESSIBILITY.md`), Firefox/WebKit,
+visual regression, and link checking at scale.
