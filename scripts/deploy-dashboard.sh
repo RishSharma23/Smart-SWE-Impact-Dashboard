@@ -58,13 +58,19 @@ fi
 
 echo "==> publishing to $BRANCH"
 WORKTREE="$(mktemp -d)"
-trap 'git worktree remove --force "$WORKTREE" 2>/dev/null || true; rm -rf "$WORKTREE"' EXIT
+# Unique per run. A fixed staging branch survives an interrupted deploy, and the
+# next run then dies on `checkout --orphan: a branch named ... already exists` —
+# silently, because that command's output is discarded. This deploy failed
+# exactly that way once.
+STAGING="$BRANCH-staging-$$"
+trap 'git worktree remove --force "$WORKTREE" 2>/dev/null || true; rm -rf "$WORKTREE"; git branch -D "$STAGING" 2>/dev/null || true' EXIT
 
 # An orphan commit each time: the site is a snapshot, not an accumulating history.
 git worktree add --detach "$WORKTREE" >/dev/null
 (
   cd "$WORKTREE"
-  git checkout --orphan "$BRANCH-staging" >/dev/null 2>&1
+  # Not silenced: if this fails the deploy must say so, not exit blank.
+  git checkout --orphan "$STAGING" >/dev/null
   git rm -rq --cached . 2>/dev/null || true
   find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
   cp -R "$REPO_ROOT/web/out/." .
