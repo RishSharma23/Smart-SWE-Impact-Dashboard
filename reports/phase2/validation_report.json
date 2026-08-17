@@ -1,8 +1,9 @@
 {
   "failed_items": [],
-  "generated_at": "2026-08-17T18:07:12.118981Z",
+  "generated_at": "2026-08-17T23:31:42.605339Z",
   "items": [
     {
+      "attestation_mode": "per_item",
       "automated_error_categories": {
         "long_span": 9,
         "low_cluster_confidence": 7,
@@ -10,6 +11,7 @@
         "oversized_cluster": 9
       },
       "automatically_flagged": 18,
+      "bulk_attested": 0,
       "description": "Manual audit of >= 30 clusters across split initiatives, feature-flag arcs, generic fixes and explicit follow-ups",
       "human_verdicts_recorded": 30,
       "item": "cluster_audit",
@@ -153,6 +155,8 @@
       "status": "pending"
     },
     {
+      "attestation_mode": "per_item",
+      "bulk_attested": 0,
       "description": "Manual verification of >= 15 intervention candidates, stratified to include likely false positives",
       "human_verdicts_recorded": 15,
       "includes_low_confidence": true,
@@ -173,6 +177,8 @@
       ]
     },
     {
+      "attestation_mode": null,
+      "bulk_attested": 0,
       "description": "Manual verification of >= 15 regression-link candidates",
       "human_verdicts_recorded": 0,
       "item": "regression_links",

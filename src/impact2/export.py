@@ -158,6 +158,13 @@ class Exporter:
 
     # -- 1. episodes --------------------------------------------------------
     def episodes(self) -> list[dict[str, Any]]:
+        # engineers.json only carries actors with a portfolio, and a portfolio
+        # is only built for participants that contribute to one. A co-author
+        # credited as `supporting` is a real contributor with real evidence but
+        # no profile page, so the episode must say so rather than emit a
+        # participant the UI cannot resolve. Dropping them would erase people
+        # who genuinely did the work.
+        profiled = {str(p["actor_cluster_id"]) for p in self.pipeline.portfolios}
         dims_by_episode: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
         for row in self.pipeline.dimensions:
             dims_by_episode[str(row["episode_id"])].append(row)
@@ -234,6 +241,9 @@ class Exporter:
                             "share_reasons": p.get("share_reasons"),
                             "attribution_confidence": p.get("attribution_confidence"),
                             "direct_evidence": p.get("direct_evidence"),
+                            # False = credited on this episode but has no
+                            # profile page. Render the name, not a dead link.
+                            "has_profile": str(p["actor_cluster_id"]) in profiled,
                             "claim_ids": self.claim_index.get("participants", {}).get(
                                 str(p["participant_id"]), []
                             ),

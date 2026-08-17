@@ -1,0 +1,31 @@
+{
+  "files_scanned": 16,
+  "forbidden_fields_checked": [
+    "demographics",
+    "gender",
+    "ethnicity",
+    "age",
+    "seniority",
+    "job_title",
+    "tenure_rating",
+    "effort",
+    "hours_worked",
+    "personality",
+    "intent",
+    "motivation",
+    "employee_value",
+    "productivity_score"
+  ],
+  "generated_at": "2026-08-17T23:31:58.461230Z",
+  "patterns_checked": [
+    "github token",
+    "github fine-grained token",
+    "provider api key",
+    "aws key",
+    "local filesystem path",
+    "email address"
+  ],
+  "status": "pass",
+  "violation_count": 0,
+  "violations": []
+}

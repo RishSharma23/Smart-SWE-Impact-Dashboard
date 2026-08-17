@@ -343,7 +343,7 @@ rendered. This is a statement about the data, and the UI must say so.
     "participants": [
       { "actor_cluster_id", "login", "roles", "share_category",
         "share_reasons", "attribution_confidence", "direct_evidence",
-        "claim_ids" }
+        "has_profile", "claim_ids" }
     ],
     "artifact_ids": [ … ],              // resolve via evidence/<kind>.json
     "analytics": {
@@ -378,7 +378,17 @@ rendered with that caveat attached — those are Phase 1's deliberately
 low-precision recall signals and calling one a regression in the UI would be
 wrong.
 
-### 6.3 Propagation numbers are aggregates; the edges are examples
+### 6.3 `has_profile: false` means credited but not profiled
+
+A portfolio is only built for participants who contribute to one, so a
+co-author credited as `supporting` is a real contributor with real evidence and
+**no entry in `engineers.json`**. They are kept in the episode rather than
+dropped — removing them would erase people who did the work — and flagged.
+
+Render the name and their evidence; do not link to a profile page and do not
+treat the missing engineer record as a data error.
+
+### 6.4 Propagation numbers are aggregates; the edges are examples
 
 `adoption_events` counts **every** downstream adoption the walk found;
 `edges_recorded` is how many of them were materialised as full records in
@@ -392,7 +402,7 @@ sample. Render the aggregate as the number and the recorded edges as
 reach as a lower bound when it is set — the same way `reachability_band:
 "unknown"` is shown, not silently.
 
-### 6.4 `share_category`, never a percentage
+### 6.5 `share_category`, never a percentage
 
 `primary` / `material` / `supporting` / `unclear`. There is no percentage in
 the package and you must not compute one. `unclear` means the evidence did not

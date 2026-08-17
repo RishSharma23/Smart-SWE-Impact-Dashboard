@@ -6,14 +6,12 @@
     "detail": "PR #49264 explicitly reverts PR #49264",
     "episode_id": "github.com/PostHog/posthog#episode/49264-8f36279f6276",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "confirmed_revert",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/49264",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/49264"
   },
   {
     "candidate_id": "49264->49264",
@@ -22,14 +20,12 @@
     "detail": "the same engineer corrected this in PR #49264",
     "episode_id": "github.com/PostHog/posthog#episode/49264-8f36279f6276",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "self_correction",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/49264",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/49264"
   },
   {
     "candidate_id": "61130->61134",
@@ -38,14 +34,12 @@
     "detail": "the same engineer followed up in PR #61134 after 0.0 days \u2014 normal iteration",
     "episode_id": "github.com/PostHog/posthog#episode/61063-a88156797269",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "healthy_iteration",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/61130",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/61130"
   },
   {
     "candidate_id": "59488->60177",
@@ -54,14 +48,12 @@
     "detail": "PR #60177 (linked evidence) corrected this change after 0.9 days",
     "episode_id": "github.com/PostHog/posthog#episode/59488-4fd1c062363f",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "probable_regression",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/59488",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/59488"
   },
   {
     "candidate_id": "73120->54108",
@@ -70,14 +62,12 @@
     "detail": "PR #54108 touches the same files but its dominant component is 'frontend:scenes', not 'platform:api'",
     "episode_id": "github.com/PostHog/posthog#episode/73120-07fb08940bfe",
     "evidence_tier": "proximate",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "unrelated_same_area",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": true,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/73120",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/73120"
   },
   {
     "candidate_id": "54280->54280",
@@ -86,14 +76,12 @@
     "detail": "PR #54280 explicitly reverts PR #54280",
     "episode_id": "github.com/PostHog/posthog#episode/54280-f8ee71104a1c",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "confirmed_revert",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/54280",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/54280"
   },
   {
     "candidate_id": "54738->54738",
@@ -102,14 +90,12 @@
     "detail": "the same engineer corrected this in PR #54738",
     "episode_id": "github.com/PostHog/posthog#episode/54738-fd7629228bee",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "self_correction",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/54738",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/54738"
   },
   {
     "candidate_id": "59782->61526",
@@ -118,14 +104,12 @@
     "detail": "the same engineer followed up in PR #61526 after 11.0 days \u2014 normal iteration",
     "episode_id": "github.com/PostHog/posthog#episode/59488-4fd1c062363f",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "healthy_iteration",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/59782",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/59782"
   },
   {
     "candidate_id": "59782->60177",
@@ -134,14 +118,12 @@
     "detail": "PR #60177 (linked evidence) corrected this change after 3.1 days",
     "episode_id": "github.com/PostHog/posthog#episode/59488-4fd1c062363f",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "probable_regression",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/59782",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/59782"
   },
   {
     "candidate_id": "72984->54108",
@@ -150,14 +132,12 @@
     "detail": "PR #54108 touches the same files but its dominant component is 'frontend:scenes', not 'product:revenue_analytics'",
     "episode_id": "github.com/PostHog/posthog#episode/72984-7acbcd8269f5",
     "evidence_tier": "proximate",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "unrelated_same_area",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": true,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/72984",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/72984"
   },
   {
     "candidate_id": "54280->54280",
@@ -166,14 +146,12 @@
     "detail": "PR #54280 explicitly reverts PR #54280",
     "episode_id": "github.com/PostHog/posthog#episode/54280-f8ee71104a1c",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "confirmed_revert",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/54280",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/54280"
   },
   {
     "candidate_id": "57102->57102",
@@ -182,14 +160,12 @@
     "detail": "the same engineer corrected this in PR #57102",
     "episode_id": "github.com/PostHog/posthog#episode/57102-6975684cd383",
     "evidence_tier": "explicit",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "self_correction",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/57102",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/57102"
   },
   {
     "candidate_id": "59713->61942",
@@ -198,14 +174,12 @@
     "detail": "the same engineer followed up in PR #61942 after 13.9 days \u2014 normal iteration",
     "episode_id": "github.com/PostHog/posthog#episode/52155-99384dc1e814",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "healthy_iteration",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/59713",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/59713"
   },
   {
     "candidate_id": "59488->61526",
@@ -214,14 +188,12 @@
     "detail": "PR #61526 (linked evidence) corrected this change after 8.8 days",
     "episode_id": "github.com/PostHog/posthog#episode/59488-4fd1c062363f",
     "evidence_tier": "linked",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "probable_regression",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": false,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/59488",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/59488"
   },
   {
     "candidate_id": "71979->54108",
@@ -230,13 +202,11 @@
     "detail": "PR #54108 touches the same files but its dominant component is 'frontend:scenes', not 'product:ai_observability'",
     "episode_id": "github.com/PostHog/posthog#episode/71979-376a80e84628",
     "evidence_tier": "proximate",
-    "human_notes": "Operator bulk attestation: reviewer confirmed the audit was completed and approved all items in one action. NOT a record of individually-recorded per-item judgements.",
-    "human_verdict": "operator_attested",
+    "human_notes": null,
+    "human_verdict": null,
     "machine_class": "unrelated_same_area",
     "question": "Is the second PR correcting the first? Answer: regression | healthy_iteration | unrelated | cannot_tell",
     "requires_human_confirmation": true,
-    "source_pr_url": "https://github.com/PostHog/posthog/pull/71979",
-    "attestation_mode": "bulk",
-    "attested_at": "2026-08-17T19:57:36.126052Z"
+    "source_pr_url": "https://github.com/PostHog/posthog/pull/71979"
   }
 ]
