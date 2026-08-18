@@ -150,7 +150,6 @@ artifacts/    the Phase 2 package
 
 | Document | What it is for |
 |---|---|
-| **[docs/PHASE_2_CONTRACT.md](docs/PHASE_2_CONTRACT.md)** | **Start here if you are building Phase 2.** Frozen table contract, join keys, the five non-negotiable rules, and the PostHog-specific facts a consumer will otherwise get wrong. |
 | [PHASE_1_HANDOVER.md](PHASE_1_HANDOVER.md) | Source SHA, window, measured results, API cost, known defects. |
 | [CURRENT_STATE.md](CURRENT_STATE.md) | What works, what does not, the next command, riskiest assumptions. |
 | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) | Every table and column, with null semantics. |
