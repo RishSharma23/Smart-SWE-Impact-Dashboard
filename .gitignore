@@ -55,3 +55,10 @@ web/playwright-report/
 web/*.tsbuildinfo
 web/shot*.mjs
 data/phase2/
+
+# ------------------------------------------------------------- working docs ---
+# Planning documents handed to coding agents, and the historical phase handovers.
+# Both are working material for whoever is building this, not part of the
+# published project. Track docs live in .plans/, outcomes in .plans/completed/.
+.plans/
+.archive/
