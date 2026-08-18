@@ -44,7 +44,7 @@ from .versions import REQUIRED_PHASE1_SCHEMA
 
 log = logging.getLogger("impact2.inputs")
 
-# The Phase 1 contract surface, docs/PHASE_2_CONTRACT.md §4 and §5.
+# The Phase 1 contract surface, contracts/PHASE_2_CONTRACT.md §4 and §5.
 NORMALIZED_TABLES = (
     "actors", "pull_requests", "commits", "commit_parents", "pr_files",
     "reviews", "review_threads", "review_comments", "comments", "issues",
@@ -317,7 +317,7 @@ def load_inputs(
         raise InputError(
             f"Phase 1 schema version is {schema_version!r}; this Phase 2 code is "
             f"written against {REQUIRED_PHASE1_SCHEMA!r}. Re-read "
-            "docs/PHASE_2_CONTRACT.md before proceeding."
+            "contracts/PHASE_2_CONTRACT.md before proceeding."
         )
 
     manifest_tables = manifest.get("tables") or {}

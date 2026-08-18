@@ -3,7 +3,7 @@
 Six derived tables, all model-free and all reproducible from the normalized
 layer plus the dependency graph.  None of them contains a score, a weight, or a
 ranking: that is Phase 2's job, and the contract in
-``docs/PHASE_2_CONTRACT.md`` says so explicitly.
+``contracts/PHASE_2_CONTRACT.md`` says so explicitly.
 """
 
 from __future__ import annotations

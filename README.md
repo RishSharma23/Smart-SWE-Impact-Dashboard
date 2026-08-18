@@ -152,6 +152,7 @@ artifacts/    the Phase 2 package
 |---|---|
 | [PHASE_1_HANDOVER.md](PHASE_1_HANDOVER.md) | Source SHA, window, measured results, API cost, known defects. |
 | [CURRENT_STATE.md](CURRENT_STATE.md) | What works, what does not, the next command, riskiest assumptions. |
+| **[contracts/PHASE_2_CONTRACT.md](contracts/PHASE_2_CONTRACT.md)** | **Start here if you are consuming the pipeline output.** Frozen table contract, join keys, the five non-negotiable rules, and the repository-specific facts a consumer will otherwise get wrong. |
 | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) | Every table and column, with null semantics. |
 | [docs/INGESTION_RUNBOOK.md](docs/INGESTION_RUNBOOK.md) | Operating, resuming and debugging a run. |
 | [docs/REPOSITORY_MAPPING.md](docs/REPOSITORY_MAPPING.md) | PostHog's conventions and how components/owners are derived. |

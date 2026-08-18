@@ -86,4 +86,5 @@ hand if you invoke `next build` directly.
 - [`docs/DEPLOYMENT_RUNBOOK.md`](../docs/DEPLOYMENT_RUNBOOK.md)
 - [`docs/ACCESSIBILITY.md`](../docs/ACCESSIBILITY.md)
 - [`docs/PERFORMANCE.md`](../docs/PERFORMANCE.md)
+- [`contracts/PHASE_3_CONTRACT.md`](../contracts/PHASE_3_CONTRACT.md), the data contract this UI is built against
 - [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md)

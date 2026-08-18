@@ -94,7 +94,7 @@ function verify(src, manifest) {
     fail(
       `unapproved manifest_version "${manifest.manifest_version}". ` +
         `This UI is built for ${APPROVED_MANIFEST_VERSIONS.join(', ')}. ` +
-        `Bump APPROVED_MANIFEST_VERSIONS only after re-reading docs/PHASE_3_CONTRACT.md.`,
+        `Bump APPROVED_MANIFEST_VERSIONS only after re-reading contracts/PHASE_3_CONTRACT.md.`,
     );
   }
 

@@ -3,7 +3,7 @@
 
 Phase 3 cannot wait for Phase 2's real run to finish, so this writes a tiny,
 complete, deliberately awkward package with the exact shapes in
-``docs/PHASE_3_CONTRACT.md``.  Every rendering rule that is easy to get wrong is
+``contracts/PHASE_3_CONTRACT.md``.  Every rendering rule that is easy to get wrong is
 represented by at least one row:
 
 * an engineer with ``rankable: false``;

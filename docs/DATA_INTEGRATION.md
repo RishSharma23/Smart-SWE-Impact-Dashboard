@@ -2,7 +2,7 @@
 
 ## Contract
 
-`docs/PHASE_3_CONTRACT.md`, export schema **1.0.0**. The UI reads only
+`contracts/PHASE_3_CONTRACT.md`, export schema **1.0.0**. The UI reads only
 `artifacts/phase3/` and nothing from `data/` or Phase 1.
 
 ## Two-stage validation

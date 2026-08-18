@@ -45,7 +45,7 @@ function die(message: string): never {
   throw new Error(
     `\n\n  PHASE 2 DATA CONTRACT VIOLATION\n\n  ${message}\n\n` +
       `  The build is refusing the package rather than rendering something wrong.\n` +
-      `  See docs/PHASE_3_CONTRACT.md and report the defect back to Phase 2.\n`,
+      `  See contracts/PHASE_3_CONTRACT.md and report the defect back to Phase 2.\n`,
   );
 }
 

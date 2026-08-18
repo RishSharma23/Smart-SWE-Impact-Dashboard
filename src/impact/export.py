@@ -30,7 +30,7 @@ log = logging.getLogger("impact.export")
 UTC = dt.timezone.utc
 
 # The contract surface. Adding a table here is a contract change and must be
-# reflected in docs/PHASE_2_CONTRACT.md.
+# reflected in contracts/PHASE_2_CONTRACT.md.
 NORMALIZED_TABLES = (
     "actors", "pull_requests", "commits", "commit_parents", "pr_files",
     "reviews", "review_threads", "review_comments", "comments", "issues",
@@ -240,7 +240,7 @@ def run(settings: Settings) -> dict[str, Any]:
             }
             for r in runs
         ],
-        "phase2_contract": "docs/PHASE_2_CONTRACT.md",
+        "phase2_contract": "contracts/PHASE_2_CONTRACT.md",
     }
     write_json(artifacts / "run_manifest.json", manifest)
 

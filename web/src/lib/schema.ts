@@ -1,5 +1,5 @@
 /**
- * Zod schemas for the Phase 2 static export (docs/PHASE_3_CONTRACT.md, 1.0.0).
+ * Zod schemas for the Phase 2 static export (contracts/PHASE_3_CONTRACT.md, 1.0.0).
  *
  * These are deliberately *permissive about extra keys* and *strict about the
  * fields the UI renders*. Phase 2 may add fields without breaking the build;

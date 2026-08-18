@@ -264,7 +264,7 @@
   ],
   "manifest_version": "1.0.0",
   "missing_tables": [],
-  "phase2_contract": "docs/PHASE_2_CONTRACT.md",
+  "phase2_contract": "contracts/PHASE_2_CONTRACT.md",
   "quality_gates": [
     {
       "detail": "27 tables rehashed from disk; 0 disagree with their sidecar",

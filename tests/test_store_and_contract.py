@@ -117,24 +117,18 @@ def test_window_config_excludes_the_updated_cohort():
     assert cfg["window"]["lookback_days"] == 90
 
 
-# The pipeline contract moved to .archive/handovers/ (git-ignored) because it was
-# written as a phase-to-phase handoff, not as public documentation. Its successor
-# is docs/reference/, produced by the open-source work. Until that lands these two
-# guards can only run for someone who has the archive; they skip rather than fail
-# so a fresh clone is green, and they are the reason the successor must not be
-# skipped: without them, adding an exported table no longer fails any test.
-CONTRACT_DOC = PROJECT_ROOT / ".archive" / "handovers" / "PHASE_2_CONTRACT.md"
-CONTRACT_SKIP = (
-    "pipeline contract is archived and not shipped; restore the guard against "
-    "docs/reference/ when the public data contract lands"
-)
+# The pipeline contract ships in contracts/. These two guards are the reason it
+# has to: the first fails the build when a table is exported without being
+# documented, the second when the non-negotiable rules stop being stated. Both
+# assert unconditionally -- a missing contract is a failure, not a skip, because
+# a skipped guard is a guard that has quietly stopped working.
+CONTRACT_DOC = PROJECT_ROOT / "contracts" / "PHASE_2_CONTRACT.md"
 
 
 def test_contract_document_exists_and_names_every_exported_table():
     from impact.export import DERIVED_TABLES, NORMALIZED_TABLES
 
-    if not CONTRACT_DOC.exists():
-        pytest.skip(CONTRACT_SKIP)
+    assert CONTRACT_DOC.exists(), f"the pipeline contract is missing: {CONTRACT_DOC}"
     contract = CONTRACT_DOC.read_text()
     missing = [
         t for t in NORMALIZED_TABLES + DERIVED_TABLES if t not in contract
@@ -143,8 +137,7 @@ def test_contract_document_exists_and_names_every_exported_table():
 
 
 def test_contract_states_the_non_negotiable_rules():
-    if not CONTRACT_DOC.exists():
-        pytest.skip(CONTRACT_SKIP)
+    assert CONTRACT_DOC.exists(), f"the pipeline contract is missing: {CONTRACT_DOC}"
     contract = CONTRACT_DOC.read_text().lower()
     for phrase in (
         "ranking_eligible",
@@ -153,6 +146,27 @@ def test_contract_states_the_non_negotiable_rules():
         "squash",
     ):
         assert phrase in contract, f"contract does not mention {phrase!r}"
+
+
+EXPORT_CONTRACT_DOC = PROJECT_ROOT / "contracts" / "PHASE_3_CONTRACT.md"
+
+
+def test_export_contract_states_the_rendering_rules():
+    """The UI contract is the honesty guarantee in written form. If a rule stops
+    being stated it stops being enforced, so the rules are asserted here rather
+    than trusted to survive an edit."""
+    assert EXPORT_CONTRACT_DOC.exists(), (
+        f"the export contract is missing: {EXPORT_CONTRACT_DOC}"
+    )
+    contract = EXPORT_CONTRACT_DOC.read_text().lower()
+    for phrase in (
+        "claim_id",
+        "null` is not zero",
+        "release_corroboration",
+        "share_category",
+        "publishable",
+    ):
+        assert phrase in contract, f"export contract does not state {phrase!r}"
 
 
 def test_committed_fixtures_are_small_enough_to_ship():
