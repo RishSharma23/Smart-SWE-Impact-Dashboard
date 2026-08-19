@@ -1,0 +1,42 @@
+name: Methodology question
+description: Ask about, or argue with, how something is measured.
+labels: ["methodology"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Disagreement about method is welcome and useful. Every parameter is in a
+        config file and every formula is on the methodology page, so this can be
+        a concrete conversation rather than an abstract one.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part
+      options:
+        - Episode construction and clustering
+        - The six dimensions and their evidence bands
+        - Attribution and shared credit
+        - Portfolio aggregation
+        - Outranking (ELECTRE III) and the cross-checks
+        - Propagation, decay and durability
+        - Eligibility and what is excluded
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: The question or the objection
+      description: >
+        If you are arguing a parameter is wrong, say what you would set it to
+        and what you expect that to change.
+    validations:
+      required: true
+  - type: textarea
+    id: read
+    attributes:
+      label: What you have already read
+      description: >
+        The methodology page, the coverage page, the config file, the contract
+        documents. Naming what you read helps to find the part that failed to
+        explain itself, which is usually the real defect.

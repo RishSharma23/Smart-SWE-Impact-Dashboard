@@ -68,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             isFixture: provenance.is_fixture,
             fileCount: provenance.file_count,
             totalBytes: provenance.total_bytes,
+            exportMode: manifest.export_mode ?? null,
             counts: manifest.counts,
             validationStatus: manifest.validation_status,
             publishable: manifest.publishable,

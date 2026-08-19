@@ -1,0 +1,72 @@
+# Phase 2: what goes into the static package the dashboard is built from.
+#
+# The pipeline produces far more than the site renders. On the reference
+# repository the full package is 187 MB across 14 files, of which the site puts
+# a few per cent on a page. Shipping all of it costs a 6 GB Node heap to build,
+# makes the package too large for CI to build against and too large to commit
+# anywhere, and buys the reader nothing.
+#
+# So the default is a PROJECTION: the records a rendered surface resolves, each
+# one included exactly as the pipeline produced it. Nothing here rounds,
+# aggregates or truncates a record. A record is in the package whole, or it is
+# not in the package and dashboard_manifest.json says how many were left out
+# and by which rule. The coverage page shows the same accounting.
+#
+# The rule itself lives in src/impact2/render_plan.py, and the plan it produces
+# is published in the manifest so the site renders what it is given rather than
+# recomputing the same priority order in TypeScript and disagreeing about it.
+
+export:
+  version: "1.0.0"
+
+  # projection  ship what a rendered surface resolves (default)
+  # full        ship everything the pipeline produced
+  #
+  # Use `full` when you intend to analyse the package yourself rather than read
+  # the site. The mode that produced a package is recorded in the manifest, so a
+  # reader can always tell which one they have.
+  mode: projection
+
+  # How much of each surface the site renders, and therefore how much the
+  # package has to carry. These are the UI's own per-page caps: the site reads
+  # them back out of the manifest, so raising one shows more AND ships more,
+  # in that order, with no second copy of the number in TypeScript to drift.
+  render:
+    # Episodes that get their own page. The candidates are ordered by the
+    # two-click evidence path: the top five of every available scenario first,
+    # then everyone else who appears in a ranking. A page for each of the
+    # reference repository's 8,859 episodes would be a multi-gigabyte site
+    # nothing links to; episodes past the cap still appear in listings and
+    # still link to their pull requests on the forge.
+    episode_pages: 250
+
+    # Per contributor profile. Each of these is a list the profile page renders
+    # and caps; the package carries exactly what the page can display.
+    per_engineer:
+      # "Strongest evidence episodes", the cards at the top of the profile.
+      featured: 8
+      # The "current work" list.
+      current: 6
+      # The "foundational work" list.
+      foundational: 6
+      # The table of everything else attributed to the contributor. On the
+      # reference dataset this is empty for every contributor, because the
+      # current and foundational lists between them already name every
+      # attributed episode. It is a cap on a table that can be long elsewhere.
+      other: 40
+
+  # Measured on the reference repository (PostHog, 90-day window, 8,859
+  # episodes, 397 contributors) so a change here has something to be compared
+  # against:
+  #
+  #   full         187 MB   8,859 episodes   120,315 claims
+  #   projection    35 MB   2,005 episodes     7,956 claims
+  #
+  # The projection is bounded from below by the per-contributor listings: every
+  # one of the 397 profiles renders its own featured, current and foundational
+  # episodes, and those alone are 2,005 distinct episodes. Cutting the caps to
+  # 1/1/1 still leaves 634 episodes and roughly 26 MB, so a materially smaller
+  # package needs a schema change rather than a tighter budget. The largest
+  # remaining item is the dimensions array carried by episodes that only ever
+  # appear in a listing, which is 59% of episodes.json and which no surface
+  # renders.

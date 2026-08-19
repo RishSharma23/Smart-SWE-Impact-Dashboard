@@ -9,6 +9,7 @@
     "rankable_engineers": 3,
     "review_interventions": 1
   },
+  "export_mode": "full",
   "files": {
     "claims.json": {
       "bytes": 62939,
@@ -23,10 +24,10 @@
       "sha256": "73d9a348a447c055928dfd2003cc7620817d9230a686f67723df73b87cc9f262"
     },
     "coverage.json": {
-      "bytes": 3041,
+      "bytes": 3980,
       "path": "coverage.json",
       "rows": null,
-      "sha256": "3c53275d5d2d3a5545b7d0de9221203681ae5b94c1e709a06d09df3b83419f79"
+      "sha256": "023bb51637c8baebbcd58f38b40ef973ed2bd2e20d0adb562d39304504c0264e"
     },
     "engineers.json": {
       "bytes": 16161,
@@ -116,6 +117,19 @@
     "phase1_schema_version": "1.0.0",
     "verification_status": "verified"
   },
+  "projection": {
+    "claims_included": 106,
+    "claims_omitted": 0,
+    "episode_pages": 4,
+    "episode_pages_truncated": 0,
+    "episodes_included": 5,
+    "episodes_omitted": 0,
+    "evidence_artifacts_included": 15,
+    "evidence_artifacts_omitted": 0,
+    "export_mode": "full",
+    "full_package": "This fixture is already the full package.",
+    "rule": "Episode pages: the top five of every available scenario first, then every other ranked contributor, taking each contributor's featured episodes, capped at episode_pages. Episodes also included when a contributor profile lists them, up to the same per-list caps the profile renders with. Claims included when a rendered surface resolves them: everything for an episode with a page, the title claim for an episode that only appears in a listing, plus every contributor thesis, stability sentence, pairwise explanation and limitation. Evidence artifacts included when an included episode references them. Records are included whole or not at all."
+  },
   "publishable": false,
   "publishable_blockers": [
     {
@@ -129,6 +143,23 @@
       "status": "pending"
     }
   ],
+  "render_plan": {
+    "episode_page_ids": [
+      "github.com/PostHog/posthog#episode/40101-aaaa11112222",
+      "github.com/PostHog/posthog#episode/40402-dddd77778888",
+      "github.com/PostHog/posthog#episode/40210-bbbb33334444",
+      "github.com/PostHog/posthog#episode/40355-cccc55556666"
+    ],
+    "episode_pages": 250,
+    "episode_pages_truncated": 0,
+    "per_engineer": {
+      "current": 6,
+      "featured": 8,
+      "foundational": 6,
+      "other": 40
+    },
+    "rule": "Episode pages: the top five of every available scenario first, then every other ranked contributor, taking each contributor's featured episodes, capped at episode_pages. Episodes also included when a contributor profile lists them, up to the same per-list caps the profile renders with. Claims included when a rendered surface resolves them: everything for an episode with a page, the title claim for an episode that only appears in a listing, plus every contributor thesis, stability sentence, pairwise explanation and limitation. Evidence artifacts included when an included episode references them. Records are included whole or not at all."
+  },
   "safety_scan": {
     "status": "pass",
     "violations": []

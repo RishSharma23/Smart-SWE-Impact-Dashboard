@@ -32,14 +32,34 @@ import {
 const DATA_DIR = path.join(process.cwd(), '.data');
 
 /**
- * Episode detail pages are generated for the episodes the dashboard actually
- * leads with, in priority order: the top five of every available scenario
- * first, then the rest of the ranked engineers. The real export carries ~10k
- * episodes and ~120k claims; a page for each would produce a multi-gigabyte
- * site nothing links to. Episodes past the cap still appear in listings and
- * still link to their pull requests on github.com.
+ * How much of each surface the site renders.
+ *
+ * Phase 2 decides this now and publishes it as `render_plan` in the manifest,
+ * because the package it writes carries exactly what these numbers allow it to
+ * render. Deriving the same priority order here as well gave two
+ * implementations in two languages, free to disagree about which episodes
+ * exist. These values are the fallback for a package written before Phase 2
+ * published its plan; they are the same numbers Phase 2 ships as defaults.
  */
-const EPISODE_PAGE_CAP = 250;
+const DEFAULT_RENDER_BUDGET = {
+  episodePages: 250,
+  featured: 8,
+  current: 6,
+  foundational: 6,
+  other: 40,
+} as const;
+
+export type RenderBudget = { [K in keyof typeof DEFAULT_RENDER_BUDGET]: number };
+
+export interface RenderPlan {
+  /** Episodes with their own route, in the order Phase 2 chose. */
+  episodePageIds: string[];
+  /** Candidates past the cap. Truncation is reported, never hidden. */
+  episodePagesTruncated: number;
+  budget: RenderBudget;
+  /** False when this package predates the published plan and it was derived here. */
+  fromManifest: boolean;
+}
 
 function die(message: string): never {
   throw new Error(
@@ -109,6 +129,8 @@ export interface Bundle {
   episodePageIds: Set<string>;
   /** Truncation is reported, never hidden. */
   episodePagesTruncated: number;
+  /** Phase 2's decision about what this package can render. */
+  renderPlan: RenderPlan;
   /** id -> URL slug, unique across engineers and episodes together. */
   slugs: Map<string, string>;
   /**
@@ -174,6 +196,13 @@ export function loadBundle(): Bundle {
     episodesById.set(ep.episode_id, ep);
   }
 
+  // -- what this package can render -----------------------------------------
+  // Read Phase 2's plan before checking anything, because the plan is what says
+  // which references this package is expected to resolve. A projected package
+  // deliberately omits episodes nothing renders; a reference to one of those is
+  // a link the UI never follows, not a defect.
+  const plan = readRenderPlan(manifest, engineers, rankings, episodesById);
+
   // -- referential integrity -------------------------------------------------
   // Fatal: a missing claim means missing prose; a missing episode means a broken
   // route. Both would render something wrong, so the build stops.
@@ -193,26 +222,36 @@ export function loadBundle(): Bundle {
     if (id && !engineersById.has(id)) orphans.push(`${where} -> unknown actor_cluster_id ${id}`);
   };
 
+  // A profile renders the episodes its own lists name, and those must resolve.
+  // The rest of `episode_ids` is a count and a set of ids, not a lookup.
   for (const e of engineers) {
     const w = `engineers[${e.actor_cluster_id}]`;
     e.thesis_claim_ids.forEach((c) => checkClaim(c, `${w}.thesis_claim_ids`));
     checkClaim(e.uncertainty?.claim_id, `${w}.uncertainty.claim_id`);
-    checkEpisode(e.strongest_evidence_episode_id, `${w}.strongest_evidence_episode_id`);
-    e.episode_ids.forEach((id) => checkEpisode(id, `${w}.episode_ids`));
-    e.dimension_profile.forEach((d) => checkEpisode(d.top_episode_id, `${w}.dimension_profile.${d.dimension}.top_episode_id`));
+    renderedEpisodeIds(e, plan.budget).forEach((id) =>
+      checkEpisode(id, `${w} renders episode`),
+    );
   }
 
+  const episodePageIds = new Set(plan.episodePageIds);
   for (const ep of episodes) {
     const w = `episodes[${ep.episode_id}]`;
+    // Every episode renders its title claim, in cards and in tables.
     checkClaim(ep.title_claim_id, `${w}.title_claim_id`);
+    ep.participants.forEach((p) => {
+      if (!engineersById.has(p.actor_cluster_id)) {
+        softOrphans.push(`${w}.participants -> ${p.actor_cluster_id} has no engineer profile`);
+      }
+    });
+    // The narrative, the dimension rationales and the attribution sentences are
+    // rendered by the episode page and nowhere else, so they are required where
+    // there is a page and expected to be absent where there is not.
+    if (!episodePageIds.has(ep.episode_id)) continue;
     checkClaim(ep.problem_claim_id, `${w}.problem_claim_id`);
     checkClaim(ep.intervention_claim_id, `${w}.intervention_claim_id`);
     checkClaim(ep.outcome_claim_id, `${w}.outcome_claim_id`);
     ep.dimensions.forEach((d) => checkClaim(d.rationale_claim_id, `${w}.dimensions.${d.dimension}.rationale_claim_id`));
     ep.participants.forEach((p) => {
-      if (!engineersById.has(p.actor_cluster_id)) {
-        softOrphans.push(`${w}.participants -> ${p.actor_cluster_id} has no engineer profile`);
-      }
       p.claim_ids.forEach((c) => checkClaim(c, `${w}.participants[${p.login}].claim_ids`));
     });
   }
@@ -292,35 +331,6 @@ export function loadBundle(): Bundle {
     );
   }
 
-  // -- which episodes get a page --------------------------------------------
-  const priority: string[] = [];
-  const seenEpisode = new Set<string>();
-  const addFor = (actor: string) => {
-    const engineer = engineersById.get(actor);
-    if (!engineer) return;
-    for (const id of featuredEpisodeIds(engineer).slice(0, 8)) {
-      if (episodesById.has(id) && !seenEpisode.has(id)) {
-        seenEpisode.add(id);
-        priority.push(id);
-      }
-    }
-  };
-
-  // 1. the top five of every available scenario — the two-click evidence path.
-  for (const scenario of rankings.scenarios) {
-    if (!scenario.available) continue;
-    for (const p of scenario.positions.slice().sort((a, b) => a.position - b.position).slice(0, 5)) {
-      addFor(p.actor_cluster_id);
-    }
-  }
-  // 2. everyone else who appears in a ranking at all.
-  for (const scenario of rankings.scenarios) {
-    for (const p of scenario.positions) addFor(p.actor_cluster_id);
-  }
-
-  const episodePagesTruncated = Math.max(0, priority.length - EPISODE_PAGE_CAP);
-  const episodePageIds = new Set(priority.slice(0, EPISODE_PAGE_CAP));
-
   // -- slugs -----------------------------------------------------------------
   // Engineers and episodes share one namespace so a slug is unambiguous.
   const usedSlugs = new Set<string>();
@@ -346,11 +356,120 @@ export function loadBundle(): Bundle {
     engineersById,
     episodesById,
     episodePageIds,
-    episodePagesTruncated,
+    episodePagesTruncated: plan.episodePagesTruncated,
+    renderPlan: plan,
     slugs,
     dataWarnings,
   };
   return cached;
+}
+
+// -- the render plan ---------------------------------------------------------
+
+function budgetFrom(raw: unknown): RenderBudget {
+  const block = (raw ?? {}) as { episode_pages?: unknown; per_engineer?: Record<string, unknown> };
+  const per = block.per_engineer ?? {};
+  const num = (value: unknown, fallback: number) =>
+    typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : fallback;
+  return {
+    episodePages: num(block.episode_pages, DEFAULT_RENDER_BUDGET.episodePages),
+    featured: num(per.featured, DEFAULT_RENDER_BUDGET.featured),
+    current: num(per.current, DEFAULT_RENDER_BUDGET.current),
+    foundational: num(per.foundational, DEFAULT_RENDER_BUDGET.foundational),
+    other: num(per.other, DEFAULT_RENDER_BUDGET.other),
+  };
+}
+
+/**
+ * Take Phase 2's plan, or derive the same thing for a package that predates it.
+ *
+ * The derivation is kept because a package is a file on disk that outlives the
+ * code that wrote it, not because the UI wants a second opinion: it runs only
+ * when the manifest carries no plan, and it applies the identical rule.
+ */
+function readRenderPlan(
+  manifest: Manifest,
+  engineers: Engineer[],
+  rankings: Rankings,
+  episodesById: Map<string, Episode>,
+): RenderPlan {
+  const published = (manifest as { render_plan?: Record<string, unknown> }).render_plan;
+  const budget = budgetFrom(published);
+
+  if (published && Array.isArray(published.episode_page_ids)) {
+    const ids = published.episode_page_ids.map(String);
+    const missing = ids.filter((id) => !episodesById.has(id));
+    if (missing.length) {
+      die(
+        `dashboard_manifest.json promises a page for ${missing.length} episode(s) that are not in ` +
+          `episodes.json:\n${missing.slice(0, 8).map((m) => `  - ${m}`).join('\n')}\n\n` +
+          `  The package and its own render plan disagree. Re-run \`make p2-export\`.`,
+      );
+    }
+    const truncated = published.episode_pages_truncated;
+    return {
+      episodePageIds: ids,
+      episodePagesTruncated: typeof truncated === 'number' ? truncated : 0,
+      budget,
+      fromManifest: true,
+    };
+  }
+
+  const priority: string[] = [];
+  const seen = new Set<string>();
+  const engineersById = new Map(engineers.map((e) => [e.actor_cluster_id, e]));
+  const addFor = (actor: string) => {
+    const engineer = engineersById.get(actor);
+    if (!engineer) return;
+    for (const id of featuredEpisodeIds(engineer).slice(0, budget.featured)) {
+      if (episodesById.has(id) && !seen.has(id)) {
+        seen.add(id);
+        priority.push(id);
+      }
+    }
+  };
+  // 1. the top five of every available scenario, the two-click evidence path.
+  for (const scenario of rankings.scenarios) {
+    if (!scenario.available) continue;
+    for (const p of scenario.positions.slice().sort((a, b) => a.position - b.position).slice(0, 5)) {
+      addFor(p.actor_cluster_id);
+    }
+  }
+  // 2. everyone else who appears in a ranking at all.
+  for (const scenario of rankings.scenarios) {
+    for (const p of scenario.positions) addFor(p.actor_cluster_id);
+  }
+  return {
+    episodePageIds: priority.slice(0, budget.episodePages),
+    episodePagesTruncated: Math.max(0, priority.length - budget.episodePages),
+    budget,
+    fromManifest: false,
+  };
+}
+
+/**
+ * Every episode id one contributor profile puts on the page.
+ *
+ * The mirror of `_listing_ids` in `src/impact2/render_plan.py`, reading the same
+ * caps out of the same manifest block. Both sides slice the same lists in the
+ * same order, so the package holds exactly what the page displays and a build
+ * against the full package renders identically to one against a projection.
+ */
+export function renderedEpisodeIds(engineer: Engineer, budget: RenderBudget): string[] {
+  const featured = featuredEpisodeIds(engineer);
+  const featuredSet = new Set(featured);
+  const other = engineer.episode_ids.filter((id) => !featuredSet.has(id));
+  // Deduplicated: the lists overlap (a current episode is usually featured too),
+  // and callers count over the result. A repeated id would count a collaborator
+  // twice.
+  return [
+    ...new Set([
+      ...featured.slice(0, budget.featured),
+      ...engineer.current_episode_ids.slice(0, budget.current),
+      ...engineer.foundational_episode_ids.slice(0, budget.foundational),
+      ...other.slice(0, budget.other),
+    ]),
+  ];
 }
 
 // -- selectors ---------------------------------------------------------------

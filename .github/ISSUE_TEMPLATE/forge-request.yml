@@ -1,0 +1,48 @@
+name: Forge support request
+description: Ask for support for a code-hosting platform, or report a gap in one.
+labels: ["forge"]
+body:
+  - type: input
+    id: forge
+    attributes:
+      label: Which forge
+      placeholder: GitLab (self-managed), Gitea, Bitbucket Data Center, ...
+    validations:
+      required: true
+  - type: dropdown
+    id: hosting
+    attributes:
+      label: Hosted or self-managed
+      options:
+        - Vendor-hosted
+        - Self-managed
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: The API you would read it through
+      description: >
+        Link the API documentation for change requests, reviews, review comments
+        and issues. An adapter has to produce the normalized tables in
+        contracts/PHASE_2_CONTRACT.md, so what matters is which of those the API
+        can actually supply.
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: What that forge cannot supply
+      description: >
+        Every adapter declares its capabilities, and analyses that depend on a
+        missing one are switched off and reported rather than approximated. For
+        example, a forge with no equivalent of GitHub's outdated-comment flag
+        loses one of the review-causality evidence paths. What is missing here?
+  - type: textarea
+    id: access
+    attributes:
+      label: Can you test it
+      description: >
+        Do you have a repository on this forge to run against, and are you
+        willing to run a build and report the numbers?

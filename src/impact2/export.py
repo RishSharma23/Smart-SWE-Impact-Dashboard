@@ -15,6 +15,13 @@ Contract properties Phase 3 may rely on:
   inverted lists.
 * **Sharded evidence.**  ``evidence/`` is split by artifact kind so a page
   showing one episode does not download every review comment in the dataset.
+* **Projected, and it says so.**  By default the package carries the records a
+  rendered surface resolves rather than everything the pipeline produced, which
+  on a large repository is the difference between 187 MB and 40 MB.  Whole
+  records only: nothing is rounded, aggregated or truncated.  ``export_mode``,
+  the rule and the included-versus-omitted counts are in the manifest and on
+  the coverage page.  See :mod:`impact2.render_plan` and
+  ``config/phase2/export.yaml``.
 * **No orphan prose.**  Every human-readable sentence in ``episodes.json``,
   ``engineers.json`` and ``comparisons.json`` is a ``claim_id`` resolvable in
   ``claims.json``.  Rendering a string that is not a claim is a contract
@@ -31,8 +38,10 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from . import render_plan as plan_rules
 from .config import Phase2Config, iso, now
 from .ids import content_hash, sha256_file
+from .render_plan import RenderBudget, RenderPlan
 from .store import write_json, write_json_compact
 from .versions import EXPORT_SCHEMA_VERSION, METHODOLOGY_VERSION, all_versions
 
@@ -126,6 +135,16 @@ class Exporter:
         self.llm_pending = dict(llm_pending)
         self.out = config.paths.export
         self.files: dict[str, dict[str, Any]] = {}
+        section = config.section("export")
+        # `full` ships everything the pipeline produced. `projection` ships the
+        # records a rendered surface resolves, whole, and accounts for the rest.
+        self.mode = str(section.get("mode", "projection")).strip().lower()
+        if self.mode not in {"projection", "full"}:
+            raise ValueError(
+                f"export.mode must be 'projection' or 'full', not {self.mode!r} "
+                "(config/phase2/export.yaml)"
+            )
+        self.budget = RenderBudget.from_config(section.get("render"))
 
     # -- writing -----------------------------------------------------------
     @staticmethod
@@ -156,8 +175,82 @@ class Exporter:
             "rows": rows,
         }
 
+    # -- the projection ------------------------------------------------------
+    def render_plan(
+        self,
+        engineers: Sequence[Mapping[str, Any]],
+        rankings: Mapping[str, Any],
+        episodes: Sequence[Mapping[str, Any]],
+    ) -> RenderPlan:
+        """Decide what the site can render, from the payloads it will read.
+
+        Computed from the exported shapes rather than from pipeline internals,
+        because those shapes are exactly what the UI sees. The plan is published
+        in the manifest, so the UI reads the decision instead of making its own.
+        """
+        return plan_rules.build(
+            engineers,
+            rankings.get("scenarios") or [],
+            budget=self.budget,
+            known_episode_ids=[str(e["episode_id"]) for e in episodes],
+        )
+
+    def project(
+        self,
+        plan: RenderPlan,
+        engineers: Sequence[Mapping[str, Any]],
+        episodes: Sequence[Mapping[str, Any]],
+        comparisons: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        """Resolve the plan into the id sets each file is filtered by.
+
+        In ``full`` mode nothing is filtered and the accounting still runs, so
+        the manifest reports zero omissions rather than staying silent.
+        """
+        pages = set(plan.episode_page_ids)
+        if self.mode == "full":
+            kept_episodes = {str(e["episode_id"]) for e in episodes}
+        else:
+            kept_episodes = set(plan.episode_ids)
+
+        claims: set[str] = set()
+        artifacts: set[str] = set()
+        for episode in episodes:
+            identifier = str(episode["episode_id"])
+            if identifier not in kept_episodes:
+                continue
+            claims |= plan_rules.claim_ids_for_episode(
+                episode, has_page=identifier in pages
+            )
+            artifacts |= plan_rules.artifact_ids_for_episode(episode)
+        for engineer in engineers:
+            claims |= plan_rules.claim_ids_for_engineer(engineer)
+        for block in (comparisons.get("scenarios") or {}).values():
+            for pair in block.get("pairwise") or []:
+                if pair.get("explanation_claim_id"):
+                    claims.add(str(pair["explanation_claim_id"]))
+        for identifier in self.claim_index.get("limitations", []) or []:
+            if identifier:
+                claims.add(str(identifier))
+
+        if self.mode == "full":
+            # Everything ships. `None` for artifacts keeps even the evidence
+            # rows no episode references, which is what `full` is for.
+            return {
+                "episodes": kept_episodes,
+                "claims": {str(c["claim_id"]) for c in self.claims},
+                "artifacts": None,
+            }
+        return {"episodes": kept_episodes, "claims": claims, "artifacts": artifacts}
+
     # -- 1. episodes --------------------------------------------------------
     def episodes(self) -> list[dict[str, Any]]:
+        """Build every episode record. Which of them ship is decided later.
+
+        The rows are built in full and then projected, never built differently
+        because a row is destined for a listing. A record in the package is the
+        record the pipeline produced.
+        """
         # engineers.json only carries actors with a portfolio, and a portfolio
         # is only built for participants that contribute to one. A co-author
         # credited as `supporting` is a real contributor with real evidence but
@@ -274,7 +367,6 @@ class Exporter:
                     },
                 }
             )
-        self._write("episodes.json", rows, rows=len(rows))
         return rows
 
     # -- 2. engineers --------------------------------------------------------
@@ -469,15 +561,24 @@ class Exporter:
         return payload
 
     # -- 5. evidence (sharded) ---------------------------------------------------
-    def evidence(self) -> dict[str, Any]:
+    def evidence(self, keep: set[str] | None = None) -> dict[str, Any]:
+        """``keep`` is the artifact ids an included episode resolves.
+
+        ``None`` keeps every artifact, which is what ``export.mode: full`` asks
+        for. Omitted rows are counted, not silently dropped.
+        """
         by_kind: dict[str, list[dict[str, Any]]] = defaultdict(list)
         seen: set[tuple[str, str]] = set()
+        omitted: set[str] = set()
         for row in self.pipeline.episode_artifacts:
             kind = str(row["artifact_kind"])
             key = (kind, str(row["artifact_id"]))
             if key in seen:
                 continue
             seen.add(key)
+            if keep is not None and str(row["artifact_id"]) not in keep:
+                omitted.add(str(row["artifact_id"]))
+                continue
             by_kind[kind].append(
                 {
                     "artifact_id": row["artifact_id"],
@@ -494,6 +595,9 @@ class Exporter:
             if key in seen:
                 continue
             seen.add(key)
+            if keep is not None and str(row["artifact_id"]) not in keep:
+                omitted.add(str(row["artifact_id"]))
+                continue
             by_kind["review_comment"].append(
                 {
                     "artifact_id": row["artifact_id"],
@@ -519,20 +623,39 @@ class Exporter:
             "sharded": True,
             "shards": index,
             "total_artifacts": sum(v["count"] for v in index.values()),
+            "artifacts_omitted": len(omitted),
             "note": (
                 "Sharded by artifact kind so an episode page does not download "
                 "every review comment in the dataset. Excerpts are retained "
                 "only where the text is the evidence a claim rests on."
             ),
         }
+        if omitted:
+            payload["omission_note"] = (
+                f"{len(omitted)} artifact(s) are referenced only by episodes "
+                "this package does not carry, and are omitted with them. See "
+                "export_mode in dashboard_manifest.json."
+            )
         self._write("evidence.json", payload)
         return payload
 
     # -- 6. claims ----------------------------------------------------------------
-    def claims_file(self) -> dict[str, Any]:
+    def claims_file(self, keep: set[str] | None = None) -> dict[str, Any]:
+        """``keep`` is the claim ids a rendered surface resolves.
+
+        A claim left out is a claim on a record this package does not carry, or
+        on a surface this package cannot render. The count of both is published:
+        a reader is told how much of the claim set they are holding.
+        """
+        claims = (
+            self.claims if keep is None
+            else [c for c in self.claims if str(c["claim_id"]) in keep]
+        )
         payload = {
-            "claims": self.claims,
-            "count": len(self.claims),
+            "claims": claims,
+            "count": len(claims),
+            "count_all": len(self.claims),
+            "omitted": len(self.claims) - len(claims),
             "contract": (
                 "Every human-readable sentence the UI renders must come from a "
                 "claim in this file. A string that is not a claim_id lookup is a "
@@ -542,7 +665,14 @@ class Exporter:
                 "eligibility.limitations.correction_pathway"
             ),
         }
-        self._write("claims.json", payload, rows=len(self.claims))
+        if len(claims) != len(self.claims):
+            payload["omission_note"] = (
+                "This package carries the claims its rendered surfaces resolve. "
+                "The rest belong to episodes it does not carry, or to episode "
+                "detail that only an episode page renders. Rebuild with "
+                "export.mode: full for the complete claim set."
+            )
+        self._write("claims.json", payload, rows=len(claims))
         return payload
 
     # -- 7. methodology ------------------------------------------------------------
@@ -616,9 +746,13 @@ class Exporter:
         return payload
 
     # -- 8. coverage --------------------------------------------------------------
-    def coverage(self) -> dict[str, Any]:
+    def coverage(self, package: Mapping[str, Any] | None = None) -> dict[str, Any]:
         limitations = self.config.get("eligibility.limitations")
         payload = {
+            # What the reader is holding, next to what was analysed. A package
+            # that carries less than the analysis says so on the coverage page,
+            # which is where every other gap in this run is already declared.
+            "package": dict(package or {}),
             "phase1": self.pipeline.inputs.verification_report(),
             "known_gaps": self.pipeline.inputs.known_gaps,
             "capabilities_disabled": self.pipeline.inputs.capabilities_disabled,
@@ -689,7 +823,9 @@ class Exporter:
 
     # -- manifest + indexes ---------------------------------------------------------
     def manifest(self, episodes: Sequence[Mapping[str, Any]],
-                 engineers: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+                 engineers: Sequence[Mapping[str, Any]],
+                 plan: RenderPlan,
+                 package: Mapping[str, Any]) -> dict[str, Any]:
         indexes = {
             "episodes_by_component": _invert(
                 episodes, "episode_id", lambda e: e.get("components") or []
@@ -725,8 +861,12 @@ class Exporter:
             },
             "window": self.pipeline.inputs.manifest.get("window"),
             "phase1_provenance": self.pipeline.inputs.provenance(),
+            # `counts` describes THE ANALYSIS, not the package. It stays the
+            # same whichever export mode ran, so the site never understates how
+            # much was analysed because of how much was shipped. What the
+            # package carries is in `projection` below and on the coverage page.
             "counts": {
-                "episodes": len(episodes),
+                "episodes": len(self.pipeline.episodes),
                 "engineers": len(engineers),
                 "rankable_engineers": sum(1 for e in engineers if e.get("rankable")),
                 "claims": len(self.claims),
@@ -735,6 +875,12 @@ class Exporter:
                 "propagation_edges": len(self.pipeline.propagation_edges),
                 "review_interventions": len(self.pipeline.interventions),
             },
+            "export_mode": self.mode,
+            "projection": dict(package),
+            # The site reads this instead of deriving the same priority order in
+            # TypeScript, so a full build and a projected build render the same
+            # pages with the same content.
+            "render_plan": plan.manifest_block(),
             "files": self.files,
             "indexes": {
                 "file": "indexes.json",
@@ -798,15 +944,41 @@ class Exporter:
     # -- run -------------------------------------------------------------------------
     def run(self) -> dict[str, Any]:
         self.out.mkdir(parents=True, exist_ok=True)
-        episodes = self.episodes()
+        # Build first, decide second, write third. The plan is computed from the
+        # payloads the site will actually read, so nothing can be selected on a
+        # basis the reader cannot reconstruct from the package itself.
+        all_episodes = self.episodes()
         engineers = self.engineers()
-        self.rankings()
-        self.comparisons()
-        self.evidence()
-        self.claims_file()
+        rankings = self.rankings()
+        comparisons = self.comparisons()
+        plan = self.render_plan(engineers, rankings, all_episodes)
+        keep = self.project(plan, engineers, all_episodes, comparisons)
+
+        episodes = [
+            e for e in all_episodes if str(e["episode_id"]) in keep["episodes"]
+        ]
+        self._write("episodes.json", episodes, rows=len(episodes))
+        evidence = self.evidence(keep["artifacts"])
+        claims = self.claims_file(keep["claims"])
         self.methodology()
-        self.coverage()
-        manifest = self.manifest(episodes, engineers)
+        package = {
+            "export_mode": self.mode,
+            "rule": plan_rules.RULE,
+            "episodes_included": len(episodes),
+            "episodes_omitted": len(all_episodes) - len(episodes),
+            "episode_pages": len(plan.episode_page_ids),
+            "episode_pages_truncated": plan.episode_pages_truncated,
+            "claims_included": claims["count"],
+            "claims_omitted": claims["omitted"],
+            "evidence_artifacts_included": evidence["total_artifacts"],
+            "evidence_artifacts_omitted": evidence["artifacts_omitted"],
+            "full_package": (
+                "Set export.mode: full in config/phase2/export.yaml and re-run "
+                "`make p2-export` for every record the pipeline produced."
+            ),
+        }
+        self.coverage(package)
+        manifest = self.manifest(episodes, engineers, plan, package)
 
         safety = self.safety_scan()
         # The violation list is a developer artifact — file names, regex labels

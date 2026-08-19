@@ -36,6 +36,9 @@ export default function CoveragePage() {
   const missing = coverage.missingness;
   const disabled = Object.entries(coverage.capabilities_disabled ?? {});
   const validation = coverage.validation;
+  // Absent on a package written before the export could project; those were
+  // always complete, so there is nothing to declare.
+  const pkg = coverage.package ?? manifest.projection ?? null;
 
   return (
     <div className="space-y-10">
@@ -72,6 +75,59 @@ export default function CoveragePage() {
               </li>
             ))}
           </ul>
+        </section>
+      ) : null}
+
+      {/* What this package carries, against what the run analysed. */}
+      {pkg ? (
+        <section aria-labelledby="package-heading">
+          <SectionHeading
+            id="package-heading"
+            title="What is in this package"
+            description="The analysis produces more than the site renders. By default the published package carries the records a page or a listing actually resolves, each one exactly as the pipeline produced it. Nothing here is a rounded or aggregated stand-in for a record that was left out."
+          />
+          <Card>
+            <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+              <KeyValue label="export mode">
+                <span className="font-mono">{pkg.export_mode ?? manifest.export_mode ?? 'full'}</span>
+              </KeyValue>
+              <KeyValue label="episodes">
+                <span className="font-mono">
+                  {formatNumber(pkg.episodes_included)} of{' '}
+                  {formatNumber((pkg.episodes_included ?? 0) + (pkg.episodes_omitted ?? 0))}
+                </span>
+              </KeyValue>
+              <KeyValue label="claims">
+                <span className="font-mono">
+                  {formatNumber(pkg.claims_included)} of{' '}
+                  {formatNumber((pkg.claims_included ?? 0) + (pkg.claims_omitted ?? 0))}
+                </span>
+              </KeyValue>
+              <KeyValue label="evidence artifacts">
+                <span className="font-mono">
+                  {formatNumber(pkg.evidence_artifacts_included)} of{' '}
+                  {formatNumber(
+                    (pkg.evidence_artifacts_included ?? 0) + (pkg.evidence_artifacts_omitted ?? 0),
+                  )}
+                </span>
+              </KeyValue>
+              <KeyValue label="episode pages">
+                <span className="font-mono">{formatNumber(pkg.episode_pages)}</span>
+              </KeyValue>
+              {(pkg.episode_pages_truncated ?? 0) > 0 ? (
+                <KeyValue label="pages past the cap">
+                  <span className="font-mono">{formatNumber(pkg.episode_pages_truncated)}</span>
+                </KeyValue>
+              ) : null}
+            </dl>
+            {pkg.rule ? (
+              <p className="mt-4 text-xs leading-relaxed text-muted">
+                <span className="font-medium text-ink-soft">The rule: </span>
+                {pkg.rule}
+              </p>
+            ) : null}
+            {pkg.full_package ? <p className="mt-2 text-xs leading-relaxed text-muted">{pkg.full_package}</p> : null}
+          </Card>
         </section>
       ) : null}
 

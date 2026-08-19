@@ -36,6 +36,7 @@ CONFIG_FILES = {
     "analytics": "analytics.yaml",
     "eligibility": "eligibility.yaml",
     "llm": "llm.yaml",
+    "export": "export.yaml",
 }
 
 # Top-level key inside each file (files are namespaced so they can be merged
@@ -48,6 +49,7 @@ ROOT_KEYS = {
     "analytics": "analytics",
     "eligibility": "eligibility",
     "llm": "llm",
+    "export": "export",
 }
 
 _MISSING = object()

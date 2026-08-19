@@ -150,8 +150,6 @@ artifacts/    the Phase 2 package
 
 | Document | What it is for |
 |---|---|
-| [PHASE_1_HANDOVER.md](PHASE_1_HANDOVER.md) | Source SHA, window, measured results, API cost, known defects. |
-| [CURRENT_STATE.md](CURRENT_STATE.md) | What works, what does not, the next command, riskiest assumptions. |
 | **[contracts/PHASE_2_CONTRACT.md](contracts/PHASE_2_CONTRACT.md)** | **Start here if you are consuming the pipeline output.** Frozen table contract, join keys, the five non-negotiable rules, and the repository-specific facts a consumer will otherwise get wrong. |
 | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) | Every table and column, with null semantics. |
 | [docs/INGESTION_RUNBOOK.md](docs/INGESTION_RUNBOOK.md) | Operating, resuming and debugging a run. |
@@ -180,8 +178,34 @@ dashboard if missed.
    files carry the real mapping; `.github/CODEOWNERS` is deliberately tiny and
    argues against its own use. `CODEOWNERS-soft` does not exist.
 
-## Licence note
+## Contributing, security and conduct
 
-`ee/**` is PostHog Enterprise-licensed, not MIT. It is tagged
-`license_area` throughout and is never silently aggregated as open-source
-contribution.
+| Document | What it is for |
+|---|---|
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Setup, the test commands, and the rules this project is built on. |
+| [SECURITY.md](SECURITY.md) | How to report a vulnerability privately, and exactly how tokens are handled. |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant 2.1. |
+| [LICENSE](LICENSE) | MIT. |
+| [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | Every dependency, its licence, and why it is here. |
+
+Issue templates cover bugs, forge requests and methodology questions. There is
+also a **claim dispute** template: if the dashboard renders a statement about
+someone's work that is wrong, quote its `claim_id` and it will be treated as a
+defect, because that is what it is.
+
+## Licence
+
+This project is MIT licensed. Copyright (c) 2026 Rishit Sharma. See
+[LICENSE](LICENSE).
+
+It is not a performance-review instrument, and the code enforces that: a
+validation gate refuses to export a package containing inferences about
+seniority, tenure, effort or productivity, and commit counts, pull-request
+counts, lines of code and review counts are structurally unable to raise any
+band.
+
+### A note on the analysed repository's licence
+
+`ee/**` in PostHog's repository is PostHog Enterprise-licensed, not MIT. It is
+tagged `license_area` throughout and is never silently aggregated as
+open-source contribution.

@@ -175,6 +175,8 @@ const provenance = {
   staged_at: new Date().toISOString(),
   file_count: Object.keys(manifest.files ?? {}).length,
   total_bytes: Object.values(manifest.files ?? {}).reduce((n, f) => n + (f.bytes ?? 0), 0),
+  /** `projection` or `full`; absent on a package written before either existed. */
+  export_mode: manifest.export_mode ?? null,
 };
 fs.writeFileSync(path.join(DEST, '_provenance.json'), JSON.stringify(provenance, null, 2));
 
@@ -182,6 +184,7 @@ const mb = (provenance.total_bytes / 1024 / 1024).toFixed(2);
 console.log(
   `  data  ${provenance.source_dir}  ->  web/.data  ` +
     `(${provenance.file_count} files, ${mb} MB, schema ${manifest.manifest_version}` +
+    `${manifest.export_mode ? `, ${manifest.export_mode}` : ''}` +
     `${isFixture ? ', FIXTURE/DEMO' : ''}` +
     `${manifest.publishable === false ? `, export publishable=false${approval ? ' + human approval on record' : ''}` : ''})`,
 );

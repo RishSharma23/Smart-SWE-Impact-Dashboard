@@ -25,9 +25,18 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+# The fixture publishes a render plan computed by the same code the real export
+# uses, so CI exercises the branch where the UI reads the plan rather than the
+# fallback where it derives one.
+from impact2 import render_plan as plan_rules   # noqa: E402
+from impact2.render_plan import RenderBudget    # noqa: E402
+
 OUT = ROOT / "docs" / "fixtures" / "phase3"
 REPO = "https://github.com/PostHog/posthog"
 QUALIFIER = "github.com/PostHog/posthog"
@@ -979,6 +988,28 @@ def main() -> None:
              "detail": "status=M component=docs"}],
     }
 
+    budget = RenderBudget()
+    plan = plan_rules.build(
+        engineers, rankings["scenarios"], budget=budget,
+        known_episode_ids=[e["episode_id"] for e in episodes],
+    )
+    # The fixture is deliberately complete: it is 5 episodes, every one of them
+    # rendered somewhere, and UI development wants the awkward rows present. It
+    # is therefore a `full` package that still carries the plan.
+    projection = {
+        "export_mode": "full",
+        "rule": plan_rules.RULE,
+        "episodes_included": len(episodes),
+        "episodes_omitted": 0,
+        "episode_pages": len(plan.episode_page_ids),
+        "episode_pages_truncated": plan.episode_pages_truncated,
+        "claims_included": len(_claims),
+        "claims_omitted": 0,
+        "evidence_artifacts_included": sum(len(v) for v in evidence_shards.values()),
+        "evidence_artifacts_omitted": 0,
+        "full_package": "This fixture is already the full package.",
+    }
+
     files = {}
 
     def write(name, payload, rows=None):
@@ -1045,6 +1076,7 @@ def main() -> None:
                         "parameters."},
         "fixture": True})
     write("coverage.json", {
+        "package": projection,
         "phase1": {"status": "verified", "input_source": "artifacts",
                    "tables_present": 27, "tables_expected": 27},
         "known_gaps": [
@@ -1130,6 +1162,9 @@ def main() -> None:
                    "participants": sum(len(e["participants"]) for e in episodes),
                    "propagation_edges": 44, "review_interventions": 1},
         "files": files,
+        "export_mode": "full",
+        "projection": projection,
+        "render_plan": plan.manifest_block(),
         "indexes": {"file": "indexes.json", "available": sorted(indexes)},
         "validation_status": "pending_human_review", "publishable": False,
         "publishable_blockers": [

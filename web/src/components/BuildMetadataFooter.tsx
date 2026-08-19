@@ -18,6 +18,8 @@ export interface BuildMeta {
   isFixture: boolean;
   fileCount: number;
   totalBytes: number;
+  /** `projection` or `full`. Absent on a package written before either existed. */
+  exportMode: string | null;
   counts: Record<string, number>;
   validationStatus: string;
   publishable: boolean;
@@ -55,9 +57,17 @@ export function BuildMetadataFooter({ meta }: { meta: BuildMeta }) {
           <Item label="Methodology">
             <span className="font-mono">{meta.methodologyVersion}</span>
           </Item>
-          <Item label="Package">
+          <Item
+            label="Package"
+            hint={
+              meta.exportMode === 'projection'
+                ? 'a projection: the records these pages resolve, each one whole. See the coverage page.'
+                : undefined
+            }
+          >
             <span className="font-mono">
               {meta.sourceDir} · {meta.fileCount} files · {(meta.totalBytes / 1024 / 1024).toFixed(2)} MB
+              {meta.exportMode ? ` · ${meta.exportMode}` : ''}
             </span>
           </Item>
           <Item label="Staged at build">

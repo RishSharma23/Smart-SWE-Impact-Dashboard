@@ -12,6 +12,11 @@ PIP     ?= ./.venv/bin/pip
 PYTEST  ?= ./.venv/bin/pytest
 WORKERS ?= 4
 
+# The pipeline is imported from src/ rather than installed, so every recipe that
+# runs `python -m impact` needs src on the path. pytest gets this from
+# pyproject.toml; make has to say it.
+export PYTHONPATH := src$(if $(PYTHONPATH),:$(PYTHONPATH),)
+
 .PHONY: help venv deps all ingest ingest-git ingest-github normalize graph \
         features validate export test clean-artifacts ingest-web \
         p2 p2-verify p2-graph p2-episodes p2-attribute p2-analytics \

@@ -97,6 +97,31 @@ export const claimsFileSchema = z
 
 // -- manifest ----------------------------------------------------------------
 
+/**
+ * What the package carries against what the run analysed.
+ *
+ * The default export is a projection: the records a rendered surface resolves,
+ * each one whole. Nothing is rounded or truncated, so the accounting is a pair
+ * of counts and the rule that produced them, published here and shown on the
+ * coverage page.
+ */
+export const projectionSchema = z
+  .object({
+    export_mode: z.string().nullish(),
+    rule: z.string().nullish(),
+    episodes_included: z.number().nullish(),
+    episodes_omitted: z.number().nullish(),
+    episode_pages: z.number().nullish(),
+    episode_pages_truncated: z.number().nullish(),
+    claims_included: z.number().nullish(),
+    claims_omitted: z.number().nullish(),
+    evidence_artifacts_included: z.number().nullish(),
+    evidence_artifacts_omitted: z.number().nullish(),
+    full_package: z.string().nullish(),
+  })
+  .passthrough();
+export type Projection = z.infer<typeof projectionSchema>;
+
 export const manifestSchema = z
   .object({
     manifest_version: z.string(),
@@ -154,6 +179,35 @@ export const manifestSchema = z
       .nullish(),
     limitations_headline: z.string(),
     ui_contract: z.record(z.unknown()).nullish(),
+    /**
+     * `projection` ships the records a rendered surface resolves, whole;
+     * `full` ships everything the pipeline produced. Absent on packages written
+     * before the projection existed, which were always full.
+     */
+    export_mode: z.string().nullish(),
+    projection: projectionSchema.nullish(),
+    /**
+     * Phase 2's decision about what this package renders. The UI reads it
+     * rather than deriving the same priority order a second time.
+     */
+    render_plan: z
+      .object({
+        episode_pages: z.number().nullish(),
+        episode_page_ids: z.array(z.string()).nullish(),
+        episode_pages_truncated: z.number().nullish(),
+        per_engineer: z
+          .object({
+            featured: z.number().nullish(),
+            current: z.number().nullish(),
+            foundational: z.number().nullish(),
+            other: z.number().nullish(),
+          })
+          .passthrough()
+          .nullish(),
+        rule: z.string().nullish(),
+      })
+      .passthrough()
+      .nullish(),
   })
   .passthrough();
 export type Manifest = z.infer<typeof manifestSchema>;
@@ -499,6 +553,8 @@ export type Comparisons = z.infer<typeof comparisonsSchema>;
 
 export const coverageSchema = z
   .object({
+    /** What the reader is holding, next to what the run analysed. */
+    package: projectionSchema.nullish(),
     phase1: z.record(z.unknown()).nullish(),
     known_gaps: z
       .array(

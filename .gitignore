@@ -14,18 +14,21 @@ __pycache__/
 *.egg-info/
 
 # Data layers.
-# Raw source clone and raw API pages are large + reproducible; they are NOT committed.
-data/raw/git/
-data/raw/github/
-data/raw/web/
+# Everything under data/raw/ is either a read-only clone, an immutable copy of
+# an API response, or an extract derived from one of those. All of it is large,
+# all of it is reproducible from the source repository plus a token, and none of
+# it belongs in the history of a general-purpose tool. `impact ingest-git` and
+# `impact ingest-github` rebuild the whole tree.
+data/raw/
 data/normalized/
 data/derived/
 artifacts/*.parquet
 artifacts/*.zip
 
 # Committed on purpose:
-#   data/samples/**   tiny redacted fixtures used by unit tests
-#   artifacts/*.json  compact manifests / coverage reports for Phase 2
+#   data/samples/**        tiny redacted fixtures used by unit tests
+#   docs/fixtures/phase3/  the synthetic export CI builds the site against
+#   artifacts/*.json       compact manifests / coverage reports for Phase 2
 
 # OS / editor
 .DS_Store

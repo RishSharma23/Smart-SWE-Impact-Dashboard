@@ -23,11 +23,18 @@
 
 1. Zod-parses all ten files;
 2. rejects duplicate `claim_id`, `episode_id`, `actor_cluster_id`, `artifact_id`;
-3. walks every cross-reference;
-4. requires `default_scenario` to exist and at least one available, populated
+3. reads `render_plan` from the manifest, and fails if the package promises a
+   page for an episode it does not carry;
+4. walks every cross-reference the plan says will be rendered. A projected
+   package deliberately omits records nothing renders, so the check is scoped to
+   what the pages resolve: every episode's title claim, every claim on an
+   episode that has a page, every contributor thesis and stability claim, every
+   pairwise explanation, every limitation. A dangling reference *there* is still
+   fatal;
+5. requires `default_scenario` to exist and at least one available, populated
    scenario;
-5. rejects any evidence URL that is not `https://github.com`;
-6. builds the slug map, the episode-page priority list and the claim index.
+6. rejects any evidence URL that is not `https://github.com`;
+7. builds the slug map and the claim index.
 
 Failures raise `PHASE 2 DATA CONTRACT VIOLATION` naming the file and field. The
 build never falls back to mock data.

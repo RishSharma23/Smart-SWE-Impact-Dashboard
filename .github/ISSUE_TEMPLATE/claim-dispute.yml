@@ -1,0 +1,62 @@
+name: Claim dispute
+description: The dashboard says something about a contributor's work that is wrong.
+labels: ["claim-dispute"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every sentence this dashboard renders is a claim with a `claim_id`, its
+        evidence and its derivation, all published in the data package. A
+        disputed claim is a defect in the method or the data, and it is treated
+        as one.
+
+        The `claim_id` is shown in the evidence panel next to the sentence.
+  - type: input
+    id: claim-id
+    attributes:
+      label: claim_id
+      placeholder: claim/0000f5f444ac7ee4
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Where you saw it
+      description: The page URL, or the deployment and page name.
+    validations:
+      required: true
+  - type: textarea
+    id: text
+    attributes:
+      label: The sentence as rendered
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong with it
+      options:
+        - The evidence does not support the sentence
+        - The evidence is real but attributed to the wrong person
+        - The evidence is out of date or was superseded
+        - The sentence is technically true but misleading in context
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What the record actually shows
+      description: >
+        Link the pull requests, commits, reviews or issues that show it. Public
+        artifacts only, please: this project reasons only from the public record
+        and cannot use evidence a reader could not check.
+    validations:
+      required: true
+  - type: checkboxes
+    id: subject
+    attributes:
+      label: Your relationship to the claim
+      options:
+        - label: This claim is about my own work.
+        - label: I am reporting on behalf of someone else, with their knowledge.

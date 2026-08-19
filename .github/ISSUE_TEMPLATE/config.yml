@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/RishSharma23/Smart-SWE-Impact-Dashboard/security/advisories/new
+    about: Report privately. Never open a public issue for a security problem.
+  - name: Contributing guide
+    url: https://github.com/RishSharma23/Smart-SWE-Impact-Dashboard/blob/main/CONTRIBUTING.md
+    about: Setup, tests, and the rules this project is built on.

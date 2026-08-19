@@ -58,9 +58,24 @@ runtime.
   "window": { "start": "…Z", "end": "…Z", "lookback_days": 90 },  // MUST be displayed
   "phase1_provenance": { … },              // input hashes, verification status
 
+  // Describes THE ANALYSIS, not the package. Unchanged by the export mode.
   "counts": { "episodes": 0, "engineers": 0, "rankable_engineers": 0,
               "claims": 0, "dimension_assessments": 0, "participants": 0,
               "propagation_edges": 0, "review_interventions": 0 },
+
+  "export_mode": "projection" | "full",    // §2.2
+  "projection": { "rule": "…",
+                  "episodes_included": 0, "episodes_omitted": 0,
+                  "episode_pages": 0, "episode_pages_truncated": 0,
+                  "claims_included": 0, "claims_omitted": 0,
+                  "evidence_artifacts_included": 0,
+                  "evidence_artifacts_omitted": 0 },
+  "render_plan": { "episode_pages": 250,
+                   "episode_page_ids": [ … ],   // in priority order
+                   "episode_pages_truncated": 0,
+                   "per_engineer": { "featured": 8, "current": 6,
+                                     "foundational": 6, "other": 40 },
+                   "rule": "…" },
 
   "files":   { "<name>": { "path", "bytes", "sha256", "rows" } },
   "indexes": { "file": "indexes.json", "available": [ … ] },
@@ -87,6 +102,47 @@ internal preview is fine and expected — put a persistent banner on the page:
 
 The blockers array tells you exactly which. This is a deliberate design
 decision, not a bug to work around.
+
+### 2.2 The package is a projection by default, and it says which
+
+The pipeline produces far more than the dashboard renders. On the reference
+repository the complete package is 187 MB, of which the site puts a few per cent
+on a page. `export.mode` in `config/phase2/export.yaml` therefore selects:
+
+| Mode | What ships |
+|---|---|
+| `projection` (default) | the records a rendered surface resolves |
+| `full` | everything the pipeline produced |
+
+**A projection is not a summary.** Nothing is rounded, aggregated or truncated.
+A record is in the package exactly as the pipeline produced it, or it is not in
+the package and `projection.*_omitted` says how many are missing and
+`projection.rule` says by which rule. A consumer must never present an omitted
+record as absent from the *analysis*: `counts` describes the analysis and is
+identical in both modes, which is why the two blocks are separate.
+
+What this means when you read the package:
+
+1. **`render_plan.episode_page_ids` is authoritative.** Generate a detail page
+   for exactly those ids, in that order. Do not re-derive the list: Phase 2
+   shipped the episodes that list names, and a locally derived list is free to
+   name an episode the package does not carry. `episode_pages_truncated` is the
+   number of candidates past the cap, and should be shown where it matters.
+2. **`render_plan.per_engineer` is the cap your profile page must use.** The
+   package carries each contributor's featured, current, foundational and other
+   episodes up to those numbers and no further. Rendering more is asking for
+   records that are not there; rendering fewer wastes what was shipped.
+3. **Referential integrity is scoped to what is rendered.** In `projection`
+   mode, an `episode_id` referenced from `engineers.json` beyond those caps may
+   be absent, and so may every claim on an episode that has no page except its
+   `title_claim_id`. Both are expected. Check what you will render, and fail the
+   build on a dangling reference *there*, which is still a real defect.
+4. **`evidence/` follows the episodes.** An artifact is shipped when an included
+   episode references it.
+
+Rebuild with `export.mode: full` when you want the complete record, for example
+to do your own analysis over the claim set. The same UI renders both, because
+both carry the same plan.
 
 ---
 
@@ -593,6 +649,9 @@ The package is static and self-contained.
 9. Describe anyone's ability, effort, seniority or productivity. The subject of
    every sentence is the *work*, not the person.
 10. Label the result anything other than **observable repository impact**.
+11. Present a projected package as though it were the whole analysis. `counts`
+    is what was analysed, `projection` is what shipped, and the difference
+    belongs on the coverage page (§2.2).
 
 ---
 
@@ -601,3 +660,4 @@ The package is static and self-contained.
 | Export schema | Date | Change |
 |---|---|---|
 | 1.0.0 | 2026-08-17 | Initial contract. 8 core files + sharded evidence + indexes. |
+| 1.0.0 | 2026-08-19 | Additive: `export_mode`, `projection` and `render_plan` in the manifest, `package` in `coverage.json` (§2.2). No field changed meaning, so the schema version is unchanged. The projection is the default; `export.mode: full` restores the previous contents. |

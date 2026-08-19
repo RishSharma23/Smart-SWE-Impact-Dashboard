@@ -61,9 +61,9 @@ switching is instant and needs no navigation.
 
 ## How page weight is controlled
 
-The real export is ~190 MB across 9,515 episodes and 122,448 claims. A static
-site cannot inline that, so `viewmodel.ts` is the single place that decides what
-each page carries, with explicit caps:
+A 90-day window on a large monorepo is 8,859 episodes and 120,315 claims. A
+static site cannot inline that, so `viewmodel.ts` is the single place that
+decides what each page carries, with explicit caps:
 
 | Page | What it inlines |
 |---|---|
@@ -77,8 +77,19 @@ ranked engineers. Episodes past that cap still appear in listings and still link
 to their pull requests; they just have no dedicated page. Without these caps one
 prolific contributor's profile measured 20 MB.
 
-The caps are constants at the top of `viewmodel.ts` and `data.ts`. Raising them
-raises site size roughly linearly.
+**Phase 2 decides the caps, and the UI reads them.** They arrive in
+`render_plan` in `dashboard_manifest.json`: `episode_page_ids` is the list of
+episodes with a page, in priority order, and `per_engineer` is the set of
+per-profile limits above. The UI used to derive the same priority order itself,
+which meant two implementations of one rule in two languages, free to disagree
+about which episodes exist. It now renders what it is given, and the package
+carries exactly the records those numbers allow it to render. The values in
+`DEFAULT_RENDER_BUDGET` in `data.ts` are a fallback for a package written before
+Phase 2 published its plan.
+
+Raising a cap therefore means raising it in `config/phase2/export.yaml` and
+re-exporting; site size rises roughly linearly, and so does package size. See
+`contracts/PHASE_3_CONTRACT.md` §2.2.
 
 ## Component inventory
 

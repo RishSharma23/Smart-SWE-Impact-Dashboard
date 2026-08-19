@@ -1,0 +1,54 @@
+name: Bug
+description: Something in the pipeline or the dashboard does not work.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If the dashboard renders a statement about someone's work that you think
+        is wrong, use the **claim dispute** template instead. This one is for
+        crashes, wrong behaviour and broken builds.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you ran, and what it did.
+      placeholder: |
+        $ make p2-export
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: input
+    id: stage
+    attributes:
+      label: Which stage
+      description: For example `ingest-github`, `impact2 rank`, `next build`.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, Node version, and the commit you are on.
+      value: |
+        OS:
+        Python:
+        Node:
+        Commit:
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: >
+        Paste the error and the surrounding lines. Check first that you are not
+        pasting a token: nothing in this project prints one, but your shell
+        history might.
+      render: text

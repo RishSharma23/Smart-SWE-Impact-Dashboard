@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { featuredEpisodeIds, slugFor, type Bundle } from './data';
+import { featuredEpisodeIds, renderedEpisodeIds, slugFor, type Bundle } from './data';
 import type { Claim, DimensionProfile, Engineer, Episode, Pairwise, Position, Scenario, Stability } from './schema';
 
 /**
@@ -341,39 +341,41 @@ export interface EngineerView {
 
 /**
  * Per-page caps. Without these a prolific contributor's page inlines every
- * claim on every episode they touched — one profile measured 20 MB before these
- * limits existed. The page still links to everything; it just does not embed it.
+ * claim on every episode they touched, and one profile measured 20 MB before
+ * these limits existed. The page still links to everything; it just does not
+ * embed it.
+ *
+ * The numbers come from `render_plan` in the manifest, because Phase 2 shipped
+ * exactly the episodes these caps can display. A cap raised here without being
+ * raised there would ask for records the package does not carry.
  */
-const FEATURED_LIMIT = 8;
-const CURRENT_LIMIT = 6;
-const FOUNDATIONAL_LIMIT = 6;
 const THESIS_LIMIT = 8;
-const OTHER_EPISODE_LIMIT = 40;
 
 export function engineerView(bundle: Bundle, actorClusterId: string): EngineerView | null {
   const engineer = bundle.engineersById.get(actorClusterId);
   if (!engineer) return null;
 
+  const budget = bundle.renderPlan.budget;
   const featuredIds = featuredEpisodeIds(engineer);
   const featuredSet = new Set(featuredIds);
 
   const toSummary = (id: string) => episodeSummary(bundle, id, actorClusterId);
   const featured = featuredIds
-    .slice(0, FEATURED_LIMIT)
+    .slice(0, budget.featured)
     .map(toSummary)
     .filter((e): e is EpisodeSummary => Boolean(e));
   const current = engineer.current_episode_ids
-    .slice(0, CURRENT_LIMIT)
+    .slice(0, budget.current)
     .map(toSummary)
     .filter((e): e is EpisodeSummary => Boolean(e));
   const foundational = engineer.foundational_episode_ids
-    .slice(0, FOUNDATIONAL_LIMIT)
+    .slice(0, budget.foundational)
     .map(toSummary)
     .filter((e): e is EpisodeSummary => Boolean(e));
 
   const otherIds = engineer.episode_ids.filter((id) => !featuredSet.has(id));
   const otherEpisodes = otherIds
-    .slice(0, OTHER_EPISODE_LIMIT)
+    .slice(0, budget.other)
     .map(toSummary)
     .filter((e): e is EpisodeSummary => Boolean(e))
     .sort((a, b) => (b.startedAt ?? '').localeCompare(a.startedAt ?? ''));
@@ -400,9 +402,11 @@ export function engineerView(bundle: Bundle, actorClusterId: string): EngineerVi
   const collaboratorMap = new Map<string, { login: string; sharedEpisodes: number; roles: Set<string> }>();
   const propagation: EngineerView['propagation'] = [];
 
-  // Scanning every episode of a 1000-episode portfolio is both slow and
-  // pointless for these panels, which are capped below anyway.
-  for (const id of engineer.episode_ids.slice(0, 250)) {
+  // These panels read the episodes this profile actually puts on the page.
+  // Scanning further would be slow, would be cut by the caps below anyway, and
+  // would ask for episodes a projected package does not carry, which would make
+  // the same profile render differently from two packages of the same run.
+  for (const id of renderedEpisodeIds(engineer, budget)) {
     const ep = bundle.episodesById.get(id);
     if (!ep) continue;
     const slug = bundle.episodePageIds.has(id) ? slugFor(id) : null;
@@ -492,6 +496,6 @@ export function engineerView(bundle: Bundle, actorClusterId: string): EngineerVi
     counterevidence: counterevidence.slice(0, 20),
     collaborators,
     propagation: propagation.slice(0, 6),
-    episodePagesTruncated: otherIds.length > OTHER_EPISODE_LIMIT,
+    episodePagesTruncated: otherIds.length > budget.other,
   };
 }
