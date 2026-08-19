@@ -7,9 +7,39 @@
 # are not learned, and there is no ground truth that could learn them.
 
 outranking:
-  version: "1.0.0"
+  version: "1.1.0"
   method: electre_iii
-  cross_check: promethee_ii
+  # Two independent cross-checks over the same inputs. Neither produces the
+  # published ranking; ELECTRE III does. They exist so that disagreement is
+  # visible rather than assumed away.
+  cross_check: promethee_ii            # kept for consumers reading the old key
+  cross_checks: [promethee_ii, promethee_iii]
+
+  # PROMETHEE III, the interval-order cross-check.
+  #
+  # PROMETHEE II sorts by net flow, so it always emits a strict total order and
+  # breaks ties it has no basis to break. Every time ELECTRE III correctly reports
+  # a shared tier, PROMETHEE II is obliged to order the pair and the agreement
+  # figure records a disagreement that is an artifact of the method, not a finding
+  # about the data. PROMETHEE III can say "these two are inseparable" in the same
+  # vocabulary ELECTRE III uses, so a remaining disagreement means something.
+  #
+  #   phi(a)     = mean over b of [ pref(a,b) - pref(b,a) ]   (PROMETHEE II's net flow)
+  #   sigma(a)   = population standard deviation of the same values
+  #   [x_a, y_a] = [ phi(a) - alpha*sigma(a), phi(a) + alpha*sigma(a) ]
+  #   a P b iff x_a > y_b;  otherwise the intervals overlap and a I b
+  promethee_iii:
+    # Interval half-width in standard deviations. Larger means more indifference.
+    #
+    # This is the one value here that wants calibrating against your own data
+    # rather than accepting on faith, because the right amount of indifference
+    # depends on how separated your contributors actually are. Every run reports
+    # `distinct_positions` against the number of contributors and
+    # `shared_tier_confirmed_top5` against `shared_tier_pairs_top5`; if the first
+    # ratio collapses towards 1, alpha is too high and the method is declining to
+    # separate anyone. 0.15 is the value most commonly cited for PROMETHEE III and
+    # is a starting point, not a finding.
+    alpha: 0.15
 
   # ------------------------------------------------ portfolio aggregation ---
   # Per dimension, an engineer's attributed episode evidence is ordered

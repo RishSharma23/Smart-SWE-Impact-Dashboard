@@ -479,6 +479,8 @@ class Exporter:
                             "incomparable_count": r.get("incomparable_count"),
                             "cross_check_position": r.get("cross_check_position"),
                             "cross_check_delta": r.get("cross_check_delta"),
+                            "cross_check_iii_position": r.get("cross_check_iii_position"),
+                            "cross_check_iii_delta": r.get("cross_check_iii_delta"),
                             "stability": {
                                 "rank_stability_index": (
                                     stability.get(str(r["actor_cluster_id"])) or {}
@@ -497,12 +499,32 @@ class Exporter:
                         k: v for k, v in (run.get("cross_check") or {}).items()
                         if k != "ranking"
                     },
+                    # Both cross-checks, without their full rankings: a reader
+                    # needs the agreement figures and the indifference counts,
+                    # not another copy of every contributor.
+                    "cross_checks": [
+                        {k: v for k, v in c.items() if k != "ranking"}
+                        for c in (run.get("cross_checks") or [])
+                    ],
                 }
                 for run in self.pipeline.ranking_runs
             ],
             "method": {
                 "name": "ELECTRE III",
                 "cross_check": "PROMETHEE II",
+                "cross_checks": ["PROMETHEE II", "PROMETHEE III"],
+                "cross_check_note": (
+                    "Neither cross-check produces the published ranking; "
+                    "ELECTRE III does. PROMETHEE II sorts by net flow and so "
+                    "always emits a strict total order, which means it cannot "
+                    "report that two contributors are inseparable and will "
+                    "order them regardless. PROMETHEE III puts an interval "
+                    "around the same net flow and calls two contributors "
+                    "indifferent when the intervals overlap, so it can agree "
+                    "with a shared tier. Where ELECTRE III and PROMETHEE III "
+                    "both decline to separate two people, that is a stronger "
+                    "statement than either alone."
+                ),
                 "why_not_a_score": (
                     "A single number would have to encode an exchange rate "
                     "between shipping a product surface and preventing a "
@@ -723,6 +745,15 @@ class Exporter:
                 ),
                 "credibility": (
                     "C(a,b) * prod over j where d_j > C of (1 - d_j) / (1 - C)"
+                ),
+                "promethee_net_flow": (
+                    "phi(a) = mean over b of [ pref(a,b) - pref(b,a) ]"
+                ),
+                "promethee_iii_interval": (
+                    "[x_a, y_a] = [phi(a) - alpha*sigma(a), phi(a) + alpha*sigma(a)] "
+                    "where sigma(a) is the population standard deviation of the "
+                    "same pairwise differences; a is strictly preferred to b when "
+                    "x_a > y_b, and the two are indifferent when the intervals overlap"
                 ),
             },
             "explicitly_not_used": [

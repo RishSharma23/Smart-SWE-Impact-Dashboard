@@ -1,4 +1,4 @@
-"""ELECTRE III outranking, with a PROMETHEE II cross-check.
+"""ELECTRE III outranking, cross-checked with PROMETHEE II and PROMETHEE III.
 
 Why not a score
 ---------------
@@ -40,6 +40,7 @@ engineers are genuinely incomparable on this evidence.
 from __future__ import annotations
 
 import logging
+import math
 from collections import defaultdict
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -425,29 +426,22 @@ def final_ranking(
 # --------------------------------------------------------------------------
 
 
-def promethee_ii(
+def _pairwise_preferences(
     portfolios: Sequence[Mapping[str, Any]],
     weights: Mapping[str, float],
     thresholds: Mapping[str, Mapping[str, float]],
-) -> list[dict[str, Any]]:
-    """Net-flow ranking, run independently as a sanity check on ELECTRE III.
+) -> dict[str, list[tuple[float, float]]]:
+    """Per alternative, the (pref(a,b), pref(b,a)) pair for every other b.
 
-    Different aggregation logic, same inputs. When the two disagree about the
-    top five, that disagreement is reported rather than hidden — it means the
-    result is sensitive to the aggregation choice, which a reader deserves to
-    know.
+    Shared by both PROMETHEE variants so they cannot drift apart: II averages
+    these, III also takes their dispersion. A pair on which no criterion is
+    comparable (both values unknown on every criterion, so ``weight_sum`` is
+    zero) contributes ``(0, 0)`` rather than being dropped, which is what makes
+    PROMETHEE III's net flow identical to PROMETHEE II's by construction.
     """
     keys = [str(p["actor_cluster_id"]) for p in portfolios]
     by_key = {str(p["actor_cluster_id"]): p for p in portfolios}
-    flows: dict[str, dict[str, float]] = {
-        k: {"positive": 0.0, "negative": 0.0} for k in keys
-    }
-    if len(keys) < 2:
-        return [
-            {"actor_cluster_id": k, "net_flow": 0.0, "position": 1,
-             "positive_flow": 0.0, "negative_flow": 0.0}
-            for k in keys
-        ]
+    out: dict[str, list[tuple[float, float]]] = {k: [] for k in keys}
 
     for a in keys:
         for b in keys:
@@ -468,22 +462,153 @@ def promethee_ii(
                 pref_ba += weight * _linear_preference(-diff, q, p)
                 weight_sum += weight
             if weight_sum > 0:
-                flows[a]["positive"] += pref_ab / weight_sum
-                flows[a]["negative"] += pref_ba / weight_sum
+                out[a].append((pref_ab / weight_sum, pref_ba / weight_sum))
+            else:
+                out[a].append((0.0, 0.0))
+    return out
 
+
+def promethee_ii(
+    portfolios: Sequence[Mapping[str, Any]],
+    weights: Mapping[str, float],
+    thresholds: Mapping[str, Mapping[str, float]],
+) -> list[dict[str, Any]]:
+    """Net-flow ranking, run independently as a sanity check on ELECTRE III.
+
+    Different aggregation logic, same inputs. When the two disagree about the
+    top five, that disagreement is reported rather than hidden, because it means
+    the result is sensitive to the aggregation choice.
+
+    Note what this method cannot do: it sorts by net flow, so it always emits a
+    strict total order and breaks ties it has no basis to break. Where ELECTRE
+    III reports a shared tier, PROMETHEE II is obliged to pick a winner.
+    PROMETHEE III below exists to say "these two are inseparable" in the same
+    vocabulary ELECTRE III uses.
+    """
+    keys = [str(p["actor_cluster_id"]) for p in portfolios]
+    if len(keys) < 2:
+        return [
+            {"actor_cluster_id": k, "net_flow": 0.0, "position": 1,
+             "positive_flow": 0.0, "negative_flow": 0.0}
+            for k in keys
+        ]
+
+    pairs = _pairwise_preferences(portfolios, weights, thresholds)
     n = len(keys) - 1
     rows = [
         {
             "actor_cluster_id": k,
-            "positive_flow": round(flows[k]["positive"] / n, 6),
-            "negative_flow": round(flows[k]["negative"] / n, 6),
-            "net_flow": round((flows[k]["positive"] - flows[k]["negative"]) / n, 6),
+            "positive_flow": round(sum(pos for pos, _ in pairs[k]) / n, 6),
+            "negative_flow": round(sum(neg for _, neg in pairs[k]) / n, 6),
+            "net_flow": round(
+                sum(pos - neg for pos, neg in pairs[k]) / n, 6
+            ),
         }
         for k in keys
     ]
     rows.sort(key=lambda r: (-r["net_flow"], r["actor_cluster_id"]))
     for index, row in enumerate(rows):
         row["position"] = index + 1
+    return rows
+
+
+def promethee_iii(
+    portfolios: Sequence[Mapping[str, Any]],
+    weights: Mapping[str, float],
+    thresholds: Mapping[str, Mapping[str, float]],
+    *,
+    alpha: float,
+) -> list[dict[str, Any]]:
+    """Interval order on net flow (Brans and Vincke). The second cross-check.
+
+    PROMETHEE II sorts by net flow and therefore always produces a strict total
+    order, breaking ties it has no basis to break. ELECTRE III deliberately does
+    the opposite: it reports shared tiers and incomparability when the evidence
+    cannot separate two people. So whenever ELECTRE III is right that two
+    contributors are inseparable, PROMETHEE II is forced to order them and the
+    agreement figure records a disagreement that is an artifact of the
+    cross-check rather than a fact about the data.
+
+    PROMETHEE III removes that artifact. Each alternative gets an interval
+    around its net flow::
+
+        phi(a)   = mean over b of [ pref(a,b) - pref(b,a) ]
+        sigma(a) = population standard deviation of the same values
+        [x_a, y_a] = [ phi(a) - alpha*sigma(a), phi(a) + alpha*sigma(a) ]
+
+        a P b  (a strictly preferred)  iff  x_a > y_b
+        a I b  (indifferent)           iff  the intervals overlap
+
+    ``phi`` here is exactly PROMETHEE II's net flow, so the two methods differ
+    only in whether they admit indifference. ``sigma`` is the dispersion of the
+    pairwise comparisons that produced the flow: an alternative that beats some
+    and loses to others has a wide interval and is harder to place than one that
+    beat everyone by the same margin, which is the honest reading.
+
+    The dispersion is computed here rather than taken from the bootstrap in the
+    sensitivity stage, deliberately. The bootstrap is optional
+    (``--skip-sensitivity``) and is absent from the current export, so sourcing
+    the intervals from it would make them null exactly when they are most
+    needed. This formulation is self-contained and always available.
+
+    Position is standard competition ranking over the strict relation:
+    ``1 + |{b : b P a}|``. Mutually indifferent alternatives therefore share a
+    position, the same way ELECTRE III lets them share a tier.
+    """
+    keys = [str(p["actor_cluster_id"]) for p in portfolios]
+    if len(keys) < 2:
+        return [
+            {"actor_cluster_id": k, "net_flow": 0.0, "dispersion": 0.0,
+             "interval": [0.0, 0.0], "position": 1,
+             "indifferent_with": [], "indifferent_count": 0}
+            for k in keys
+        ]
+
+    pairs = _pairwise_preferences(portfolios, weights, thresholds)
+    n = len(keys) - 1
+
+    bounds: dict[str, tuple[float, float]] = {}
+    flows: dict[str, float] = {}
+    dispersions: dict[str, float] = {}
+    for k in keys:
+        diffs = [pos - neg for pos, neg in pairs[k]]
+        phi = sum(diffs) / n
+        variance = sum((d - phi) ** 2 for d in diffs) / n
+        sigma = math.sqrt(variance)
+        half = alpha * sigma
+        flows[k] = phi
+        dispersions[k] = sigma
+        bounds[k] = (phi - half, phi + half)
+
+    # a P b iff x_a > y_b. Anything else is indifference, which is the whole
+    # point: the intervals overlap and the method declines to separate them.
+    strictly_better_than: dict[str, set[str]] = {k: set() for k in keys}
+    for a in keys:
+        for b in keys:
+            if a != b and bounds[a][0] > bounds[b][1]:
+                strictly_better_than[a].add(b)
+
+    rows: list[dict[str, Any]] = []
+    for k in keys:
+        beaten_by = sorted(a for a in keys if k in strictly_better_than[a])
+        indifferent = sorted(
+            b for b in keys
+            if b != k
+            and b not in strictly_better_than[k]
+            and k not in strictly_better_than[b]
+        )
+        rows.append(
+            {
+                "actor_cluster_id": k,
+                "net_flow": round(flows[k], 6),
+                "dispersion": round(dispersions[k], 6),
+                "interval": [round(bounds[k][0], 6), round(bounds[k][1], 6)],
+                "position": len(beaten_by) + 1,
+                "indifferent_with": indifferent[:10],
+                "indifferent_count": len(indifferent),
+            }
+        )
+    rows.sort(key=lambda r: (r["position"], -r["net_flow"], r["actor_cluster_id"]))
     return rows
 
 
@@ -513,34 +638,72 @@ def run_scenario(
     keys = [str(p["actor_cluster_id"]) for p in rankable]
     ranking = final_ranking(credibilities, keys, config)
     cross = promethee_ii(rankable, weights, model.thresholds)
+    alpha_iii = float(config.get("outranking.promethee_iii.alpha"))
+    cross_iii = promethee_iii(
+        rankable, weights, model.thresholds, alpha=alpha_iii
+    )
 
     by_key = {str(p["actor_cluster_id"]): p for p in rankable}
     cross_positions = {r["actor_cluster_id"]: r["position"] for r in cross}
+    cross_iii_positions = {r["actor_cluster_id"]: r["position"] for r in cross_iii}
     for row in ranking:
         portfolio = by_key[row["actor_cluster_id"]]
+        actor = row["actor_cluster_id"]
         row.update(
             {
                 "scenario": scenario,
                 "login": portfolio.get("login"),
                 "display_name": portfolio.get("display_name"),
                 "dimension_values": portfolio.get("dimension_values"),
-                "cross_check_position": cross_positions.get(row["actor_cluster_id"]),
+                "cross_check_position": cross_positions.get(actor),
                 "cross_check_delta": (
-                    cross_positions.get(row["actor_cluster_id"], 0) - row["position"]
+                    cross_positions.get(actor, 0) - row["position"]
+                ),
+                "cross_check_iii_position": cross_iii_positions.get(actor),
+                "cross_check_iii_delta": (
+                    cross_iii_positions.get(actor, 0) - row["position"]
                 ),
             }
         )
 
     top5_electre = [r["actor_cluster_id"] for r in ranking[:5]]
     top5_promethee = [r["actor_cluster_id"] for r in cross[:5]]
+    top5_promethee_iii = [r["actor_cluster_id"] for r in cross_iii[:5]]
     agreement = len(set(top5_electre) & set(top5_promethee)) / max(1, len(top5_electre))
+    agreement_iii = (
+        len(set(top5_electre) & set(top5_promethee_iii)) / max(1, len(top5_electre))
+    )
+
+    # The reason PROMETHEE III is here. Among the top five, count the pairs
+    # ELECTRE III placed in one tier, then count how many of those PROMETHEE III
+    # also declines to separate. PROMETHEE II cannot agree with any of them: it
+    # emits a total order, so every shared tier reads as a disagreement whether
+    # or not the evidence supports one.
+    tier_of = {r["actor_cluster_id"]: r["tier"] for r in ranking[:5]}
+    indifferent_of = {
+        r["actor_cluster_id"]: set(r.get("indifferent_with") or [])
+        for r in cross_iii
+    }
+    shared_tier_pairs = 0
+    shared_tier_confirmed = 0
+    for i, a in enumerate(top5_electre):
+        for b in top5_electre[i + 1:]:
+            if tier_of.get(a) != tier_of.get(b):
+                continue
+            shared_tier_pairs += 1
+            if b in indifferent_of.get(a, set()) or a in indifferent_of.get(b, set()):
+                shared_tier_confirmed += 1
 
     digest = config_digest(
         {"weights": dict(weights), "thresholds": model.thresholds, "scenario": scenario}
     )
     log.info(
-        "scenario %-24s ranked %d engineers; top-5 cross-check agreement %.0f%%",
-        scenario, len(ranking), agreement * 100,
+        "scenario %-24s ranked %d engineers; top-5 agreement: PROMETHEE II "
+        "%.0f%%, PROMETHEE III %.0f%% (%d/%d shared tiers confirmed, "
+        "%d distinct positions of %d)",
+        scenario, len(ranking), agreement * 100, agreement_iii * 100,
+        shared_tier_confirmed, shared_tier_pairs,
+        len({r["position"] for r in cross_iii}), len(cross_iii),
     )
     return {
         "ranking_run_id": ranking_run_id(scenario, digest),
@@ -552,6 +715,9 @@ def run_scenario(
         "excluded_insufficient_evidence": len(portfolios) - len(rankable),
         "ranking": ranking,
         "comparisons": comparisons,
+        # `cross_check` is PROMETHEE II and keeps its exact shape: the export,
+        # the contract and the UI all read it. `cross_checks` is the full list
+        # and is what a consumer should move to.
         "cross_check": {
             "method": "promethee_ii",
             "ranking": cross,
@@ -562,6 +728,39 @@ def run_scenario(
                 "aggregation choice and is reported, not hidden."
             ),
         },
+        "cross_checks": [
+            {
+                "method": "promethee_ii",
+                "ranking": cross,
+                "top5_agreement": round(agreement, 4),
+                "admits_indifference": False,
+                "note": (
+                    "Net-flow ranking. It emits a strict total order, so it "
+                    "cannot report that two contributors are inseparable and "
+                    "will order them regardless."
+                ),
+            },
+            {
+                "method": "promethee_iii",
+                "ranking": cross_iii,
+                "top5_agreement": round(agreement_iii, 4),
+                "admits_indifference": True,
+                "alpha": alpha_iii,
+                "indifferent_pairs": sum(
+                    r["indifferent_count"] for r in cross_iii
+                ) // 2,
+                "distinct_positions": len({r["position"] for r in cross_iii}),
+                "shared_tier_pairs_top5": shared_tier_pairs,
+                "shared_tier_confirmed_top5": shared_tier_confirmed,
+                "note": (
+                    "Interval order on the same net flow. Where it and "
+                    "ELECTRE III both decline to separate two contributors, "
+                    "that is a stronger statement than either alone. Where "
+                    "PROMETHEE II disagrees with a shared tier, check whether "
+                    "it simply had no way to express one."
+                ),
+            },
+        ],
         "outranking_version": VERSION,
     }
 
@@ -578,6 +777,10 @@ def summarise(runs: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
                     for x in r["ranking"][:5]
                 ],
                 "cross_check_agreement": r["cross_check"]["top5_agreement"],
+                "cross_check_agreement_by_method": {
+                    c["method"]: c["top5_agreement"]
+                    for c in (r.get("cross_checks") or [])
+                },
             }
             for r in items
         },

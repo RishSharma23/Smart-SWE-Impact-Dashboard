@@ -228,6 +228,8 @@ evidence. Render nothing — not a placeholder, not the raw field.
           "incomparable_count": 3,
           "cross_check_position": 2,     // PROMETHEE II position
           "cross_check_delta": 1,
+          "cross_check_iii_position": 2, // PROMETHEE III position, ties allowed
+          "cross_check_iii_delta": 0,
           "stability": {
             "rank_stability_index": 0.86,
             "top5_inclusion_probability": 0.94,
@@ -235,13 +237,61 @@ evidence. Render nothing — not a placeholder, not the raw field.
           }
         }
       ],
-      "cross_check": { "method": "promethee_ii", "top5_agreement": 0.8, "note": "…" }
+      "cross_check": { "method": "promethee_ii", "top5_agreement": 0.8, "note": "…" },
+      "cross_checks": [                // both, without their full rankings
+        { "method": "promethee_ii",  "top5_agreement": 0.8,
+          "admits_indifference": false, "note": "…" },
+        { "method": "promethee_iii", "top5_agreement": 1.0,
+          "admits_indifference": true, "alpha": 0.15,
+          "indifferent_pairs": 214, "distinct_positions": 46,
+          "shared_tier_pairs_top5": 2, "shared_tier_confirmed_top5": 2,
+          "note": "…" }
+      ]
     }
   ],
   "method": { "name": "ELECTRE III", "cross_check": "PROMETHEE II",
+              "cross_checks": ["PROMETHEE II", "PROMETHEE III"],
+              "cross_check_note": "…",
               "why_not_a_score": "…", "tiers_explained": "…" }
 }
 ```
+
+### 4.1 Two cross-checks, and why the second one exists
+
+Neither cross-check produces the published ranking. **ELECTRE III does.** Both
+run independently over the same inputs so that disagreement is visible.
+
+**PROMETHEE II** sorts by net flow, so it always emits a strict total order. It
+has no way to say two contributors are inseparable and will order them
+regardless. That matters here, because ELECTRE III deliberately reports shared
+tiers and incomparability when the evidence cannot separate two people: every
+correct shared tier comes back from PROMETHEE II as a disagreement, whether or
+not the evidence supports one.
+
+**PROMETHEE III** puts an interval around the same net flow,
+`[phi - alpha*sigma, phi + alpha*sigma]`, and calls two contributors indifferent
+when the intervals overlap. `phi` is PROMETHEE II's net flow exactly; `sigma` is
+the dispersion of the pairwise comparisons that produced it, so a contributor
+who beat most of the field but lost decisively to someone has a wide interval
+and is genuinely harder to place than one who beat everyone by the same margin.
+
+Consequences for a consumer:
+
+* **`cross_check` is unchanged** and still carries PROMETHEE II. Existing
+  readers need not move. `cross_checks` is the full list and is where new work
+  should read from.
+* **`cross_check_iii_position` may repeat across contributors.** It is standard
+  competition ranking over an interval order, so mutually indifferent
+  contributors share a position, the same way they can share an ELECTRE III
+  tier. Do not assume it is a permutation.
+* **`shared_tier_confirmed_top5` of `shared_tier_pairs_top5` is the figure worth
+  surfacing.** Where ELECTRE III and PROMETHEE III both decline to separate two
+  contributors, that is a stronger statement than either alone. Where PROMETHEE
+  II disagrees with a shared tier, check `admits_indifference` before reporting
+  it as a real disagreement.
+* **`alpha` is a stated preference, not a finding.** It sets how much
+  indifference the method admits. `distinct_positions` against the contributor
+  count says whether it is calibrated for the dataset.
 
 ### Eight scenarios, two of them unavailable on a 90-day window
 
@@ -261,8 +311,11 @@ scenario. The whole point is that the reader can see what was not measurable.
   where they meet.
 * **Always show `dimension_values` alongside a position**, and show `null`
   as "not assessable", never as 0 or as an empty bar. See §5.2.
-* **`cross_check_delta != 0` deserves a marker.** It means the two aggregation
+* **`cross_check_delta != 0` deserves a marker.** It means the aggregation
   methods disagree, which is real information about how firm the position is.
+  **Qualify it with `admits_indifference`**: a PROMETHEE II disagreement against
+  a shared ELECTRE III tier may only mean PROMETHEE II had no way to express a
+  tie. A PROMETHEE III disagreement has no such excuse and is worth more.
 * **Never render a composite score.** There isn't one. If you find yourself
   wanting a single number for a sort key, sort by `position` and `tier`.
 
